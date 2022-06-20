@@ -42,7 +42,7 @@
                         <div class="tab-content" id="custom-tabs-three-tabContent-lang">
                             <div class="tab-pane fade show active" id="tabs-sluglang-vi" role="tabpanel" aria-labelledby="tabs-lang">
                                 <div class="form-gourp mb-0">
-                                    <label class="d-block">Đường dẫn mẫu (vi):<span class="pl-2 font-weight-normal" id="slugurlpreviewvi">http://localhost/VuVanQuan_0480522W/<strong class="text-info"></strong></span></label>
+                                    <label class="d-block">Đường dẫn mẫu (vi):<span class="pl-2 font-weight-normal" id="slugurlpreviewvi">http://localhost/<strong class="text-info"></strong></span></label>
                                     <input type="text" class="form-control slug-input no-validate text-sm" name="slugvi" id="slugvi" placeholder="Đường dẫn (vi)" value="" required="">
                                     <input type="hidden" id="slug-defaultvi" value="">
                                     <p class="alert-slugvi text-danger d-none mt-2 mb-0" id="alert-slug-dangervi">
@@ -157,7 +157,7 @@
             <div class="card-body">
                 <div class="photoUpload-zone">
                     <div class="photoUpload-detail" id="photoUpload-preview">
-                        <img class="rounded" onerror="this.src='http://localhost/VuVanQuan_0480522W/thumbs/250x250x1/assets/images/noimage.png';" src="http://localhost/VuVanQuan_0480522W/assets/images/noimage.png" alt="Alt Photo">	</div>
+                        <img class="rounded" src="" alt="">	</div>
                     <label class="photoUpload-file" id="photo-zone" for="file-zone">
                         <input type="file" name="file" id="file-zone">
                         <i class="fas fa-cloud-upload-alt"></i>

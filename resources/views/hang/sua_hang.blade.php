@@ -68,7 +68,7 @@
             <div class="card-body">
                 <div class="photoUpload-zone">
                     <div class="photoUpload-detail" id="photoUpload-preview">
-                        <img class="rounded" onerror="this.src='http://localhost/VuVanQuan_0480522W/thumbs/250x250x1/assets/images/noimage.png';" src="http://localhost/VuVanQuan_0480522W/assets/images/noimage.png" alt="Alt Photo">	</div>
+                        <img class="rounded"  src="" alt="Alt Photo">	</div>
                     <label class="photoUpload-file" id="photo-zone" for="file-zone">
                     <input type="file" name="file" id="file-zone">
                     <i class="fas fa-cloud-upload-alt"></i>
