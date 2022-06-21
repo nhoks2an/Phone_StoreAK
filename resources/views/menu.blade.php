@@ -114,7 +114,7 @@
             </div>
         </div>
     </li>
-
+    <hr class="sidebar-divider my-0">
     <li class="nav-item">
         <a class="nav-link collapsed" data-toggle="collapse" data-target="#tintuc" aria-expanded="false" aria-controls="tintuc">
             <i class="fas fas fa-photo-video"></i>

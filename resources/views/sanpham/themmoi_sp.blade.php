@@ -83,6 +83,10 @@
                                     <label for="namevi">Tiêu đề (vi):</label>
                                     <input type="text" class="form-control for-seo text-sm" name="data[namevi]" id="namevi" placeholder="Tiêu đề (vi)" value="" required="">
                                 </div>
+                                <div class="form-group">
+                                    <label for="descvi">Mô tả (vi):</label>
+                                    <textarea class="form-control for-seo text-sm " name="content" id="descvi" rows="5" placeholder="Mô tả (vi)"></textarea>
+                                </div>
                                 <div class="form-group-category row">
                                     <div class="form-group col-xl-6 col-sm-4">
                                         <label class="d-block" for="id_list">Camera:</label>
