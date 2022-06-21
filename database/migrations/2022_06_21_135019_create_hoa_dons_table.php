@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateHoaDonsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,17 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('hoa_dons', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('hinhanh');
-            $table->string('hoten');
-            $table->string('sodienthoai');
+            $table->dateTime('ngaylap');
+            $table->foreignId('id_kh');
             $table->string('diachi');
-            $table->rememberToken();
+            $table->string('sodienthoai');
+            $table->string('tongtien');
+            $table->foreignId('id_voucher');
+            $table->foreignId('id_thanhpho');
+            $table->foreignId('id_quan');
+            $table->foreignId('id_phuong');
             $table->string('trangthai');
             $table->timestamps();
             $table->softDeletes();
@@ -37,6 +37,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('hoa_dons');
     }
 }
