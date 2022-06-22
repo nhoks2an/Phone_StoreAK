@@ -4,7 +4,7 @@
 
 <div class="taikhoan">
     <div class="btn-themmoi">
-        <a class="btn btn-sm bg-gradient-primary text-white" href="{{route('themmau')}}" title="Thêm mới"><i class="fas fa-plus mr-2"></i>Thêm mới</a>
+        <a class="btn btn-sm bg-gradient-primary text-white" href="{{route('mausac.create')}}" title="Thêm mới"><i class="fas fa-plus mr-2"></i>Thêm mới</a>
         <a class="btn btn-sm bg-gradient-danger text-white" id="delete-all" data-url="index.php?com=product&amp;act=delete&amp;type=san-pham" title="Xóa tất cả"><i class="far fa-trash-alt mr-2"></i>Xóa tất cả</a>
             <!-- Topbar Search -->
         <div class="form-inline form-search d-inline-block align-middle ml-3">
@@ -35,46 +35,40 @@
                                 <label for="selectall-checkbox" class="custom-control-label"></label>
                             </div>
                         </th>
-                        <th class="tableSTT" width="10%">STT</th>
-                        <th class="align-middle">Hình</th>
                         <th class="align-middle" style="width:30%">Tên màu</th>
                         <th class="align-middle text-center">Thao tác</th>
                     </tr>
                 </thead>
+                @foreach($lstmausac as $mausac)
                 <tbody>
                     <tr>
                         <td class="align-middle">
-                        <div class="custom-control custom-checkbox my-checkbox">
+                            <div class="custom-control custom-checkbox my-checkbox">
                                 <input type="checkbox" class="custom-control-input select-checkbox">
                                 <label for="select-checkbox-35"class="custom-control-label"></label>
-                        </div>
+                            </div>
                         </td>
                         <td class="align-middle">
-                            <input type="number" class="form-control form-control-mini m-auto update-numb">
-                        </td>
-                        <td class="align-middle">
-                            <a href="#"><img src="https://haycafe.vn/wp-content/uploads/2022/02/Anh-Avatar-Doremon-dep-ngau-cute.jpg" alt=""class="rounded img-preview"></a>
-                        </td>
-                        <td class="align-middle">
-                            <a href="#">ango@gmail.comm</a>
+                            <span>{{$mausac->tenmau}}</span>
                         </td>
                         <td class="align-middle text-center text-md text-nowrap">
-                        <a href="{{route('suamau')}}">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <a href="#"  class="text-danger">
-                            <i class="color fas fa-trash-alt"></i>
-                        </a>
+                            <form method="post" action="{{route('mausac.destroy',['mausac'=>$mausac])}}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-danger">
+                                    <i class="color fas fa-trash-alt"></i>
+                                </button>  
+                            </form>  
                         </td>
                     </tr>
-                
-                  
                 </tbody>
+                @endforeach
             </table>
         </div>
    </div>
 </div>
 
-@section('Them')
+
 @endsection
+@section('Them')
 @endsection

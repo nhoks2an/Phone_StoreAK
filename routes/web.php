@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RAMController;
+use App\Http\Controllers\MauSacController;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,17 +74,18 @@ Route::get('/admin/suasanpham', function () {
     return view('sanpham.sua_sp');
     })->name('suasanpham');
     // mau
-Route::get('/admin/mau', function () {
-    return view('mau.index');
-    })->name('mau');
+Route::resource('/mausac',MauSacController::class);
+// Route::get('/admin/mau', function () {
+//     return view('mau.index');
+//     })->name('mau');
 
-Route::get('/admin/themmau', function () {
-    return view('mau.themmau');
-    })->name('themmau');
+// Route::get('/admin/themmau', function () {
+//     return view('mau.themmau');
+//     })->name('themmau');
 
-Route::get('/admin/suamau', function () {
-    return view('mau.sua_mau');
-    })->name('suamau');
+// Route::get('/admin/suamau', function () {
+//     return view('mau.sua_mau');
+//     })->name('suamau');
     
     // hang
 Route::get('/admin/hang', function () {
@@ -156,13 +160,14 @@ Route::get('/admin/dangnhap', function () {
     return view('dangnhap.index');
     })->name('dangnhap');
     // ram
-Route::get('/admin/ram', function () {
-    return view('ram.index');
-    })->name('ram');
+Route::resource('/RAM',RAMController::class);
+// Route::get('/admin/ram', function () {
+//     return view('ram.index');
+//     })->name('ram');
 
-Route::get('/admin/themram', function () {
-    return view('ram.them_ram');
-    })->name('themram');
+// Route::get('/admin/themram', function () {
+//     return view('ram.them_ram');
+//     })->name('themram');
         // rom
 Route::get('/admin/rom', function () {
     return view('rom.index');

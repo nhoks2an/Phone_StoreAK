@@ -57,14 +57,14 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{route('camera')}}"> <i class="far fa-caret-square-right"></i> Camera</a>
-                <a class="collapse-item" href="{{route('ram')}}"> <i class="far fa-caret-square-right"></i> Ram</a>
+                <a class="collapse-item" href="{{route('RAM.index')}}"> <i class="far fa-caret-square-right"></i> Ram</a>
                 <a class="collapse-item" href="{{route('rom')}}"> <i class="far fa-caret-square-right"></i> Rom</a>
                 <a class="collapse-item" href="{{route('manhinh')}}"> <i class="far fa-caret-square-right"></i> Màn hình</a>
                 <a class="collapse-item" href="{{route('hieunangpin')}}"> <i class="far fa-caret-square-right"></i> Hiệu năng & Pin</a>
                 <a class="collapse-item" href="{{route('hedieuhanh')}}"> <i class="far fa-caret-square-right"></i> Hệ điều hành</a>
                 <a class="collapse-item" href="{{route('tinhnangdb')}}"> <i class="far fa-caret-square-right"></i> Tính năng</a>
                 <a class="collapse-item" href="{{route('sanpham')}}"> <i class="far fa-caret-square-right"></i> Thiết kế</a>
-                <a class="collapse-item" href="{{route('mau')}}"> <i class="far fa-caret-square-right"></i> Màu sắc</a>
+                <a class="collapse-item" href="{{route('mausac.index')}}"> <i class="far fa-caret-square-right"></i> Màu sắc</a>
             </div>
         </div>
     </li>

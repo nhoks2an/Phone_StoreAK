@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\MauSac;
-use App\Http\Requests\StoreMauSacRequest;
-use App\Http\Requests\UpdateMauSacRequest;
+use Illuminate\Http\Request;
+use App\Http\Controllers\equest;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
 
 class MauSacController extends Controller
 {
@@ -15,7 +17,11 @@ class MauSacController extends Controller
      */
     public function index()
     {
-        //
+        $lstmausac = MauSac::all();
+        foreach($lstmausac as $mauSac){
+         
+        }
+        return view('mau.index',['lstmausac'=>$lstmausac]);
     }
 
     /**
@@ -25,18 +31,24 @@ class MauSacController extends Controller
      */
     public function create()
     {
-        //
+        return View('mau.themmau');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreMauSacRequest  $request
+     * @param \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreMauSacRequest $request)
+    public function store(Request $request)
     {
-        //
+        $mauSac = new MauSac();
+        $mauSac->fill([
+            'tenmau'=>$request->input('tenmau'),
+            'trangthai'=>'Hiển thị',
+        ]);
+        $mauSac->save();
+        return Redirect::route('mausac.index',['mausac'=>$mauSac]);
     }
 
     /**
@@ -81,6 +93,8 @@ class MauSacController extends Controller
      */
     public function destroy(MauSac $mauSac)
     {
-        //
+        $mauSac->delete();
+        return Redirect::route('mausac.index');
+       
     }
 }

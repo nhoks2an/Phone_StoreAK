@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\RAM;
-use App\Http\Requests\StoreRAMRequest;
-use App\Http\Requests\UpdateRAMRequest;
+use Illuminate\Http\Request;
+use App\Http\Controllers\equest;
+use Illuminate\Support\Facades\Redirect;
 
+use Illuminate\Support\Facades\DB;
 class RAMController extends Controller
 {
     /**
@@ -15,7 +17,11 @@ class RAMController extends Controller
      */
     public function index()
     {
-        //
+        $lstram = RAM::all();
+        foreach($lstram as $rAM){
+         
+        }
+        return view('ram.index',['lstram'=>$lstram]);
     }
 
     /**
@@ -25,18 +31,24 @@ class RAMController extends Controller
      */
     public function create()
     {
-        //
+        return View('ram.them_ram');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreRAMRequest  $request
+     * @param \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRAMRequest $request)
+    public function store(Request $request)
     {
-        //
+        $rAM = new RAM();
+        $rAM->fill([
+            'soram'=>$request->input('soram'),
+            'trangthai'=>'Hiển thị',
+        ]);
+        $rAM->save();
+        return Redirect::route('RAM.index',['RAM'=>$rAM]);
     }
 
     /**
@@ -81,6 +93,7 @@ class RAMController extends Controller
      */
     public function destroy(RAM $rAM)
     {
-        //
+        $rAM->delete();
+        return Redirect::route('RAM.index');
     }
 }

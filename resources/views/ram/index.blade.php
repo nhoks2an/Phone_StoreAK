@@ -1,9 +1,10 @@
 @extends('layout.layout')
 @section('sidebar')
     @parent
+
 <div class="taikhoan">
     <div class="btn-themmoi">
-        <a class="btn btn-sm bg-gradient-primary text-white" href="{{route('themram')}}" title="Thêm mới"><i class="fas fa-plus mr-2"></i>Thêm mới</a>
+        <a class="btn btn-sm bg-gradient-primary text-white" href="{{route('RAM.create')}}" title="Thêm mới"><i class="fas fa-plus mr-2"></i>Thêm mới</a>
         <a class="btn btn-sm bg-gradient-danger text-white" id="delete-all" data-url="index.php?com=product&amp;act=delete&amp;type=san-pham" title="Xóa tất cả"><i class="far fa-trash-alt mr-2"></i>Xóa tất cả</a>
             <!-- Topbar Search -->
         <div class="form-inline form-search d-inline-block align-middle ml-3">
@@ -34,37 +35,39 @@
                                 <label for="selectall-checkbox" class="custom-control-label"></label>
                             </div>
                         </th>
-                        <th class="tableSTT" width="10%">STT</th>
                         <th class="align-middle">Ram</th>
                         <th class="align-middle text-center">Thao tác</th>
                     </tr>
                 </thead>
+                @foreach($lstram as $RAM)
                 <tbody>
                     <tr>
                         <td class="align-middle">
-                        <div class="custom-control custom-checkbox my-checkbox">
+                            <div class="custom-control custom-checkbox my-checkbox">
                                 <input type="checkbox" class="custom-control-input select-checkbox">
                                 <label for="select-checkbox-35"class="custom-control-label"></label>
-                        </div>
+                            </div>
                         </td>
                         <td class="align-middle">
-                            <input type="number" class="form-control form-control-mini m-auto update-numb">
-                        </td>
-                        <td class="align-middle">
-                           <span>8G</span>
-                        </td>
+                           <span>{{$RAM->soram}}G</span>
+                        </td>        
                         <td class="align-middle text-center text-md text-nowrap">
-                        <a href="#"  class="text-danger">
-                            <i class="color fas fa-trash-alt"></i>
-                        </a>
-                        </td>
+                            <form method="post" action="{{route('RAM.destroy',['RAM'=>$RAM])}}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-danger">
+                                    <i class="color fas fa-trash-alt"></i>
+                                </button>  
+                            </form>  
+                        </td>   
                     </tr>
-                  
                 </tbody>
+                @endforeach
             </table>
         </div>
    </div>
 </div>
-@section('Them')
+
 @endsection
+@section('Them')
 @endsection
