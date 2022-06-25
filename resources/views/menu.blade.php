@@ -135,7 +135,7 @@
     </li>
     <hr class="sidebar-divider my-0">
     <li
-        class="nav-item {{(request()->is('tintuc')) ? 'active' : '' }} {{(request()->is('chinhsach')) ? 'active' : '' }}">
+        class="nav-item {{(request()->is('tinTuc')) ? 'active' : '' }} {{(request()->is('chinhSach')) ? 'active' : '' }}">
         <a class="nav-link collapsed" data-toggle="collapse" data-target="#tintuc" aria-expanded="false"
             aria-controls="tintuc">
             <i class="fas fas fa-photo-video"></i>

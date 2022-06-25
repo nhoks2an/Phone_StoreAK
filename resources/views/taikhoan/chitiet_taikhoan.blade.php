@@ -47,14 +47,20 @@
                                 <label for="namevi">Địa chỉ:</label>
                                 <input type="text" class="form-control for-seo text-sm" name="diachi" id="diachi" placeholder="Địa chỉ" value="{{$taikhoan->diachi}}" required="">
                             </div>
-                                <div class="form-group col-xl-6 col-sm-4">
-                                    <label class="d-block" for="id_list">Phái:</label>
-                                    <select id="id_list" name="phái" data-level="0" data-type="san-pham" data-table="#_product_cat" data-child="id_cat" class="form-control select2 select-category select2-hidden-accessible" data-select2-id="id_list" tabindex="-1" aria-hidden="true"><option value="0" data-select2-id="2">Chọn phái</option><option value="4" data-select2-id="4">Nam</option><option value="3" data-select2-id="5">Nữ</option><option value="2" data-select2-id="6"></option></select></span>
-                                </div>
+                               <div class="row">
+                                <div class="form-group col-xl-6 ">
+                                        <label class="d-block" for="id_list">Phái:</label>
+                                        <input type="email" class="form-control for-seo text-sm" name="email" id="email" placeholder="Email" value="{{$taikhoan->phai}}" disable>
+                                    </div>
+                                    <div class="form-group col-xl-6">
+                                        <label for="namevi">SĐT:</label>
+                                        <input type="number" class="form-control for-seo text-sm" name="SDT" id="sdt" placeholder="Số điện thoại" value="{{$taikhoan->sodienthoai}}" required="">
+                                    </div>
+                               </div>
                             </div>
                             <div class="form-group">
-                                <label for="namevi">SĐT:</label>
-                                <input type="number" class="form-control for-seo text-sm" name="SDT" id="sdt" placeholder="Số điện thoại" value="{{$taikhoan->sodienthoai}}" required="">
+                                <label for="namevi">Địa chỉ:</label>
+                                <input type="email" class="form-control for-seo text-sm" name="ngaysinh" id="email" placeholder="Email" value="{{$taikhoan->ngaysinh}}" required="">
                             </div>
                             <div class="form-group">
                                 <label for="namevi">Email:</label>

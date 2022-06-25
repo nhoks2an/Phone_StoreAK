@@ -43,6 +43,14 @@ class GioiThieuController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate(
+            [
+                'tieude' => 'required',
+            ],
+            [
+                'tieude.required' => 'Tiêu đề Không Được Bỏ Trống',
+            ]
+        );
         $gioiThieu = new GioiThieu();
         $gioiThieu->fill([
             'tieude'=>$request->input('tieude'),
@@ -84,6 +92,15 @@ class GioiThieuController extends Controller
      */
     public function update(Request $request, GioiThieu $gioiThieu)
     {
+        $validatedData = $request->validate(
+            [
+                'tieude' => 'required',
+            
+            ],
+            [
+                'tieude.required' => 'Tiêu Đề Không Được Bỏ Trống',
+            ]
+        );
         $gioiThieu->fill([
             'tieude'=>$request->input('tieude'),
             'noidung'=>$request->input('content'),
