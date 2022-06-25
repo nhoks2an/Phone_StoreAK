@@ -17,7 +17,7 @@ class CreateBinhLuansTable extends Migration
             $table->id();
             $table->foreignId('id_sp');
             $table->foreignId('id_kh');
-            $table->foreignId('id_rep');
+            $table->foreignId('id_rep')->nullable(true);
             $table->string('trangthai');
             $table->timestamps();
             $table->softDeletes();

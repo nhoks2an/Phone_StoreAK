@@ -15,7 +15,6 @@ class CreateHoaDonsTable extends Migration
     {
         Schema::create('hoa_dons', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('ngaylap');
             $table->foreignId('id_kh');
             $table->string('diachi');
             $table->string('sodienthoai');

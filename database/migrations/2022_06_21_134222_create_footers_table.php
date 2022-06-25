@@ -15,8 +15,8 @@ class CreateFootersTable extends Migration
     {
         Schema::create('footers', function (Blueprint $table) {
             $table->id();
-            $table->string('tieude');
-            $table->string('noidung');
+            $table->string('tieude')->nullable(true);
+            $table->mediumText('noidung')->nullable(true);
             $table->string('trangthai');
             $table->timestamps();
             $table->softDeletes();
