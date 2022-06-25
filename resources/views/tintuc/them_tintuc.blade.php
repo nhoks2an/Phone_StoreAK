@@ -96,6 +96,18 @@
 
     </div>
 </form>
+<script>
+/* Img Preview */
+const input = document.getElementById("file-zone");
+const image = document.getElementById("hinhanh_hang");
+
+input.addEventListener("change", (e) => {
+    if (e.target.files.length) {
+        const src = URL.createObjectURL(e.target.files[0]);
+        image.src = src;
+    }
+});
+</script>
 @endsection
 @section('Them')
 @endsection

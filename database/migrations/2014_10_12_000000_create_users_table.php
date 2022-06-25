@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('hinhanh');
             $table->string('hoten');
+            $table->string('phai');
+            $table->date('ngaysinh');
             $table->string('sodienthoai');
             $table->string('diachi');
             $table->rememberToken();

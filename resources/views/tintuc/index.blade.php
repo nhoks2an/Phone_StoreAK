@@ -60,7 +60,7 @@
                         </td>
                         <td class="align-middle">
                             <a href="index.php?com=news&amp;act=edit&amp;type=tin-tuc&amp;id=3" title="{{$tt->tieude}}">
-                                {{$tt->hinhanh}}
+                                <img class="rounded img-preview" src="{{$tt->hinhanh}}" alt="">
                             </a>
                         </td>
                         <td class="align-middle">
