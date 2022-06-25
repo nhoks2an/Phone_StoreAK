@@ -3,7 +3,7 @@
     @parent
 <div class="taikhoan">
     <div class="btn-themmoi">
-        <a class="btn btn-sm bg-gradient-primary text-white" href="{{route('themloai')}}" title="Thêm mới"><i class="fas fa-plus mr-2"></i>Thêm mới</a>
+        <a class="btn btn-sm bg-gradient-primary text-white" href="{{route('loaiSanPham.create')}}" title="Thêm mới"><i class="fas fa-plus mr-2"></i>Thêm mới</a>
         <a class="btn btn-sm bg-gradient-danger text-white" id="delete-all" data-url="index.php?com=product&amp;act=delete&amp;type=san-pham" title="Xóa tất cả"><i class="far fa-trash-alt mr-2"></i>Xóa tất cả</a>
             <!-- Topbar Search -->
         <div class="form-inline form-search d-inline-block align-middle ml-3">
@@ -34,44 +34,79 @@
                                 <label for="selectall-checkbox" class="custom-control-label"></label>
                             </div>
                         </th>
-                        <th class="tableSTT" width="10%">STT</th>
-                        <th class="align-middle">Hình</th>
                         <th class="align-middle" style="width:30%">Tên loại</th>
                         <th class="align-middle text-center">Thao tác</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td class="align-middle">
-                        <div class="custom-control custom-checkbox my-checkbox">
-                                <input type="checkbox" class="custom-control-input select-checkbox">
-                                <label for="select-checkbox-35"class="custom-control-label"></label>
-                        </div>
-                        </td>
-                        <td class="align-middle">
-                            <input type="number" class="form-control form-control-mini m-auto update-numb">
-                        </td>
-                        <td class="align-middle">
-                            <a href="#"><img src="https://haycafe.vn/wp-content/uploads/2022/02/Anh-Avatar-Doremon-dep-ngau-cute.jpg" alt=""class="rounded img-preview"></a>
-                        </td>
-                        <td class="align-middle">
-                            <a href="#">ango@gmail.comm</a>
-                        </td>
-                        <td class="align-middle text-center text-md text-nowrap">
-                        <a href="{{route('sualoai')}}">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <a href="#"  class="text-danger">
-                            <i class="color fas fa-trash-alt"></i>
-                        </a>
-                        </td>
-                    </tr>
-                  
-                </tbody>
+                @foreach($lstloai as $loaiSanPham)
+                    <tbody>
+                        <tr>
+                            <td class="align-middle">
+                            <div class="custom-control custom-checkbox my-checkbox">
+                                    <input type="checkbox" class="custom-control-input select-checkbox">
+                                    <label for="select-checkbox-35"class="custom-control-label"></label>
+                            </div>
+                            </td>
+                            <td class="align-middle">
+                                <span>{{$loaiSanPham->tenloaisp}}</span>
+                            </td>
+                            <td class="align-middle text-center text-md text-nowrap">
+                            
+                         
+                                    <a href="{{route('loaiSanPham.show',['loaiSanPham'=>$loaiSanPham])}}">
+                                        <i class="fas fa-edit"></i>
+                                    </a> 
+                                    <button  type="submit" class="btnxoa text-danger "style="border: none;background: none;" value="{{$loaiSanPham->id}}">
+                                        <i class="color fas fa-trash-alt"></i>
+                                    </button>
+                               
+                            </td>
+                        </tr>
+                    </tbody>
+                @endforeach
             </table>
+            @foreach($lstloai as $loaiSanPham)
+             <!-- modal -->
+             <div class="modal fade" id="LoaiModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>  
+                        <form method="post" action="{{route('loaiSanPham.destroy',$loaiSanPham->id)}}">
+                            @csrf
+                            @method('DELETE')
+                            <div class="modal-body">
+                                Bạn có chắc chắn muốn xóa !
+                            </div>
+                            <input type="hidden"  name="tenloaisp" id="tenloaisp">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+                                <button type="submit" class="btn btn-primary">Xác nhận</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            @endforeach
         </div>
    </div>
 </div>
+@section('scripts')
+<script>
+	$(document).on('click', '.btnxoa', function() {
+        $('#LoaiModal').modal({
+            show: true
+        });
+        var loai_id = $(this).val();
+        $('#tenloaisp').val(loai_id);
+        
+	});
+</script>
+@endsection
 @section('Them')
 @endsection
 @endsection

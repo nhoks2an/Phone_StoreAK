@@ -8,10 +8,6 @@
             <i class="far fa-save mr-2"></i>
             Thêm mới
         </button>
-        <button class="btn btn-sm bg-gradient-success submit-check" type="">
-            <i class="fas fa-redo mr-2""></i>
-            Lưu tại trang
-        </button>
         <button class="btn btn-sm bg-gradient-secondary" type="reset">
             <i class="fas fa-redo mr-2""></i>
             Làm lại
@@ -46,6 +42,11 @@
                                     <div class="form-group">
                                         <label for="namevi"> Thông số Ram:</label>
                                         <input type="text" class="form-control for-seo text-sm" name="soram" placeholder="Thông số ram">
+                                        @if($errors->has('soram'))
+                                        <div class="alert alert-danger" style="margin-top:10px;">
+                                            {{$errors->first('soram')}}
+                                        </div>
+                                         @endif
                                     </div>
                                 </div>
                             </div>

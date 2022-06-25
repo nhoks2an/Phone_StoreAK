@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\ROM;
-use App\Http\Requests\StoreROMRequest;
-use App\Http\Requests\UpdateROMRequest;
+use Illuminate\Http\Request;
+use App\Http\Controllers\equest;
+use Illuminate\Support\Facades\Redirect;
+use App\Models\Post;
+use Illuminate\Support\Facades\DB;
 
 class ROMController extends Controller
 {
@@ -15,7 +18,11 @@ class ROMController extends Controller
      */
     public function index()
     {
-        //
+        $lstrom = ROM::all();
+        foreach($lstrom as $rOM){
+         
+        }
+        return view('rom.index',['lstrom'=>$lstrom]);
     }
 
     /**
@@ -25,18 +32,32 @@ class ROMController extends Controller
      */
     public function create()
     {
-        //
+        return View('rom.them_rom');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreROMRequest  $request
+     * @param \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreROMRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate(
+            [
+                'sorom' => 'required',
+            ],
+            [
+                'sorom.required' => 'Số ROM Không Được Bỏ Trống',
+            ]
+        );
+        $rOM = new ROM();
+        $rOM->fill([
+            'sorom'=>$request->input('sorom'),
+            'trangthai'=>'Hiển thị',
+        ]);
+        $rOM->save();
+        return Redirect::route('ROM.index',['ROM'=>$rOM]);
     }
 
     /**
@@ -79,8 +100,9 @@ class ROMController extends Controller
      * @param  \App\Models\ROM  $rOM
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ROM $rOM)
+    public function destroy($id)
     {
-        //
+        ROM::find($id)->delete();
+        return Redirect::route('ROM.index');
     }
 }

@@ -23,7 +23,8 @@ class Createfksp extends Migration
             $table->foreign('id_camera')->references('id')->on('cameras');
             $table->foreign('id_hieunangpin')->references('id')->on('hieu_nang_pins');
             $table->foreign('id_hedieuhanh')->references('id')->on('he_dieu_hanhs');
-            $table->foreign('id_danhgia')->references('id')->on('danh_gias');
+            // $table->foreign('id_danhgia')->references('id')->on('danh_gias');
+            $table->foreign('id_thietke')->references('id')->on('thiet_kes');
         });
     }
 

@@ -1,9 +1,10 @@
 @extends('layout.layout')
 @section('sidebar')
     @parent
+    
 <div class="taikhoan">
     <div class="btn-themmoi">
-        <a class="btn btn-sm bg-gradient-primary text-white" href="{{route('themsanpham')}}" ><i class="fas fa-plus mr-2"></i>Thêm mới</a>
+        <a class="btn btn-sm bg-gradient-primary text-white" href="{{route('sanPham.create')}}" ><i class="fas fa-plus mr-2"></i>Thêm mới</a>
         <a class="btn btn-sm bg-gradient-danger text-white" id="delete-all" data-url="index.php?com=product&amp;act=delete&amp;type=san-pham" title="Xóa tất cả"><i class="far fa-trash-alt mr-2"></i>Xóa tất cả</a>
             <!-- Topbar Search -->
         <div class="form-inline form-search d-inline-block align-middle ml-3">
@@ -36,41 +37,42 @@
                                 <label for="selectall-checkbox" class="custom-control-label"></label>
                             </div>
                         </th>
-                        <th class="tableSTT text-center" width="10%">STT</th>
                         <th class="align-middle text-center">Hình</th>
                         <th class="align-middle text-center" style="width:30%">Tiêu đề</th>
                         <th class="align-middle text-center">Thao tác</th>
                     </tr>
                 </thead>
+                @foreach($lstsanpham as $sanPham)
                 <tbody>
                     <tr>
                         <td class="align-middle text-center">
                         <div class="custom-control custom-checkbox my-checkbox">
-                                <input type="checkbox" class="custom-control-input select-checkbox">
-                                <label for="select-checkbox-35"class="custom-control-label"></label>
+                            <input type="checkbox" class="custom-control-input select-checkbox">
+                            <label for="select-checkbox-35"class="custom-control-label"></label>
                         </div>
                         </td>
                         <td class="align-middle text-center">
-                            <input type="number" class="form-control form-control-mini m-auto update-numb">
+                            <a><img class="rounded img-preview" src="{{$sanPham->hinhanh}}">  </a></a>
                         </td>
                         <td class="align-middle text-center">
-                            <a href="#"><img src="https://haycafe.vn/wp-content/uploads/2022/02/Anh-Avatar-Doremon-dep-ngau-cute.jpg" alt=""class="rounded img-preview"></a>
+                        <span>{{$sanPham->tensanpham}}</span>
                         </td>
-                        <td class="align-middle text-center">
-                            <a href="#">ango@gmail.comm</a>
-                        </td>
+                        
                         <td class="align-middle text-center text-md text-nowrap">
-                        <a href="{{route('suasanpham')}}">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <a href="#" class="text-danger">
-                            <i class=" fas fa-trash-alt"></i>
-                        </a>
+                        <form method="post" action="{{route('sanPham.destroy',$sanPham->id)}}">
+                        @csrf
+                        @method('DELETE')
+                             <a href="{{route('sanPham.show',['sanPham'=>$sanPham])}}">
+                                <i class="fas fa-edit"></i>
+                            </a> 
+                            <button  type="submit" class="text-danger "style="border: none;background: none;" >
+                                <i class="color fas fa-trash-alt"></i>
+                            </button>
+                        </form> 
                         </td>
                     </tr>
-                  
-                  
                 </tbody>
+                @endforeach
             </table>
         </div>
    </div>

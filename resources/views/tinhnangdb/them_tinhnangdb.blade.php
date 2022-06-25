@@ -1,15 +1,14 @@
 @extends('layout.layout')
 @section('sidebar')
     @parent
+    <form method="post" action="{{route('tinhnangdb.store')}}" enctype="multipart/form-data">
+    @csrf
 <div class="btn-themmoi">
     <button class="btn btn-sm bg-gradient-primary submit-check" type="submit">
         <i class="far fa-save mr-2"></i>
         Thêm mới
     </button>
-    <button class="btn btn-sm bg-gradient-success submit-check" type="submit">
-        <i class="fas fa-redo mr-2""></i>
-        Lưu tại trang
-    </button>
+  
     <button class="btn btn-sm bg-gradient-secondary" type="reset">
         <i class="fas fa-redo mr-2""></i>
         Làm lại
@@ -24,7 +23,7 @@
     <div class="col-xl-12">
         <div class="card card-primary card-outline text-sm ">
             <div class="card-header">
-                <h3 class="card-title">Thông số Rom</h3>
+                <h3 class="card-title">Tính năng đặc biệt:</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                 </div>
@@ -42,8 +41,13 @@
                         <div class="tab-content" id="custom-tabs-three-tabContent-lang">
                             <div class="tab-pane fade show active" id="tabs-lang-vi" role="tabpanel" aria-labelledby="tabs-lang">
                                 <div class="form-group">
-                                    <label for="namevi"> Thông số Rom:</label>
-                                    <input type="text" class="form-control for-seo text-sm" name="data[hoten]" id="hoten" placeholder="Thông số rom" value="" required="">
+                                    <label for="namevi"> Tính năng đặc biệt:</label>
+                                    <input type="text" class="form-control for-seo text-sm" name="tentinhnang" placeholder="Tính năng đặt biệt" value="" >
+                                    @if($errors->has('tentinhnang'))
+                                        <div class="alert alert-danger" style="margin-top:10px;">
+                                            {{$errors->first('tentinhnang')}}
+                                        </div>
+                                         @endif
                                 </div>
                             </div>
                         </div>
@@ -53,6 +57,7 @@
         </div>
     </div>
 </div>
+</form>
 @section('Them')
 @endsection
 @endsection

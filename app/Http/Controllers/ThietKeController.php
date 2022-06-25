@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\ThietKe;
-use App\Http\Requests\StoreThietKeRequest;
-use App\Http\Requests\UpdateThietKeRequest;
+use App\Models\Post;
+use Illuminate\Http\Request;
+use App\Http\Controllers\equest;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
 
 class ThietKeController extends Controller
 {
@@ -15,7 +18,11 @@ class ThietKeController extends Controller
      */
     public function index()
     {
-        //
+        $lstthietke = ThietKe::all();
+        foreach( $lstthietke as $thietke){
+
+        }
+        return view('thietke.index',['lstthietke'=>$lstthietke]);
     }
 
     /**
@@ -25,18 +32,32 @@ class ThietKeController extends Controller
      */
     public function create()
     {
-        //
+        return view('thietke.them_thietke');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreThietKeRequest  $request
+      *@param \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreThietKeRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate(
+            [
+                'ten' => 'required',
+            ],
+            [
+                'ten.required' => 'Tên Thiết Kế Không Được Bỏ Trống',
+            ]
+        );
+        $thietke= new ThietKe();
+        $thietke->fill([
+            'ten'=>$request->input('ten'),
+            'trangthai'=>'Hiển thị',
+        ]);
+        $thietke->save();
+        return Redirect::route('thietke.index',['thietke'=>$thietke]);
     }
 
     /**
@@ -79,8 +100,9 @@ class ThietKeController extends Controller
      * @param  \App\Models\ThietKe  $thietKe
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ThietKe $thietKe)
+    public function destroy($id)
     {
-        //
+        ThietKe::find($id)->delete();
+        return Redirect::route('thietke.index');
     }
 }

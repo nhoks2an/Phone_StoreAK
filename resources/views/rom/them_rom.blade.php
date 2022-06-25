@@ -1,14 +1,12 @@
 @extends('layout.layout')
 @section('sidebar')
     @parent
+    <form method="post" action="{{route('ROM.store')}}" enctype="multipart/form-data">
+    @csrf
 <div class="btn-themmoi">
     <button class="btn btn-sm bg-gradient-primary submit-check" type="submit">
         <i class="far fa-save mr-2"></i>
         Thêm mới
-    </button>
-    <button class="btn btn-sm bg-gradient-success submit-check" type="submit">
-        <i class="fas fa-redo mr-2""></i>
-        Lưu tại trang
     </button>
     <button class="btn btn-sm bg-gradient-secondary" type="reset">
         <i class="fas fa-redo mr-2""></i>
@@ -43,7 +41,12 @@
                             <div class="tab-pane fade show active" id="tabs-lang-vi" role="tabpanel" aria-labelledby="tabs-lang">
                                 <div class="form-group">
                                     <label for="namevi"> Thông số Rom:</label>
-                                    <input type="text" class="form-control for-seo text-sm" name="data[hoten]" id="hoten" placeholder="Thông số rom" value="" required="">
+                                    <input type="text" class="form-control for-seo text-sm" name="sorom"placeholder="Thông số rom" value="">
+                                        @if($errors->has('sorom'))
+                                        <div class="alert alert-danger" style="margin-top:10px;">
+                                            {{$errors->first('sorom')}}
+                                        </div>
+                                         @endif
                                 </div>
                             </div>
                         </div>
@@ -53,6 +56,7 @@
         </div>
     </div>
 </div>
+</form>
 @section('Them')
 @endsection
 @endsection

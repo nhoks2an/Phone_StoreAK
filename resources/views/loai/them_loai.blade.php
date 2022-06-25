@@ -1,15 +1,14 @@
 @extends('layout.layout')
 @section('sidebar')
     @parent
+<form method="post" action="{{route('loaiSanPham.store')}}" enctype="multipart/form-data">
+@csrf
 <div class="btn-themmoi">
     <button class="btn btn-sm bg-gradient-primary submit-check" type="submit">
         <i class="far fa-save mr-2"></i>
         Thêm mới
     </button>
-    <button class="btn btn-sm bg-gradient-success submit-check" type="submit">
-        <i class="fas fa-redo mr-2""></i>
-        Lưu tại trang
-    </button>
+  
     <button class="btn btn-sm bg-gradient-secondary" type="reset">
         <i class="fas fa-redo mr-2""></i>
         Làm lại
@@ -43,7 +42,12 @@
                             <div class="tab-pane fade show active" id="tabs-lang-vi" role="tabpanel" aria-labelledby="tabs-lang">
                                 <div class="form-group">
                                     <label for="namevi"> Tên lọai sản phẩm:</label>
-                                    <input type="text" class="form-control for-seo text-sm" name="data[hoten]" id="hoten" placeholder="Loại sản phẩm" value="" required="">
+                                    <input type="text" class="form-control for-seo text-sm" name="tenloaisp" placeholder="Loại sản phẩm" value="">
+                                    @if($errors->has('tenloaisp'))
+                                        <div class="alert alert-danger" style="margin-top:10px;">
+                                            {{$errors->first('tenloaisp')}}
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -55,28 +59,28 @@
     <div class="col-xl-4">
         <div class="card card-primary card-outline text-sm">
             <div class="card-header">
-                <h3 class="card-title">Hình ảnh loại sản phẩm</h3>
+                <h3 class="card-title">Danh mục Sản phẩm</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                 </div>
             </div>
             <div class="card-body">
-                <div class="photoUpload-zone">
-                    <div class="photoUpload-detail" id="photoUpload-preview">
-                        <img class="rounded" onerror="this.src='http://localhost/VuVanQuan_0480522W/thumbs/250x250x1/assets/images/noimage.png';" src="http://localhost/VuVanQuan_0480522W/assets/images/noimage.png" alt="Alt Photo">	</div>
-                    <label class="photoUpload-file" id="photo-zone" for="file-zone">
-                    <input type="file" name="file" id="file-zone">
-                    <i class="fas fa-cloud-upload-alt"></i>
-                    <p class="photoUpload-drop">Kéo và thả hình vào đây</p>
-                    <p class="photoUpload-or">hoặc</p>
-                    <p class="photoUpload-choose btn btn-sm bg-gradient-success">Chọn hình</p>
-                    </label>
-                    <div class="photoUpload-dimension">Width: 334 px - Height: 334 px (.jpg|.gif|.png|.jpeg|.gif)</div>
-                </div>	
+                <div class="form-group-category row">
+                <div class="form-group col-xl-6 col-sm-4">
+                    <label class="d-block" for="id_list">Hãng:</label>
+                        <select id="id_list" name="tenhang" data-level="0" data-type="san-pham" data-table="#_product_cat" data-child="id_cat" class="form-control select2 select-category select2-hidden-accessible" data-select2-id="id_list" tabindex="-1" aria-hidden="true">
+                            <option value="0" data-select2-id="2">Chọn hãng</option>
+                        @foreach($lsthang as $hang)
+                            <option value="{{$hang->id}}">{{$hang->tenhang}}</option>
+                        @endforeach 
+                    </select></span>
+                </div> 
+                </div>   
             </div>
-        </div>
-    </div>
+        </div>     
+    </div> 
 </div>
+</form>
 @section('Them')
 @endsection
 @endsection

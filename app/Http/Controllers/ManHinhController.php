@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Post;
 use App\Models\ManHinh;
-use App\Http\Requests\StoreManHinhRequest;
-use App\Http\Requests\UpdateManHinhRequest;
+use Illuminate\Http\Request;
+use App\Http\Controllers\equest;
+use Illuminate\Support\Facades\Redirect;
+
+use Illuminate\Support\Facades\DB;
 
 class ManHinhController extends Controller
 {
@@ -15,7 +18,11 @@ class ManHinhController extends Controller
      */
     public function index()
     {
-        //
+        $lstmanhinh = ManHinh::all();
+        foreach($lstmanhinh as $manhinh){
+
+        }
+        return view('manhinh.index',['lstmanhinh'=>$lstmanhinh]);
     }
 
     /**
@@ -25,18 +32,32 @@ class ManHinhController extends Controller
      */
     public function create()
     {
-        //
+        return view('manhinh.them_manhinh');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreManHinhRequest  $request
+     * @param \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreManHinhRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate(
+            [
+                'thongso' => 'required',
+            ],
+            [
+                'thongso.required' => 'Thống Số Màn Hình Không Được Bỏ Trống',
+            ]
+        );
+        $manhinh = new ManHinh();
+        $manhinh->fill([
+            'thongso'=>$request->input('thongso'),
+            'trangthai'=>'Hiển thị',
+        ]);
+        $manhinh->save();
+        return Redirect::route('manhinh.index',['manhinh'=>$manhinh]);
     }
 
     /**
@@ -79,8 +100,9 @@ class ManHinhController extends Controller
      * @param  \App\Models\ManHinh  $manHinh
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ManHinh $manHinh)
+    public function destroy($id)
     {
-        //
+        ManHinh::find($id)->delete();
+        return Redirect::route('manhinh.index');
     }
 }

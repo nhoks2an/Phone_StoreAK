@@ -43,6 +43,14 @@ class RAMController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate(
+            [
+                'soram' => 'required',
+            ],
+            [
+                'soram.required' => 'Số RAM Không Được Bỏ Trống',
+            ]
+        );
         $rAM = new RAM();
         $rAM->fill([
             'soram'=>$request->input('soram'),

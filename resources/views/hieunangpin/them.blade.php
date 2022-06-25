@@ -1,14 +1,13 @@
 @extends('layout.layout')
 @section('sidebar')
     @parent
+    <form method="post" action="{{route('hieunangpin.store')}}" enctype="multipart/form-data">
+    @csrf
+<div class="bt
 <div class="btn-themmoi">
     <button class="btn btn-sm bg-gradient-primary submit-check" type="submit">
         <i class="far fa-save mr-2"></i>
         Thêm mới
-    </button>
-    <button class="btn btn-sm bg-gradient-success submit-check" type="submit">
-        <i class="fas fa-redo mr-2""></i>
-        Lưu tại trang
     </button>
     <button class="btn btn-sm bg-gradient-secondary" type="reset">
         <i class="fas fa-redo mr-2""></i>
@@ -43,7 +42,12 @@
                             <div class="tab-pane fade show active" id="tabs-lang-vi" role="tabpanel" aria-labelledby="tabs-lang">
                                 <div class="form-group">
                                     <label for="namevi">Hiêu năng & pin:</label>
-                                    <input type="text" class="form-control for-seo text-sm" name="data[hoten]" id="hoten" placeholder="Hiêu năng & pin" value="" required="">
+                                    <input type="text" class="form-control for-seo text-sm" name="tenhieunang" placeholder="Hiêu năng & pin" value="">
+                                    @if($errors->has('tenhieunang'))
+                                        <div class="alert alert-danger" style="margin-top:10px;">
+                                            {{$errors->first('tenhieunang')}}
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -53,6 +57,7 @@
         </div>
     </div>
 </div>
+</form>
 @section('Them')
 @endsection
 @endsection

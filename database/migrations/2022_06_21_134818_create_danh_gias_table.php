@@ -16,6 +16,7 @@ class CreateDanhGiasTable extends Migration
         Schema::create('danh_gias', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_kh');
+            $table->foreignId('id_sanpham');
             $table->integer('danhgia');
             $table->string('trangthai');
             $table->timestamps();

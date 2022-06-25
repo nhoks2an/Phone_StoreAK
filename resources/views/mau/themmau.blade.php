@@ -45,7 +45,12 @@
                             <div class="tab-pane fade show active" id="tabs-lang-vi" role="tabpanel" aria-labelledby="tabs-lang">
                                 <div class="form-group">
                                     <label for="namevi">Màu sắc:</label>
-                                    <input type="text" class="form-control for-seo text-sm" name="tenmau"placeholder="Màu" value="" required="">
+                                    <input type="text" class="form-control for-seo text-sm" name="tenmau"placeholder="Màu" value="">
+                                    @if($errors->has('tenmau'))
+                                        <div class="alert alert-danger" style="margin-top:10px;">
+                                            {{$errors->first('tenmau')}}
+                                        </div>
+                                         @endif
                                 </div>
                             </div>
                         </div>
