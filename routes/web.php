@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RAMController;
 use App\Http\Controllers\MauSacController;
+use App\Http\Controllers\FooterController;
+use App\Http\Controllers\GioiThieuController;
+use App\Http\Controllers\TinTucController;
+use App\Http\Controllers\ChinhSachController;
 use Illuminate\Support\Facades\DB;
 
 /*
@@ -112,17 +116,17 @@ Route::get('/admin/sologan', function () {
     return view('sologan.index');
     })->name('sologan');
     
-Route::get('/admin/gioithieu', function () {
-    return view('gioithieu.index');
-    })->name('gioithieu');
+// Route::get('/admin/gioithieu', function () {
+//     return view('gioithieu.index');
+//     })->name('gioithieu');
 
 Route::get('/admin/banner', function () {
     return view('banner.index');
     })->name('banner');
 
-Route::get('/admin/footerr', function () {
-    return view('footerr.index');
-    })->name('footerr');
+// Route::get('/admin/footer', function () {
+//     return view('footer.index');
+//     })->name('footer');
     
 Route::get('/admin/logo', function () {
     return view('logo.index');
@@ -161,6 +165,10 @@ Route::get('/admin/dangnhap', function () {
     })->name('dangnhap');
     // ram
 Route::resource('/RAM',RAMController::class);
+Route::resource('/footer',FooterController::class);
+Route::resource('/gioithieu',GioiThieuController::class);
+Route::resource('/tinTuc',TinTucController::class);
+Route::resource('/chinhSach',ChinhSachController::class);
 // Route::get('/admin/ram', function () {
 //     return view('ram.index');
 //     })->name('ram');
@@ -233,5 +241,3 @@ Route::get('/admin/themtintuc', function () {
 Route::get('/admin/suatintuc', function () {
     return view('tintuc.sua_tintuc');
     })->name('suatintuc');
-
-

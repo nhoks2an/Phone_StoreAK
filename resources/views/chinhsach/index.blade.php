@@ -3,7 +3,7 @@
 @parent
 <section class="">
     <div class="card-footer text-sm sticky-top">
-        <a class="btn btn-sm bg-gradient-primary text-white" href="{{route('tinTuc.create')}}" title="Thêm mới"><i
+        <a class="btn btn-sm bg-gradient-primary text-white" href="{{route('chinhSach.create')}}" title="Thêm mới"><i
                 class="fas fa-plus mr-2"></i>Thêm mới</a>
         <a class="btn btn-sm bg-gradient-danger text-white" id="delete-all"
             data-url="index.php?com=news&amp;act=delete&amp;type=tin-tuc" title="Xóa tất cả"><i
@@ -45,7 +45,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($lsttt as $tt)
+                    @foreach($lstcs as $cs)
                     <tr>
                         <td class="align-middle">
                             <div class="custom-control custom-checkbox my-checkbox">
@@ -59,14 +59,14 @@
                                 value="0" data-id="3" data-table="news">
                         </td>
                         <td class="align-middle">
-                            <a href="index.php?com=news&amp;act=edit&amp;type=tin-tuc&amp;id=3" title="{{$tt->tieude}}">
-                                {{$tt->hinhanh}}
+                            <a href="index.php?com=news&amp;act=edit&amp;type=tin-tuc&amp;id=3" title="{{$cs->tieude}}">
+                                {{$cs->hinhanh}}
                             </a>
                         </td>
                         <td class="align-middle">
                             <a class="text-dark text-break"
                                 href="index.php?com=news&amp;act=edit&amp;type=tin-tuc&amp;id=3"
-                                title=" (1) (1) (1) (1) (1) (1)make-up-co-dau-ee-1-1">{{$tt->tieude}}</a>
+                                title=" (1) (1) (1) (1) (1) (1)make-up-co-dau-ee-1-1">{{$cs->tieude}}</a>
                             <div class="tool-action mt-2 w-clear">
                                 <a class="text-primary mr-3"
                                     href="http://localhost/VuVanQuan_0480522W/make-up-co-dau-ee-1-1" target="_blank"
@@ -126,9 +126,9 @@
                                             thông tin</a></li>
                                 </ul>
                             </div>
-                            <a class="text-primary mr-2" href="{{route('tinTuc.show',['tinTuc'=>$tt])}}"
+                            <a class="text-primary mr-2" href="{{route('chinhSach.show',['chinhSach'=>$cs])}}"
                                 title="Chỉnh sửa"><i class="fas fa-edit"></i></a>
-                            <form method="post" action="{{route('tinTuc.destroy',$tt->id)}}">
+                            <form method="post" action="{{route('chinhSach.destroy',$cs->id)}}">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="text-danger">

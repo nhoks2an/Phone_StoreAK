@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Footer;
 use App\Http\Requests\StoreFooterRequest;
 use App\Http\Requests\UpdateFooterRequest;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
+use App\Models\Post;
 class FooterController extends Controller
 {
     /**
@@ -15,7 +18,11 @@ class FooterController extends Controller
      */
     public function index()
     {
-        //
+        $footer = Footer::all();
+        foreach($footer as $footer){
+         
+        }
+        return view('footer.index',['footer'=>$footer]);
     }
 
     /**
@@ -25,7 +32,7 @@ class FooterController extends Controller
      */
     public function create()
     {
-        //
+        return View('footer.index');
     }
 
     /**
@@ -34,9 +41,16 @@ class FooterController extends Controller
      * @param  \App\Http\Requests\StoreFooterRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreFooterRequest $request)
+    public function store(Request $request)
     {
-        //
+        $footer = new Footer();
+        $footer->fill([
+            'tieude'=>$request->input('tieude'),
+            'noidung'=>$request->input('content'),
+            'trangthai'=>'Hiển thị',
+        ]);
+        $footer->save();
+        return Redirect::route('footer.index');
     }
 
     /**
@@ -68,9 +82,15 @@ class FooterController extends Controller
      * @param  \App\Models\Footer  $footer
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateFooterRequest $request, Footer $footer)
+    public function update(Request $request, Footer $footer)
     {
-        //
+        $footer->fill([
+            'tieude'=>$request->input('tieude'),
+            'noidung'=>$request->input('content'),
+            'trangthai'=>'Hiển thị',
+        ]);
+        $footer->save();
+        return Redirect::route('footer.index');
     }
 
     /**

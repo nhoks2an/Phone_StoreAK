@@ -1,7 +1,7 @@
 @extends('layout.layout')
 @section('sidebar')
 @parent
-<form method="post" action="{{route('tinTuc.store')}}" enctype="multipart/form-data">
+<form method="post" action="{{route('chinhSach.store')}}" enctype="multipart/form-data">
     @csrf
     <div class="card-footer text-sm sticky-top">
         <button type="submit" class="btn btn-sm bg-gradient-primary submit-check"><i

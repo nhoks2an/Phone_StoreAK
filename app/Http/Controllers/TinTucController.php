@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\TinTuc;
-use App\Http\Requests\StoreTinTucRequest;
-use App\Http\Requests\UpdateTinTucRequest;
-
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
+use App\Models\Post;
 class TinTucController extends Controller
 {
     /**
@@ -15,7 +17,11 @@ class TinTucController extends Controller
      */
     public function index()
     {
-        //
+        $lsttt = TinTuc::all();
+        foreach($lsttt as $tt){
+        //  $this->fixImage($tt);
+        }
+        return view('tintuc.index',['lsttt'=>$lsttt]);
     }
 
     /**
@@ -25,18 +31,26 @@ class TinTucController extends Controller
      */
     public function create()
     {
-        //
+        return view('tintuc.them_tinTuc');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTinTucRequest  $request
+     * @param  \App\Http\Requests\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTinTucRequest $request)
+    public function store(Request $request)
     {
-        //
+        $tinTuc = new TinTuc();
+        $tinTuc->fill([
+            'tieude'=>$request->input('tieude'),
+            'hinhanh'=>'abc',
+            'noidung'=>$request->input('content'),
+            'trangthai'=>'Hiển thị',
+        ]);
+        $tinTuc->save();
+        return Redirect::route('tinTuc.index',['tinTuc'=>$tinTuc]);
     }
 
     /**
@@ -47,7 +61,7 @@ class TinTucController extends Controller
      */
     public function show(TinTuc $tinTuc)
     {
-        //
+        return View('tintuc.sua_tintuc',['tinTuc'=>$tinTuc]);
     }
 
     /**
@@ -58,7 +72,6 @@ class TinTucController extends Controller
      */
     public function edit(TinTuc $tinTuc)
     {
-        //
     }
 
     /**
@@ -68,9 +81,16 @@ class TinTucController extends Controller
      * @param  \App\Models\TinTuc  $tinTuc
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTinTucRequest $request, TinTuc $tinTuc)
+    public function update(Request $request, TinTuc $tinTuc)
     {
-        //
+        $tinTuc->fill([
+            'tieude'=>$request->input('tieude'),
+            'hinhanh'=>'',
+            'noidung'=>$request->input('content'),
+            'trangthai'=>'Hiển thị',
+        ]);
+        $tinTuc->save();
+        return Redirect::route('tintuc.index',['tinTuc'=>$tinTuc]);
     }
 
     /**
@@ -79,8 +99,9 @@ class TinTucController extends Controller
      * @param  \App\Models\TinTuc  $tinTuc
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TinTuc $tinTuc)
+    public function destroy($id)
     {
-        //
+        TinTuc::find($id)->delete();
+        return Redirect::route('tinTuc.index');
     }
 }

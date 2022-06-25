@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\ChinhSach;
 use App\Http\Requests\StoreChinhSachRequest;
 use App\Http\Requests\UpdateChinhSachRequest;
-
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
+use App\Models\Post;
 class ChinhSachController extends Controller
 {
     /**
@@ -15,7 +19,11 @@ class ChinhSachController extends Controller
      */
     public function index()
     {
-        //
+        $lstcs = ChinhSach::all();
+        foreach($lstcs as $cs){
+        //  $this->fixImage($tt);
+        }
+        return view('chinhsach.index',['lstcs'=>$lstcs]);
     }
 
     /**
@@ -25,7 +33,7 @@ class ChinhSachController extends Controller
      */
     public function create()
     {
-        //
+        return view('chinhsach.themcs');
     }
 
     /**
@@ -34,9 +42,16 @@ class ChinhSachController extends Controller
      * @param  \App\Http\Requests\StoreChinhSachRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreChinhSachRequest $request)
+    public function store(Request $request)
     {
-        //
+        $chinhSach = new ChinhSach();
+        $chinhSach->fill([
+            'tieude'=>$request->input('tieude'),
+            'noidung'=>$request->input('content'),
+            'trangthai'=>'Hiển thị',
+        ]);
+        $chinhSach->save();
+        return Redirect::route('chinhSach.index',['chinhSach'=>$chinhSach]);
     }
 
     /**
@@ -47,7 +62,7 @@ class ChinhSachController extends Controller
      */
     public function show(ChinhSach $chinhSach)
     {
-        //
+        return View('chinhsach.suacs',['chinhSach'=>$chinhSach]);
     }
 
     /**
@@ -68,9 +83,15 @@ class ChinhSachController extends Controller
      * @param  \App\Models\ChinhSach  $chinhSach
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateChinhSachRequest $request, ChinhSach $chinhSach)
+    public function update(Request $request, ChinhSach $chinhSach)
     {
-        //
+        $chinhSach->fill([
+            'tieude'=>$request->input('tieude'),
+            'noidung'=>$request->input('content'),
+            'trangthai'=>'Hiển thị',
+        ]);
+        $chinhSach->save();
+        return Redirect::route('chinhSach.index',['chinhSach'=>$chinhSach]);
     }
 
     /**
@@ -79,8 +100,9 @@ class ChinhSachController extends Controller
      * @param  \App\Models\ChinhSach  $chinhSach
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ChinhSach $chinhSach)
+    public function destroy($id)
     {
-        //
+        ChinhSach::find($id)->delete();
+        return Redirect::route('chinhSach.index');
     }
 }

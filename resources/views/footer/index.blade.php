@@ -1,8 +1,9 @@
 @extends('layout.layout')
 @section('sidebar')
 @parent
-<form method="post" action="{{route('tinTuc.store')}}" enctype="multipart/form-data">
+<form method="post" action="{{route('footer.update',['footer'=>$footer])}}" enctype="multipart/form-data">
     @csrf
+    @method('PATCH')
     <div class="card-footer text-sm sticky-top">
         <button type="submit" class="btn btn-sm bg-gradient-primary submit-check"><i
                 class="far fa-save mr-2"></i>Lưu</button>
@@ -15,7 +16,7 @@
     </div>
     <div class="card card-primary card-outline text-sm">
         <div class="card-header">
-            <h3 class="card-title">Nội dung Tin tức</h3>
+            <h3 class="card-title">Nội dung Footer</h3>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
                         class="fas fa-minus"></i></button>
@@ -38,12 +39,12 @@
                             <div class="form-group">
                                 <label for="namevi">Tiêu đề:</label>
                                 <input type="text" class="form-control for-seo text-sm" name="tieude" id="namevi"
-                                    placeholder="Tiêu đề (vi)" value="" required="">
+                                    placeholder="Tiêu đề (vi)" value="{{$footer->tieude}}" required="">
                             </div>
                             <div class="form-group">
                                 <label for="descvi">Nội dung:</label>
                                 <textarea class="form-control for-seo text-sm " name="content" id="descvi" rows="5"
-                                    placeholder="Mô tả (vi)"></textarea>
+                                    placeholder="Mô tả (vi)">{{$footer->noidung}}</textarea>
                             </div>
                         </div>
                     </div>
@@ -52,6 +53,6 @@
         </div>
     </div>
 </form>
-@endsection
 @section('Them')
+@endsection
 @endsection

@@ -2,8 +2,8 @@
 @section('sidebar')
 @parent
 <section class="content">
-    <form class="validation-form" novalidate="" method="post" action="{{route('tinTuc.update',['tinTuc'=>$tinTuc])}}"
-        enctype="multipart/form-data">
+    <form class="validation-form" novalidate="" method="post"
+        action="{{route('chinhSach.update',['chinhSach'=>$chinhSach])}}" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
         <div class="card-footer text-sm sticky-top">
@@ -50,13 +50,13 @@
                                         <div class="form-group">
                                             <label for="namevi">Tiêu đề (vi):</label>
                                             <input type="text" class="form-control for-seo text-sm" name="tieude"
-                                                id="namevi" placeholder="Tiêu đề (vi)" value="{{$tinTuc->tieude}}"
+                                                id="namevi" placeholder="Tiêu đề (vi)" value="{{$chinhSach->tieude}}"
                                                 required="">
                                         </div>
                                         <div class="form-group">
                                             <label for="descvi">Nội dung:</label>
                                             <textarea class="form-control for-seo text-sm " name="content" id="descvi"
-                                                rows="5" placeholder="Mô tả (vi)">{{$tinTuc->noidung}}</textarea>
+                                                rows="5" placeholder="Mô tả (vi)">{{$chinhSach->noidung}}</textarea>
                                         </div>
                                     </div>
                                 </div>

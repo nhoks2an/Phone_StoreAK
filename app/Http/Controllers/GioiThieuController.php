@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\GioiThieu;
 use App\Http\Requests\StoreGioiThieuRequest;
 use App\Http\Requests\UpdateGioiThieuRequest;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
+use App\Models\Post;
 class GioiThieuController extends Controller
 {
     /**
@@ -15,7 +18,11 @@ class GioiThieuController extends Controller
      */
     public function index()
     {
-        //
+        $gioiThieu = GioiThieu::all();
+        foreach($gioiThieu as $gioiThieu){
+         
+        }
+        return view('gioithieu.index',['gioiThieu'=>$gioiThieu]);
     }
 
     /**
@@ -25,7 +32,7 @@ class GioiThieuController extends Controller
      */
     public function create()
     {
-        //
+        return View('gioithieu.index');
     }
 
     /**
@@ -34,9 +41,16 @@ class GioiThieuController extends Controller
      * @param  \App\Http\Requests\StoreGioiThieuRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreGioiThieuRequest $request)
+    public function store(Request $request)
     {
-        //
+        $gioiThieu = new GioiThieu();
+        $gioiThieu->fill([
+            'tieude'=>$request->input('tieude'),
+            'noidung'=>$request->input('content'),
+            'trangthai'=>'Hiển thị',
+        ]);
+        $gioiThieu->save();
+        return Redirect::route('gioithieu.index',['gioiThieu'=>$gioiThieu]);
     }
 
     /**
@@ -58,7 +72,7 @@ class GioiThieuController extends Controller
      */
     public function edit(GioiThieu $gioiThieu)
     {
-        //
+
     }
 
     /**
@@ -68,9 +82,15 @@ class GioiThieuController extends Controller
      * @param  \App\Models\GioiThieu  $gioiThieu
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateGioiThieuRequest $request, GioiThieu $gioiThieu)
+    public function update(Request $request, GioiThieu $gioiThieu)
     {
-        //
+        $gioiThieu->fill([
+            'tieude'=>$request->input('tieude'),
+            'noidung'=>$request->input('content'),
+            'trangthai'=>'Hiển thị',
+        ]);
+        $gioiThieu->save();
+        return Redirect::route('gioithieu.index',['gioiThieu'=>$gioiThieu]);
     }
 
     /**

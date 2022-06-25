@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\RAM;
 use Illuminate\Http\Request;
-use App\Http\Controllers\equest;
+use App\Http\Controllers\StoreRAMRequest;
 use Illuminate\Support\Facades\Redirect;
-
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use App\Models\Post;
 class RAMController extends Controller
 {
     /**
@@ -91,9 +92,9 @@ class RAMController extends Controller
      * @param  \App\Models\RAM  $rAM
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RAM $rAM)
-    {
-        $rAM->delete();
+    public function destroy($id)
+    {   
+        RAM::find($id)->delete();
         return Redirect::route('RAM.index');
     }
 }

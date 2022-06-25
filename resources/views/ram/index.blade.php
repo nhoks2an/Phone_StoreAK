@@ -52,7 +52,7 @@
                            <span>{{$RAM->soram}}G</span>
                         </td>        
                         <td class="align-middle text-center text-md text-nowrap">
-                            <form method="post" action="{{route('RAM.destroy',['RAM'=>$RAM])}}">
+                            <form method="post" action="{{route('RAM.destroy',$RAM->id)}}">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="text-danger">
