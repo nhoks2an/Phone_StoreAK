@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Camera;
-use App\Http\Requests\StoreCameraRequest;
-use App\Http\Requests\UpdateCameraRequest;
+use Illuminate\Http\Request;
+use App\Http\Controllers\equest;
+use Illuminate\Support\Facades\Redirect;
+use App\Models\Post;
+use Illuminate\Support\Facades\DB;
 
 class CameraController extends Controller
 {
@@ -15,7 +18,11 @@ class CameraController extends Controller
      */
     public function index()
     {
-        //
+        $lstcamera = Camera::all();
+        foreach($lstcamera as $camera){
+         
+        }
+        return view('camera.index',['lstcamera'=>$lstcamera]);
     }
 
     /**
@@ -25,18 +32,32 @@ class CameraController extends Controller
      */
     public function create()
     {
-        //
+        return View('camera.them_camera');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCameraRequest  $request
+     * @param \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCameraRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate(
+            [
+                'tencamera' => 'required',
+            ],
+            [
+                'tencamera.required' => 'Tên Camera Không Được Bỏ Trống',
+            ]
+        );
+        $camera = new Camera;
+        $camera->fill([
+            'tencamera'=>$request->input('tencamera'),
+            'trangthai'=>'Hiển thị',
+        ]);
+        $camera->save();
+        return Redirect::route('camera.index',['camera'=>$camera]);//
     }
 
     /**
@@ -47,7 +68,7 @@ class CameraController extends Controller
      */
     public function show(Camera $camera)
     {
-        //
+       
     }
 
     /**
@@ -79,8 +100,9 @@ class CameraController extends Controller
      * @param  \App\Models\Camera  $camera
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Camera $camera)
+    public function destroy($id)
     {
-        //
+        Camera::find($id)->delete();
+        return Redirect::route('camera.index');
     }
 }

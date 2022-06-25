@@ -15,6 +15,7 @@ class Createfkdanhgia extends Migration
     {
         Schema::table('danh_gias', function (Blueprint $table) {
             $table->foreign('id_kh')->references('id')->on('users');
+            $table->foreign('id_sanpham')->references('id_sanpham')->on('c_t_hoa_dons');
         });
     }
 

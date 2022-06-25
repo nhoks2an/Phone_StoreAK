@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Post;
 use App\Models\HieuNangPin;
-use App\Http\Requests\StoreHieuNangPinRequest;
-use App\Http\Requests\UpdateHieuNangPinRequest;
+use Illuminate\Http\Request;
+use App\Http\Controllers\equest;
+use Illuminate\Support\Facades\Redirect;
+
+use Illuminate\Support\Facades\DB;
 
 class HieuNangPinController extends Controller
 {
@@ -15,7 +18,11 @@ class HieuNangPinController extends Controller
      */
     public function index()
     {
-        //
+        $lsthieunangpin = HieuNangPin::all();
+        foreach($lsthieunangpin as $hieunangpin){
+
+        }
+        return view('hieunangpin.index',['lsthieunangpin'=>$lsthieunangpin]);
     }
 
     /**
@@ -25,18 +32,32 @@ class HieuNangPinController extends Controller
      */
     public function create()
     {
-        //
+        return view('hieunangpin.them');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreHieuNangPinRequest  $request
+     * @param \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreHieuNangPinRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate(
+            [
+                'tenhieunang' => 'required',
+            ],
+            [
+                'tenhieunang.required' => 'Tên Hiệu Năng Không Được Bỏ Trống',
+            ]
+        );
+        $hieunangpin = new HieuNangPin();
+        $hieunangpin->fill([
+            'tenhieunang'=>$request->input('tenhieunang'),
+            'trangthai'=>'Hiển thị',
+        ]);
+        $hieunangpin->save();
+        return Redirect::route('hieunangpin.index',['hieunangpin'=>$hieunangpin]);
     }
 
     /**
@@ -79,8 +100,9 @@ class HieuNangPinController extends Controller
      * @param  \App\Models\HieuNangPin  $hieuNangPin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(HieuNangPin $hieuNangPin)
+    public function destroy($id)
     {
-        //
+        HieuNangPin::find($id)->delete();
+        return Redirect::route('hieunangpin.index');
     }
 }

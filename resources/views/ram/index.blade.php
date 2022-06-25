@@ -39,8 +39,10 @@
                         <th class="align-middle text-center">Thao tác</th>
                     </tr>
                 </thead>
-                @foreach($lstram as $RAM)
+              
+               
                 <tbody>
+                @foreach($lstram as $RAM)
                     <tr>
                         <td class="align-middle">
                             <div class="custom-control custom-checkbox my-checkbox">
@@ -52,22 +54,58 @@
                            <span>{{$RAM->soram}}G</span>
                         </td>        
                         <td class="align-middle text-center text-md text-nowrap">
-                            <form method="post" action="{{route('RAM.destroy',['RAM'=>$RAM])}}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="text-danger">
-                                    <i class="color fas fa-trash-alt"></i>
-                                </button>  
-                            </form>  
+                            <button type="submit" class="btnxoa text-danger"  style="background: none;border: none;" value="{{$RAM->id}}">
+                                <i class="color fas fa-trash-alt"></i>
+                            </button>  
                         </td>   
                     </tr>
+                    @endforeach
                 </tbody>
-                @endforeach
+               
+             
             </table>
+            @foreach($lstram as $RAM)
+            <!-- modal -->
+            <div class="modal fade" id="RamModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form method="post" action="{{route('RAM.destroy',$RAM->id)}}">
+                        @csrf
+                        @method('DELETE')
+                        <div class="modal-body">
+                            Bạn có chắc chắn muốn xóa !
+                        </div>
+                        <input type="hidden"  name="ram" id="ram">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+                            <button type="submit" class="btn btn-primary">Xác nhận</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+            @endforeach
         </div>
    </div>
 </div>
-
+@section('scripts')
+<script>
+	$(document).on('click', '.btnxoa', function() {
+        $('#RamModal').modal({
+            show: true
+        });
+        var ram_id = $(this).val();
+        $('#ram').val(ram_id);
+        
+	});
+</script>
+@endsection
 @endsection
 @section('Them')
 @endsection

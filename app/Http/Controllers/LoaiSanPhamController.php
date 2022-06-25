@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Redirect;
+use App\Models\Post;
 use App\Models\LoaiSanPham;
-use App\Http\Requests\StoreLoaiSanPhamRequest;
-use App\Http\Requests\UpdateLoaiSanPhamRequest;
+use App\Models\Hang;
+use Illuminate\Http\Request;
+use App\Http\Controllers\equest;
+use Illuminate\Support\Facades\DB;
 
 class LoaiSanPhamController extends Controller
 {
@@ -15,7 +19,11 @@ class LoaiSanPhamController extends Controller
      */
     public function index()
     {
-        //
+        $lstloai = LoaiSanPham::all();
+        foreach($lstloai as $loaiSanPham){
+         
+        }
+        return view('loai.index',['lstloai'=>$lstloai]);
     }
 
     /**
@@ -25,18 +33,34 @@ class LoaiSanPhamController extends Controller
      */
     public function create()
     {
-        //
+        $lsthang=Hang::all();
+       return view('loai.them_loai',['lsthang'=>$lsthang]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreLoaiSanPhamRequest  $request
+       * @param \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreLoaiSanPhamRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate(
+            [
+                'tenloaisp' => 'required',
+            ],
+            [
+                'tenloaisp.required' => 'Tên Loại Sản Phẩm Không Được Bỏ Trống',
+            ]
+        );
+        $loaiSanPham= new LoaiSanPham();
+        $loaiSanPham->fill([
+            'tenloaisp'=>$request->input('tenloaisp'),
+            'id_hang'=>$request->input('tenhang'),
+            'trangthai'=>'Hiển thị',
+        ]);
+        $loaiSanPham->save();
+        return Redirect::route('loaiSanPham.index',['loaiSanPham'=>$loaiSanPham]);
     }
 
     /**
@@ -47,7 +71,8 @@ class LoaiSanPhamController extends Controller
      */
     public function show(LoaiSanPham $loaiSanPham)
     {
-        //
+        $lsthang = Hang::all();
+        return view('loai.sua_loai',['loaiSanPham'=>$loaiSanPham],['lsthang'=>$lsthang]);
     }
 
     /**
@@ -58,19 +83,33 @@ class LoaiSanPhamController extends Controller
      */
     public function edit(LoaiSanPham $loaiSanPham)
     {
-        //
+      
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateLoaiSanPhamRequest  $request
+     * @param \Illuminate\Http\Request  $request
      * @param  \App\Models\LoaiSanPham  $loaiSanPham
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateLoaiSanPhamRequest $request, LoaiSanPham $loaiSanPham)
+    public function update(Request $request, LoaiSanPham $loaiSanPham)
     {
-        //
+        $validatedData = $request->validate(
+            [
+                'tenloaisp' => 'required',
+            ],
+            [
+                'tenloaisp.required' => 'Tên Loại Sản Phẩm Không Được Bỏ Trống',
+            ]
+        );
+        $loaiSanPham->fill([
+            'tenloaisp'=>$request->input('tenloaisp'),
+            'id_hang'=>$request->input('tenhang'),
+            'trangthai'=>"Hiển thị",
+        ]);
+        $loaiSanPham->save();
+        return Redirect::route('loaiSanPham.index',['loaiSanPham'=>$loaiSanPham]);
     }
 
     /**
@@ -79,8 +118,9 @@ class LoaiSanPhamController extends Controller
      * @param  \App\Models\LoaiSanPham  $loaiSanPham
      * @return \Illuminate\Http\Response
      */
-    public function destroy(LoaiSanPham $loaiSanPham)
+    public function destroy($id)
     {
-        //
+        LoaiSanPham::find($id)->delete();
+        return Redirect::route('loaiSanPham.index');
     }
 }

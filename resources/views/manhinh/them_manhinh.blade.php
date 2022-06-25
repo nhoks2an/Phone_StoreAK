@@ -1,14 +1,12 @@
 @extends('layout.layout')
 @section('sidebar')
     @parent
+<form method="post" action="{{route('manhinh.store')}}" enctype="multipart/form-data">
+@csrf
 <div class="btn-themmoi">
     <button class="btn btn-sm bg-gradient-primary submit-check" type="submit">
         <i class="far fa-save mr-2"></i>
         Thêm mới
-    </button>
-    <button class="btn btn-sm bg-gradient-success submit-check" type="submit">
-        <i class="fas fa-redo mr-2""></i>
-        Lưu tại trang
     </button>
     <button class="btn btn-sm bg-gradient-secondary" type="reset">
         <i class="fas fa-redo mr-2""></i>
@@ -43,7 +41,12 @@
                             <div class="tab-pane fade show active" id="tabs-lang-vi" role="tabpanel" aria-labelledby="tabs-lang">
                                 <div class="form-group">
                                     <label for="namevi"> Thông số màn hình:</label>
-                                    <input type="text" class="form-control for-seo text-sm" name="data[hoten]" id="hoten" placeholder="Thông số màn hình" value="" required="">
+                                    <input type="text" class="form-control for-seo text-sm" name="thongso" placeholder="Thông số màn hình" value="">
+                                    @if($errors->has('thongso'))
+                                        <div class="alert alert-danger" style="margin-top:10px;">
+                                            {{$errors->first('thongso')}}
+                                        </div>
+                                         @endif
                                 </div>
                             </div>
                         </div>
@@ -53,6 +56,7 @@
         </div>
     </div>
 </div>
+</form>
 @section('Them')
 @endsection
 @endsection

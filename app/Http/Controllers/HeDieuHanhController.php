@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Post;
 use App\Models\HeDieuHanh;
-use App\Http\Requests\StoreHeDieuHanhRequest;
-use App\Http\Requests\UpdateHeDieuHanhRequest;
+use Illuminate\Http\Request;
+use App\Http\Controllers\equest;
+use Illuminate\Support\Facades\Redirect;
+
+use Illuminate\Support\Facades\DB;
 
 class HeDieuHanhController extends Controller
 {
@@ -15,7 +18,11 @@ class HeDieuHanhController extends Controller
      */
     public function index()
     {
-        //
+        $lsthedieuhanh = HeDieuHanh::all();
+        foreach($lsthedieuhanh as $hedieuhanh){
+
+        }
+        return view('hedieuhanh.index',['lsthedieuhanh'=>$lsthedieuhanh]);
     }
 
     /**
@@ -25,18 +32,32 @@ class HeDieuHanhController extends Controller
      */
     public function create()
     {
-        //
+        return view('hedieuhanh.them_hedieuhanh');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreHeDieuHanhRequest  $request
+     *  @param \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreHeDieuHanhRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate(
+            [
+                'tenhedieuhanh' => 'required',
+            ],
+            [
+                'tenhedieuhanh.required' => 'Tên Hệ Điều Hành Không Được Bỏ Trống',
+            ]
+        );
+        $hedieuhanh = new HeDieuHanh();
+        $hedieuhanh->fill([
+            'tenhedieuhanh'=>$request->input('tenhedieuhanh'),
+            'trangthai'=>'Hiển thị',
+        ]);
+        $hedieuhanh->save();
+        return Redirect::route('hedieuhanh.index',['hedieuhanh'=>$hedieuhanh]);
     }
 
     /**
@@ -58,17 +79,17 @@ class HeDieuHanhController extends Controller
      */
     public function edit(HeDieuHanh $heDieuHanh)
     {
-        //
+     
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateHeDieuHanhRequest  $request
+      * @param \Illuminate\Http\Request  $request
      * @param  \App\Models\HeDieuHanh  $heDieuHanh
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateHeDieuHanhRequest $request, HeDieuHanh $heDieuHanh)
+    public function update(Request $request, HeDieuHanh $heDieuHanh)
     {
         //
     }
@@ -79,8 +100,9 @@ class HeDieuHanhController extends Controller
      * @param  \App\Models\HeDieuHanh  $heDieuHanh
      * @return \Illuminate\Http\Response
      */
-    public function destroy(HeDieuHanh $heDieuHanh)
+    public function destroy($id)
     {
-        //
+        HeDieuHanh::find($id)->delete();
+        return Redirect::route('hedieuhanh.index');
     }
 }

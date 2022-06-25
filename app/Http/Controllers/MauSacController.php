@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\MauSac;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\equest;
 use Illuminate\Support\Facades\Redirect;
@@ -42,6 +43,14 @@ class MauSacController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate(
+            [
+                'tenmau' => 'required',
+            ],
+            [
+                'tenmau.required' => 'Màu Sắc Không Được Bỏ Trống',
+            ]
+        );
         $mauSac = new MauSac();
         $mauSac->fill([
             'tenmau'=>$request->input('tenmau'),
@@ -91,9 +100,9 @@ class MauSacController extends Controller
      * @param  \App\Models\MauSac  $mauSac
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MauSac $mauSac)
+    public function destroy($id)
     {
-        $mauSac->delete();
+        MauSac::find($id)->delete();
         return Redirect::route('mausac.index');
        
     }
