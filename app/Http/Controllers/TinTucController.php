@@ -10,6 +10,14 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Post;
 class TinTucController extends Controller
 {
+    protected function fixImage(TinTuc $tinTuc)
+    {
+        if(Storage::disk('public')->exists($tinTuc->hinhanh)){
+            $tinTuc->hinhanh = Storage::url($tinTuc->hinhanh);
+        }else{
+            $tinTuc->hinhanh = '/images/noimage.jpg';
+        }
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +27,7 @@ class TinTucController extends Controller
     {
         $lsttt = TinTuc::all();
         foreach($lsttt as $tt){
-        //  $this->fixImage($tt);
+            $this->fixImage($tt);
         }
         return view('tintuc.index',['lsttt'=>$lsttt]);
     }
@@ -42,14 +50,27 @@ class TinTucController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate(
+            [
+                'tieude' => 'required',
+                'hinhanh' => 'required',
+            ],
+            [
+                'tieude.required' => 'Tiêu Đề Không Được Bỏ Trống',
+                'hinhanh.required' => 'Hình Ảnh Không Được Bỏ Trống',
+            ]
+        );
         $tinTuc = new TinTuc();
         $tinTuc->fill([
             'tieude'=>$request->input('tieude'),
-            'hinhanh'=>'abc',
+            'hinhanh'=>'',
             'mota'=>$request->input('mota'),
             'noidung'=>$request->input('content'),
             'trangthai'=>'Hiển thị',
         ]);
+        if($request->hasFile('hinhanh')){
+            $tinTuc->hinhanh = $request->file('hinhanh')->store('images/tintuc/'.$tinTuc->id,'public');
+        }
         $tinTuc->save();
         return Redirect::route('tinTuc.index',['tinTuc'=>$tinTuc]);
     }
