@@ -46,6 +46,7 @@ class TinTucController extends Controller
         $tinTuc->fill([
             'tieude'=>$request->input('tieude'),
             'hinhanh'=>'abc',
+            'mota'=>$request->input('mota'),
             'noidung'=>$request->input('content'),
             'trangthai'=>'Hiển thị',
         ]);
@@ -86,6 +87,7 @@ class TinTucController extends Controller
         $tinTuc->fill([
             'tieude'=>$request->input('tieude'),
             'hinhanh'=>'',
+            'mota'=>$request->input('mota'),
             'noidung'=>$request->input('content'),
             'trangthai'=>'Hiển thị',
         ]);

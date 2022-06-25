@@ -15,6 +15,7 @@ class TinTuc extends Model
     protected $fillable = [
         'id',
        'tieude',
+       'mota',
        'hinhanh',
        'noidung',
         'trangthai',
