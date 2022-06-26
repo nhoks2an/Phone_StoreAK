@@ -18,6 +18,7 @@ use App\Http\Controllers\HangController;
 use App\Http\Controllers\LoaiSanPhamController;
 use App\Http\Controllers\SanPhamController;
 use App\Http\Controllers\TaiKhoanController;
+use App\Http\Controllers\BinhLuanController;
 use Illuminate\Support\Facades\DB;
 
 /*
@@ -72,9 +73,6 @@ Route::get('/admin/dashboard', function () {
 
 // san pham
 
-
-
-
     // hoa don
 Route::get('/admin/hoadon', function () {
     return view('hoadon.index');
@@ -115,10 +113,6 @@ Route::get('/admin/themowl', function () {
 Route::get('/admin/suaowl', function () {
     return view('slideshow.sua');
     })->name('suaowl');
-
-Route::get('/admin/binhluan', function () {
-    return view('binhluan.index');
-    })->name('binhluan');
     // loai san pham
 Route::get('/admin/loai', function () {
     return view('loai.index');
@@ -137,67 +131,10 @@ Route::get('/admin/dangnhap', function () {
     })->name('dangnhap');
     // ram
 Route::resource('/RAM',RAMController::class);
-
 Route::resource('/footer',FooterController::class);
 Route::resource('/gioithieu',GioiThieuController::class);
 Route::resource('/tinTuc',TinTucController::class);
 Route::resource('/chinhSach',ChinhSachController::class);
-// Route::get('/admin/ram', function () {
-//     return view('ram.index');
-//     })->name('ram');
-
-// Route::get('/admin/themram', function () {
-//     return view('ram.them_ram');
-//     })->name('themram');
-        // rom
-Route::get('/admin/rom', function () {
-    return view('rom.index');
-    })->name('rom');
-Route::get('/admin/themrom', function () {
-    return view('rom.them_rom');
-    })->name('themrom');
-
-Route::get('/admin/camera', function () {
-    return view('camera.index');
-    })->name('camera');
-Route::get('/admin/themcamera', function () {
-    return view('camera.them_camera');
-    })->name('themcamera');
-
-Route::get('/admin/thietke', function () {
-    return view('thietke.index');
-    })->name('thietke');
-Route::get('/admin/themthietke', function () {
-    return view('thietke.them_thietke');
-    })->name('themthietke');
-
-Route::get('/admin/manhinh', function () {
-    return view('manhinh.index');
-    })->name('manhinh');
-Route::get('/admin/themmanhinh', function () {
-    return view('manhinh.them_manhinh');
-    })->name('themmanhinh');
-
-Route::get('/admin/hieunangpin', function () {
-    return view('hieunangpin.index');
-    })->name('hieunangpin');
-Route::get('/admin/themhieunangpin', function () {
-    return view('hieunangpin.them');
-    })->name('themhieunangpin');
-
-Route::get('/admin/tinhnangdb', function () {
-    return view('tinhnangdb.index');
-    })->name('tinhnangdb');
-Route::get('/admin/themtinhnangdb', function () {
-    return view('tinhnangdb.them_tinhnangdb');
-    })->name('themtinhnangdb');
-
-Route::get('/admin/hieudieuhanh', function () {
-    return view('hedieuhanh.index');
-    })->name('hedieuhanh');
-Route::get('/admin/themhedieuhanh', function () {
-    return view('hedieuhanh.them_hedieuhanh');
-    })->name('themhedieuhanh');
 Route::resource('/ROM',ROMController::class);
 Route::resource('/camera',CameraController::class);
 Route::resource('/manhinh',ManHinhController::class);
@@ -210,6 +147,7 @@ Route::resource('/hang',HangController::class);
 Route::resource('/loaiSanPham',LoaiSanPhamController::class);
 Route::resource('/sanPham',SanPhamController::class);
 Route::resource('/taikhoan',TaiKhoanController::class);
+Route::resource('/binhluan',BinhLuanController::class);
 
 
 

@@ -129,7 +129,6 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{route('slideshow')}}"> <i class="far fa-caret-square-right"></i>
                     SlideShow</a>
-
             </div>
         </div>
     </li>
@@ -154,7 +153,7 @@
     <hr class="sidebar-divider my-0">
     <!-- Nav Item - Charts -->
     <li class="nav-item {{(request()->is('binhluan')) ? 'active' : '' }}">
-        <a class="nav-link" href="{{route('binhluan')}}">
+        <a class="nav-link" href="{{route('binhluan.index')}}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Quản lý bình luận</span></a>
     </li>

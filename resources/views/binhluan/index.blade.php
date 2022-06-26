@@ -4,8 +4,7 @@
 <div class="content">
 <div class="taikhoan">
     <div class="btn-themmoi">
-        <a class="btn btn-sm bg-gradient-primary text-white" href="index.php?com=product&amp;act=add&amp;type=san-pham" title="Thêm mới"><i class="fas fa-plus mr-2"></i>Thêm mới</a>
-        <a class="btn btn-sm bg-gradient-danger text-white" id="delete-all" data-url="index.php?com=product&amp;act=delete&amp;type=san-pham" title="Xóa tất cả"><i class="far fa-trash-alt mr-2"></i>Xóa tất cả</a>
+      
             <!-- Topbar Search -->
         <div class="form-inline form-search d-inline-block align-middle ml-3">
             <div class="input-group input-group-sm">
@@ -24,7 +23,7 @@
    <div class="card card-primary card-outline text-sm mb-0">
     <div class="card-header">
             <h3 class="card-title">
-                Danh sách hãng
+                Danh sách bình luận
             </h3>
         </div>
         <div class="card-body table-responsive p-0">
@@ -37,13 +36,14 @@
                                 <label for="selectall-checkbox" class="custom-control-label"></label>
                             </div>
                         </th>
-                        <th class="tableSTT" width="10%">STT</th>
-                        <th class="align-middle">Hình</th>
-                        <th class="align-middle" style="width:30%">Email</th>
+                     
+                        <th class="align-middle">Email</th>
+                        <th class="align-middle" style="width:30%">Sản phẩm</th>
                         <th class="align-middle" style="width:30%">Nội dung</th>
                         <th class="align-middle text-center">Thao tác</th>
                     </tr>
                 </thead>
+                @foreach($lstbinhluan as $binhLuan)
                 <tbody>
                     <tr>
                         <td class="align-middle">
@@ -53,16 +53,17 @@
                         </div>
                         </td>
                         <td class="align-middle">
-                            <input type="number" class="form-control form-control-mini m-auto update-numb">
+                            @foreach($lsttaikhoan as $taikhoan)
+                            <span value="{{$taikhoan->id}}">{{$taikhoan->email}}</span>
+                            @endforeach    
                         </td>
                         <td class="align-middle">
-                            <a href="#"><img src="https://haycafe.vn/wp-content/uploads/2022/02/Anh-Avatar-Doremon-dep-ngau-cute.jpg" alt=""class="rounded img-preview"></a>
+                            @foreach($lstsanpham as $sanPham)
+                            <span value="{{$sanPham->id}}">{{$sanPham->email}}</span>
+                            @endforeach    
                         </td>
                         <td class="align-middle">
-                            <a href="#">ango@gmail.comm</a>
-                        </td>
-                        <td class="align-middle">
-                            <a href="#">Sản phẩm tốt lắm</a>
+                            <span>{{$binhLuan->noidung}}</span>
                         </td>
                         <td class="align-middle text-center text-md text-nowrap">
                         <a href="#">
@@ -72,37 +73,9 @@
                             <i class="color fas fa-trash-alt"></i>
                         </a>
                         </td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle">
-                        <div class="custom-control custom-checkbox my-checkbox">
-                                <input type="checkbox" class="custom-control-input select-checkbox">
-                                <label for="select-checkbox-35"class="custom-control-label"></label>
-                        </div>
-                        </td>
-                        <td class="align-middle">
-                            <input type="number" class="form-control form-control-mini m-auto update-numb">
-                        </td>
-                        <td class="align-middle">
-                            <a href="#"><img src="https://haycafe.vn/wp-content/uploads/2022/02/Anh-Avatar-Doremon-dep-ngau-cute.jpg" alt=""class="rounded img-preview"></a>
-                        </td>
-                        <td class="align-middle">
-                            <a href="#">ango@gmail.comm</a>
-                        </td>
-                        <td class="align-middle">
-                            <a href="#">Sản phẩm tốt lắm</a>
-                        </td>
-                        <td class="align-middle text-center text-md text-nowrap">
-                        <a href="#">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <a href="#"  class="text-danger">
-                            <i class="color fas fa-trash-alt"></i>
-                        </a>
-                        </td>
-                    </tr>
-                  
+                    </tr> 
                 </tbody>
+                @endforeach
             </table>
         </div>
    </div>

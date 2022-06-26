@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\BinhLuan;
-use App\Http\Requests\StoreBinhLuanRequest;
-use App\Http\Requests\UpdateBinhLuanRequest;
+use App\Models\User;
+use App\Models\SanPham;
+use Illuminate\Http\Request;
+use App\Http\Controllers\equest;
+use Illuminate\Support\Facades\DB;
+
 
 class BinhLuanController extends Controller
 {
@@ -15,7 +19,13 @@ class BinhLuanController extends Controller
      */
     public function index()
     {
-        //
+        $lstbinhluan = BinhLuan::all();
+        $lsttaikhoan = User::all();
+        $lstsanpham = SanPham::all();
+        foreach($lstbinhluan as $binhLuan){
+         
+        }
+        return view('binhluan.index',['lstbinhluan'=>$lstbinhluan],['lsttaikhoan'=>$lsttaikhoan],['lstsanpham'=>$lstsanpham]);
     }
 
     /**
@@ -47,7 +57,8 @@ class BinhLuanController extends Controller
      */
     public function show(BinhLuan $binhLuan)
     {
-        //
+       
+       
     }
 
     /**
@@ -79,8 +90,9 @@ class BinhLuanController extends Controller
      * @param  \App\Models\BinhLuan  $binhLuan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BinhLuan $binhLuan)
+    public function destroy($id)
     {
-        //
+        BinhLuan::find($id)->delete();
+        return Redirect::route('binhluan.index');
     }
 }
