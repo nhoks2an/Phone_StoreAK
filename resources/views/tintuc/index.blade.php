@@ -1,7 +1,7 @@
 @extends('layout.layout')
 @section('sidebar')
 @parent
-<section class="">
+
     <div class="card-footer text-sm sticky-top">
         <a class="btn btn-sm bg-gradient-primary text-white" href="{{route('tinTuc.create')}}" title="Thêm mới"><i
                 class="fas fa-plus mr-2"></i>Thêm mới</a>
@@ -36,7 +36,6 @@
                                 <label for="selectall-checkbox" class="custom-control-label"></label>
                             </div>
                         </th>
-                        <th class="align-middle text-center" width="10%">STT</th>
                         <th class="align-middle">Hình</th>
                         <th class="align-middle" style="width:30%">Tiêu đề</th>
                         <th class="align-middle text-center">Nổi bật</th>
@@ -54,10 +53,7 @@
                                 <label for="select-checkbox-3" class="custom-control-label"></label>
                             </div>
                         </td>
-                        <td class="align-middle">
-                            <input type="number" class="form-control form-control-mini m-auto update-numb" min="0"
-                                value="0" data-id="3" data-table="news">
-                        </td>
+                     
                         <td class="align-middle">
                             <a href="index.php?com=news&amp;act=edit&amp;type=tin-tuc&amp;id=3" title="{{$tt->tieude}}">
                                 <img class="rounded img-preview" src="{{$tt->hinhanh}}" alt="">
@@ -67,34 +63,6 @@
                             <a class="text-dark text-break"
                                 href="index.php?com=news&amp;act=edit&amp;type=tin-tuc&amp;id=3"
                                 title=" (1) (1) (1) (1) (1) (1)make-up-co-dau-ee-1-1">{{$tt->tieude}}</a>
-                            <div class="tool-action mt-2 w-clear">
-                                <a class="text-primary mr-3"
-                                    href="http://localhost/VuVanQuan_0480522W/make-up-co-dau-ee-1-1" target="_blank"
-                                    title=" (1) (1) (1) (1) (1) (1)make-up-co-dau-ee-1-1"><i
-                                        class="far fa-eye mr-1"></i>View</a>
-                                <a class="text-info mr-3"
-                                    href="index.php?com=news&amp;act=edit&amp;type=tin-tuc&amp;id=3"
-                                    title=" (1) (1) (1) (1) (1) (1)make-up-co-dau-ee-1-1"><i
-                                        class="far fa-edit mr-1"></i>Edit</a>
-                                <div class="dropdown">
-                                    <a id="dropdownCopy" href="#" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false" class="nav-link dropdown-toggle text-success p-0 pr-3"><i
-                                            class="far fa-clone mr-1"></i>Copy</a>
-                                    <ul aria-labelledby="dropdownCopy" class="dropdown-menu border-0 shadow">
-                                        <li><a href="#" class="dropdown-item copy-now" data-id="3" data-table="news"
-                                                data-copyimg="1"><i
-                                                    class="far fa-caret-square-right text-secondary mr-2"></i>Sao chép
-                                                ngay</a></li>
-                                        <li><a href="" class="dropdown-item"><i
-                                                    class="far fa-caret-square-right text-secondary mr-2"></i>Chỉnh sửa
-                                                thông tin</a></li>
-                                    </ul>
-                                </div>
-                                <a class="text-danger" id="delete-item"
-                                    data-url="index.php?com=news&amp;act=delete&amp;type=tin-tuc&amp;id=3"
-                                    title=" (1) (1) (1) (1) (1) (1)make-up-co-dau-ee-1-1"><i
-                                        class="far fa-trash-alt mr-1"></i>Delete</a>
-                            </div>
                         </td>
                         <td class="align-middle text-center">
                             <div class="custom-control custom-checkbox my-checkbox">
@@ -113,44 +81,56 @@
                             </div>
                         </td>
                         <td class="align-middle text-center text-md text-nowrap">
-                            <div class="dropdown d-inline-block align-middle">
-                                <a id="dropdownCopy" href="#" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false" class="nav-link dropdown-toggle text-success p-0 pr-2"><i
-                                        class="far fa-clone"></i></a>
-                                <ul aria-labelledby="dropdownCopy" class="dropdown-menu border-0 shadow">
-                                    <li><a href="#" class="dropdown-item copy-now" data-id="3" data-table="news"><i
-                                                class="far fa-caret-square-right text-secondary mr-2"></i>Sao chép
-                                            ngay</a></li>
-                                    <li><a href="" class="dropdown-item"><i
-                                                class="far fa-caret-square-right text-secondary mr-2"></i>Chỉnh sửa
-                                            thông tin</a></li>
-                                </ul>
-                            </div>
                             <a class="text-primary mr-2" href="{{route('tinTuc.show',['tinTuc'=>$tt])}}"
                                 title="Chỉnh sửa"><i class="fas fa-edit"></i></a>
-                            <form method="post" action="{{route('tinTuc.destroy',$tt->id)}}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="text-danger">
-                                    <i class="color fas fa-trash-alt"></i>
+                                <button  type="submit" class="btnxoa text-danger "style="border: none;background: none;" value="{{$tt->id}}">
+                                        <i class="color fas fa-trash-alt"></i>
                                 </button>
-                            </form>
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
+            @foreach($lsttt as $tt)
+            <div class="modal fade" id="TinTucModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>  
+                        <form method="post" action="{{route('tinTuc.destroy',$tt->id)}}">
+                                @csrf
+                                @method('DELETE')
+                            <div class="modal-body">
+                                Bạn có chắc chắn muốn xóa !
+                            </div>
+                            <input type="hidden"  name="tintuc" id="tintuc">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+                                <button type="submit" class="btn btn-primary">Xác nhận</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        @endforeach
         </div>
     </div>
-    <div class="card-footer text-sm">
-        <a class="btn btn-sm bg-gradient-primary text-white" href="" title="Thêm mới"><i
-                class="fas fa-plus mr-2"></i>Thêm mới</a>
-        <a class="btn btn-sm bg-gradient-danger text-white" id="delete-all"
-            data-url="index.php?com=news&amp;act=delete&amp;type=tin-tuc" title="Xóa tất cả"><i
-                class="far fa-trash-alt mr-2"></i>Xóa tất cả</a>
-    </div>
-</section>
-
+@section('scripts')
+<script>
+	$(document).on('click', '.btnxoa', function() {
+        $('#TinTucModal').modal({
+            show: true
+        });
+        var tintuc_id = $(this).val();
+        $('#tintuc').val(tintuc_id);
+        
+	});
+</script>
+@endsection
 @endsection
 @section('Them')
 @endsection

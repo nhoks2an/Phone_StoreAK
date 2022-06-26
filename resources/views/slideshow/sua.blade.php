@@ -14,8 +14,6 @@
             <a class="btn btn-sm bg-gradient-danger" href="index.php?com=photo&amp;act=man_photo&amp;type=slide"
                 title="Thoát"><i class="fas fa-sign-out-alt mr-2"></i>Thoát</a>
         </div>
-
-
         <div class="card card-primary card-outline text-sm">
             <div class="card-header">
                 <h3 class="card-title">Slideshow: </h3>
@@ -38,14 +36,22 @@
                                 <label class="custom-file-label mb-0" data-browse="Chọn" for="hinhanh">Chọn file</label>
                             </div>
                         </label>
-                        <strong class="d-block text-sm">Width: 1366px - Height: 500px
-                            (.jpg|.gif|.png|.jpeg|.gif)</strong>
+                        <strong class="d-block text-sm">Width: 1366px - Height: 500px(.jpg|.gif|.png|.jpeg|.gif)</strong>
+                             @if($errors->has('hinhanh'))
+                                <div class="alert alert-danger" style="margin-top:10px;">
+                                {{$errors->first('hinhanh')}}
+                                </div>
+                            @endif
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="link0">Link:</label>
-                    <input type="text" class="form-control text-sm" name="link" id="link0" placeholder="Link"
-                        value="{{$slideShow->lienket}}">
+                    <input type="text" class="form-control text-sm" name="link" id="link0" placeholder="Link" value="{{$slideShow->lienket}}">
+                        @if($errors->has('link'))
+                        <div class="alert alert-danger" style="margin-top:10px;">
+                        {{$errors->first('link')}}
+                        </div>
+                    @endif
                 </div>
                 <div class="form-group">
                     <div class="form-group d-inline-block mb-2 mr-2">
@@ -56,11 +62,6 @@
                             <label for="hienthi-checkbox0" class="custom-control-label"></label>
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="numb0" class="d-inline-block align-middle mb-0 mr-2">Số thứ tự:</label>
-                    <input type="number" class="form-control form-control-mini d-inline-block align-middle text-sm"
-                        min="0" name="dataMulti[0][numb]" id="numb0" placeholder="Số thứ tự" value="1">
                 </div>
             </div>
         </div>

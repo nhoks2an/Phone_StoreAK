@@ -114,11 +114,10 @@ class HangController extends Controller
         $validatedData = $request->validate(
             [
                 'tenhang' => 'required',
-                'hinhanh' => 'required',
+             
             ],
             [
                 'tenhang.required' => 'Tên Hãng Không Được Bỏ Trống',
-                'hinhanh.required' => 'Hình Ảnh Không Được Bỏ Trống',
             ]
         );
         if($request->hasFile('hinhanh'))

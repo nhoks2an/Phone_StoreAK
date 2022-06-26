@@ -60,19 +60,15 @@
                             <span>{{$RAM->soram}}G</span>
                         </td>
                         <td class="align-middle text-center text-md text-nowrap">
-                            <form method="post" action="{{route('RAM.destroy',$RAM->id)}}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="text-danger">
+                         
+                                <button type="submit" class="btnxoa text-danger" style="background: none;border: none;" value="{{$RAM->id}}">
                                     <i class="color fas fa-trash-alt"></i>
                                 </button>
-                            </form>
+                        
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
-
-
             </table>
             @foreach($lstram as $RAM)
             <!-- modal -->

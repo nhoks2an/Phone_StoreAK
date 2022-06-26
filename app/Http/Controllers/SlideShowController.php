@@ -52,6 +52,16 @@ class SlideShowController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate(
+            [
+                'hinhanh' => 'required',
+                'link' => 'required',
+            ],
+            [
+                'hinhanh.required' => 'Hình Ảnh Năng Không Được Bỏ Trống',
+                'link.required' => 'Đường Link Năng Không Được Bỏ Trống',
+            ]
+        );
         $slideShow = new SlideShow();
         $slideShow->fill([
             'hinhanh'=>'',
@@ -97,6 +107,16 @@ class SlideShowController extends Controller
      */
     public function update(Request $request, SlideShow $slideShow)
     {
+        $validatedData = $request->validate(
+            [
+                'hinhanh' => 'required',
+                'link' => 'required',
+            ],
+            [
+                'hinhanh.required' => 'Hình Ảnh Năng Không Được Bỏ Trống',
+                'link.required' => 'Đường Link Năng Không Được Bỏ Trống',
+            ]
+        );
         if($request->hasFile('hinhanh')){
             $slideShow->hinhanh = $request->file('hinhanh')->store('images/slide/'.$slideShow->id,'public');
         }

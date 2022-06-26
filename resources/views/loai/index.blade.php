@@ -51,15 +51,12 @@
                                 <span>{{$loaiSanPham->tenloaisp}}</span>
                             </td>
                             <td class="align-middle text-center text-md text-nowrap">
-                            
-                         
-                                    <a href="{{route('loaiSanPham.show',['loaiSanPham'=>$loaiSanPham])}}">
-                                        <i class="fas fa-edit"></i>
-                                    </a> 
-                                    <button  type="submit" class="btnxoa text-danger "style="border: none;background: none;" value="{{$loaiSanPham->id}}">
-                                        <i class="color fas fa-trash-alt"></i>
-                                    </button>
-                               
+                                <a href="{{route('loaiSanPham.show',['loaiSanPham'=>$loaiSanPham])}}">
+                                    <i class="fas fa-edit"></i>
+                                </a> 
+                                <button  type="submit" class="btnxoa text-danger "style="border: none;background: none;" value="{{$loaiSanPham->id}}">
+                                    <i class="color fas fa-trash-alt"></i>
+                                </button>
                             </td>
                         </tr>
                     </tbody>

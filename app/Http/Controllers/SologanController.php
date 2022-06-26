@@ -78,6 +78,14 @@ class SologanController extends Controller
      */
     public function update(Request $request, Sologan $sologan)
     {
+        $validatedData = $request->validate(
+            [
+                'tieude' => 'required',
+            ],
+            [
+                'tieude.required' => 'Tiêu Đề Năng Không Được Bỏ Trống',
+            ]
+        );
         $sologan->fill([
             'tieude'=>$request->input('tieude'),
             'trangthai'=>'Hiển thị',

@@ -54,10 +54,14 @@ class TinTucController extends Controller
             [
                 'tieude' => 'required',
                 'hinhanh' => 'required',
+                'mota' => 'required',
+                'content' => 'required',
             ],
             [
                 'tieude.required' => 'Tiêu Đề Không Được Bỏ Trống',
                 'hinhanh.required' => 'Hình Ảnh Không Được Bỏ Trống',
+                'mota.required' => 'Mô Tả Không Được Bỏ Trống',
+                'content.required' => 'Nội Dung Không Được Bỏ Trống',
             ]
         );
         $tinTuc = new TinTuc();

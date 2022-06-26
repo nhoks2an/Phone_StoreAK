@@ -1,6 +1,5 @@
 <!-- Sidebar -->
 <ul class="background navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon rotate-n-15">
@@ -17,9 +16,7 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
-
     <hr class="sidebar-divider my-0">
-
     <li class="nav-item {{(request()->is('taikhoan')) ? 'active' : '' }}">
         <a class="nav-link " href="{{route('taikhoan.index')}}">
             <i class="fas fa-user-cog"></i>
@@ -100,7 +97,7 @@
     <hr class="sidebar-divider my-0">
     <!-- tĩnh -->
     <li
-        class="nav-item {{(request()->is('sologan')) ? 'active' : '' }} {{(request()->is('gioithieu')) ? 'active' : '' }} {{(request()->is('banner')) ? 'active' : '' }} {{(request()->is('footerr')) ? 'active' : '' }}">
+        class="nav-item {{(request()->is('sologan')) ? 'active' : '' }} {{(request()->is('gioithieu')) ? 'active' : '' }} {{(request()->is('banner')) ? 'active' : '' }} {{(request()->is('footer')) ? 'active' : '' }}">
         <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
             aria-controls="collapseTwo">
             <i class="fas fas fa-bookmark"></i>
@@ -119,7 +116,7 @@
     </li>
     <hr class="sidebar-divider my-0">
     <!-- tĩnh -->
-    <li class="nav-item {{(request()->is('logo')) ? 'active' : '' }} {{(request()->is('slideshow')) ? 'active' : '' }}">
+    <li class="nav-item {{(request()->is('logo')) ? 'active' : '' }} {{(request()->is('slideShow')) ? 'active' : '' }}">
         <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo1" aria-expanded="false"
             aria-controls="collapseTwo1">
             <i class="fas fas fa-photo-video"></i>
@@ -168,12 +165,10 @@
     </div>
 </ul>
 <!-- End of Sidebar -->
-
 <!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
 </a>
-
 <!-- Logout Modal-->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">

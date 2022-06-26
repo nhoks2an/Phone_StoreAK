@@ -44,6 +44,16 @@ class ChinhSachController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate(
+            [
+                'tieude' => 'required',
+                'content' => 'required',
+            ],
+            [
+                'tieude.required' => 'Tiêu Đề Không Được Bỏ Trống',
+                'content.required' => 'Nội Dung Không Được Bỏ Trống',
+            ]
+        );
         $chinhSach = new ChinhSach();
         $chinhSach->fill([
             'tieude'=>$request->input('tieude'),
@@ -85,6 +95,16 @@ class ChinhSachController extends Controller
      */
     public function update(Request $request, ChinhSach $chinhSach)
     {
+        $validatedData = $request->validate(
+            [
+                'tieude' => 'required',
+                'content' => 'required',
+            ],
+            [
+                'tieude.required' => 'Tiêu Đề Không Được Bỏ Trống',
+                'content.required' => 'Nội Dung Không Được Bỏ Trống',
+            ]
+        );
         $chinhSach->fill([
             'tieude'=>$request->input('tieude'),
             'noidung'=>$request->input('content'),

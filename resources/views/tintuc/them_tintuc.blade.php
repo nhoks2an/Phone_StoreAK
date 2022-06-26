@@ -6,8 +6,6 @@
     <div class="card-footer text-sm sticky-top">
         <button type="submit" class="btn btn-sm bg-gradient-primary submit-check"><i
                 class="far fa-save mr-2"></i>Lưu</button>
-        <button type="submit" class="btn btn-sm bg-gradient-success submit-check" name="save-here"><i
-                class="far fa-save mr-2"></i>Lưu tại trang</button>
         <button type="reset" class="btn btn-sm bg-gradient-secondary"><i class="fas fa-redo mr-2"></i>Làm
             lại</button>
         <a class="btn btn-sm bg-gradient-danger" href="index.php?com=news&amp;act=man&amp;type=tin-tuc" title="Thoát"><i
@@ -17,7 +15,7 @@
         <div class="col-xl-8">
             <div class="card card-primary card-outline text-sm">
                 <div class="card-header">
-                    <h3 class="card-title">Nội dung Tin tức</h3>
+                    <h3 class="card-title">Nội dung tin tức</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
                                 class="fas fa-minus"></i></button>
@@ -30,6 +28,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link active" id="tabs-lang" data-toggle="pill" href="#tabs-lang-vi"
                                         role="tab" aria-controls="tabs-lang-vi" aria-selected="true">Tiếng Việt</a>
+                                      
                                 </li>
                             </ul>
                         </div>
@@ -40,17 +39,32 @@
                                     <div class="form-group">
                                         <label for="namevi">Tiêu đề:</label>
                                         <input type="text" class="form-control for-seo text-sm" name="tieude"
-                                            id="namevi" placeholder="Tiêu đề" value="" required="">
+                                            id="namevi" placeholder="Tiêu đề" value="">
+                                            @if($errors->has('tieude'))
+                                            <div class="alert alert-danger" style="margin-top:10px;">
+                                            {{$errors->first('tieude')}}
+                                            </div>
+                                             @endif
                                     </div>
                                     <div class="form-group">
                                         <label for="descvi">Nội dung:</label>
                                         <textarea class="form-control for-seo text-sm " name="mota" id="descvi" rows="5"
                                             placeholder="Mô tả"></textarea>
+                                            @if($errors->has('mota'))
+                                            <div class="alert alert-danger" style="margin-top:10px;">
+                                            {{$errors->first('mota')}}
+                                            </div>
+                                             @endif
                                     </div>
                                     <div class="form-group">
                                         <label for="descvi">Nội dung:</label>
                                         <textarea class="form-control for-seo text-sm " name="content" id="descvi"
                                             rows="5" placeholder="Nội dung"></textarea>
+                                            @if($errors->has('content'))
+                                            <div class="alert alert-danger" style="margin-top:10px;">
+                                            {{$errors->first('content')}}
+                                            </div>
+                                             @endif
                                     </div>
                                 </div>
                             </div>
@@ -63,7 +77,7 @@
         <div class="col-xl-4">
             <div class="card card-primary card-outline text-sm">
                 <div class="card-header">
-                    <h3 class="card-title">Hình ảnh logo hãng</h3>
+                    <h3 class="card-title">Hình ảnh tin tức</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
                                 class="fas fa-minus"></i></button>

@@ -4,7 +4,7 @@
 .row{margin-top: 10px;}
 .btn-themmoi{margin-left: 15px;}
 
-.sidebar {width: 18rem !important;}
+.sidebar {width: 18rem !important;height:auto;}
 .photoUpload-zone .photoUpload-dimension{font-weight: 600;}
 
 .content{padding: 0 0.5rem;}

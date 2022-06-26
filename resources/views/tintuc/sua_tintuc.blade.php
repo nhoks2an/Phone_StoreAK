@@ -20,7 +20,7 @@
             <div class="col-xl-8">
                 <div class="card card-primary card-outline text-sm">
                     <div class="card-header">
-                        <h3 class="card-title">Nội dung Tin tức</h3>
+                        <h3 class="card-title">Nội dung tin tức</h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
                                     class="fas fa-minus"></i></button>
@@ -43,19 +43,30 @@
                                         aria-labelledby="tabs-lang">
                                         <div class="form-group">
                                             <label for="namevi">Tiêu đề (vi):</label>
-                                            <input type="text" class="form-control for-seo text-sm" name="tieude"
-                                                id="namevi" placeholder="Tiêu đề (vi)" value="{{$tinTuc->tieude}}"
-                                                required="">
+                                            <input type="text" class="form-control for-seo text-sm" name="tieude"id="namevi" placeholder="Tiêu đề (vi)" value="{{$tinTuc->tieude}}" >
+                                            @if($errors->has('tieude'))
+                                            <div class="alert alert-danger" style="margin-top:10px;">
+                                            {{$errors->first('tieude')}}
+                                            </div>
+                                             @endif
                                         </div>
                                         <div class="form-group">
                                             <label for="descvi">Mô tả:</label>
-                                            <textarea class="form-control for-seo text-sm " name="mota" id="descvi"
-                                                rows="5" placeholder="Mô tả (vi)">{{$tinTuc->mota}}</textarea>
+                                            <textarea class="form-control for-seo text-sm " name="mota" id="descvi" rows="5" placeholder="Mô tả (vi)">{{$tinTuc->mota}}</textarea>
+                                                @if($errors->has('mota'))
+                                                <div class="alert alert-danger" style="margin-top:10px;">
+                                                {{$errors->first('mota')}}
+                                                </div>
+                                                @endif
                                         </div>
                                         <div class="form-group">
                                             <label for="descvi">Nội dung:</label>
-                                            <textarea class="form-control for-seo text-sm " name="content" id="descvi"
-                                                rows="5" placeholder="Mô tả (vi)">{{$tinTuc->noidung}}</textarea>
+                                            <textarea class="form-control for-seo text-sm " name="content" id="descvi"rows="5" placeholder="Mô tả (vi)">{{$tinTuc->noidung}}</textarea>
+                                                @if($errors->has('content'))
+                                            <div class="alert alert-danger" style="margin-top:10px;">
+                                            {{$errors->first('content')}}
+                                            </div>
+                                             @endif
                                         </div>
                                     </div>
                                 </div>

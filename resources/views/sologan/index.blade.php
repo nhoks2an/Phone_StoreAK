@@ -50,7 +50,12 @@
                                     <div class="form-group">
                                         <label for="namevi">Tiêu đề:</label>
                                         <input type="text" class="form-control for-seo text-sm" name="tieude"
-                                            id="namevi" placeholder="Tiêu đề" value="{{$sologan->tieude}}" required="">
+                                            id="namevi" placeholder="Tiêu đề" value="{{$sologan->tieude}}">
+                                            @if($errors->has('tieude'))
+                                            <div class="alert alert-danger" style="margin-top:10px;">
+                                                {{$errors->first('tieude')}}
+                                            </div>
+                                            @endif
                                     </div>
                                 </div>
                             </div>
@@ -62,15 +67,21 @@
         <div class="d-none">
         </div>
     </div>
-    <div class="card-footer text-sm">
-        <button type="submit" class="btn btn-sm bg-gradient-primary submit-check"><i
-                class="far fa-save mr-2"></i>Lưu</button>
-        <button type="reset" class="btn btn-sm bg-gradient-secondary"><i class="fas fa-redo mr-2"></i>Làm lại</button>
-    </div>
     <input type="hidden" name="hash" value="vZeTxjelfE">
 </form>
 </section>
-
+@section('scripts')
+<script>
+	$(document).on('click', '.btnxoa', function() {
+        $('#ThietKeModal').modal({
+            show: true
+        });
+        var thietke_id = $(this).val();
+        $('#thietke').val(thietke_id);
+        
+	});
+</script>
+@endsection
 @section('Them')
 @endsection
 @endsection

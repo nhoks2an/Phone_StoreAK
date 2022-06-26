@@ -6,8 +6,7 @@
     <div class="card-footer text-sm sticky-top">
         <button type="submit" class="btn btn-sm bg-gradient-primary submit-check"><i
                 class="far fa-save mr-2"></i>Lưu</button>
-        <button type="submit" class="btn btn-sm bg-gradient-success submit-check" name="save-here"><i
-                class="far fa-save mr-2"></i>Lưu tại trang</button>
+      
         <button type="reset" class="btn btn-sm bg-gradient-secondary"><i class="fas fa-redo mr-2"></i>Làm
             lại</button>
         <a class="btn btn-sm bg-gradient-danger" href="index.php?com=news&amp;act=man&amp;type=tin-tuc" title="Thoát"><i
@@ -38,12 +37,22 @@
                             <div class="form-group">
                                 <label for="namevi">Tiêu đề:</label>
                                 <input type="text" class="form-control for-seo text-sm" name="tieude" id="namevi"
-                                    placeholder="Tiêu đề (vi)" value="" required="">
+                                    placeholder="Tiêu đề (vi)" value="">
+                                    @if($errors->has('tieude'))
+                                    <div class="alert alert-danger" style="margin-top:10px;">
+                                    {{$errors->first('tieude')}}
+                                    </div>
+                                    @endif
                             </div>
                             <div class="form-group">
                                 <label for="descvi">Nội dung:</label>
                                 <textarea class="form-control for-seo text-sm " name="content" id="descvi" rows="5"
                                     placeholder="Mô tả (vi)"></textarea>
+                                    @if($errors->has('content'))
+                                    <div class="alert alert-danger" style="margin-top:10px;">
+                                    {{$errors->first('content')}}
+                                    </div>
+                                        @endif
                             </div>
                         </div>
                     </div>

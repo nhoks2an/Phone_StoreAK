@@ -41,7 +41,7 @@
                             <div class="tab-pane fade show active" id="tabs-lang-vi" role="tabpanel" aria-labelledby="tabs-lang">
                                 <div class="form-group">
                                     <label for="namevi"> Thông số Rom:</label>
-                                    <input type="text" class="form-control for-seo text-sm" name="sorom"placeholder="Thông số rom" value="">
+                                    <input type="number" class="form-control for-seo text-sm" name="sorom"placeholder="Thông số rom" value="">
                                         @if($errors->has('sorom'))
                                         <div class="alert alert-danger" style="margin-top:10px;">
                                             {{$errors->first('sorom')}}
