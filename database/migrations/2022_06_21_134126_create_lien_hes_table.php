@@ -18,7 +18,7 @@ class CreateLienHesTable extends Migration
             $table->string('hoten');
             $table->string('email');
             $table->string('sodienthoai');
-            $table->string('noidung');
+            $table->mediumText('noidung')->nullable(true);
             $table->string('trangthai');
             $table->timestamps();
             $table->softDeletes();

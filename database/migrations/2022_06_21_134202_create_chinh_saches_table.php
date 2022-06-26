@@ -16,7 +16,7 @@ class CreateChinhSachesTable extends Migration
         Schema::create('chinh_saches', function (Blueprint $table) {
             $table->id();
             $table->string('tieude');
-            $table->string('noidung');
+            $table->mediumText('noidung')->nullable(true);
             $table->string('trangthai');
             $table->timestamps();
             $table->softDeletes();

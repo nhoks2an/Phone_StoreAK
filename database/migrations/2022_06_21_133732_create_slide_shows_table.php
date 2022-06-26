@@ -16,7 +16,7 @@ class CreateSlideShowsTable extends Migration
         Schema::create('slide_shows', function (Blueprint $table) {
             $table->id();
             $table->string('hinhanh');
-            $table->string('lienket');
+            $table->string('lienket')->nullable(true);
             $table->string('trangthai');
             $table->timestamps();
             $table->softDeletes();

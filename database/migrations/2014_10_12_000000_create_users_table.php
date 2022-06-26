@@ -19,10 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('hinhanh');
+            $table->string('hinhanh')->nullable(true);;
             $table->string('hoten');
-            $table->string('phai');
-            $table->date('ngaysinh');
+            $table->string('phai')->nullable(true);;
+            $table->date('ngaysinh')->nullable(true);;
             $table->string('sodienthoai');
             $table->string('diachi');
             $table->rememberToken();

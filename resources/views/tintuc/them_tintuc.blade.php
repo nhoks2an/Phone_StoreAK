@@ -82,7 +82,7 @@
                             <p class="photoUpload-or">hoặc</p>
                             <p class="photoUpload-choose btn btn-sm bg-gradient-success">Chọn hình</p>
                         </label>
-                        <div class="photoUpload-dimension">Width: 334 px - Height: 334 px (.jpg|.gif|.png|.jpeg|.gif)
+                        <div class="photoUpload-dimension">
                         </div>
                     </div>
                     @if($errors->has('hinhanh'))

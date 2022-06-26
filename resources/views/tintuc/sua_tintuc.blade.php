@@ -20,12 +20,6 @@
             <div class="col-xl-8">
                 <div class="card card-primary card-outline text-sm">
                     <div class="card-header">
-                        <h3 class="card-title">Đường dẫn</h3>
-                        <span class="pl-2 text-danger">(Vui lòng không nhập trùng tiêu đề)</span>
-                    </div>
-                </div>
-                <div class="card card-primary card-outline text-sm">
-                    <div class="card-header">
                         <h3 class="card-title">Nội dung Tin tức</h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
@@ -54,6 +48,11 @@
                                                 required="">
                                         </div>
                                         <div class="form-group">
+                                            <label for="descvi">Mô tả:</label>
+                                            <textarea class="form-control for-seo text-sm " name="mota" id="descvi"
+                                                rows="5" placeholder="Mô tả (vi)">{{$tinTuc->mota}}</textarea>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="descvi">Nội dung:</label>
                                             <textarea class="form-control for-seo text-sm " name="content" id="descvi"
                                                 rows="5" placeholder="Mô tả (vi)">{{$tinTuc->noidung}}</textarea>
@@ -77,19 +76,24 @@
                     <div class="card-body">
                         <div class="photoUpload-zone">
                             <div class="photoUpload-detail" id="photoUpload-preview">
-                                <img class="rounded" onerror=""
-                                    src="http://localhost/VuVanQuan_0480522W/assets/images/noimage.png" alt="Alt Photo">
+                                <img class="rounded" src="{{$tinTuc->hinhanh}}" alt="Alt Photo" id="item-img">
                             </div>
                             <label class="photoUpload-file" id="photo-zone" for="file-zone">
-                                <input type="file" name="file" id="file-zone">
+                                <input type="file" name="hinhanh" id="file-zone" accept="image/*">
+
                                 <i class="fas fa-cloud-upload-alt"></i>
                                 <p class="photoUpload-drop">Kéo và thả hình vào đây</p>
                                 <p class="photoUpload-or">hoặc</p>
                                 <p class="photoUpload-choose btn btn-sm bg-gradient-success">Chọn hình</p>
                             </label>
-                            <div class="photoUpload-dimension">Width: 280 px - Height: 200 px
-                                (.jpg|.gif|.png|.jpeg|.gif)</div>
+                            <div class="photoUpload-dimension">
+                            </div>
                         </div>
+                        @if($errors->has('hinhanh'))
+                        <div class="alert alert-danger" style="margin-top:10px;">
+                            {{$errors->first('hinhanh')}}
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -142,7 +146,18 @@
         <input type="hidden" name="hash" value="dd30IA6mWW">
     </form>
 </section>
+<script>
+/* Img Preview */
+const input = document.getElementById("file-zone");
+const image = document.getElementById("item-img");
 
+input.addEventListener("change", (e) => {
+    if (e.target.files.length) {
+        const src = URL.createObjectURL(e.target.files[0]);
+        image.src = src;
+    }
+});
+</script>
 @endsection
 @section('Them')
 @endsection

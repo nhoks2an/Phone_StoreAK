@@ -108,7 +108,7 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('sologan')}}"> <i class="far fa-caret-square-right"></i>
+                <a class="collapse-item" href="{{route('sologan.index')}}"> <i class="far fa-caret-square-right"></i>
                     Slogan</a>
                 <a class="collapse-item" href="{{route('gioithieu.index')}}"> <i class="far fa-caret-square-right"></i>
                     Giới thiệu</a>
@@ -127,7 +127,7 @@
         </a>
         <div id="collapseTwo1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('slideshow')}}"> <i class="far fa-caret-square-right"></i>
+                <a class="collapse-item" href="{{route('slideShow.index')}}"> <i class="far fa-caret-square-right"></i>
                     SlideShow</a>
             </div>
         </div>
