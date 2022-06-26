@@ -5,9 +5,21 @@ namespace App\Http\Controllers;
 use App\Models\SlideShow;
 use App\Http\Requests\StoreSlideShowRequest;
 use App\Http\Requests\UpdateSlideShowRequest;
-
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
+use App\Models\Post;
 class SlideShowController extends Controller
 {
+    protected function fixImage(SlideShow $slideShow)
+    {
+        if(Storage::disk('public')->exists($slideShow->hinhanh)){
+            $slideShow->hinhanh = Storage::url($slideShow->hinhanh);
+        }else{
+            $slideShow->hinhanh = '/images/noimage.jpg';
+        }
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +27,11 @@ class SlideShowController extends Controller
      */
     public function index()
     {
-        //
+        $lstslide = SlideShow::all();
+        foreach($lstslide as $slide){
+            $this->fixImage($slide);
+        }
+        return view('slideshow.index',['lstslide'=>$lstslide]);
     }
 
     /**
@@ -25,7 +41,7 @@ class SlideShowController extends Controller
      */
     public function create()
     {
-        //
+        return view('slideshow.them');
     }
 
     /**
@@ -34,9 +50,19 @@ class SlideShowController extends Controller
      * @param  \App\Http\Requests\StoreSlideShowRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSlideShowRequest $request)
+    public function store(Request $request)
     {
-        //
+        $slideShow = new SlideShow();
+        $slideShow->fill([
+            'hinhanh'=>'',
+            'lienket'=>$request->input('link'),
+            'trangthai'=>'Hiển thị',
+        ]);
+        if($request->hasFile('hinhanh')){
+            $slideShow->hinhanh = $request->file('hinhanh')->store('images/slide/'.$slideShow->id,'public');
+        }
+        $slideShow->save();
+        return Redirect::route('slideShow.index',['slideShow'=>$slideShow]);
     }
 
     /**
@@ -47,7 +73,8 @@ class SlideShowController extends Controller
      */
     public function show(SlideShow $slideShow)
     {
-        //
+        $this->fixImage($slideShow);
+        return view('slideshow.sua',['slideShow'=>$slideShow]);
     }
 
     /**
@@ -68,9 +95,18 @@ class SlideShowController extends Controller
      * @param  \App\Models\SlideShow  $slideShow
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSlideShowRequest $request, SlideShow $slideShow)
+    public function update(Request $request, SlideShow $slideShow)
     {
-        //
+        if($request->hasFile('hinhanh')){
+            $slideShow->hinhanh = $request->file('hinhanh')->store('images/slide/'.$slideShow->id,'public');
+        }
+        $slideShow->fill([
+            'lienket'=>$request->input('link'),
+            'trangthai'=>'Hiển thị',
+        ]);
+
+        $slideShow->save();
+        return Redirect::route('slideShow.index',['slideShow'=>$slideShow]);
     }
 
     /**
@@ -79,8 +115,9 @@ class SlideShowController extends Controller
      * @param  \App\Models\SlideShow  $slideShow
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SlideShow $slideShow)
+    public function destroy($id)
     {
-        //
+        SlideShow::find($id)->delete();
+        return Redirect::route('slideShow.index');
     }
 }

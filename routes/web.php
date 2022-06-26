@@ -18,6 +18,8 @@ use App\Http\Controllers\HangController;
 use App\Http\Controllers\LoaiSanPhamController;
 use App\Http\Controllers\SanPhamController;
 use App\Http\Controllers\TaiKhoanController;
+use App\Http\Controllers\SlideShowController;
+use App\Http\Controllers\SologanController;
 use Illuminate\Support\Facades\DB;
 
 /*
@@ -112,9 +114,9 @@ Route::get('/admin/themowl', function () {
     return view('slideshow.them');
     })->name('themowl');
 
-Route::get('/admin/suaowl', function () {
-    return view('slideshow.sua');
-    })->name('suaowl');
+// Route::get('/admin/suaowl', function () {
+//     return view('slideshow.sua');
+//     })->name('suaowl');
 
 Route::get('/admin/binhluan', function () {
     return view('binhluan.index');
@@ -142,6 +144,8 @@ Route::resource('/footer',FooterController::class);
 Route::resource('/gioithieu',GioiThieuController::class);
 Route::resource('/tinTuc',TinTucController::class);
 Route::resource('/chinhSach',ChinhSachController::class);
+Route::resource('/slideShow',SlideShowController::class);
+Route::resource('/sologan',SologanController::class);
 // Route::get('/admin/ram', function () {
 //     return view('ram.index');
 //     })->name('ram');

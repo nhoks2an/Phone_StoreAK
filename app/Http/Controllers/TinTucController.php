@@ -105,9 +105,11 @@ class TinTucController extends Controller
      */
     public function update(Request $request, TinTuc $tinTuc)
     {
+        if($request->hasFile('hinhanh')){
+            $tinTuc->hinhanh = $request->file('hinhanh')->store('images/tintuc/'.$tinTuc->id,'public');
+        }
         $tinTuc->fill([
             'tieude'=>$request->input('tieude'),
-            'hinhanh'=>'',
             'mota'=>$request->input('mota'),
             'noidung'=>$request->input('content'),
             'trangthai'=>'Hiển thị',

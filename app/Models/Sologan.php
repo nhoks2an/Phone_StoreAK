@@ -6,16 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
-class SlideShow extends Model
+class Sologan extends Model
 {
     use HasFactory, Notifiable;
     use SoftDeletes;
     protected $guarded = [];
-    protected $table ="slide_shows";
+    protected $table ="sologans";
     protected $fillable = [
         'id',
-       'hinhanh',
-       'lienket',
+       'tieude',
         'trangthai',
     ];
 }
