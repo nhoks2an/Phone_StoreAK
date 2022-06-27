@@ -25,7 +25,7 @@ class BinhLuanController extends Controller
         foreach($lstbinhluan as $binhLuan){
          
         }
-        return view('binhluan.index',['lstbinhluan'=>$lstbinhluan],['lsttaikhoan'=>$lsttaikhoan],['lstsanpham'=>$lstsanpham]);
+        return view('binhluan.index',['lstbinhluan'=>$lstbinhluan,'lsttaikhoan'=>$lsttaikhoan,'lstsanpham'=>$lstsanpham]);
     }
 
     /**

@@ -59,11 +59,11 @@
                         </td>
                         <td class="align-middle">
                             @foreach($lstsanpham as $sanPham)
-                            <span value="{{$sanPham->id}}">{{$sanPham->email}}</span>
+                            <span value="{{$sanPham->id}}">{{$sanPham->tensanpham}}</span>
                             @endforeach    
                         </td>
                         <td class="align-middle">
-                            <span>{{$binhLuan->noidung}}</span>
+                            <span class="noidung text-split">{{$binhLuan->noidung}}</span>
                         </td>
                         <td class="align-middle text-center text-md text-nowrap">
                         <a href="#">

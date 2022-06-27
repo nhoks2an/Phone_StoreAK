@@ -24,6 +24,7 @@ class BinhLuan extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
     public function sanpham()
     {
         return $this->belongsTo(SanPham::class);

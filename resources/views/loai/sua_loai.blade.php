@@ -66,6 +66,7 @@
                     <div class="form-group col-xl-6 col-sm-4">
                         <label class="d-block" for="id_list">Hãng:</label>
                         <select id="id_list" name="tenhang" data-level="0" data-type="san-pham" data-table="#_product_cat" data-child="id_cat" class="form-control select2 select-category select2-hidden-accessible" data-select2-id="id_list" tabindex="-1" aria-label="Default select example">
+                        <option value="0" data-select2-id="2">Chọn hãng</option>
                         @foreach($lsthang as $hang)
                             <option value="{{$hang->id}}">{{$hang->tenhang}}</option>
                             @endforeach 

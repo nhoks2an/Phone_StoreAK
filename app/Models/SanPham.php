@@ -13,7 +13,23 @@ class SanPham extends Model
     protected $table ="san_phams";
     protected $fillable = [
         'id',
-       'sorom',
+       'tensanpham',
+       'hinhanh',
+       'mota',
+       'giacu',
+       'giamoi',
+       'id_camera',
+       'id_rom',
+       'id_ram',
+       'id_manhinh',
+       'id_tinhnangdb',
+       'id_thietke',
+       'id_hieunangpin',
+       'id_mau',
+       'id_hedieuhanh',
+       'danhgia',
+       'soluong',
+       'id_loaisp',
         'trangthai',
     ];
     public function RAM()
@@ -58,6 +74,10 @@ class SanPham extends Model
         return $this->belongsTo(MauSac::class);
     }
 
+    public function binhluan()
+    {
+        return $this->hasMany('App\Models\BinhLuan', 'id_sp', 'id');
+    }
 
 
 
