@@ -32,7 +32,8 @@ class CreateSanPhamsTable extends Migration
             $table->integer('danhgia')->nullable(true);;
             $table->integer('soluong');
             $table->foreignId('id_loaisp');
-            $table->string('trangthai');
+            $table->boolean('noibat')->nullable(true);
+            $table->boolean('hienthi');
             $table->timestamps();
             $table->softDeletes();
         });

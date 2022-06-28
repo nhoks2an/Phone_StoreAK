@@ -54,7 +54,7 @@ class ROMController extends Controller
         $rOM = new ROM();
         $rOM->fill([
             'sorom'=>$request->input('sorom'),
-            'trangthai'=>'Hiển thị',
+            'hienthi'=>'1',
         ]);
         $rOM->save();
         return Redirect::route('ROM.index',['ROM'=>$rOM]);

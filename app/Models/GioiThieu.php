@@ -16,6 +16,6 @@ class GioiThieu extends Model
         'id',
        'tieude',
        'noidung',
-        'trangthai',
+        'hienthi',
     ];
 }

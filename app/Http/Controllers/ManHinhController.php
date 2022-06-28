@@ -54,7 +54,7 @@ class ManHinhController extends Controller
         $manhinh = new ManHinh();
         $manhinh->fill([
             'thongso'=>$request->input('thongso'),
-            'trangthai'=>'Hiển thị',
+            'hienthi'=>'1',
         ]);
         $manhinh->save();
         return Redirect::route('manhinh.index',['manhinh'=>$manhinh]);

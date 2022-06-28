@@ -57,7 +57,7 @@ class LoaiSanPhamController extends Controller
         $loaiSanPham->fill([
             'tenloaisp'=>$request->input('tenloaisp'),
             'id_hang'=>$request->input('tenhang'),
-            'trangthai'=>'Hiển thị',
+            'hienthi'=>'1',
         ]);
         $loaiSanPham->save();
         return Redirect::route('loaiSanPham.index',['loaiSanPham'=>$loaiSanPham]);
@@ -106,7 +106,7 @@ class LoaiSanPhamController extends Controller
         $loaiSanPham->fill([
             'tenloaisp'=>$request->input('tenloaisp'),
             'id_hang'=>$request->input('tenhang'),
-            'trangthai'=>"Hiển thị",
+            'hienthi'=>'1',
         ]);
         $loaiSanPham->save();
         return Redirect::route('loaiSanPham.index',['loaiSanPham'=>$loaiSanPham]);

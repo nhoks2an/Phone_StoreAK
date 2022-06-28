@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('sodienthoai');
             $table->string('diachi');
             $table->rememberToken();
-            $table->string('trangthai');
+            $table->boolean('hienthi');
             $table->timestamps();
             $table->softDeletes();
         });

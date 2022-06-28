@@ -18,6 +18,6 @@ class TinTuc extends Model
        'mota',
        'hinhanh',
        'noidung',
-        'trangthai',
+        'hienthi',
     ];
 }

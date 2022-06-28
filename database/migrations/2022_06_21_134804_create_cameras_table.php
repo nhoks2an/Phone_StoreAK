@@ -16,7 +16,7 @@ class CreateCamerasTable extends Migration
         Schema::create('cameras', function (Blueprint $table) {
             $table->id();
             $table->string('tencamera');
-            $table->string('trangthai');
+            $table->boolean('hienthi');
             $table->timestamps();
             $table->softDeletes();
         });

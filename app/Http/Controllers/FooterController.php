@@ -47,7 +47,7 @@ class FooterController extends Controller
         $footer->fill([
             'tieude'=>$request->input('tieude'),
             'noidung'=>$request->input('content'),
-            'trangthai'=>'Hiển thị',
+            'hienthi'=>'1',
         ]);
         $footer->save();
         return Redirect::route('footer.index');
@@ -87,7 +87,7 @@ class FooterController extends Controller
         $footer->fill([
             'tieude'=>$request->input('tieude'),
             'noidung'=>$request->input('content'),
-            'trangthai'=>'Hiển thị',
+            'hienthi'=>'1',
         ]);
         $footer->save();
         return Redirect::route('footer.index');

@@ -16,6 +16,6 @@ class Hang extends Model
         'id',
        'tenhang',
        'hinhanh',
-        'trangthai',
+        'hienthi',
     ];
 }

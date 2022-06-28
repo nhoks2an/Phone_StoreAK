@@ -16,7 +16,7 @@ class CreateRAMSTable extends Migration
         Schema::create('r_a_m_s', function (Blueprint $table) {
             $table->id();
             $table->integer('soram');
-            $table->string('trangthai');
+            $table->boolean('hienthi');
             $table->timestamps();
             $table->softDeletes();
         });

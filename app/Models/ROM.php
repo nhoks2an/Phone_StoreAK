@@ -15,6 +15,6 @@ class ROM extends Model
     protected $fillable = [
         'id',
        'sorom',
-        'trangthai',
+        'hienthi',
     ];
 }

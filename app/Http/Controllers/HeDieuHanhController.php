@@ -54,7 +54,7 @@ class HeDieuHanhController extends Controller
         $hedieuhanh = new HeDieuHanh();
         $hedieuhanh->fill([
             'tenhedieuhanh'=>$request->input('tenhedieuhanh'),
-            'trangthai'=>'Hiển thị',
+            'hienthi'=>'1',
         ]);
         $hedieuhanh->save();
         return Redirect::route('hedieuhanh.index',['hedieuhanh'=>$hedieuhanh]);

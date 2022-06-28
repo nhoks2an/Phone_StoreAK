@@ -16,6 +16,6 @@ class ChinhSach extends Model
         'id',
        'tieude',
        'noidung',
-        'trangthai',
+        'hienthi',
     ];
 }

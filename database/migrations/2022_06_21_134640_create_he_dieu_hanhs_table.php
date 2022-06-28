@@ -16,7 +16,7 @@ class CreateHeDieuHanhsTable extends Migration
         Schema::create('he_dieu_hanhs', function (Blueprint $table) {
             $table->id();
             $table->string('tenhedieuhanh');
-            $table->string('trangthai');
+            $table->boolean('hienthi');
             $table->timestamps();
             $table->softDeletes();
         });

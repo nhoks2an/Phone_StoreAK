@@ -18,7 +18,7 @@ class CreateThanhToansTable extends Migration
             $table->string('tenthanhtoan');
             $table->string('hinhanh');
             $table->string('lienket');
-            $table->string('trangthai');
+            $table->boolean('hienthi');
             $table->timestamps();
             $table->softDeletes();
         });

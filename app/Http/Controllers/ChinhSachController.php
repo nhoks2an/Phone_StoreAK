@@ -58,7 +58,7 @@ class ChinhSachController extends Controller
         $chinhSach->fill([
             'tieude'=>$request->input('tieude'),
             'noidung'=>$request->input('content'),
-            'trangthai'=>'Hiển thị',
+            'hienthi'=>'1',
         ]);
         $chinhSach->save();
         return Redirect::route('chinhSach.index',['chinhSach'=>$chinhSach]);
@@ -108,7 +108,7 @@ class ChinhSachController extends Controller
         $chinhSach->fill([
             'tieude'=>$request->input('tieude'),
             'noidung'=>$request->input('content'),
-            'trangthai'=>'Hiển thị',
+            'hienthi'=>'1',
         ]);
         $chinhSach->save();
         return Redirect::route('chinhSach.index',['chinhSach'=>$chinhSach]);

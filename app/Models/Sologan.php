@@ -15,6 +15,6 @@ class Sologan extends Model
     protected $fillable = [
         'id',
        'tieude',
-        'trangthai',
+        'hienthi',
     ];
 }

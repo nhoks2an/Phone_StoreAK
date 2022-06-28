@@ -54,7 +54,7 @@ class MauSacController extends Controller
         $mauSac = new MauSac();
         $mauSac->fill([
             'tenmau'=>$request->input('tenmau'),
-            'trangthai'=>'Hiển thị',
+            'hienthi'=>'1',
         ]);
         $mauSac->save();
         return Redirect::route('mausac.index',['mausac'=>$mauSac]);

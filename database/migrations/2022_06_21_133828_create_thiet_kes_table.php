@@ -16,7 +16,7 @@ class CreateThietKesTable extends Migration
         Schema::create('thiet_kes', function (Blueprint $table) {
             $table->id();
             $table->string('ten');
-            $table->string('trangthai');
+            $table->boolean('hienthi');
             $table->timestamps();
             $table->softDeletes();
         });

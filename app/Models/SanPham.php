@@ -30,7 +30,7 @@ class SanPham extends Model
        'danhgia',
        'soluong',
        'id_loaisp',
-        'trangthai',
+        'hienthi',
     ];
     public function RAM()
     {

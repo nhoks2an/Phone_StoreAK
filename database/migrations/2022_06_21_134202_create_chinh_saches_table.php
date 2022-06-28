@@ -17,7 +17,7 @@ class CreateChinhSachesTable extends Migration
             $table->id();
             $table->string('tieude');
             $table->mediumText('noidung')->nullable(true);
-            $table->string('trangthai');
+            $table->boolean('hienthi');
             $table->timestamps();
             $table->softDeletes();
         });

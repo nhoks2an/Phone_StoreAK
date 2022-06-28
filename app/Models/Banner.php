@@ -16,6 +16,6 @@ class Banner extends Model
         'id',
        'tieude',
        'noidung',
-        'trangthai',
+        'hienthi',
     ];
 }

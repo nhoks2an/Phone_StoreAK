@@ -18,7 +18,7 @@ class CreateDanhGiasTable extends Migration
             $table->foreignId('id_kh');
             $table->foreignId('id_sanpham');
             $table->integer('danhgia');
-            $table->string('trangthai');
+            $table->boolean('hienthi');
             $table->timestamps();
             $table->softDeletes();
         });

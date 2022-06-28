@@ -17,7 +17,7 @@ class LoaiSanPham extends Model
         'id',
        'tenloaisp',
        'id_hang',
-        'trangthai',
+        'hienthi',
     ];
 
     public function hang()

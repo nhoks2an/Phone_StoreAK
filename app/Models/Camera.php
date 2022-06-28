@@ -15,6 +15,6 @@ class Camera extends Model
     protected $fillable = [
         'id',
        'tencamera',
-        'trangthai',
+        'hienthi',
     ];
 }

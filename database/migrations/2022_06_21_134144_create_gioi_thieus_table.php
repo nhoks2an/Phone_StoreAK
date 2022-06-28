@@ -17,7 +17,7 @@ class CreateGioiThieusTable extends Migration
             $table->id();
             $table->string('tieude')->nullable(true);
             $table->mediumText('noidung')->nullable(true);
-            $table->string('trangthai');
+            $table->boolean('hienthi');
             $table->timestamps();
             $table->softDeletes();
         });

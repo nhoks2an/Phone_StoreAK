@@ -54,7 +54,7 @@ class HieuNangPinController extends Controller
         $hieunangpin = new HieuNangPin();
         $hieunangpin->fill([
             'tenhieunang'=>$request->input('tenhieunang'),
-            'trangthai'=>'Hiển thị',
+            'hienthi'=>'1',
         ]);
         $hieunangpin->save();
         return Redirect::route('hieunangpin.index',['hieunangpin'=>$hieunangpin]);

@@ -19,7 +19,7 @@ class CreateTinTucsTable extends Migration
             $table->string('hinhanh');
             $table->mediumText('mota');
             $table->mediumText('noidung')->nullable(true);
-            $table->string('trangthai');
+            $table->boolean('hienthi');
             $table->timestamps();
             $table->softDeletes();
         });

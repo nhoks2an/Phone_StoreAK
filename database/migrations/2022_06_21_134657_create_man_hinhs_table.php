@@ -17,7 +17,7 @@ class CreateManHinhsTable extends Migration
         Schema::create('man_hinhs', function (Blueprint $table) {
             $table->id();
             $table->string('thongso');
-            $table->string('trangthai');
+            $table->boolean('hienthi');
             $table->timestamps();
             $table->softDeletes();
         });

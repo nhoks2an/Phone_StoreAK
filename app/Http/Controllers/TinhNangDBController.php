@@ -54,7 +54,7 @@ class TinhNangDBController extends Controller
         $tinhnangdb = new TinhNangDB();
         $tinhnangdb->fill([
             'tentinhnang'=>$request->input('tentinhnang'),
-            'trangthai'=>'Hiển thị',
+            'hienthi'=>'1',
         ]);
         $tinhnangdb->save();
         return Redirect::route('tinhnangdb.index',['tinhnangdb'=>$tinhnangdb]);

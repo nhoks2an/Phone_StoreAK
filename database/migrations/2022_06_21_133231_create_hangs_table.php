@@ -17,7 +17,7 @@ class CreateHangsTable extends Migration
             $table->id();
             $table->string('tenhang');
             $table->string('hinhanh');
-            $table->string('trangthai');
+            $table->boolean('hienthi');
             $table->timestamps();
             $table->softDeletes();
         });

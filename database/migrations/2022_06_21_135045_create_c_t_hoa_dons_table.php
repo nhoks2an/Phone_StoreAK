@@ -19,7 +19,7 @@ class CreateCTHoaDonsTable extends Migration
             $table->foreignId('id_sanpham');
             $table->integer('soluong');
             $table->integer('thanhtien');
-            $table->string('trangthai');
+            $table->boolean('hienthi');
             $table->timestamps();
             $table->softDeletes();
         });

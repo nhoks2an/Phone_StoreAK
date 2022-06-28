@@ -16,6 +16,6 @@ class Footer extends Model
         'id',
        'tieude',
        'noidung',
-        'trangthai',
+        'hienthi',
     ];
 }

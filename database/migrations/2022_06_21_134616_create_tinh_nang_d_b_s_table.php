@@ -16,7 +16,7 @@ class CreateTinhNangDBSTable extends Migration
         Schema::create('tinh_nang_d_b_s', function (Blueprint $table) {
             $table->id();
             $table->string('tentinhnang');
-            $table->string('trangthai');
+            $table->boolean('hienthi');
             $table->timestamps();
             $table->softDeletes();
         });

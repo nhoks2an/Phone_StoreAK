@@ -16,7 +16,7 @@ class CreateROMSTable extends Migration
         Schema::create('r_o_m_s', function (Blueprint $table) {
             $table->id();
             $table->integer('sorom');
-            $table->string('trangthai');
+            $table->boolean('hienthi');
             $table->timestamps();
             $table->softDeletes();
         });

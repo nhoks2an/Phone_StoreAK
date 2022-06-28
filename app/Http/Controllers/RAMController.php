@@ -54,7 +54,7 @@ class RAMController extends Controller
         $rAM = new RAM();
         $rAM->fill([
             'soram'=>$request->input('soram'),
-            'trangthai'=>'Hiển thị',
+            'hienthi'=>'1',
         ]);
         $rAM->save();
         return Redirect::route('RAM.index',['RAM'=>$rAM]);

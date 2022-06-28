@@ -15,6 +15,6 @@ class MauSac extends Model
     protected $fillable = [
         'id',
        'tenmau',
-        'trangthai',
+        'hienthi',
     ];
 }

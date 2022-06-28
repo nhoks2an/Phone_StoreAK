@@ -54,7 +54,7 @@ class CameraController extends Controller
         $camera = new Camera;
         $camera->fill([
             'tencamera'=>$request->input('tencamera'),
-            'trangthai'=>'Hiển thị',
+            'hienthi'=>'1',
         ]);
         $camera->save();
         return Redirect::route('camera.index',['camera'=>$camera]);//

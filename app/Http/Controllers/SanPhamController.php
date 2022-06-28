@@ -114,7 +114,7 @@ class SanPhamController extends Controller
             'id_danhgia'=>'5',
             'soluong'=>$request->input('soluong'),
             'id_loaisp'=>$request->input('id_loai'),
-            'trangthai'=>'Hiển thị',
+            'hienthi'=>'1',
         ]);
         $sanPham->save();
         if($request->hasFile('hinhanh')){
@@ -207,7 +207,7 @@ class SanPhamController extends Controller
             'id_danhgia'=>'5',
             'soluong'=>$request->input('soluong'),
             'id_loaisp'=>$request->input('id_loai'),
-            'trangthai'=>'Hiển thị',
+            'hienthi'=>'1',
         ]);
         $sanPham->save();
         return Redirect::route('sanPham.show',['sanPham'=>$sanPham]);

@@ -15,6 +15,6 @@ class TinhNangDB extends Model
     protected $fillable = [
         'id',
        'tentinhnang',
-        'trangthai',
+        'hienthi',
     ];
 }

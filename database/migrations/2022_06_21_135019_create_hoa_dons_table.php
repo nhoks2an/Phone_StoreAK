@@ -23,7 +23,7 @@ class CreateHoaDonsTable extends Migration
             $table->foreignId('id_thanhpho');
             $table->foreignId('id_quan');
             $table->foreignId('id_phuong');
-            $table->string('trangthai');
+            $table->foreignId('trangthai');
             $table->timestamps();
             $table->softDeletes();
         });

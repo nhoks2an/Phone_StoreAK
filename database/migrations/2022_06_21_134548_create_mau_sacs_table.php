@@ -16,7 +16,7 @@ class CreateMauSacsTable extends Migration
         Schema::create('mau_sacs', function (Blueprint $table) {
             $table->id();
             $table->string('tenmau');
-            $table->string('trangthai');
+            $table->boolean('hienthi');
             $table->timestamps();
             $table->softDeletes();
         });

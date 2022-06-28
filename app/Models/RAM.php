@@ -15,6 +15,6 @@ class RAM extends Model
     protected $fillable = [
         'id',
        'soram',
-        'trangthai',
+        'hienthi',
     ];
 }

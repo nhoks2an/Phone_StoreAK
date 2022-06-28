@@ -43,30 +43,33 @@
                                         aria-labelledby="tabs-lang">
                                         <div class="form-group">
                                             <label for="namevi">Tiêu đề (vi):</label>
-                                            <input type="text" class="form-control for-seo text-sm" name="tieude"id="namevi" placeholder="Tiêu đề (vi)" value="{{$tinTuc->tieude}}" >
+                                            <input type="text" class="form-control for-seo text-sm" name="tieude"
+                                                id="namevi" placeholder="Tiêu đề (vi)" value="{{$tinTuc->tieude}}">
                                             @if($errors->has('tieude'))
                                             <div class="alert alert-danger" style="margin-top:10px;">
-                                            {{$errors->first('tieude')}}
+                                                {{$errors->first('tieude')}}
                                             </div>
-                                             @endif
+                                            @endif
                                         </div>
                                         <div class="form-group">
                                             <label for="descvi">Mô tả:</label>
-                                            <textarea class="form-control for-seo text-sm " name="mota" id="descvi" rows="5" placeholder="Mô tả (vi)">{{$tinTuc->mota}}</textarea>
-                                                @if($errors->has('mota'))
-                                                <div class="alert alert-danger" style="margin-top:10px;">
+                                            <textarea class="form-control for-seo text-sm " name="mota" id="descvi"
+                                                rows="5" placeholder="Mô tả (vi)">{{$tinTuc->mota}}</textarea>
+                                            @if($errors->has('mota'))
+                                            <div class="alert alert-danger" style="margin-top:10px;">
                                                 {{$errors->first('mota')}}
-                                                </div>
-                                                @endif
+                                            </div>
+                                            @endif
                                         </div>
                                         <div class="form-group">
                                             <label for="descvi">Nội dung:</label>
-                                            <textarea class="form-control for-seo text-sm " name="content" id="descvi"rows="5" placeholder="Mô tả (vi)">{{$tinTuc->noidung}}</textarea>
-                                                @if($errors->has('content'))
+                                            <textarea class="form-control for-seo text-sm " name="content" id="descvi"
+                                                rows="5" placeholder="Mô tả (vi)">{{$tinTuc->noidung}}</textarea>
+                                            @if($errors->has('content'))
                                             <div class="alert alert-danger" style="margin-top:10px;">
-                                            {{$errors->first('content')}}
+                                                {{$errors->first('content')}}
                                             </div>
-                                             @endif
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -120,25 +123,17 @@
             <div class="card-body">
                 <div class="form-group">
                     <div class="form-group d-inline-block mb-2 mr-2">
-                        <label for="noibat-checkbox" class="d-inline-block align-middle mb-0 mr-2">Nổi bật:</label>
-                        <div class="custom-control custom-checkbox d-inline-block align-middle">
-                            <input type="checkbox" class="custom-control-input noibat-checkbox" name="status[noibat]"
-                                id="noibat-checkbox" checked="" value="noibat">
-                            <label for="noibat-checkbox" class="custom-control-label"></label>
-                        </div>
-                    </div>
-                    <div class="form-group d-inline-block mb-2 mr-2">
                         <label for="hienthi-checkbox" class="d-inline-block align-middle mb-0 mr-2">Hiển thị:</label>
                         <div class="custom-control custom-checkbox d-inline-block align-middle">
-                            <input type="checkbox" class="custom-control-input hienthi-checkbox" name="status[hienthi]"
-                                id="hienthi-checkbox" checked="" value="hienthi">
+                            @if($tinTuc->hienthi)
+                            <input type="checkbox" class="custom-control-input hienthi-checkbox" name="hienthi"
+                                id="hienthi-checkbox" checked="" value="">
+                            @else
+                            <input type="checkbox" class="custom-control-input hienthi-checkbox" name="hienthi"
+                                id="hienthi-checkbox" value="">
+                            @endif
                             <label for="hienthi-checkbox" class="custom-control-label"></label>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="numb" class="d-inline-block align-middle mb-0 mr-2">Số thứ tự:</label>
-                        <input type="number" class="form-control form-control-mini d-inline-block align-middle text-sm"
-                            min="0" name="data[numb]" id="numb" placeholder="Số thứ tự" value="1">
                     </div>
                 </div>
             </div>

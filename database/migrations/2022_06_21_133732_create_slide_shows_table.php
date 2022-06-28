@@ -17,7 +17,7 @@ class CreateSlideShowsTable extends Migration
             $table->id();
             $table->string('hinhanh');
             $table->string('lienket')->nullable(true);
-            $table->string('trangthai');
+            $table->boolean('hienthi');
             $table->timestamps();
             $table->softDeletes();
         });

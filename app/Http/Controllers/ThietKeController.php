@@ -54,7 +54,7 @@ class ThietKeController extends Controller
         $thietke= new ThietKe();
         $thietke->fill([
             'ten'=>$request->input('ten'),
-            'trangthai'=>'Hiển thị',
+            'hienthi'=>'1',
         ]);
         $thietke->save();
         return Redirect::route('thietke.index',['thietke'=>$thietke]);

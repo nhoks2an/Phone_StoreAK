@@ -70,7 +70,7 @@ class TinTucController extends Controller
             'hinhanh'=>'',
             'mota'=>$request->input('mota'),
             'noidung'=>$request->input('content'),
-            'trangthai'=>'Hiển thị',
+            'hienthi'=>'1',
         ]);
         if($request->hasFile('hinhanh')){
             $tinTuc->hinhanh = $request->file('hinhanh')->store('images/tintuc/'.$tinTuc->id,'public');
@@ -116,10 +116,10 @@ class TinTucController extends Controller
             'tieude'=>$request->input('tieude'),
             'mota'=>$request->input('mota'),
             'noidung'=>$request->input('content'),
-            'trangthai'=>'Hiển thị',
+            'hienthi'=>$request->has('hienthi'),
         ]);
         $tinTuc->save();
-        return Redirect::route('tintuc.index',['tinTuc'=>$tinTuc]);
+        return Redirect::route('tinTuc.index',['tinTuc'=>$tinTuc]);
     }
 
     /**

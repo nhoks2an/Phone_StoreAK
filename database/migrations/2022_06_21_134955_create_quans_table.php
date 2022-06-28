@@ -17,7 +17,7 @@ class CreateQuansTable extends Migration
             $table->id();
             $table->string('tenquan');
             $table->foreignId('id_thanhpho');
-            $table->string('trangthai');
+            $table->boolean('hienthi');
             $table->timestamps();
             $table->softDeletes();
         });

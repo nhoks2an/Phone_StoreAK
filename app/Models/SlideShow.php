@@ -16,6 +16,6 @@ class SlideShow extends Model
         'id',
        'hinhanh',
        'lienket',
-        'trangthai',
+        'hienthi',
     ];
 }

@@ -17,7 +17,7 @@ class CreateLoaiSanPhamsTable extends Migration
             $table->id();
             $table->string('tenloaisp');
             $table->foreignId('id_hang');
-            $table->string('trangthai');
+            $table->boolean('hienthi');
             $table->timestamps();
             $table->softDeletes();
         });

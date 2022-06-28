@@ -68,7 +68,7 @@ class HangController extends Controller
         $hang->fill([
             'tenhang'=>$request->input('tenhang'),
             'hinhanh'=>'',
-            'trangthai'=>'Hiển thị',
+            'hienthi'=>'1',
         ]);
         $hang->save();
         if($request->hasFile('hinhanh')){
@@ -126,8 +126,7 @@ class HangController extends Controller
         }
         $hang->fill([
             'tenhang'=>$request->input('tenhang'),
-
-            'trangthai'=>'Hiển thị',
+            'hienthi'=>'1',
         ]);
         $hang->save();
         return Redirect::route('hang.index',['hang'=>$hang]);

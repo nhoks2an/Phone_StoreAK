@@ -18,7 +18,7 @@ class BinhLuan extends Model
        'id_sp',
        'id_kh',
        'id_rep',
-        'trangthai',
+        'hienthi',
     ];
     public function taikhoan()
     {

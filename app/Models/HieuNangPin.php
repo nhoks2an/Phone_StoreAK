@@ -15,6 +15,6 @@ class HieuNangPin extends Model
     protected $fillable = [
         'id',
        'tenhieunang',
-        'trangthai',
+        'hienthi',
     ];
 }

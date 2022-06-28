@@ -17,7 +17,7 @@ class CreateHinhAnhsTable extends Migration
             $table->id();
             $table->foreignId('id_sanpham');
             $table->string('hinhanh');
-            $table->string('trangthai');
+            $table->boolean('hienthi');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -16,6 +16,6 @@ class HeDieuHanh extends Model
     protected $fillable = [
         'id',
        'tenhedieuhanh',
-        'trangthai',
+        'hienthi',
     ];
 }

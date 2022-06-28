@@ -66,7 +66,7 @@ class SlideShowController extends Controller
         $slideShow->fill([
             'hinhanh'=>'',
             'lienket'=>$request->input('link'),
-            'trangthai'=>'Hiển thị',
+            'hienthi'=>'1',
         ]);
         if($request->hasFile('hinhanh')){
             $slideShow->hinhanh = $request->file('hinhanh')->store('images/slide/'.$slideShow->id,'public');
@@ -122,7 +122,7 @@ class SlideShowController extends Controller
         }
         $slideShow->fill([
             'lienket'=>$request->input('link'),
-            'trangthai'=>'Hiển thị',
+            'hienthi'=>'1',
         ]);
 
         $slideShow->save();

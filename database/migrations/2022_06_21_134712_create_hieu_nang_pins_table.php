@@ -16,7 +16,7 @@ class CreateHieuNangPinsTable extends Migration
         Schema::create('hieu_nang_pins', function (Blueprint $table) {
             $table->id();
             $table->string('tenhieunang');
-            $table->string('trangthai');
+            $table->boolean('hienthi');
             $table->timestamps();
             $table->softDeletes();
         });

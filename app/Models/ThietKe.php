@@ -16,7 +16,7 @@ class ThietKe extends Model
     protected $fillable = [
         'id',
        'ten',
-        'trangthai',
+        'hienthi',
     ];
 }
 

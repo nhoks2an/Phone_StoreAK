@@ -15,6 +15,6 @@ class ManHinh extends Model
     protected $fillable = [
         'id',
        'thongso',
-        'trangthai',
+        'hienthi',
     ];
 }
