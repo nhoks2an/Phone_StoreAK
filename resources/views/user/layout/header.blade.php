@@ -6,10 +6,9 @@
             </div>
             <div class="btn-ac">
                 <ul>
-                    <!-- <li><i class="fas fa-shopping-cart"></i><a href="{{route('giohang')}}">Giỏ hàng</a></li>
-					<li><i class="fas fa-user"></i><a href="dangnhap">Đăng nhập</a></li> -->
-                    <li><i class="fas fa-user"></i><a href="">Thông tin cá nhân</a></li>
-                    <li><i class="fas fa-user"></i><a href="">Đăng xuất</a></li>
+
+                    <!-- <li><i class="fas fa-user"></i><a href="">Thông tin cá nhân</a></li>
+                    <li><i class="fas fa-user"></i><a href="">Đăng xuất</a></li> -->
                 </ul>
             </div>
         </div>
@@ -43,10 +42,11 @@
                 </div>
                 <ul>
                     <li><i class="fas fa-home"></i><a href="/">Trang chủ</a></li>
-                    <li><i class="fas fa-mobile"></i><a href="sanpham">Sản phẩm</a></li>
                     <li><i class="fas fa-newspaper"></i><a href="sanpham">Tin tức</a></li>
                     <li><i class="fas fa-address-card"></i><a href="">Giới thiệu</a></li>
                     <li><i class="fas fa-headset"></i><a href="lienhe">Liên hệ</a></li>
+                    <li><i class="fas fa-shopping-cart"></i><a href="{{route('giohang')}}">Giỏ hàng</a></li>
+                    <li><i class="fas fa-user"></i><a href="dangnhap">Đăng nhập</a></li>
                 </ul>
             </div>
         </div>

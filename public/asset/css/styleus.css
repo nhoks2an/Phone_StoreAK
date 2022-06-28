@@ -33,16 +33,15 @@ a{color: #000;text-decoration-line: none!important;}
 .btn-ac ul li {padding-right: 50px;}
 .btn-ac ul li:last-child{padding-right: 0px;}
 .btn-ac{width: 45%;}
-.btn-ac ul li I{padding-right: 5px;color: #fff;}
 .sanpham{padding-bottom: 30px;}
 .box-sanpham .center-layout:last-child{padding-bottom: 20px;}
 /*menu*/
 .menu{width: calc(100% - 130px);margin: auto 0;display: flex;align-items: center;justify-items: center;}
 .menu ul{display: flex;justify-content: space-between;padding-left:150px;margin: auto!important;width: 840px;}
 .menu ul li,.btn-ac ul li{list-style-type: none;}
-.menu ul li a,.btn-ac ul li a{text-decoration-line: none;color: #fff;font-size: 17px;text-transform: uppercase;}
+.menu ul li a,.btn-ac ul li a{text-decoration-line: none;color: #000;font-size: 13px;text-transform: uppercase;}
 .menu ul li a:hover,.btn-ac ul li a:hover{color: rgb(9, 242, 145);}
-.menu ul li i{margin-right: 5px;color: #fff;}
+.menu ul li i{margin-right: 5px;color: #000;}
 .item-hang img{width: 30px!important;margin: auto;}
 .item-hang{width: inherit!important;color: #fff;display: flex;flex-direction: column;align-items: center;}
 .list-hang > ul {list-style-type: none;padding-top: 5px;text-align: left;padding-top: 30px;padding-left: 83px;}
@@ -126,7 +125,7 @@ ul .tt-dt{font-size: 20px;color: #fff;}
 .footer .thongtin{color: #fff;margin: 20px 0;line-height: 25px;}
 .footer .design{color: #fff;text-align: center;border-top: 1px solid #fff;padding: 10px 0;}
 .title-tt{font-size: 25px;margin-bottom: 10px;}
-.thongtin .diachi,.thongtin .tel,.thongtin .mail{font-size: 17px;}
+.thongtin .diachi p{font-size: 17px;color: #fff;margin-bottom: 0px;}
 .form-row,.contact-input{margin-bottom: 10px;}
 /*login*/
 
@@ -632,7 +631,7 @@ iframe {
 .right-pro-detail{padding-left: 200px!important;}
 .left-pro-detail{margin-left: 83px!important;}
 .list-hang li a{border-bottom: 1px dashed;}
-.chinhsach,.chinhsach a{color: #fff;}
+.chinhsach,.chinhsach a{color: #fff;font-size: 17px;}
 .chinhsach{margin: 20px 0;}
 .custom-select{margin-top: 30px;margin-right: 10px;}
 .custom-select {

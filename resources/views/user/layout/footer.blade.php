@@ -1,19 +1,28 @@
+<?php 
+$conn = mysqli_connect ('localhost', 'root', '', 'store_phone');
+mysqli_set_charset($conn, 'UTF8'); 
+$sql = 'SELECT * FROM chinh_saches'; 
+$result = $conn->query($sql);
+$cs = [];
+while($row = $result->fetch_assoc()) {
+	$cs[]=$row;
+}
+mysqli_close($conn);
+?>
 <div class="footer">
-	<div class="center-layout">
-		<div class="top-footer flex">
-			<div class="thongtin">
-				<div class="title-tt">THÔNG TIN</div>
-				<div class="diachi">Địa chỉ: 65 Huỳnh Thúc Kháng, P.Bến Nghé, Q.1, Tp.HCM</div>
-				<div class="tel">Phone: 0339994239 - 0565423542</div>
-				<div class="mail">Email:0306191001@caothang.edu.vn - 306191034@caothang.edu.vn</div>
-			</div>
-			<div class="chinhsach">
-			<div class="title-tt">CHÍNH SÁCH</div>
-				<a href="">Chính sách bán hàng</a> <br>
-				<a href="">Chính sách thanh toán</a> <br>
-				<a href="">Chính sách hỗ trọ khách hàng</a>
-			</div>
-		</div>
-	</div>
-	<div class="design">Design by AK Team</div>
+    <div class="center-layout">
+        <div class="top-footer flex">
+            <div class="thongtin">
+                <div class="title-tt">THÔNG TIN</div>
+                <div class="diachi">@include('user.source.footer')</div>
+            </div>
+            <div class="chinhsach">
+                <div class="title-tt">CHÍNH SÁCH</div>
+                @foreach($cs as $item)
+                <a href=""><?php echo $item['tieude'];?></a> <br>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <div class="design">Design by AK Team</div>
 </div>
