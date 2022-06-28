@@ -3,7 +3,7 @@
     @parent
     <form method="post" action="{{route('hieunangpin.store')}}" enctype="multipart/form-data">
     @csrf
-<div class="bt
+
 <div class="btn-themmoi">
     <button class="btn btn-sm bg-gradient-primary submit-check" type="submit">
         <i class="far fa-save mr-2"></i>

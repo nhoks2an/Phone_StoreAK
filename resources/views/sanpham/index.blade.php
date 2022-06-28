@@ -59,24 +59,61 @@
                         </td>
                         
                         <td class="align-middle text-center text-md text-nowrap">
-                        <form method="post" action="{{route('sanPham.destroy',$sanPham->id)}}">
-                        @csrf
-                        @method('DELETE')
+                     
                              <a href="{{route('sanPham.show',['sanPham'=>$sanPham])}}">
                                 <i class="fas fa-edit"></i>
                             </a> 
-                            <button  type="submit" class="text-danger "style="border: none;background: none;" >
-                                <i class="color fas fa-trash-alt"></i>
-                            </button>
-                        </form> 
+                            <button  type="submit" class="btnxoa text-danger "style="border: none;background: none;" value="{{$sanPham->id}}">
+                                    <i class="color fas fa-trash-alt"></i>
+                                </button>
+                       
                         </td>
                     </tr>
                 </tbody>
                 @endforeach
             </table>
+            @foreach($lstsanpham as $sanPham)
+               <!-- modal -->
+            <div class="modal fade" id="SanPhamModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>  
+                        <form method="post" action="{{route('sanPham.destroy',$sanPham->id)}}">
+                        @csrf
+                        @method('DELETE')
+                            <div class="modal-body">
+                                Bạn có chắc chắn muốn xóa !
+                            </div>
+                            <input type="hidden"  name="tensanpham" id="tensanpham">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+                                <button type="submit" class="btn btn-primary">Xác nhận</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            @endforeach
         </div>
    </div>
 </div>
+@section('scripts')
+<script>
+	$(document).on('click', '.btnxoa', function() {
+        $('#SanPhamModal').modal({
+            show: true
+        });
+        var sanpham_id = $(this).val();
+        $('#tensanpham').val(sanpham_id);
+        
+	});
+</script>
+@endsection
 @section('Them')
 @endsection
 @endsection

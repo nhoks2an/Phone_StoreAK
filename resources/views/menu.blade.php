@@ -103,7 +103,7 @@
             <i class="fas fas fa-bookmark"></i>
             <span>Quản lý trang tĩnh</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" >
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{route('sologan.index')}}"> <i class="far fa-caret-square-right"></i>
                     Slogan</a>
@@ -120,9 +120,9 @@
         <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo1" aria-expanded="false"
             aria-controls="collapseTwo1">
             <i class="fas fas fa-photo-video"></i>
-            <span>Quản lý Video- Hình ảnh</span>
+            <span>Quản lý Hình ảnh</span>
         </a>
-        <div id="collapseTwo1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
+        <div id="collapseTwo1" class="collapse" aria-labelledby="headingTwo1" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{route('slideShow.index')}}"> <i class="far fa-caret-square-right"></i>
                     SlideShow</a>
@@ -130,8 +130,7 @@
         </div>
     </li>
     <hr class="sidebar-divider my-0">
-    <li
-        class="nav-item {{(request()->is('tinTuc')) ? 'active' : '' }} {{(request()->is('chinhSach')) ? 'active' : '' }}">
+    <li class="nav-item {{(request()->is('tinTuc')) ? 'active' : '' }} {{(request()->is('chinhSach')) ? 'active' : '' }}">
         <a class="nav-link collapsed" data-toggle="collapse" data-target="#tintuc" aria-expanded="false"
             aria-controls="tintuc">
             <i class="fas fas fa-photo-video"></i>
@@ -139,7 +138,7 @@
         </a>
         <div id="tintuc" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('tinTuc.index')}}"> <i class="far fa-caret-square-right"></i> Tin
+                <a class="collapse-item " href="{{route('tinTuc.index')}}"> <i class="far fa-caret-square-right"></i> Tin
                     tức</a>
                 <a class="collapse-item" href="{{route('chinhSach.index')}}"> <i class="far fa-caret-square-right"></i>
                     Chính sách</a>
