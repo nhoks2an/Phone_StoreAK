@@ -18,5 +18,13 @@ class ThietKe extends Model
        'ten',
         'hienthi',
     ];
+
+    public function scopeSearch($query){
+        if($key = request()->key)
+            {
+                $query = $query->where('ten','like','%'.$key.'%');
+            }
+        return $query;           
+    }
 }
 

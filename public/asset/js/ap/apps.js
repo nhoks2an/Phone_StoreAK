@@ -1144,7 +1144,7 @@ $(document).ready(function(){
 	}
 
 	/* Login */
-	if(LOGIN_PAGE)
+	/*if(LOGIN_PAGE)
 	{
 		$("#username, #password").keypress(function(event){
 			if(event.keyCode == 13 || event.which == 13) login();
@@ -1171,8 +1171,8 @@ $(document).ready(function(){
 			}
 		});
 	}
-
-	/* Permission */
+*/
+	/* Permission
 	if(ADD_OR_EDIT_PERMISSIONS)
 	{
 		loadPermissions();
@@ -1193,7 +1193,7 @@ $(document).ready(function(){
 		    loadPermissions();
 		});
 	}
-
+ */
 	/* Menu */
 	if($(".sidebar").length)
 	{
@@ -1239,7 +1239,7 @@ $(document).ready(function(){
 		}
 	}
 
-	/* Import excell */
+	/* Import excell
 	if(IMPORT_IMAGE_EXCELL && $('.copy-excel').length)
 	{
 		$('.copy-excel').click(function(){
@@ -1259,11 +1259,11 @@ $(document).ready(function(){
 			}
 		});
 	}
-
-	/* Order */
+ */
+	/* Order 
 	if(ORDER_ADVANCED_SEARCH)
 	{
-		/* Date range picker */
+		/* Date range picker
 		$('#order_date').daterangepicker({
 			callback: this.render,
 			autoUpdateInput: false,
@@ -1282,8 +1282,8 @@ $(document).ready(function(){
 		$('#order_date').on('cancel.daterangepicker', function(ev, picker) {
 			$(this).val('');
 		});
-
-		/* rangeSlider */
+ */
+		/* rangeSlider 
 		$('#range_price').ionRangeSlider({
 			skin: "flat",
 			min     : ORDER_MIN_TOTAL,
@@ -1298,7 +1298,7 @@ $(document).ready(function(){
             hasGrid : true
         });
 	}
-
+*/
 	/* Product */
 	if($(".regular_price").length && $(".sale_price").length)
 	{
@@ -1883,13 +1883,13 @@ $(document).ready(function(){
 		});
 	}
 
-	/* Sort filer */
+	/* Sort filer 
 	if(ACTIVE_GALLERY)
 	{
 		createSortFiler();
 	}
 
-	/* Check all filer */
+	/* Check all filer
 	$('body').on('click','.check-all-filer', function(){
 		var parentFiler = $(".my-jFiler-items .jFiler-items-list");
 		var input = parentFiler.find('input.filer-checkbox');
@@ -1924,7 +1924,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	/* Check filer */
+	/* Check filer
 	$('body').on('click','.filer-checkbox',function(){
 		var input = $(".my-jFiler-items .jFiler-items-list").find('input.filer-checkbox:checked');
 
@@ -1932,7 +1932,7 @@ $(document).ready(function(){
 		else $(".sort-filer").attr('disabled',false);
 	});
 
-	/* Sort filer */
+	/* Sort filer 
 	$('body').on('click','.sort-filer', function(){
 		var jFilerItems = $("#jFilerSortable").find('.my-jFiler-item');
 
@@ -1959,8 +1959,8 @@ $(document).ready(function(){
 			});
 		}
 	});
-
-	/* Delete filer */
+ */
+	/* Delete filer
 	$("body").on("click",".my-jFiler-item-trash",function(){
 		var id = $(this).data("id");
 		var folder = $(this).data("folder");
@@ -1974,11 +1974,11 @@ $(document).ready(function(){
 		confirmDialog("delete-all-filer","Bạn có chắc muốn xóa các hình ảnh đã chọn ?",folder);
     });
 
-    /* Hash upload multi filer */
+    /* Hash upload multi filer 
 	$("form.validation-form").append('<input type="hidden" name="hash" value="'+HASH+'" />');
 	$("#filer-gallery").attr({'data-params':BASE64_QUERY_STRING,'data-hash':HASH});
 
-    /* Change info filer */
+    /* Change info filer 
     $('body').on('change','.my-jFiler-item-info', function(){
 		var id = $(this).data("id");
 		var info = $(this).data("info");

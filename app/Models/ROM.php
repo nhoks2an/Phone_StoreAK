@@ -17,4 +17,11 @@ class ROM extends Model
        'sorom',
         'hienthi',
     ];
+    public function scopeSearch($query){
+        if($key = request()->key)
+            {
+                $query = $query->where('sorom','like','%'.$key.'%');
+            }
+        return $query;           
+    }
 }

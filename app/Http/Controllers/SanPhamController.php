@@ -37,7 +37,7 @@ class SanPhamController extends Controller
      */
     public function index()
     {
-        $lstsanpham = SanPham::all();
+        $lstsanpham = SanPham::orderBy('created_at','DESC')->search()->paginate(10);
         foreach($lstsanpham as $sanPham)
         {
             $this->fixImage($sanPham);

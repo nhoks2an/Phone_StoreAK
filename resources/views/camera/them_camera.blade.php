@@ -41,7 +41,7 @@
                             <div class="tab-pane fade show active" id="tabs-lang-vi" role="tabpanel" aria-labelledby="tabs-lang">
                                 <div class="form-group">
                                     <label for="namevi">Camera:</label>
-                                    <input type="text" class="form-control for-seo text-sm" name="tencamera" placeholder="Camera" >
+                                    <input type="text" class="form-control for-seo text-sm" name="tencamera" placeholder="Camera">
                                     @if($errors->has('tencamera'))
                                         <div class="alert alert-danger" style="margin-top:10px;">
                                             {{$errors->first('tencamera')}}

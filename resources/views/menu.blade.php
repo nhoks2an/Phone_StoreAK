@@ -142,7 +142,6 @@
                     tức</a>
                 <a class="collapse-item" href="{{route('chinhSach.index')}}"> <i class="far fa-caret-square-right"></i>
                     Chính sách</a>
-
             </div>
         </div>
     </li>

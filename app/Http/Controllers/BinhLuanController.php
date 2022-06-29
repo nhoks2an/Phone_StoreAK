@@ -19,7 +19,7 @@ class BinhLuanController extends Controller
      */
     public function index()
     {
-        $lstbinhluan = BinhLuan::all();
+        $lstbinhluan = BinhLuan::orderBy('created_at','DESC')->paginate(10);
         $lsttaikhoan = User::all();
         $lstsanpham = SanPham::all();
         foreach($lstbinhluan as $binhLuan){

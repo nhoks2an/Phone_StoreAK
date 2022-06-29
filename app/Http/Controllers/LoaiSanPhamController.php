@@ -19,7 +19,7 @@ class LoaiSanPhamController extends Controller
      */
     public function index()
     {
-        $lstloai = LoaiSanPham::all();
+        $lstloai = LoaiSanPham::orderBy('created_at','DESC')->search()->paginate(1);
         foreach($lstloai as $loaiSanPham){
          
         }
@@ -47,10 +47,14 @@ class LoaiSanPhamController extends Controller
     {
         $validatedData = $request->validate(
             [
-                'tenloaisp' => 'required',
+                'tenloaisp' => 'required|unique:loai_san_phams,tenloaisp',
+             
+
             ],
             [
                 'tenloaisp.required' => 'Tên Loại Sản Phẩm Không Được Bỏ Trống',
+                'tenloaisp.unique' => 'Tên Loại Sản Phẩm Đã Tồn Tại',
+               
             ]
         );
         $loaiSanPham= new LoaiSanPham();

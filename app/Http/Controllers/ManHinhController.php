@@ -18,7 +18,7 @@ class ManHinhController extends Controller
      */
     public function index()
     {
-        $lstmanhinh = ManHinh::all();
+        $lstmanhinh = ManHinh::orderBy('created_at','DESC')->search()->paginate(1);
         foreach($lstmanhinh as $manhinh){
 
         }
@@ -45,10 +45,11 @@ class ManHinhController extends Controller
     {
         $validatedData = $request->validate(
             [
-                'thongso' => 'required',
+                'thongso' => 'required |unique:man_hinhs,thongso',
             ],
             [
                 'thongso.required' => 'Thống Số Màn Hình Không Được Bỏ Trống',
+                'thongso.unique' => 'Thống Số Màn Hình Hành Đã Tồn Tại',
             ]
         );
         $manhinh = new ManHinh();

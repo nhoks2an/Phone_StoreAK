@@ -18,13 +18,9 @@ class RAMController extends Controller
      */
     public function index()
     {
-        $lstram = RAM::all();
-        foreach($lstram as $rAM){
-         
-        }
+        $lstram = RAM::orderBy('created_at','DESC')->search()->paginate(10);
         return view('ram.index',['lstram'=>$lstram]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -45,10 +41,11 @@ class RAMController extends Controller
     {
         $validatedData = $request->validate(
             [
-                'soram' => 'required',
+                'soram' => 'required |unique:r_a_m_s,soram',
             ],
             [
                 'soram.required' => 'Số RAM Không Được Bỏ Trống',
+                'soram.unique' => 'Số RAM Đã Tồn Tại',
             ]
         );
         $rAM = new RAM();
@@ -93,7 +90,6 @@ class RAMController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -105,4 +101,7 @@ class RAMController extends Controller
         RAM::find($id)->delete();
         return Redirect::route('RAM.index');
     }
+
+
+
 }

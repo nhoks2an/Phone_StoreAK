@@ -18,7 +18,7 @@ class TinhNangDBController extends Controller
      */
     public function index()
     {
-        $lsttinhnangdb = TinhNangDB::all();
+        $lsttinhnangdb = TinhNangDB::orderBy('created_at','DESC')->search()->paginate(1);
         foreach( $lsttinhnangdb as $tinhnangdb){
 
         }
@@ -45,10 +45,11 @@ class TinhNangDBController extends Controller
     {
         $validatedData = $request->validate(
             [
-                'tentinhnang' => 'required',
+                'tentinhnang' => 'required |unique:tinh_nang_d_b_s,tentinhnang',
             ],
             [
                 'tentinhnang.required' => 'Tên Tính Năng Không Được Bỏ Trống',
+                'tentinhnang.unique' => 'Tên Tính Năng Đã Tồn Tại',
             ]
         );
         $tinhnangdb = new TinhNangDB();

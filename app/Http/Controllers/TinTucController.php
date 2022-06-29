@@ -25,7 +25,7 @@ class TinTucController extends Controller
      */
     public function index()
     {
-        $lsttt = TinTuc::all();
+        $lsttt = TinTuc::orderBy('created_at','DESC')->search()->paginate(1);
         foreach($lsttt as $tt){
             $this->fixImage($tt);
         }
@@ -52,13 +52,14 @@ class TinTucController extends Controller
     {
         $validatedData = $request->validate(
             [
-                'tieude' => 'required',
+                'tieude' => 'required |unique:tin_tucs,tieude',
                 'hinhanh' => 'required',
                 'mota' => 'required',
                 'content' => 'required',
             ],
             [
                 'tieude.required' => 'Tiêu Đề Không Được Bỏ Trống',
+                'tieude.unique' => 'Tiêu Đề Đã Tồn Tại',
                 'hinhanh.required' => 'Hình Ảnh Không Được Bỏ Trống',
                 'mota.required' => 'Mô Tả Không Được Bỏ Trống',
                 'content.required' => 'Nội Dung Không Được Bỏ Trống',

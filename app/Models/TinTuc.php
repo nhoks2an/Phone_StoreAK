@@ -20,4 +20,11 @@ class TinTuc extends Model
        'noidung',
         'hienthi',
     ];
+    public function scopeSearch($query){
+        if($key = request()->key)
+            {
+                $query = $query->where('tieude','like','%'.$key.'%');
+            }
+        return $query;           
+    }
 }

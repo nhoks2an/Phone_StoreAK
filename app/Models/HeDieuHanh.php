@@ -18,4 +18,12 @@ class HeDieuHanh extends Model
        'tenhedieuhanh',
         'hienthi',
     ];
+
+    public function scopeSearch($query){
+        if($key = request()->key)
+            {
+                $query = $query->where('tenhedieuhanh','like','%'.$key.'%');
+            }
+        return $query;           
+    }
 }

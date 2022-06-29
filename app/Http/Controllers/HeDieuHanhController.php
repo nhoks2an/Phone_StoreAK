@@ -18,7 +18,7 @@ class HeDieuHanhController extends Controller
      */
     public function index()
     {
-        $lsthedieuhanh = HeDieuHanh::all();
+        $lsthedieuhanh = HeDieuHanh::orderBy('created_at','DESC')->search()->paginate(1);
         foreach($lsthedieuhanh as $hedieuhanh){
 
         }
@@ -45,10 +45,11 @@ class HeDieuHanhController extends Controller
     {
         $validatedData = $request->validate(
             [
-                'tenhedieuhanh' => 'required',
+                'tenhedieuhanh' => 'required |unique:he_dieu_hanhs,tenhedieuhanh',
             ],
             [
                 'tenhedieuhanh.required' => 'Tên Hệ Điều Hành Không Được Bỏ Trống',
+                'tenhedieuhanh.unique' => 'Tên Hệ Điều Hành Đã Tồn Tại',
             ]
         );
         $hedieuhanh = new HeDieuHanh();

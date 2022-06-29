@@ -27,7 +27,7 @@ class HangController extends Controller
      */
     public function index()
     {
-        $lsthang = hang::all();
+        $lsthang = hang::orderBy('created_at','DESC')->search()->paginate(1);
         foreach($lsthang as $hang)
         {
             $this->fixImage($hang);
@@ -56,11 +56,12 @@ class HangController extends Controller
     {
         $validatedData = $request->validate(
             [
-                'tenhang' => 'required',
+                'tenhang' => 'required |unique:hangs,tenhang',
                 'hinhanh' => 'required',
             ],
             [
                 'tenhang.required' => 'Tên Hãng Không Được Bỏ Trống',
+                'tenhang.unique' => 'Tên Hãng Đã Tồn Tại',
                 'hinhanh.required' => 'Hình Ảnh Không Được Bỏ Trống',
             ]
         );

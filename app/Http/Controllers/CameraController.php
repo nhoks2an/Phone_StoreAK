@@ -18,7 +18,7 @@ class CameraController extends Controller
      */
     public function index()
     {
-        $lstcamera = Camera::all();
+        $lstcamera = Camera::orderBy('created_at','DESC')->search()->paginate(10);
         foreach($lstcamera as $camera){
          
         }
@@ -45,10 +45,11 @@ class CameraController extends Controller
     {
         $validatedData = $request->validate(
             [
-                'tencamera' => 'required',
+                'tencamera' => 'required |unique:cameras,tencamera',
             ],
             [
                 'tencamera.required' => 'Tên Camera Không Được Bỏ Trống',
+                'tencamera.unique' => 'Tên Camera Đã Tồn Tại',
             ]
         );
         $camera = new Camera;

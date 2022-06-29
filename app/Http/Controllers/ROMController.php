@@ -18,7 +18,7 @@ class ROMController extends Controller
      */
     public function index()
     {
-        $lstrom = ROM::all();
+        $lstrom =  ROM::orderBy('created_at','DESC')->search()->paginate(1);
         foreach($lstrom as $rOM){
          
         }
@@ -45,10 +45,11 @@ class ROMController extends Controller
     {
         $validatedData = $request->validate(
             [
-                'sorom' => 'required',
+                'sorom' => 'required |unique:r_o_m_s,sorom',
             ],
             [
                 'sorom.required' => 'Số ROM Không Được Bỏ Trống',
+                'sorom.unique' => 'Số ROM Đã Tồn Tại',
             ]
         );
         $rOM = new ROM();

@@ -17,4 +17,12 @@ class ManHinh extends Model
        'thongso',
         'hienthi',
     ];
+
+    public function scopeSearch($query){
+        if($key = request()->key)
+            {
+                $query = $query->where('thongso','like','%'.$key.'%');
+            }
+        return $query;           
+    }
 }

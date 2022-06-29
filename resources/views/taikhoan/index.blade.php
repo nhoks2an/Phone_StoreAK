@@ -4,16 +4,22 @@
 <div class="taikhoan">
     <div class="btn-themmoi">
         <a class="btn btn-sm bg-gradient-danger text-white" id="delete-all" data-url="index.php?com=product&amp;act=delete&amp;type=san-pham" title="Xóa tất cả"><i class="far fa-trash-alt mr-2"></i>Xóa tất cả</a>
-            <!-- Topbar Search -->
+        <a class="btn btn-sm bg-gradient-secondary" id="delete-all" href="{{route('taikhoan.index')}}"
+        title=""><i class="fas fa-redo mr-2"></i>Quay lại</a>
+        <!-- Topbar Search -->
         <div class="form-inline form-search d-inline-block align-middle ml-3">
-            <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar text-sm" type="search" id="keyword" placeholder="Tìm kiếm" aria-label="Tìm kiếm" value="" onkeypress="">
-                <div class="input-group-append bg-primary rounded-right">
-                    <button class="btn btn-navbar text-white" type="button" onclick="">
-                        <i class="fas fa-search"></i>
-                    </button>
+            <form action="" >
+                <div class="input-group input-group-sm" >
+                    <input class="form-control form-control-navbar text-sm" name="key"
+                        placeholder="Tìm kiếm" aria-label="Tìm kiếm">
+                    <div class="input-group-append bg-primary rounded-right">
+                        <button class="btn btn-navbar text-white" type="submit"
+                            onclick="">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </form>     
         </div>
     </div>
     <div class="row">
@@ -99,6 +105,11 @@
             @endforeach
         </div>
    </div>
+</div>
+<hr>
+<!-- phan trang -->
+<div class="search">
+    {{$lsttaikhoan->appends(request()->all())->links()}}
 </div>
 @section('scripts')
 <script>

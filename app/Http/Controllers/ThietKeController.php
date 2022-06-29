@@ -18,7 +18,7 @@ class ThietKeController extends Controller
      */
     public function index()
     {
-        $lstthietke = ThietKe::all();
+        $lstthietke = ThietKe::orderBy('created_at','DESC')->search()->paginate(1);
         foreach( $lstthietke as $thietke){
 
         }
@@ -45,10 +45,11 @@ class ThietKeController extends Controller
     {
         $validatedData = $request->validate(
             [
-                'ten' => 'required',
+                'ten' => 'required |unique:thiet_kes,ten',
             ],
             [
                 'ten.required' => 'Tên Thiết Kế Không Được Bỏ Trống',
+                'ten.unique' => 'Tên Thiết Kế Đã Tồn Tại',
             ]
         );
         $thietke= new ThietKe();
