@@ -108,9 +108,9 @@ Route::resource('/loaiSanPham',LoaiSanPhamController::class)->middleware('auth')
 Route::resource('/sanPham',SanPhamController::class)->middleware('auth');
 Route::resource('/taikhoan',TaiKhoanController::class)->middleware('auth');
 Route::resource('/binhluan',BinhLuanController::class)->middleware('auth');
-Route::get('login', [DangnhapController::class,'showForm'])->name('login');
-Route::post('login', [DangnhapController::class,'authenticate'])->name('login');
-Route::post('logout', [DangnhapController::class,'logout'])->name('logout');
+// Route::get('login', [DangnhapController::class,'showForm'])->name('login');
+// Route::post('login', [DangnhapController::class,'authenticate'])->name('login');
+// Route::post('logout', [DangnhapController::class,'logout'])->name('logout');
 
 
 Route::get('/admin/loader', function () {
