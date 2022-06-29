@@ -113,13 +113,6 @@
             </div>
         </div>
         <div class="card card-primary card-outline text-sm">
-            <div class="card-header">
-                <h3 class="card-title">Thông tin Tin tức</h3>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
-                            class="fas fa-minus"></i></button>
-                </div>
-            </div>
             <div class="card-body">
                 <div class="form-group">
                     <div class="form-group d-inline-block mb-2 mr-2">
@@ -137,17 +130,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="card-footer text-sm">
-            <button type="submit" class="btn btn-sm bg-gradient-primary submit-check"><i
-                    class="far fa-save mr-2"></i>Lưu</button>
-            <button type="submit" class="btn btn-sm bg-gradient-success submit-check" name="save-here"><i
-                    class="far fa-save mr-2"></i>Lưu tại trang</button>
-            <button type="reset" class="btn btn-sm bg-gradient-secondary"><i class="fas fa-redo mr-2"></i>Làm
-                lại</button>
-            <a class="btn btn-sm bg-gradient-danger" href="index.php?com=news&amp;act=man&amp;type=tin-tuc"
-                title="Thoát"><i class="fas fa-sign-out-alt mr-2"></i>Thoát</a>
-            <input type="hidden" name="id" value="">
         </div>
         <input type="hidden" name="hash" value="dd30IA6mWW">
     </form>

@@ -18,12 +18,10 @@ use App\Http\Controllers\HangController;
 use App\Http\Controllers\LoaiSanPhamController;
 use App\Http\Controllers\SanPhamController;
 use App\Http\Controllers\TaiKhoanController;
-
 use App\Http\Controllers\BinhLuanController;
-
 use App\Http\Controllers\SlideShowController;
 use App\Http\Controllers\SologanController;
-
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\DB;
 
 /*
@@ -40,6 +38,9 @@ use Illuminate\Support\Facades\DB;
 Route::get('/', function () {
     return view('user.index.index');
 })->name('user');
+// Route::get('/trangchu', function () {
+//     return view('user.index.index');
+// })->name('user');
 Route::get('/sanpham', function () {
     return view('user.sanpham.index');
 })->name('sanpham');
@@ -49,12 +50,12 @@ Route::get('/chitietsanpham', function () {
 Route::get('/lienhe', function () {
     return view('user.lienhe.index');
 })->name('lienhe');
-Route::get('/dangnhap', function () {
-    return view('user.login.login');
-})->name('dangnhap');
-Route::get('/dangky', function () {
-    return view('user.login.register');
-})->name('dangky');
+// Route::get('/dangnhap', function () {
+//     return view('user.login.login');
+// })->name('dangnhapus');
+// Route::get('/dangky', function () {
+//     return view('user.login.register');
+// })->name('dangky');
 Route::get('/sanpham', function () {
     return view('user.sanpham.index');
 })->name('sanpham');
@@ -64,13 +65,15 @@ Route::get('/giohang', function () {
 
 
 
-
-
-
-
-Route::get('/admin/', function () {
-    return view('dangnhap.index');
-})->name('dangnhap');
+Route::get('/logout',[UserController::class,'logout'])->name('user.logout');
+Route::get('/trangchu',[UserController::class,'index'])->name('user.index');
+Route::get('/register',[UserController::class,'show'])->name('user.show');
+Route::get('/dangky',[UserController::class,'store'])->name('user.store');
+Route::get('/dangnhap',[UserController::class,'login'])->name('user.login');
+Route::get('/login',[UserController::class,'loginUser'])->name('user.loginUser');
+// Route::get('/admin/', function () {
+//     return view('dangnhap.index');
+// })->name('dangnhap');
 
 Route::get('/admin/dashboard', function () {
     return view('dashboard.index');

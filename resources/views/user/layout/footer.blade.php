@@ -14,7 +14,9 @@ mysqli_close($conn);
         <div class="top-footer flex">
             <div class="thongtin">
                 <div class="title-tt">THÔNG TIN</div>
-                <div class="diachi">@include('user.source.footer')</div>
+                <div class="diachi">
+                    @include('user.source.footer')
+                </div>
             </div>
             <div class="chinhsach">
                 <div class="title-tt">CHÍNH SÁCH</div>

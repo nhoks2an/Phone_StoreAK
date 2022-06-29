@@ -7,7 +7,6 @@
 .photoUpload-zone .photoUpload-dimension{font-weight: 600;}
 .hinhanh{margin: auto;}
 .content{padding: 0 0.5rem;}
-.bg-container{background-color: #f2f2f2;width: 1366px;}
 /* user */
 body{position: relative;width: 100%;max-width: 1366px;margin: auto!important;}
 .center-layout{width: 100%;max-width: 1200px;position: relative;margin: auto;}
@@ -304,7 +303,7 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  background: #f2f2f2;  
+  background: #fff;  
 }
 
 .wrap-login100 {
@@ -618,7 +617,7 @@ iframe {
     opacity: 1;
   }
 }
-.register{padding: 30px 0;display: flex;justify-content: center;background-color: #f2f2f2;}
+.register{padding: 30px 0;display: flex;justify-content: center;background-color: #fff;}
 .box-dangki{width:45%;}
 .lienhe{background-color: #f2f2f2;padding: 30px 0;}
 .grid-pro-detail{padding-top: 30px;}
@@ -1771,3 +1770,16 @@ img:not([src]) {
 .tabs-pro-detail .nav-tabs .nav-item.show .nav-link {
   border-top-color: #555555;
 }
+.box-dangki {
+  width: 430px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 77px 55px 33px 55px;
+  box-shadow: 0 5px 10px 0px rgb(0 0 0 / 10%);
+  -moz-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 5px 10px 0px rgb(0 0 0 / 10%);
+  -o-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+}
+.box-dangki .text-danger{margin-top: -30px;}

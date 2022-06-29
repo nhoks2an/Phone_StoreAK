@@ -37,7 +37,6 @@
                             </div>
                         </th>
                         <th class="align-middle" style="width:30%">Tiêu đề</th>
-                        <th class="align-middle text-center">Nổi bật</th>
                         <th class="align-middle text-center">Hiển thị</th>
                         <th class="align-middle text-center">Thao tác</th>
                     </tr>
@@ -52,20 +51,12 @@
                                 <label for="select-checkbox-3" class="custom-control-label"></label>
                             </div>
                         </td>
-                       
+
                         <td class="align-middle">
                             <a class="text-dark text-break"
                                 href="index.php?com=news&amp;act=edit&amp;type=tin-tuc&amp;id=3"
                                 title=" (1) (1) (1) (1) (1) (1)make-up-co-dau-ee-1-1">{{$cs->tieude}}</a>
-                            
-                        </td>
-                        <td class="align-middle text-center">
-                            <div class="custom-control custom-checkbox my-checkbox">
-                                <input type="checkbox" class="custom-control-input show-checkbox"
-                                    id="show-checkbox-noibat-3" data-table="news" data-id="3" data-attr="noibat"
-                                    checked="">
-                                <label for="show-checkbox-noibat-3" class="custom-control-label"></label>
-                            </div>
+
                         </td>
                         <td class="align-middle text-center">
                             <div class="custom-control custom-checkbox my-checkbox">
@@ -76,13 +67,14 @@
                             </div>
                         </td>
                         <td class="align-middle text-center text-md text-nowrap">
-    
+
                             <a class="text-primary mr-2" href="{{route('chinhSach.show',['chinhSach'=>$cs])}}"
                                 title="Chỉnh sửa"><i class="fas fa-edit"></i></a>
-                            
-                                <button  type="submit" class="btnxoa text-danger "style="border: none;background: none;" value="{{$cs->id}}">
-                                        <i class="color fas fa-trash-alt"></i>
-                                    </button>
+
+                            <button type="submit" class="btnxoa text-danger " style="border: none;background: none;"
+                                value="{{$cs->id}}">
+                                <i class="color fas fa-trash-alt"></i>
+                            </button>
                             </form>
                         </td>
                     </tr>
@@ -92,42 +84,43 @@
         </div>
     </div>
     @foreach($lstcs as $cs)
-    <div class="modal fade" id="ChinhSachModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>  
-                        <form method="post" action="{{route('chinhSach.destroy',$cs->id)}}">
-                                @csrf
-                                @method('DELETE')
-                            <div class="modal-body">
-                                Bạn có chắc chắn muốn xóa !
-                            </div>
-                            <input type="hidden"  name="chinhsach" id="chinhsach">
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
-                                <button type="submit" class="btn btn-primary">Xác nhận</button>
-                            </div>
-                        </form>
-                    </div>
+    <div class="modal fade" id="ChinhSachModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
+                <form method="post" action="{{route('chinhSach.destroy',$cs->id)}}">
+                    @csrf
+                    @method('DELETE')
+                    <div class="modal-body">
+                        Bạn có chắc chắn muốn xóa !
+                    </div>
+                    <input type="hidden" name="chinhsach" id="chinhsach">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+                        <button type="submit" class="btn btn-primary">Xác nhận</button>
+                    </div>
+                </form>
             </div>
-            @endforeach
+        </div>
+    </div>
+    @endforeach
 </section>
 @section('scripts')
 <script>
-	$(document).on('click', '.btnxoa', function() {
-        $('#ChinhSachModal').modal({
-            show: true
-        });
-        var chinhsach_id = $(this).val();
-        $('#chinhsach').val(chinhsach_id);
-        
-	});
+$(document).on('click', '.btnxoa', function() {
+    $('#ChinhSachModal').modal({
+        show: true
+    });
+    var chinhsach_id = $(this).val();
+    $('#chinhsach').val(chinhsach_id);
+
+});
 </script>
 @endsection
 @endsection

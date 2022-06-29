@@ -1,31 +1,34 @@
 @extends('user.index')
 @section('sidebar')
-    @parent
+@parent
+@if(session('message'))
+<span class="alert alert-success">
+    <strong>{{session('message')}}</strong>
+</span>
+@endif
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
-            <form class="login100-form validate-form" asp-controller="home" asp-action="login">
+            <form class="login100-form validate-form" action="{{route('user.loginUser')}}">
                 <span class="login100-form-title p-b-26">
-                    Đăng nhập
+                    ĐĂNG NHẬP
                 </span>
                 <span class="login100-form-title p-b-48">
                     <i class="zmdi zmdi-font"></i>
                 </span>
 
-                <div class="wrap-input100 validate-input" data-validate="Nhập tài khoản">
-                    <input class="input100" type="text" name="username">
-                    
-                    <span class="focus-input100" data-placeholder="Tài khoản"></span>
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" type="text" name="email" placeholder="Nhập email" required>
                 </div>
-
-                <div class="wrap-input100 validate-input" data-validate="Nhập mật khẩu">
+                <div class="wrap-input100 validate-input">
                     <span class="btn-show-pass">
                         <i class="zmdi zmdi-eye"></i>
                     </span>
-                    <input class="input100" type="password" name="password">
-                    <span class="focus-input100" data-placeholder="Mật khẩu"></span>
+                    <input class="input100" type="password" name="password" placeholder="Nhập mật khẩu" required>
                 </div>
-
+                @if(Session::has('fail'))
+                <div class="alert alert-danger">{{Session::get('fail')}}</div>
+                @endif
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>
@@ -37,11 +40,11 @@
 
                 <div class="text-center p-t-115">
                     <span class="txt1">
-                        Don’t have an account?
+                        Chưa có tài khoản?
                     </span>
 
-                    <a class="txt2" href="{{route('dangky')}}">
-                        Sign Up
+                    <a class="txt2" href="register">
+                        Đăng ký
                     </a>
                 </div>
             </form>
@@ -50,4 +53,4 @@
 </div>
 @endsection
 @section('Them')
-@endsection   
+@endsection

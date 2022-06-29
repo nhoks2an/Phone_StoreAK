@@ -47,6 +47,7 @@
                     <li><i class="fas fa-headset"></i><a href="lienhe">Liên hệ</a></li>
                     <li><i class="fas fa-shopping-cart"></i><a href="{{route('giohang')}}">Giỏ hàng</a></li>
                     <li><i class="fas fa-user"></i><a href="dangnhap">Đăng nhập</a></li>
+
                 </ul>
             </div>
         </div>

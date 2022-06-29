@@ -1,36 +1,56 @@
 @extends('user.index')
 @section('sidebar')
-    @parent
+@parent
 <div class="register">
     <div class="box-dangki">
-        <form asp-action="Register" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
-                <input asp-for="Email" class="input100" type="text" name="Email">
-                <span asp-validation-for="Email" class="focus-input100" data-placeholder="Email"></span>
+        <form action="{{route('user.store')}}" enctype="multipart/form-data">
+            @csrf
+            <span class="login100-form-title p-b-26">
+                ĐĂNG KÝ
+            </span>
+            <div class="form-group wrap-input100 validate-input">
+                <input asp-for="Email" class="input100" type="text" name="email" placeholder="Nhập email" required>
             </div>
-            <div class="form-group wrap-input100 validate-input" data-validate="Enter password">
-                <input asp-for="Password" class="input100 " name="password">
-                <span asp-validation-for="Password" class="focus-input100" data-placeholder="Mật khẩu"></span>
+            @if($errors->has('email'))
+
+            @endif
+            <div class="form-group wrap-input100 validate-input">
+                <input asp-for="Password" class="input100 " name="matkhau" placeholder="Nhập mật khẩu" required>
+                @if($errors->has('matkhau'))
+                <div class="text-danger">{{$errors->first('matkhau')}}</div>
+                @endif
             </div>
             <div class="wrap-input100 validate-input form-group">
-                <input asp-for="SDT" class="input100 ">
-                <span asp-validation-for="SDT" class="focus-input100" data-placeholder="Số điện thoại"></span>
+                <input name="sodienthoai" class="input100" type="number" placeholder="Nhập số điện thoại" required>
+                @if($errors->has('sodienthoai'))
+                <div class="text-danger">{{$errors->first('sodienthoai')}}</div>
+                @endif
             </div>
             <div class="wrap-input100 validate-input form-group">
-                <input asp-for="HoTen" class="input100 ">
-                <span asp-validation-for="HoTen" class="focus-input100" data-placeholder="Họ tên"></span>
+                <input name="hoten" class="input100" placeholder="Nhập họ tên" required>
+                @if($errors->has('hoten'))
+                <div class="text-danger">{{$errors->first('hoten')}}</div>
+                @endif
             </div>
             <div class="wrap-input100 validate-input form-group">
-                <input asp-for="DiaChi" class="input100 ">
-                <span asp-validation-for="DiaChi" class="focus-input100" data-placeholder="Địa chỉ"></span>
+                <input name="diachi" class="input100 " placeholder="Nhập địa chỉ" required>
+                @if($errors->has('diachi'))
+                <div class="text-danger">{{$errors->first('diachi')}}</div>
+                @endif
+            </div>
+            <div>
+                @if(session('message'))
+                <div class="text-danger">
+                    <strong>{{session('message')}}</strong>
+                </div>
+                @endif
             </div>
             <div class="form-group">
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>
                         <button class="login100-form-btn">
-                            Sign Up
+                            ĐĂNG KÝ
                         </button>
                     </div>
                 </div>
@@ -40,4 +60,4 @@
 </div>
 @endsection
 @section('Them')
-@endsection   
+@endsection
