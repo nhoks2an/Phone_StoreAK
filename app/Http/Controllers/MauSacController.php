@@ -18,7 +18,7 @@ class MauSacController extends Controller
      */
     public function index()
     {
-        $lstmausac = MauSac::all();
+        $lstmausac = MauSac::orderBy('created_at','DESC')->search()->paginate(1);
         foreach($lstmausac as $mauSac){
          
         }
@@ -45,10 +45,11 @@ class MauSacController extends Controller
     {
         $validatedData = $request->validate(
             [
-                'tenmau' => 'required',
+                'tenmau' => 'required |unique:mau_sacs,tenmau',
             ],
             [
                 'tenmau.required' => 'Màu Sắc Không Được Bỏ Trống',
+                'tenmau.unique' => 'Tên Màu Đã Tồn Tại',
             ]
         );
         $mauSac = new MauSac();

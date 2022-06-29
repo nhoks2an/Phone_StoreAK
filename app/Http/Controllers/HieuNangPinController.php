@@ -18,7 +18,7 @@ class HieuNangPinController extends Controller
      */
     public function index()
     {
-        $lsthieunangpin = HieuNangPin::all();
+        $lsthieunangpin = HieuNangPin::orderBy('created_at','DESC')->search()->paginate(1);
         foreach($lsthieunangpin as $hieunangpin){
 
         }
@@ -45,10 +45,11 @@ class HieuNangPinController extends Controller
     {
         $validatedData = $request->validate(
             [
-                'tenhieunang' => 'required',
+                'tenhieunang' => 'required |unique:hieu_nang_pins,tenhieunang',
             ],
             [
                 'tenhieunang.required' => 'Tên Hiệu Năng Không Được Bỏ Trống',
+                'tenhieunang.unique' => 'Tên Hiệu Năng Đã Tồn Tại',
             ]
         );
         $hieunangpin = new HieuNangPin();

@@ -17,4 +17,12 @@ class TinhNangDB extends Model
        'tentinhnang',
         'hienthi',
     ];
+
+    public function scopeSearch($query){
+        if($key = request()->key)
+            {
+                $query = $query->where('tentinhnang','like','%'.$key.'%');
+            }
+        return $query;           
+    }
 }

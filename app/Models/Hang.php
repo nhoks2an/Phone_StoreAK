@@ -18,4 +18,12 @@ class Hang extends Model
        'hinhanh',
         'hienthi',
     ];
+
+    public function scopeSearch($query){
+        if($key = request()->key)
+            {
+                $query = $query->where('tenhang','like','%'.$key.'%');
+            }
+        return $query;           
+    }
 }

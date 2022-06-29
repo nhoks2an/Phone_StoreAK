@@ -41,7 +41,7 @@
                                 <div class="tab-pane fade show active" id="tabs-lang-vi" role="tabpanel" aria-labelledby="tabs-lang">
                                     <div class="form-group">
                                         <label for="namevi"> Tên hãng:</label>
-                                        <input type="text" class="form-control for-seo text-sm" name="tenhang" placeholder="Tên hãng" value="">
+                                        <input type="text" class="form-control for-seo text-sm" name="tenhang" placeholder="Tên hãng" value="{{old('tenhang')}}">
                                         @if($errors->has('tenhang'))
                                         <div class="alert alert-danger" style="margin-top:10px;">
                                             {{$errors->first('tenhang')}}
@@ -76,7 +76,6 @@
                             <p class="photoUpload-or">hoặc</p>
                             <p class="photoUpload-choose btn btn-sm bg-gradient-success">Chọn hình</p>
                         </label>
-                        <div class="photoUpload-dimension">Width: 334 px - Height: 334 px (.jpg|.gif|.png|.jpeg|.gif)</div>
                     </div>
                     @if($errors->has('hinhanh'))
                         <div class="alert alert-danger" style="margin-top:10px;">

@@ -42,7 +42,7 @@
                             <div class="tab-pane fade show active" id="tabs-lang-vi" role="tabpanel" aria-labelledby="tabs-lang">
                                 <div class="form-group">
                                     <label for="namevi"> Tên lọai sản phẩm:</label>
-                                    <input type="text" class="form-control for-seo text-sm" name="tenloaisp" placeholder="Loại sản phẩm" value="">
+                                    <input type="text" class="form-control for-seo text-sm" name="tenloaisp" placeholder="Loại sản phẩm" value="{{old('tenloaisp')}}">
                                     @if($errors->has('tenloaisp'))
                                         <div class="alert alert-danger" style="margin-top:10px;">
                                             {{$errors->first('tenloaisp')}}
@@ -69,12 +69,13 @@
                 <div class="form-group col-xl-6 col-sm-4">
                     <label class="d-block" for="id_list">Hãng:</label>
                         <select id="id_list" name="tenhang" data-level="0" data-type="san-pham" data-table="#_product_cat" data-child="id_cat" class="form-control select2 select-category select2-hidden-accessible" data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                            <option value="0" data-select2-id="2">Chọn hãng</option>
+                      
                         @foreach($lsthang as $hang)
                             <option value="{{$hang->id}}">{{$hang->tenhang}}</option>
                         @endforeach 
                     </select></span>
                 </div> 
+                 
                 </div>   
             </div>
         </div>     

@@ -19,7 +19,7 @@ class ChinhSachController extends Controller
      */
     public function index()
     {
-        $lstcs = ChinhSach::all();
+        $lstcs = ChinhSach::orderBy('created_at','DESC')->search()->paginate(1);
         foreach($lstcs as $cs){
         //  $this->fixImage($tt);
         }
@@ -46,11 +46,12 @@ class ChinhSachController extends Controller
     {
         $validatedData = $request->validate(
             [
-                'tieude' => 'required',
+                'tieude' => 'required |unique:chinh_saches,tieude',
                 'content' => 'required',
             ],
             [
                 'tieude.required' => 'Tiêu Đề Không Được Bỏ Trống',
+                'tieude.unique' => 'Tiêu Đề Đã Tồn Tại',
                 'content.required' => 'Nội Dung Không Được Bỏ Trống',
             ]
         );

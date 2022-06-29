@@ -79,7 +79,13 @@ class SanPham extends Model
         return $this->hasMany('App\Models\BinhLuan', 'id_sp', 'id');
     }
 
-
+    public function scopeSearch($query){
+        if($key = request()->key)
+            {
+                $query = $query->where('tensanpham','like','%'.$key.'%');
+            }
+        return $query;           
+    }
 
 
    

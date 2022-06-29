@@ -17,4 +17,11 @@ class Camera extends Model
        'tencamera',
         'hienthi',
     ];
+    public function scopeSearch($query){
+        if($key = request()->key)
+            {
+                $query = $query->where('tencamera','like','%'.$key.'%');
+            }
+        return $query;           
+    }
 }

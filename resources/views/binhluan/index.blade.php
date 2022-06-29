@@ -81,6 +81,11 @@
    </div>
 </div>
 </div>
+<hr>
+<!-- phan trang -->
+<div class="search">
+    {{$lstbinhluan->appends(request()->all())->links()}}
+</div>
 @section('Them')
 @endsection
 @endsection

@@ -17,4 +17,11 @@ class HieuNangPin extends Model
        'tenhieunang',
         'hienthi',
     ];
+    public function scopeSearch($query){
+        if($key = request()->key)
+            {
+                $query = $query->where('tenhieunang','like','%'.$key.'%');
+            }
+        return $query;           
+    }
 }

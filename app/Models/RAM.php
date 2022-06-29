@@ -17,4 +17,12 @@ class RAM extends Model
        'soram',
         'hienthi',
     ];
+
+    public function scopeSearch($query){
+        if($key = request()->key)
+            {
+                $query = $query->where('soram','like','%'.$key.'%');
+            }
+        return $query;           
+    }
 }

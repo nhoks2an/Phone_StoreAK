@@ -25,5 +25,11 @@ class LoaiSanPham extends Model
         return $this->belongsTo(Hang::class);
     }
 
-  
+    public function scopeSearch($query){
+        if($key = request()->key)
+            {
+                $query = $query->where('tenloaisp','like','%'.$key.'%');
+            }
+        return $query;           
+    }
 }

@@ -28,7 +28,13 @@ class User extends Authenticatable
         'diachi',
         'hienthi',
     ];
-
+    public function scopeSearch($query){
+        if($key = request()->key)
+            {
+                $query = $query->where('email','like','%'.$key.'%');
+            }
+        return $query;           
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

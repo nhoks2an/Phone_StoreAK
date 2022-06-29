@@ -20,7 +20,7 @@ class TaiKhoanController extends Controller
      */
     public function index()
     {
-        $lsttaikhoan = User::all();
+        $lsttaikhoan = User::orderBy('created_at','DESC')->search()->paginate(1);
         foreach($lsttaikhoan as $user){
          
         }

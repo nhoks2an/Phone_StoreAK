@@ -17,4 +17,11 @@ class MauSac extends Model
        'tenmau',
         'hienthi',
     ];
+    public function scopeSearch($query){
+        if($key = request()->key)
+            {
+                $query = $query->where('tenmau','like','%'.$key.'%');
+            }
+        return $query;           
+    }
 }
