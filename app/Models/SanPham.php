@@ -16,34 +16,17 @@ class SanPham extends Model
        'tensanpham',
        'hinhanh',
        'mota',
-       'giacu',
-       'giamoi',
        'id_camera',
-       'id_rom',
-       'id_ram',
        'id_manhinh',
        'id_tinhnangdb',
        'id_thietke',
        'id_hieunangpin',
-       'id_mau',
        'id_hedieuhanh',
        'danhgia',
-       'soluong',
        'id_loaisp',
         'hienthi',
     ];
-    public function RAM()
-    {
-        return $this->belongsTo(RAM::class);
-    }
-    public function camera()
-    {
-        return $this->belongsTo(Camera::class);
-    }
-    public function ROM()
-    {
-        return $this->belongsTo(ROM::class);
-    }
+
     public function hedieuhhanh()
     {
         return $this->belongsTo(HeDieuHanh::class);
@@ -68,10 +51,6 @@ class SanPham extends Model
     public function thietke()
     {
         return $this->belongsTo(ThietKe::class);
-    }
-    public function mausac()
-    {
-        return $this->belongsTo(MauSac::class);
     }
 
     public function binhluan()

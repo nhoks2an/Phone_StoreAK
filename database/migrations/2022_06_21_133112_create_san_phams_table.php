@@ -18,16 +18,11 @@ class CreateSanPhamsTable extends Migration
             $table->string('tensanpham');
             $table->string('hinhanh');
             $table->mediumText('mota');
-            $table->double('giacu')->nullable(true);
-            $table->double('giamoi');
             $table->foreignId('id_camera');
-            $table->foreignId('id_ram');
-            $table->foreignId('id_rom');
             $table->foreignId('id_manhinh');
             $table->foreignId('id_tinhnangdb');
             $table->foreignId('id_thietke');
             $table->foreignId('id_hieunangpin');
-            $table->foreignId('id_mau');
             $table->foreignId('id_hedieuhanh');
             $table->integer('danhgia')->nullable(true);;
             $table->integer('soluong');
