@@ -74,10 +74,10 @@ Route::get('/trangchu',[UserController::class,'index'])->name('user.index');
 Route::get('/register',[UserController::class,'show'])->name('user.show');
 Route::get('/dangky',[UserController::class,'store'])->name('user.store');
 Route::get('/dangnhap',[UserController::class,'login'])->name('user.login');
-Route::get('/login',[UserController::class,'loginUser'])->name('user.loginUser');
-Route::get('/admin/', function () {
-    return view('dangnhap.index');
-})->name('dangnhap');
+Route::get('/xtdangnhap',[UserController::class,'loginUser'])->name('user.loginUser');
+// Route::get('/admin', function () {
+//     return view('dangnhap.index');
+// })->name('dangnhap');
 
 Route::get('/dashboard', function () {
     return view('dashboard.index');
@@ -86,7 +86,6 @@ Route::get('/dashboard', function () {
 Route::get('/admin/hoadon', function () {
     return view('hoadon.index');
     })->name('hoadon');
-    
 Route::get('/admin/cthoadon', function () {
     return view('cthoadon.index');
     })->name('cthoadon');
@@ -109,6 +108,7 @@ Route::resource('/mausac',MauSacController::class)->middleware('auth');
 Route::resource('/hang',HangController::class)->middleware('auth');
 Route::resource('/loaiSanPham',LoaiSanPhamController::class)->middleware('auth');
 Route::resource('/sanPham',SanPhamController::class)->middleware('auth');
+Route::get('/chitietsanpham/{id}', [SanPhamController::class, 'detail'])->name('sanPham.detail');
 Route::get('/stock/{id}', [SanPhamController::class, 'indexmp'])->name('sanPham.stock');
 Route::get('/abum/{id}', [SanPhamController::class, 'indexab'])->name('sanPham.abum');
 Route::post('/stock/add', [SanPhamController::class, 'storemp'])->name('sanPham.storemp');

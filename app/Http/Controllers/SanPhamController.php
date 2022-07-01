@@ -220,6 +220,12 @@ class SanPhamController extends Controller
     {
         //
     }
+
+    public function detail($id)
+    {
+        $sanPham=$id;
+        return view('user.sanpham.detailproduct',['sanPham'=>$sanPham]);
+    }
     /**
      * Update the specified resource in storage.
      *

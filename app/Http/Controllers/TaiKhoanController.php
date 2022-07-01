@@ -104,9 +104,33 @@ class TaiKhoanController extends Controller
      * @param  \App\Models\TaiKhoan  $banner
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $taikhoan)
+    public function update(Request $request, User $datauser)
     {
-        //
+        $validatedData = $request->validate(
+            [
+                'email' => 'required | unique:users,email',
+             
+            ],
+            [
+                'email.required' => 'Email đã tồn tại!',
+            ]
+        );
+        $file_name=$datauser->hinhanh;
+        if($request->hasFile('hinhanh')){
+                $file = $request->file('hinhanh');
+                $upload = public_path('image/hinhanh');
+                $file_name = time().'_'.$file->getClientOriginalName();
+                $file->move($upload,$file_name);
+            }
+            $datauser->fill([
+                'email'=>$request->input('email'),
+                'hoten'=>$request->input('hoten'),
+                'phai'=>$request->input('phai'),
+                'sodienthoai'=>$request->input('sodienthoai'),
+            ]);
+            $datauser->save();          
+                return back()->with('message','Lưu Thành Công!');
+
     }
 
     /**
