@@ -65,6 +65,9 @@ Route::get('/giohang', function () {
 })->name('giohang');
 
 
+Route::get('/thongtinkhachhang', function () {
+    return view('user.profile.profile');
+})->name('profile');
 
 Route::get('/logout',[UserController::class,'logout'])->name('user.logout');
 Route::get('/trangchu',[UserController::class,'index'])->name('user.index');

@@ -12,7 +12,7 @@
                 <input asp-for="Email" class="input100" type="text" name="email" placeholder="Nhập email" required>
             </div>
             @if($errors->has('email'))
-
+            <div class="text-danger">{{$errors->first('email')}}</div>
             @endif
             <div class="form-group wrap-input100 validate-input">
                 <input asp-for="Password" class="input100 " name="matkhau" placeholder="Nhập mật khẩu" required>
