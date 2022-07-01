@@ -12,8 +12,8 @@
 <!-- <script src="../asset/vendor/chart.js/Chart.min.js"></script> -->
 
 <!-- Page level custom scripts -->
-<script src="../asset/js/demo/chart-area-demo.js"></script>
-<script src="../asset/js/demo/chart-pie-demo.js"></script>
+<!-- <script src="../asset/js/demo/chart-area-demo.js"></script>
+<script src="../asset/js/demo/chart-pie-demo.js"></script> -->
 <script src="../asset/js/adminlte.js"></script>
 
 <script src="../asset/vendor/ckeditor/ckeditor.js"></script>
@@ -24,3 +24,4 @@ CKEDITOR.replace('content');
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+<script src="../asset/js/priceFormat.js"></script>

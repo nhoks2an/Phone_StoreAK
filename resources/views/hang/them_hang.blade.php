@@ -69,8 +69,7 @@
                             <img class="rounded"  src="../img/noimage.jpg" alt="Alt Photo" id="hinhanh_hang">
                         </div>
                         <label class="photoUpload-file" id="photo-zone" for="file-zone">
-                            <input type="file" name="hinhanh" id="file-zone" accept="image/*">
-                          
+                            <input type="file" name="hinhanh" id="file-zone" accept="">
                             <i class="fas fa-cloud-upload-alt"></i>
                             <p class="photoUpload-drop">Kéo và thả hình vào đây</p>
                             <p class="photoUpload-or">hoặc</p>

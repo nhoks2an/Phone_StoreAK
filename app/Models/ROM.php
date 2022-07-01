@@ -24,4 +24,8 @@ class ROM extends Model
             }
         return $query;           
     }
+    public function mapping()
+    {
+        return $this->hasMany('App\Models\mapping', 'id_rom', 'id');
+    }
 }

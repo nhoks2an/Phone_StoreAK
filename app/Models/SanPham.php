@@ -52,6 +52,14 @@ class SanPham extends Model
     {
         return $this->belongsTo(ThietKe::class);
     }
+    public function mapping()
+    {
+        return $this->hasMany('App\Models\mapping', 'id_sanpham', 'id');
+    }
+    public function hinhanh()
+    {
+        return $this->hasMany('App\Models\HinhAnh', 'id_sanpham', 'id');
+    }
 
     public function binhluan()
     {

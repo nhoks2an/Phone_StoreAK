@@ -72,9 +72,9 @@ Route::get('/register',[UserController::class,'show'])->name('user.show');
 Route::get('/dangky',[UserController::class,'store'])->name('user.store');
 Route::get('/dangnhap',[UserController::class,'login'])->name('user.login');
 Route::get('/login',[UserController::class,'loginUser'])->name('user.loginUser');
-// Route::get('/admin/', function () {
-//     return view('dangnhap.index');
-// })->name('dangnhap');
+Route::get('/admin/', function () {
+    return view('dangnhap.index');
+})->name('dangnhap');
 
 Route::get('/dashboard', function () {
     return view('dashboard.index');
@@ -106,11 +106,18 @@ Route::resource('/mausac',MauSacController::class)->middleware('auth');
 Route::resource('/hang',HangController::class)->middleware('auth');
 Route::resource('/loaiSanPham',LoaiSanPhamController::class)->middleware('auth');
 Route::resource('/sanPham',SanPhamController::class)->middleware('auth');
+Route::get('/stock/{id}', [SanPhamController::class, 'indexmp'])->name('sanPham.stock');
+Route::get('/abum/{id}', [SanPhamController::class, 'indexab'])->name('sanPham.abum');
+Route::post('/stock/add', [SanPhamController::class, 'storemp'])->name('sanPham.storemp');
+Route::post('/abum/add', [SanPhamController::class, 'storeab'])->name('sanPham.storeab');
+Route::put('/stock/update', [SanPhamController::class, 'updatemp'])->name('sanPham.updatemp');
+Route::delete('/stock/delete', [SanPhamController::class, 'destroymp'])->name('sanPham.destroymp');
+Route::delete('/abum/delete', [SanPhamController::class, 'destroyab'])->name('sanPham.destroyab');
 Route::resource('/taikhoan',TaiKhoanController::class)->middleware('auth');
 Route::resource('/binhluan',BinhLuanController::class)->middleware('auth');
-// Route::get('login', [DangnhapController::class,'showForm'])->name('login');
-// Route::post('login', [DangnhapController::class,'authenticate'])->name('login');
-// Route::post('logout', [DangnhapController::class,'logout'])->name('logout');
+Route::get('login', [DangnhapController::class,'showForm'])->name('login1');
+Route::post('login', [DangnhapController::class,'authenticate'])->name('login1');
+Route::post('logout', [DangnhapController::class,'logout'])->name('logout');
 
 
 Route::get('/admin/loader', function () {

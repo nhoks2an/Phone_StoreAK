@@ -47,10 +47,10 @@
                 <tbody>
                     <tr>
                         <td class="align-middle">
-                        <div class="custom-control custom-checkbox my-checkbox">
-                                <input type="checkbox" class="custom-control-input select-checkbox">
-                                <label for="select-checkbox-35"class="custom-control-label"></label>
-                        </div>
+                            <div class="custom-control custom-checkbox my-checkbox">
+                                    <input type="checkbox" class="custom-control-input select-checkbox">
+                                    <label for="select-checkbox-35"class="custom-control-label"></label>
+                            </div>
                         </td>
                         <td class="align-middle">
                             @foreach($lsttaikhoan as $taikhoan)

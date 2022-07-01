@@ -83,32 +83,6 @@
                                             </select></span>
                                         </div>
                                     </div>
-                                    <div class="form-group-category row">
-                                        <div class="form-group col-xl-6 col-sm-4">
-                                            <label class="d-block" for="id_list">Ram:</label>
-                                            <select id="id_list" name="id_ram" data-level="0"
-                                                data-type="san-pham" data-table="#_product_cat" data-child="id_cat"
-                                                class="form-control select2 select-category select2-hidden-accessible"
-                                                data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                                <option value="0" data-select2-id="2">Chọn ram</option>
-                                                @foreach($lstram as $RAM)
-                                                <option value="{{$RAM->id}}">{{$RAM->soram}}</option>
-                                                @endforeach
-                                            </select></span>
-                                        </div>
-                                        <div class="form-group col-xl-6 col-sm-4">
-                                            <label class="d-block" for="id_list">Rom:</label>
-                                            <select id="id_list" name="id_rom" data-level="0"
-                                                data-type="san-pham" data-table="#_product_cat" data-child="id_cat"
-                                                class="form-control select2 select-category select2-hidden-accessible"
-                                                data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                                <option value="0" data-select2-id="2">Chọn rom</option>
-                                                @foreach($lstrom as $ROM)
-                                            <option value="{{$ROM->id}}">{{$ROM->sorom}}</option>
-                                            @endforeach
-                                            </select></span>
-                                        </div>
-                                    </div>
                                 </div>
                             
                                 <div class="form-group-category row">
@@ -161,17 +135,12 @@
                                             @endforeach
                                         </select></span>
                                     </div>
-                                    <div class="form-group col-xl-6 col-sm-4">
-                                      
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
             </div>
-            
         </div>
       
         <div class="col-xl-4">
@@ -196,18 +165,6 @@
                                 <option value="{{$loai->id}}">{{$loai->tenloaisp}}</option>
                                 @endforeach
                             </select></span>
-                        </div>
-                        <div class="form-group col-xl-6 col-sm-4">
-                        <label class="d-block" for="id_list">Màu sắc:</label>
-                                        <select id="id_list" name="id_mau" data-level="0" data-type="san-pham"
-                                            data-table="#_product_cat" data-child="id_cat"
-                                            class="form-control select2 select-category select2-hidden-accessible"
-                                            data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                            <option value="0" data-select2-id="2">Chọn màu</option>
-                                            @foreach($lstmausac as $mau)
-                                            <option value="{{$mau->id}}">{{$mau->tenmau}}</option>
-                                            @endforeach
-                                        </select></span>
                         </div>
                     </div>
                 </div>
@@ -235,7 +192,7 @@
                         {{$errors->first('hinhanh')}}
                     </div>
                 @endif			    
-         </div>
+            </div>
     </div>
     </div>
     </div>   
@@ -263,61 +220,9 @@
                         </div>
                     </div>
             </div>
-            <div class="form-group">
-                    <label for="numb" class="d-inline-block align-middle mb-0 mr-2">Số lượng:</label>
-                    <input type="number" class="form-control form-control-mini d-inline-block align-middle text-sm" min="1" name="soluong" id="numb" placeholder="Số thứ tự" value="1">
-                    @if($errors->has('soluong'))
-                        <div class="alert alert-danger" style="margin-top:10px;">
-                            {{$errors->first('soluong')}}
-                        </div>
-                    @endif
-                </div>
-            <div class="row">
-                <div class="form-group col-md-4">
-                    <label class="d-block" for="regular_price">Giá bán:</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control format-price regular_price text-sm" name="giacu" id="regular_price" placeholder="Giá bán" value="">
-                       
-                        <div class="input-group-append">
-                            <div class="input-group-text"><strong>VNĐ</strong></div>
-                        </div>
-                    </div>
-                    @if($errors->has('giacu'))
-                            <div class="alert alert-danger" style="margin-top:10px;">
-                                {{$errors->first('giacu')}}
-                            </div>
-                        @endif
-                </div>
-                <div class="form-group col-md-4">
-                    <label class="d-block" for="sale_price">Giá mới:</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control format-price sale_price text-sm" name="giamoi" id="sale_price" placeholder="Giá mới" value="">
-                       
-                        <div class="input-group-append">
-                            <div class="input-group-text"><strong>VNĐ</strong></div>
-                        </div>
-                       
-                    </div>
-                    @if($errors->has('giamoi'))
-                        <div class="alert alert-danger" style="margin-top:10px;">
-                            {{$errors->first('giamoi')}}
-                        </div>
-                    @endif
-                </div>
-                <div class="form-group col-md-4">
-                    <label class="d-block" for="discount">Chiết khấu:</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control discount text-sm" name="data[discount]" id="discount" placeholder="Chiết khấu" value="" maxlength="3" readonly="">
-                        <div class="input-group-append">
-                            <div class="input-group-text"><strong>%</strong></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>    
 </form>
-
 <script>
     /* Img Preview */
 	const input = document.getElementById("file-zone");

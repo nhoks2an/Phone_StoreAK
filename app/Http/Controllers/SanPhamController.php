@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SanPham;
 use App\Models\RAM;
+use App\Models\mapping;
 use App\Models\ROM;
 use App\Models\ThietKe;
 use App\Models\LoaiSanPham;
@@ -14,6 +15,7 @@ use App\Models\MauSac;
 use App\Models\Hang;
 use App\Models\HieuNangPin;
 use App\Models\Camera;
+use App\Models\HinhAnh;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\equest;
@@ -30,6 +32,14 @@ class SanPhamController extends Controller
             $sanPham->hinhanh = '/images/noimage.jpg';
         }
     }
+    protected function fixImageab(HinhAnh $hinhanh)
+    {
+        if(Storage::disk('public')->exists($hinhanh->hinhanh)){
+            $hinhanh->hinhanh = Storage::url($hinhanh->hinhanh);
+        }else{
+            $hinhanh->hinhanh = '/images/noimage.jpg';
+        }
+    }
     /**
      * Display a listing of the resource.
      *
@@ -44,7 +54,29 @@ class SanPhamController extends Controller
         }
         return view('sanpham.index',['lstsanpham'=>$lstsanpham]);
     }
-
+    // Abum
+    public function indexab($id)
+    {
+        $sanPham = $id;
+        $lsthinhanh = HinhAnh::orderBy('created_at','DESC')->where('id_sanpham','=',$id)->get();
+      
+        foreach($lsthinhanh as $hinhanh)
+        {
+            $this->fixImageab($hinhanh);
+        }
+      
+        return view('sanpham.indexab',['lsthinhanh'=>$lsthinhanh,'sanPham'=>$sanPham]);
+    }
+    // Box chi tiet
+    public function indexmp($id)
+    {
+        $sanPham = $id;
+        $lstram = RAM::all();
+        $lstrom = ROM::all();
+        $lstmausac = MauSac::all();
+        $lstspmp = mapping::orderBy('created_at','DESC')->where('id_sanpham','=',$id)->get();
+        return view('sanpham.indexmp',['lstram'=>$lstram,'lstrom'=>$lstrom,'lstmausac'=>$lstmausac,'lstspmp'=>$lstspmp,'sanPham'=>$sanPham]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -54,18 +86,66 @@ class SanPhamController extends Controller
     {
         $lstcamera = Camera::all();
         $lstmanhinh = ManHinh::all();
-        $lstram = RAM::all();
-        $lstrom = ROM::all();
         $lsthedieuhanh = HeDieuHanh::all();
         $lstloai = LoaiSanPham::all();
         $lsthieunangpin = HieuNangPin::all();
         $lsttinhnangdb = TinhNangDB::all();
-        $lstmausac = MauSac::all();
         $lstthietke = ThietKe::all();
-        return view('sanpham.themmoi_sp',['lstcamera'=>$lstcamera,'lstmanhinh'=>$lstmanhinh,'lstram'=>$lstram,'lstrom'=>$lstrom,
-       'lsthedieuhanh'=>$lsthedieuhanh,'lsttinhnangdb'=>$lsttinhnangdb,'lstmausac'=>$lstmausac,'lstloai'=>$lstloai,'lsthieunangpin'=>$lsthieunangpin,'lstthietke'=>$lstthietke]);
+        return view('sanpham.themmoi_sp',['lstcamera'=>$lstcamera,'lstmanhinh'=>$lstmanhinh,
+       'lsthedieuhanh'=>$lsthedieuhanh,'lsttinhnangdb'=>$lsttinhnangdb,'lstloai'=>$lstloai,'lsthieunangpin'=>$lsthieunangpin,'lstthietke'=>$lstthietke]);
     }
-
+/**
+     * Store a newly created resource in storage.
+     *
+    *@param \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storemp(Request $request)
+    {
+        $validatedData = $request->validate(
+            [
+                'id_ram' => 'required',
+                'id_rom' => 'required',
+                'id_mau' => 'required',   
+                'id_mau' => 'required', 
+                'soluong' => 'required', 
+                'giacu' => 'required',   
+                'giamoi' => 'required',   
+ 
+            ],
+            [
+                'id_ram.required' => 'Ram Không Được Bỏ Trống',
+            ]
+        );
+        $mapping = new Mapping();
+        $mapping->fill([
+            'id_sanpham'=>$request->input('themmp'),
+            'id_ram'=>$request->input('id_ram'),
+            'id_rom'=>$request->input('id_rom'),
+            'id_mau'=>$request->input('id_mau'),
+            'soluong'=>$request->input('soluong'),
+            'giacu'=>$request->input('giacu'),
+            'giamoi'=>$request->input('giamoi'),
+            'hienthi'=>'1',
+        ]);
+        $mapping->save();
+        return Redirect::route('sanPham.stock',$request->input('themmp'));
+    }
+    public function storeab(Request $request)
+    {
+        $hinhanh = new HinhAnh();
+        $hinhanh->fill([
+            'id_sanpham'=>$request->input('themab'),
+            'hinhanh'=>'',
+            'hienthi'=>'1',
+        ]);
+        $hinhanh->save();
+        if($request->hasFile('hinhanh')){
+            $hinhanh->hinhanh = $request->file('hinhanh')->store('images/abum/'.$hinhanh->id,'public');
+        }
+        $hinhanh->save();
+        return Redirect::route('sanPham.abum',$request->input('themab'));
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -78,19 +158,12 @@ class SanPhamController extends Controller
             [
                 'tensanpham' => 'required',
                 'hinhanh' => 'required',
-                'mota' => 'required',
-                'giacu' => 'required',
-                'giamoi' => 'required',
-                 
+                'mota' => 'required',    
             ],
             [
                 'tensanpham.required' => 'Tên Sản Phẩm Không Được Bỏ Trống',
                 'hinhanh.required' => 'Hình Ảnh Không Được Bỏ Trống',
                 'mota.required' => 'Mô Tả Ảnh Không Được Bỏ Trống',
-                'giacu.required' => 'Giá Bán Không Được Bỏ Trống',
-                'giamoi.required' => 'Giá Mới Không Được Bỏ Trống',
-                'giamoi' => 'required', 'soluong' => 'required',
-                'soluong.required' => 'Số Lượng Không Được Bỏ Trống',
 
             ]
         );
@@ -99,20 +172,14 @@ class SanPhamController extends Controller
             'tensanpham'=>$request->input('tensanpham'),
             'hinhanh'=>'',
             'mota'=>$request->input('mota'),
-            'giacu'=>$request->input('giacu'),
-            'giamoi'=>$request->input('giamoi'),
             'id_camera'=>$request->input('id_camera'),
-            'id_ram'=>$request->input('id_ram'),
-            'id_rom'=>$request->input('id_rom'),
             'id_manhinh'=>$request->input('id_manhinh'),
             'id_tinhnangdb'=>$request->input('id_tinhnangdb'),
             'id_thietke'=>$request->input('id_thietke'),
             'id_hieunangpin'=>$request->input('id_hieunangpin'),
-            'id_mau'=>$request->input('id_mau'),
             'id_hedieuhanh'=>$request->input('id_hedieuhanh'),
             'id_thietke'=>$request->input('id_thietke'),
-            'id_danhgia'=>'5',
-            'soluong'=>$request->input('soluong'),
+            'danhgia'=>'1',
             'id_loaisp'=>$request->input('id_loai'),
             'hienthi'=>'1',
         ]);
@@ -134,16 +201,13 @@ class SanPhamController extends Controller
     {
         $lstcamera = Camera::all();
         $lstmanhinh = ManHinh::all();
-        $lstram = RAM::all();
-        $lstrom = ROM::all();
         $lsthedieuhanh = HeDieuHanh::all();
         $lstloai = LoaiSanPham::all();
         $lsthieunangpin = HieuNangPin::all();
         $lsttinhnangdb = TinhNangDB::all();
-        $lstmausac = MauSac::all();
         $lstthietke = ThietKe::all();
-        return view('sanpham.sua_sp',['sanPham'=>$sanPham,'lstcamera'=>$lstcamera,'lstmanhinh'=>$lstmanhinh,'lstram'=>$lstram,'lstrom'=>$lstrom,
-       'lsthedieuhanh'=>$lsthedieuhanh,'lsttinhnangdb'=>$lsttinhnangdb,'lstmausac'=>$lstmausac,'lstloai'=>$lstloai,'lsthieunangpin'=>$lsthieunangpin,'lstthietke'=>$lstthietke]);
+        return view('sanpham.sua_sp',['sanPham'=>$sanPham,'lstcamera'=>$lstcamera,'lstmanhinh'=>$lstmanhinh,
+       'lsthedieuhanh'=>$lsthedieuhanh,'lsttinhnangdb'=>$lsttinhnangdb,'lstloai'=>$lstloai,'lsthieunangpin'=>$lsthieunangpin,'lstthietke'=>$lstthietke]);
     }
 
     /**
@@ -156,7 +220,6 @@ class SanPhamController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -168,21 +231,15 @@ class SanPhamController extends Controller
     {
         $validatedData = $request->validate(
             [
-                'tensanpham' => 'required',
+                'tensanpham' => 'required |unique:san_phams,tensanpham',
                 'hinhanh' => 'required',
                 'mota' => 'required',
-                'giacu' => 'required',
-                'giamoi' => 'required', 'soluong' => 'required',
-                 
             ],
             [
                 'tensanpham.required' => 'Tên Sản Phẩm Không Được Bỏ Trống',
+                'tensanpham.unique' => 'Tên Sản Phẩm Đã Tồn Tại',
                 'hinhanh.required' => 'Hình Ảnh Không Được Bỏ Trống',
                 'mota.required' => 'Mô Tả Ảnh Không Được Bỏ Trống',
-                'giacu.required' => 'Giá Bán Không Được Bỏ Trống',
-                'giamoi.required' => 'Giá Mới Không Được Bỏ Trống',
-                'soluong.required' => 'Số Lượng Không Được Bỏ Trống',
-
             ]
         );
         if($request->hasFile('hinhanh'))
@@ -192,20 +249,18 @@ class SanPhamController extends Controller
         $sanPham->fill([
             'tensanpham'=>$request->input('tensanpham'),
             'mota'=>$request->input('mota'),
-            'giacu'=>$request->input('giacu'),
-            'giamoi'=>$request->input('giamoi'),
+        
             'id_camera'=>$request->input('id_camera'),
-            'id_ram'=>$request->input('id_ram'),
-            'id_rom'=>$request->input('id_rom'),
+      
             'id_manhinh'=>$request->input('id_manhinh'),
             'id_tinhnangdb'=>$request->input('id_tinhnangdb'),
             'id_thietke'=>$request->input('id_thietke'),
             'id_hieunangpin'=>$request->input('id_hieunangpin'),
-            'id_mau'=>$request->input('id_mau'),
+      
             'id_hedieuhanh'=>$request->input('id_hedieuhanh'),
             'id_thietke'=>$request->input('id_thietke'),
             'id_danhgia'=>'5',
-            'soluong'=>$request->input('soluong'),
+          
             'id_loaisp'=>$request->input('id_loai'),
             'hienthi'=>'1',
         ]);
@@ -213,6 +268,37 @@ class SanPhamController extends Controller
         return Redirect::route('sanPham.show',['sanPham'=>$sanPham]);
     }
 
+    public function updatemp(Request $request)
+    {
+        $validatedData = $request->validate(
+            [
+                'id_ram' => 'required',
+                'id_rom' => 'required',
+                'id_mau' => 'required',   
+                'id_mau' => 'required', 
+                'soluong' => 'required', 
+                'giacu' => 'required',   
+                'giamoi' => 'required',   
+ 
+            ],
+            [
+                'id_ram.required' => 'Ram Không Được Bỏ Trống',
+            ]
+        );
+        $mapping = mapping::find($request->input('tensanpham'));
+        $mapping->fill([
+            'id_sanpham'=>$request->input('tensanpham1'),
+            'id_ram'=>$request->input('id_ram'),
+            'id_rom'=>$request->input('id_rom'),
+            'id_mau'=>$request->input('id_mau'),
+            'soluong'=>$request->input('soluong'),
+            'giacu'=>$request->input('giacu'),
+            'giamoi'=>$request->input('giamoi'),
+            'hienthi'=>'1',
+        ]);
+        $mapping->save();
+        return Redirect::route('sanPham.stock',$request->input('tensanpham1'));
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -225,4 +311,18 @@ class SanPhamController extends Controller
         return Redirect::route('sanPham.index');
     }
 
+    public function destroymp(Request $request)
+    {
+        $stock_id = $request->input('xoasanpham');
+        $stock = mapping::find($stock_id);
+        $stock->delete();
+        return Redirect::route('sanPham.stock', $request->input('xoasanpham1'));
+    }
+    public function destroyab(Request $request)
+    {
+        $stock_id = $request->input('xoaabum');
+        $stock = HinhAnh::find($stock_id);
+        $stock->delete();
+        return Redirect::route('sanPham.abum', $request->input('xoaabum1'));
+    }
 }

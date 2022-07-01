@@ -25,7 +25,6 @@ class CreateSanPhamsTable extends Migration
             $table->foreignId('id_hieunangpin');
             $table->foreignId('id_hedieuhanh');
             $table->integer('danhgia')->nullable(true);;
-            $table->integer('soluong');
             $table->foreignId('id_loaisp');
             $table->boolean('noibat')->nullable(true);
             $table->boolean('hienthi');
