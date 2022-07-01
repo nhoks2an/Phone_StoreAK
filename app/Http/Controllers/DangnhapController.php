@@ -21,12 +21,10 @@ class DangnhapController extends Controller
 
         $validatedData = $request->validate(
             [
-              
                 'name' => 'required',
                 'password' => 'required',
             ],
             [
-             
                 'name.required' => 'Tài khoản không được bỏ tróng',
                 'password.required' => 'Mật khẩu không được bỏ tróng',
             ]
@@ -62,6 +60,6 @@ public function logout(Request $request)
  
     $request->session()->regenerateToken();
  
-    return redirect()->route('login1');
+    return redirect()->route('loginadmin');
 }
 }

@@ -39,9 +39,7 @@ use Illuminate\Support\Facades\DB;
 Route::get('/', function () {
     return view('user.index.index');
 })->name('user');
-// Route::get('/trangchu', function () {
-//     return view('user.index.index');
-// })->name('user');
+
 Route::get('/sanpham', function () {
     return view('user.sanpham.index');
 })->name('sanpham');
@@ -51,20 +49,13 @@ Route::get('/chitietsanpham', function () {
 Route::get('/lienhe', function () {
     return view('user.lienhe.index');
 })->name('lienhe');
-// Route::get('/dangnhap', function () {
-//     return view('user.login.login');
-// })->name('dangnhapus');
-// Route::get('/dangky', function () {
-//     return view('user.login.register');
-// })->name('dangky');
+
 Route::get('/sanpham', function () {
     return view('user.sanpham.index');
 })->name('sanpham');
 Route::get('/giohang', function () {
     return view('user.cart.cart');
 })->name('giohang');
-
-
 Route::get('/thongtinkhachhang', function () {
     return view('user.profile.profile');
 })->name('profile');
@@ -75,22 +66,10 @@ Route::get('/register',[UserController::class,'show'])->name('user.show');
 Route::get('/dangky',[UserController::class,'store'])->name('user.store');
 Route::get('/dangnhap',[UserController::class,'login'])->name('user.login');
 Route::get('/login',[UserController::class,'loginUser'])->name('user.loginUser');
-Route::get('/admin/', function () {
-    return view('dangnhap.index');
-})->name('dangnhap');
-
 Route::get('/dashboard', function () {
     return view('dashboard.index');
-})->name('dashboard');
+})->name('dashboard')->middleware('auth');
     // hoa don
-Route::get('/admin/hoadon', function () {
-    return view('hoadon.index');
-    })->name('hoadon');
-    
-Route::get('/admin/cthoadon', function () {
-    return view('cthoadon.index');
-    })->name('cthoadon');
-    //  dang nhap
 Route::resource('/RAM',RAMController::class)->middleware('auth');
 Route::resource('/footer',FooterController::class)->middleware('auth');
 Route::resource('/gioithieu',GioiThieuController::class)->middleware('auth');
@@ -116,14 +95,20 @@ Route::post('/abum/add', [SanPhamController::class, 'storeab'])->name('sanPham.s
 Route::put('/stock/update', [SanPhamController::class, 'updatemp'])->name('sanPham.updatemp');
 Route::delete('/stock/delete', [SanPhamController::class, 'destroymp'])->name('sanPham.destroymp');
 Route::delete('/abum/delete', [SanPhamController::class, 'destroyab'])->name('sanPham.destroyab');
-Route::resource('/taikhoan',TaiKhoanController::class)->middleware('auth');
+Route::resource('/taikhoan',TaiKhoanController::class);
 Route::resource('/binhluan',BinhLuanController::class)->middleware('auth');
-Route::get('login', [DangnhapController::class,'showForm'])->name('login1');
-Route::post('login', [DangnhapController::class,'authenticate'])->name('login1');
+Route::get('/admin', [DangnhapController::class,'showForm'])->name('loginadmin');
+Route::post('/admin', [DangnhapController::class,'authenticate'])->name('loginadmin');
 Route::post('logout', [DangnhapController::class,'logout'])->name('logout');
-
-
 Route::get('/admin/loader', function () {
     return view('dangnhap.loader');
     })->name('loader');
+
+Route::get('/admin/hoadon', function () {
+    return view('hoadon.index');
+    })->name('hoadon');
+    
+Route::get('/admin/cthoadon', function () {
+    return view('cthoadon.index');
+    })->name('cthoadon');
     

@@ -1,19 +1,22 @@
 @extends('user.index')
 @section('sidebar')
 @parent
+<form method="post" action="{{route('taikhoan.update',['taikhoan'=>$datauser])}}" enctype="multipart/form-data">
+    @csrf  
+    @method('PATCH')
 <div class="box-profile">
     <div class="center-layout">
      <div class="txt-pro">Hồ Sơ Của Tôi</div>
      <div class="flex">
         <div class="left-box">
             <div class="img-pro">
-                <img src="../images/noimg.png">
+                <img src="../images/noimg.png" alt="Alt Photo" id="hinhanh_taikhoan">
             </div>
             <div class="btn-pro">
                 <div class="center-pro">
                     <form action="#" enctype="multipart/form-data">
                       <div class="input-file-container">  
-                        <input class="input-file" id="my-file" type="file">
+                        <input class="input-file" id="my-file" type="file" name="hinhanh" id="file-zone"> 
                         <label tabindex="0" for="my-file" class="input-file-trigger">Chọn Ảnh</label>
                     </div>
                     <p class="file-return"></p>
@@ -24,9 +27,10 @@
     <div class="right-box">
         <div class="thongtin">
             <div class="border-tt">Thông tin cá nhân</div>
-            <div class="input-pro"><div class="name-pro">Tên</div> <input type="" name="" value="{{$datauser->hoten}}"></div>
-            <div class="input-pro"> <div class="name-pro">Email</div> <input type="" name="" value="{{$datauser->email}}"></div>
-            <div class="input-pro"> <div class="name-pro">Số điện thoại</div> <input type="" name="" value="{{$datauser->sodienthoai}}"></div>
+            <div class="input-pro"><div class="name-pro">Tên</div><input type="text" name="hoten" value="{{$datauser->hoten}}"></div>
+            <div class="input-pro"> <div class="name-pro">Email</div> <input type="text" name="email" value="{{$datauser->email}}"></div>
+            <div class="input-pro"> <div class="name-pro">Số điện thoại</div> <input type="number" name="sodienthoai" value="{{$datauser->sodienthoai}}"></div>
+            <div class="input-pro"> <div class="name-pro">Địa chỉ</div> <input type="text" name="diachi" value="{{$datauser->diachi}}"></div>
             <div class="input-pro"> 
                 <div class="name-pro">Giới tính</div>
                 <div class="flex-gioitinh">
@@ -40,13 +44,14 @@
                     </div>
                 </div>
             </div>
-            <div class="input-pro"> <div class="name-pro">Ngày sinh</div><input type="date" id="birthdaytime" name="birthdaytime"></div>
-            <div class="btn-pro-save"> <button>Lưu</button></div>
+            <div class="input-pro"> <div class="name-pro">Ngày sinh</div><input type="date" id="birthdaytime" name="ngaysinh" value={{$datauser->ngaysinh}}></div>
+            <div class="btn-pro-save"> <button tyle="submit">Lưu</button></div>
         </div>
     </div>
 </div>
 </div>
 </div>
+</from>
 <script type="">
     document.querySelector("html").classList.add('js');
 
@@ -67,6 +72,18 @@
         the_return.innerHTML = this.value;  
     });  
 </script>
+<script>
+    /* Img Preview */
+	const input = document.getElementById("file-zone");
+    const image = document.getElementById("hinhanh_taikhoan");
+
+    input.addEventListener("change", (e) => {
+        if (e.target.files.length) {
+            const src = URL.createObjectURL(e.target.files[0]);
+            image.src = src;
+        }
+	});
+</script> 
 @endsection
 @section('Them')
 @endsection

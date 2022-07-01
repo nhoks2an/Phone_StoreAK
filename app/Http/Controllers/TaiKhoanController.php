@@ -106,7 +106,26 @@ class TaiKhoanController extends Controller
      */
     public function update(Request $request, User $taikhoan)
     {
-        //
+        $file_name=$taikhoan->hinhanh;
+        if($request->hasFile('hinhanh')){
+                $file = $request->file('hinhanh');
+                $upload = public_path('image/hinhanh');
+                $file_name = time().'_'.$file->getClientOriginalName();
+                $file->move($upload,$file_name);
+            }
+            $taikhoan->fill([
+                'hoten'=>$request->input('hoten'),
+                'email'=>$request->input('email'),
+                'phai'=>$request->input('phai'),
+                'sodienthoai'=>$request->input('sodienthoai'),
+             
+                'diachi'=>$request->input('diachi'),
+                'ngaysinh'=>$request->input('ngaysinh'),
+                'hienthi'=>1,
+            ]);
+            $taikhoan->save();   
+            $datauser=$taikhoan;       
+        return back()->with('message','Lưu Thành Công!');
     }
 
     /**

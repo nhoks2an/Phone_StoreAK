@@ -71,7 +71,7 @@
                 <div class="card-body">
                     <div class="photoUpload-zone">
                         <div class="photoUpload-detail" id="photoUpload-preview">
-                            <img class="rounded"  src="{{$hang->hinhanh}}" alt="Alt Photo" id="hinhanh_hang">	</div>
+                        <img class="rounded"  src="{{$hang->hinhanh}}" alt="Alt Photo" id="hinhanh_hang"></div>
                         <label class="photoUpload-file" id="photo-zone" for="file-zone">
                         <input type="file" name="hinhanh" id="file-zone">
                         <i class="fas fa-cloud-upload-alt"></i>
@@ -79,7 +79,6 @@
                         <p class="photoUpload-or">hoặc</p>
                         <p class="photoUpload-choose btn btn-sm bg-gradient-success">Chọn hình</p>
                         </label>
-                 
                     </div>	
                 </div>
             </div>
