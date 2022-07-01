@@ -19,7 +19,7 @@
 
 .modal {
 	position: fixed;
-	top: 30%;
+	top: 0%;
 	right: 0;
 	bottom: 0;
 	left: 0;
@@ -158,3 +158,4 @@
 }
 .noidung.text-split{-webkit-line-clamp: 2;}
 
+x.modal {top: 0%;}

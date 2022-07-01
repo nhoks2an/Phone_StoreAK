@@ -14,6 +14,7 @@ class CreateMappingsTable extends Migration
     public function up()
     {
         Schema::create('mappings', function (Blueprint $table) {
+            $table->id();   
             $table->foreignId('id_sanpham');
             $table->foreignId('id_mau');
             $table->foreignId('id_ram');

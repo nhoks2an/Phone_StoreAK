@@ -23,22 +23,18 @@ class mapping extends Model
     ];
     public function RAM()
     {
-        return $this->belongsTo(RAM::class);
+        return $this->belongsTo('App\Models\RAM', 'id_ram', 'id');
     }
     public function ROM()
     {
-        return $this->belongsTo(ROM::class);
+        return $this->belongsTo('App\Models\ROM', 'id_rom', 'id');
     }
     public function mausac()
     {
-        return $this->belongsTo(MauSac::class);
+        return $this->belongsTo('App\Models\MauSac', 'id_mau', 'id');
     }
-
-    public function scopeSearch($query){
-        if($key = request()->key)
-            {
-                $query = $query->where('tensanpham','like','%'.$key.'%');
-            }
-        return $query;           
+    public function sanpham()
+    {
+        return $this->belongsTo('App\Models\SanPham', 'id_sanpham', 'id');
     }
 }
