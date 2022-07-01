@@ -19,7 +19,6 @@
         </li>
 </ul>
     </div>
-
     <div class="right-pro-detail col-md-6 col-lg-7 mb-4">
         <p class="title-pro-detail mb-2"></p>
         
@@ -44,8 +43,6 @@
         </ul>        
     </div>
 </div>
-
-
 <div class="tabs-pro-detail center-layout">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">

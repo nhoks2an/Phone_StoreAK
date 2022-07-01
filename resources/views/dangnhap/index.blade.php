@@ -22,7 +22,7 @@
 <body class="sidebar-mini text-sm login-page">
    
         <div class="login-view-website text-sm"><a href="{{route('user')}}" target="_blank" title="Xem website"><i class="fas fa-reply mr-2"></i>Xem website</a></div>
-        <form method="post" action="{{route('login1')}}">
+        <form method="post" action="{{route('loginadmin')}}">
         @csrf
             <div class="login-box">
                 <div class="card">
