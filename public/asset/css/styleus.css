@@ -1826,8 +1826,9 @@ img:not([src]) {
 .box-profile .right-box{max-width: 800px;width: 100%;background: #fff;padding: 20px;border-radius: 10px;}
 .box-profile .txt-pro{text-align: center;font-size: 30px;font-weight: 500;padding: 20px 0;}
 .box-profile .img-pro{width: 250px;border-radius: 50%;overflow: hidden;}
-.box-profile .btn-pro{padding: 20px 0;width: 250px;}
-.btn-pro .center-pro{display: flex;justify-content: center;width: 100%;}
+.box-profile .btn-pro{width: 250px;display: flex;justify-content: center;}
+.box-profile .btn-pro img{margin-bottom: 20px;}
+.btn-pro .center-pro{width: 170px;}
 .inputfile {
   width: 0.1px;
   height: 0.1px;

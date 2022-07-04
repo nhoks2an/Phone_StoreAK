@@ -11,8 +11,17 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Post;
 use Hash;
 use Session;
+use Illuminate\Support\File;
 class UserController extends Controller
 {
+    protected function fixImage(User $user)
+    {
+        if(Storage::disk('public')->exists($user->hinhanh)){
+            $user->hinhanh = Storage::url($user->hinhanh);
+        }else{
+            $user->hinhanh = '/images/noimage.jpg';
+        }
+    }
     public function show()
     {
         return view('user.login.register');
@@ -20,6 +29,11 @@ class UserController extends Controller
     public function login()
     {
         return view('user.login.login');
+    }
+    public function showprofile(User $user)
+    {
+        $user=User::where('id','=',Session::get('loginId'))->first();
+        return view('user.profile.profile',['user'=>$user]);
     }
     public function store(Request $request)
     {
@@ -31,14 +45,7 @@ class UserController extends Controller
             'email.required' => 'Email Không Đúng Định Dạng',
             'sodienthoai.required' => 'Số Điện Thoại Không Đúng Định Dạng',
         ]);
-            if($request->hasFile('hinhanh')){
-                $file = $request->file('hinhanh');
-                $upload = public_path('image/hinhanh');
-                $file_name = time().'_'.$file->getClientOriginalName();
-                $file->move($upload,$file_name);
-            } else {
-                $file_name = 'noname.jpg';
-            }
+
             $user = DB::table('users')->where('email',$request->email)->first();
             if(!$user){
                 $newUser = new User();
@@ -47,10 +54,11 @@ class UserController extends Controller
                 $newUser->email = $request ->email;
                 $newUser->hoten = $request ->hoten;
                 $newUser->sodienthoai = $request ->sodienthoai;
-                $newUser->hinhanh = $file_name;
+                $newUser->hinhanh = '../images/noimg.png';
                 $newUser->password = $request ->matkhau;
                 $newUser->hienthi = 1;
                 $newUser->save();
+
                 return redirect()->route('user.login')->with('message','Đăng ký thành công!');
             }
             else{
@@ -90,13 +98,34 @@ class UserController extends Controller
         }
         return view('user.index.index',compact('data'));
     } 
+
+    public function update(Request $request, User $user)
+    {
+        if($request->hasFile('hinhanh')){
+            $user->hinhanh = $request->file('hinhanh')->store('images/user/'.$user->id,'public');
+        }
+            $user->fill([
+                'hoten'=>$request->input('hoten'),
+                'email'=>$request->input('email'),
+                'phai'=>$request->input('phai'),
+                'sodienthoai'=>$request->input('sodienthoai'),
+                'diachi'=>$request->input('diachi'),
+                'ngaysinh'=>$request->input('ngaysinh'),
+                'hienthi'=>1,
+            ]);
+            $user->save(); 
+                return dd($user);
+        return back()->with('message','Lưu Thành Công!');
+
+    }
+
     public function logout()
     {
         if(Session::has('loginId'))
         {
             Session::pull('loginId');
         }
-        return back();
+        return view('user.index.index');
     }
 
 

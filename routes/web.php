@@ -19,7 +19,6 @@ use App\Http\Controllers\LoaiSanPhamController;
 use App\Http\Controllers\SanPhamController;
 use App\Http\Controllers\TaiKhoanController;
 use App\Http\Controllers\DangnhapController;
-
 use App\Http\Controllers\BinhLuanController;
 use App\Http\Controllers\SlideShowController;
 use App\Http\Controllers\SologanController;
@@ -59,7 +58,8 @@ Route::get('/giohang', function () {
 Route::get('/thongtinkhachhang', function () {
     return view('user.profile.profile');
 })->name('profile');
-
+Route::get('/thongtincanhan/{user}',[UserController::class,'showprofile'])->name('user.showprofile');
+Route::get('/capnhap/{user}',[UserController::class,'update'])->name('user.update');
 Route::get('/logout',[UserController::class,'logout'])->name('user.logout');
 Route::get('/trangchu',[UserController::class,'index'])->name('user.index');
 Route::get('/register',[UserController::class,'show'])->name('user.show');
