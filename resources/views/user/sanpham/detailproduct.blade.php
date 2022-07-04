@@ -3,45 +3,73 @@
     @parent
 <div class="grid-pro-detail w-clear">
     <div class="row">
-    <div class="left-pro-detail col-md-6 col-lg-5 mb-4">
+    <div class="left-pro-detail col-xl-4">
 <ul id="etalage">
-        <li>
-        <img class="etalage_source_image" src="../images/oppoa5.jpg" class="img-responsive" />
-        </li>
-        <li>
-        <img class="etalage_source_image" src="../images/oppoa5.jpg" class="img-responsive" />
-        </li>
-        <li>
-        <img class="etalage_source_image" src="../images/oppoa5.jpg" class="img-responsive" />
-        </li>
-        <li>
-        <img class="etalage_source_image" src="../images/logo.png" class="img-responsive" />
-        </li>
+	@foreach($lsthinhanh as $hinhanh)
+	<li>
+		<img class="etalage_source_image" src="{{$hinhanh->hinhanh}}" class="img-responsive" />
+	</li>
+	@endforeach
 </ul>
     </div>
-    <div class="right-pro-detail col-md-6 col-lg-7 mb-4">
-        <p class="title-pro-detail mb-2"></p>
-        
-        <div class="social-plugin social-plugin-pro-detail w-clear">
-        </div>
-        <div class="desc-pro-detail"></div>
-        <ul class="attr-pro-detail">
-          
-                <li class="w-clear"> 
-                    <label class="attr-label-pro-detail">Mã:</label>
-                    <div class="attr-content-pro-detail">555</div>
-                </li>
-
-            
-            <li class="w-clear">
-                <label class="attr-label-pro-detail">Giá:</label>
-                <div class="attr-content-pro-detail">
-                        <span class="price-new-pro-detail">55555555đ</span>
-                        <span class="price-old-pro-detail">999999999đ</span>
-                </div>
-            </li>
-        </ul>        
-    </div>
+    <div class="right-pro-detail col-xl-7">
+		<div class="row">
+			<div class="col-xl-8">
+				<p class="title-pro-detail mb-2"></p>
+				<div class="social-plugin social-plugin-pro-detail w-clear">
+				</div>
+				<div class="desc-pro-detail"></div>
+				<ul class="attr-pro-detail">
+					<li class="w-clear"> 
+						<label class="tensanpham attr-label-pro-detail">{{$sanPham->tensanpham}}</label>
+					</li>
+					<!-- <li class="w-clear">
+						<label class="attr-label-pro-detail soluong" >Loại sản phẩm:</label>
+						<div class="attr-content-pro-detail">
+								<span class="giaban price-new-pro-detail"></span>
+								<span class="price-old-pro-detail"></span>
+						</div>
+					</li> -->
+					<p class="freeship">
+							<i class="icon-freeship-truck"></i> <span>Miễn phí vận chuyển toàn quốc</span>
+					</p>
+					<div class="product-option color">
+						<strong class="label">Dung lượng và màu sắc</strong>
+						<div class="options" id="colorOptions" style="margin-top: 10px;">
+							@foreach($mapping as $mp)
+							<form method="post" action="{{route('loadding.loadmau',[$mp->id_ram])}}"class="item selected dungluong">
+								@csrf
+								<input type="hidden" id="" name="id_ramm" value="{{$mp->id_ram}}">
+								<button  type="submit">
+								<strong>{{$mp->mausac->tenmau}}</strong>/<strong>{{$mp->ram->soram}}G</strong>
+									<div>
+									<strong class="giaban">{{$mp->giacu}}₫</strong>
+									</div>
+								</button>
+							</form>	
+								@endforeach
+						</div>
+					</div>
+					<div >
+						<button class="btn-giohang" tyle="submit" style="margin-top:10px">
+							<span href="#">Thêm vào giỏ hàng</span>
+						</button>
+					</div>
+				</ul>  
+			</div>
+			<div class="col-xl-5">
+				<h3>Thông số kỹ thuật Samsung Galaxy S22 Ultra - 12GB/256GB - Chính hãng</h3>
+				<div class="specs-special">
+						<ol>
+							<li>
+								<strong>Dung lượng pin:</strong>
+								<span>5000 mAh</span>
+							</li>
+						</ol>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 <div class="tabs-pro-detail center-layout">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -53,7 +81,7 @@
     </li>
 </ul>
 <div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">Lorem Ipsum chỉ đơn giản là một đoạn văn bản giả, được dùng vào việc trình bày và dàn trang phục vụ cho in ấn. Lorem Ipsum đã được sử dụng như một văn bản chuẩn cho ngành công nghiệp in ấn từ những năm 1500, khi một họa sĩ vô danh ghép nhiều đoạn văn bản với nhau để tạo thành một bản mẫu văn bản. Đoạn văn bản này không những đã tồn tại năm thế kỉ, mà khi được áp dụng vào tin học văn phòng, nội dung của nó vẫn không hề bị thay đổi. Nó đã được phổ biến trong những năm 1960 nhờ việc bán những bản giấy Letraset in những đoạn Lorem Ipsum, và gần đây hơn, được sử dụng trong các ứng dụng dàn trang, như Aldus PageMaker.</div>
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">{{$sanPham->mota}}</div>
   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Bình luận</div>
 </div>
 </div>

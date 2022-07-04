@@ -123,19 +123,50 @@ ul .tt-dt{font-size: 20px;color: #fff;}
 .box-sanpham{padding-bottom: 30px;}
 .item .img{display: inline-block;margin-top: 10px;max-width: 150px;}
 .item .img img{width:100%;height: 150px;}
-.item{border:1px solid #e7e7e77d;text-align: center;}
+.item{border:1px solid #e7e7e77d;text-align: center; border-radius: 10px;}
 .gia span{color: red;}
 .item .noidung{margin-bottom: 10px;margin-top: 10px;line-height: 25px;font-weight:bold ;}
 .item .noidung .ten a{color: #000;
   height: 24px;
   line-height: 22px;
   margin-top: 0px;
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 2;
   overflow: hidden;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   display: -webkit-box;
 }
+.tensanpham{font-size: 25px;font-weight: bold;text-transform: capitalize;}
+.product-option .options{
+  display: flex;
+  flex-wrap: wrap;
+}
+.product-option .selected{
+  border: 2px solid #00483d;
+  padding: 4px;
+}
+.product-option .item{
+  display: block;
+    width: 20%;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    position: relative;
+}
+.giaban{color: #cd0000;}
+.soluong{color: #000;font-weight: bold;}
+.btn-giohang{background: #006600;width: 63%;text-align: center;padding:30px 0px;border-radius:10px ;}
+.btn-giohang span{font-size: 20px;color: #fff;}
+.dungluong.active{ border: 1px solid #e5101d;}
+
+
+
+
+
+
 .title-name{font-size: 35px;margin: 30px 0;margin-bottom: 30px;color: #ffd400;
 	border-bottom-right-radius: 15px;
 	border-bottom-left-radius: 15px;
@@ -152,6 +183,7 @@ ul .tt-dt{font-size: 20px;color: #fff;}
 .thongtin .diachi p{font-size: 17px;color: #fff;margin-bottom: 0px;}
 .form-row,.contact-input{margin-bottom: 10px;}
 /*login*/
+
 
 
 
@@ -652,7 +684,7 @@ iframe {
 .giohang{padding: 30px 0;}
 .multiple-items{padding: 20px 20px;background-color: #fff;border-radius: 20px;}
 .multiple-items .slick-slide{padding: 0 12px;}
-.right-pro-detail{padding-left: 200px!important;}
+.right-pro-detail{padding-left:50px!important;}
 .left-pro-detail{margin-left: 83px!important;}
 .list-hang li a{border-bottom: 1px dashed;}
 .chinhsach,.chinhsach a{color: #fff;font-size: 17px;}
@@ -662,6 +694,7 @@ iframe {
   position: relative;
   font-family: Arial;
 }
+
 
 .custom-select select {
   display: none; /*hide original SELECT element:*/
@@ -769,7 +802,7 @@ iframe {
 }
 .boloc{display: flex;}
 .select-items div{background-color: #fff;}
-.giacu{text-decoration-line:line-through ;font-size: 14px;}
+.giacu{text-decoration-line:line-through ;font-size: 14px;color: #ccc;}
 .tt-gia{display: flex; justify-content: center;}
 .gia{padding-right: 20px;}
 .item{position: relative;}
@@ -1283,7 +1316,7 @@ img:not([src]) {
 .control-slideshow {
   opacity: 0;
 }
-
+.ten{}
 /* Partner */
 .wrap-partner {
   padding: 0px 15px;
@@ -1684,7 +1717,7 @@ img:not([src]) {
 }
 .price-new-pro-detail {
   font-weight: 700;
-  font-size: 20px;
+  font-size: 25px;
   color: #cd0000;
 }
 .price-old-pro-detail {
@@ -1894,3 +1927,8 @@ img:not([src]) {
 .right-box .input-pro .gioitinh{width: 70px;display: flex;justify-content: center;align-items: center;margin-right: 20px;}
 .right-box .btn-pro-save button{padding: 5px 15px;background-color:red;color: #fff;border-radius: 5px;}
 .right-box .btn-pro-save{display: flex;justify-content: flex-end;}
+
+.text-split{-webkit-line-clamp: 2;}
+.freeship{background: #006600;width: 63%; text-align: center;}
+.freeship span{color: #fff;}
+.options{}
