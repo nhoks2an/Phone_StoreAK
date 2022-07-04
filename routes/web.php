@@ -19,7 +19,7 @@ use App\Http\Controllers\LoaiSanPhamController;
 use App\Http\Controllers\SanPhamController;
 use App\Http\Controllers\TaiKhoanController;
 use App\Http\Controllers\DangnhapController;
-
+use App\Http\Controllers\LoaddingController;
 use App\Http\Controllers\BinhLuanController;
 use App\Http\Controllers\SlideShowController;
 use App\Http\Controllers\SologanController;
@@ -36,9 +36,7 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-Route::get('/', function () {
-    return view('user.index.index');
-})->name('user');
+
 
 Route::get('/sanpham', function () {
     return view('user.sanpham.index');
@@ -99,7 +97,7 @@ Route::resource('/mausac',MauSacController::class)->middleware('auth');
 Route::resource('/hang',HangController::class)->middleware('auth');
 Route::resource('/loaiSanPham',LoaiSanPhamController::class)->middleware('auth');
 Route::resource('/sanPham',SanPhamController::class)->middleware('auth');
-Route::get('/chitietsanpham/{id}', [SanPhamController::class, 'detail'])->name('sanPham.detail');
+// Route::get('/chitietsanpham/{id}', [SanPhamController::class, 'detail'])->name('sanPham.detail');
 Route::get('/stock/{id}', [SanPhamController::class, 'indexmp'])->name('sanPham.stock');
 Route::get('/abum/{id}', [SanPhamController::class, 'indexab'])->name('sanPham.abum');
 Route::post('/stock/add', [SanPhamController::class, 'storemp'])->name('sanPham.storemp');
@@ -115,12 +113,13 @@ Route::post('logout', [DangnhapController::class,'logout'])->name('logout');
 Route::get('/admin/loader', function () {
     return view('dangnhap.loader');
     })->name('loader');
-
 Route::get('/admin/hoadon', function () {
     return view('hoadon.index');
     })->name('hoadon');
-    
 Route::get('/admin/cthoadon', function () {
     return view('cthoadon.index');
     })->name('cthoadon');
-    
+
+Route::get('/', [LoaddingController::class, 'loadding'])->name('user');  
+Route::get('/detail/{id}', [LoaddingController::class, 'detail'])->name('loadding.detail'); 
+Route::post('/mau/{id}', [LoaddingController::class, 'loadmau'])->name('loadding.loadmau'); 
