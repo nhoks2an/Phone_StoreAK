@@ -163,6 +163,7 @@
 <div class="search">
     {{$lstsanpham->appends(request()->all())->links()}}
 </div>
+
 @section('scripts')
 <script>
 $(document).on('click', '.btnxoa', function() {

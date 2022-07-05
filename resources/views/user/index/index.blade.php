@@ -137,11 +137,11 @@
 <div class="box-sanpham">
     @foreach($lsthang as $hang)
     <div class="center-layout">
-        <div class="center">
+    <div class="center">
             <div class="title-name">{{$hang->tenhang}}</div>
         </div>
         <div class="list-item">
-            @foreach($lstloai as $loai)
+        @foreach($lstloai as $loai)
             <div class="item">
                 <div class="img"><a class="scale-img" href="chitietsanpham"><img src=""></a></div>
                 <div class=" noidung">
