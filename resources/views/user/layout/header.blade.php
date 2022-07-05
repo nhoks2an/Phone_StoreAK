@@ -40,16 +40,16 @@
                             <li><a class="box-wall" href="">Giới thiệu</a></li>
                             <li><a href="lienhe">Liên hệ</a></li>
                             @if($datauser==null)
-                            <li class="box-li"><i class="fas fa-shopping-cart"></i><a href="{{route('giohang')}}">Giỏ
+                            <li class="box-li"><i class="fas fa-shopping-cart"></i><a href="{{route('cart.show')}}">Giỏ
                                     hàng</a>
                             </li>
-                            <li class="box-li"><i class="fas fa-sign-in-alt"></i><a href="dangnhap">Đăng
+                            <li class="box-li"><i class="fas fa-sign-in-alt"></i><a href="{{route('user.login')}}">Đăng
                                     nhập</a></li>
                             @else
                             <li class="box-li"></i><a href="{{route('user.showprofile',['user'=>$datauser])}}">Thông tin
                                     đăng nhập</a></li>
                             <li class="box-li"></i><a href="#">Lịch sử mua hàng</a></li>
-                            <li class="box-li"><i class="fas fa-shopping-cart"></i><a href="{{route('giohang')}}">Giỏ
+                            <li class="box-li"><i class="fas fa-shopping-cart"></i><a href="{{route('cart.show')}}">Giỏ
                                     hàng</a>
                             </li>
                             <li class="box-li"><i class="fas fa-sign-out-alt"></i><a

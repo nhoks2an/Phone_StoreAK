@@ -21,9 +21,9 @@
     <div class="custom-select">
         <select>
             <option value="0">Hãng</option>
-        
+
             <option value=""></option>
-        
+
         </select>
     </div>
     <div class="custom-select">
@@ -39,61 +39,61 @@
     <div class="custom-select">
         <select>
             <option value="0">Loại điện thoại</option>
-         
+
             <option value=""></option>
-         
+
         </select>
     </div>
     <div class="custom-select">
         <select>
             <option value="0">Màu</option>
-           
+
             <option value=""></option>
-          
+
         </select>
     </div>
     <div class="custom-select">
         <select>
             <option value="0">RAM</option>
-        
+
             <option value=""></option>
-        
+
         </select>
     </div>
     <div class="custom-select">
         <select>
             <option value="0">Bộ nhớ trong</option>
-       
+
             <option value=""></option>
-         
+
         </select>
     </div>
     <div class="custom-select">
         <select>
             <option value="0">Camera</option>
-       
+
             <option value=""></option>
-       
+
         </select>
     </div>
     <div class="custom-select">
         <select>
             <option value="0">Màn hình</option>
-          
+
             <option value=""></option>
-         
+
         </select>
     </div>
 </div>
 <div class="box-filter center">
     <div class="box-quicklink  block-scroll-main">
         <div class="lst-quickfilter q-manu ">
-          
+
             <a href="dtdd-apple-iphone" data-href="dtdd-apple-iphone" data-index="0"
                 class="box-quicklink__item bd-radius quicklink-logo">
                 <img src="../images/logo-iphone.png" width="30" class="no-text">
             </a>
-          
+
         </div>
     </div>
 </div>
@@ -103,10 +103,9 @@
             <div class="title-name">SẢN PHẨM NỔI BẬT</div>
         </div>
         <div class="multiple-items">
-         @foreach($sanPham as $sp)
+            @foreach($sanPham as $sp)
             <div class="item">
-                <div class="img"><a class="scale-img"
-                        href="{{route('loadding.detail',[$sp->id])}}"><img
+                <div class="img"><a class="scale-img" href="{{route('loadding.detail',[$sp->id])}}"><img
                             src="/storage/{{$sp->hinhanh}}"></a></div>
                 <div class=" noidung">
                     <div class="ten"><a href="" class="text-split">{{$sp->tensanpham}}</a></div>
@@ -125,7 +124,7 @@
                     </a>
                 </div>
             </div>
-        @endforeach
+            @endforeach
         </div>
     </div>
 </div>
@@ -140,10 +139,9 @@
             <div class="title-name">SAMSUNG</div>
         </div>
         <div class="list-item">
-         
+
             <div class="item">
-                <div class="img"><a class="scale-img" href="chitietsanpham"><img
-                            src=""></a></div>
+                <div class="img"><a class="scale-img" href="chitietsanpham"><img src=""></a></div>
                 <div class=" noidung">
                     <div class="ten"><a href="">Điện thoại OPPO A5</a></div>
                     <div class="tt-gia">
@@ -161,7 +159,7 @@
                     </a>
                 </div>
             </div>
-         
+
         </div>
     </div>
 </div>

@@ -61,9 +61,13 @@
                         </td>
                         <td class="align-middle text-center">
                             <div class="custom-control custom-checkbox my-checkbox">
-                                <input type="checkbox" class="custom-control-input show-checkbox"
-                                    id="show-checkbox-hienthi-3" data-table="news" data-id="3" data-attr="hienthi"
-                                    checked="">
+                                @if($cs->hienthi)
+                                <input type="checkbox" class="custom-control-input hienthi-checkbox" name="hienthi"
+                                    id="hienthi-checkbox" checked="" value="">
+                                @else
+                                <input type="checkbox" class="custom-control-input hienthi-checkbox" name="hienthi"
+                                    id="hienthi-checkbox" value="">
+                                @endif
                                 <label for="show-checkbox-hienthi-3" class="custom-control-label"></label>
                             </div>
                         </td>

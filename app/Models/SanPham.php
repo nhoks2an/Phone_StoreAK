@@ -25,32 +25,41 @@ class SanPham extends Model
        'danhgia',
        'id_loaisp',
         'hienthi',
+        'noibat',
     ];
 
-    public function hedieuhhanh()
+    public function camera()
     {
-        return $this->belongsTo(HeDieuHanh::class);
+        return $this->belongsTo('App\Models\Camera', 'id_camera', 'id');
+    }
+    public function hedieuhanh()
+    {
+        return $this->belongsTo('App\Models\HeDieuHanh', 'id_hedieuhanh', 'id');
     }
     public function manhinh()
     {
-        return $this->belongsTo(ManHinh::class);
+        return $this->belongsTo('App\Models\ManHinh', 'id_manhinh', 'id');
     }
 
     public function hang()
     {
-        return $this->belongsTo(Hang::class);
+        return $this->belongsTo('App\Models\Hang', 'id_hang', 'id');
     }
     public function tinhnangdb()
     {
-        return $this->belongsTo(TinhNangDB::class);
+        return $this->belongsTo('App\Models\TinhNangDB', 'id_tinhnangdb', 'id');
     }
     public function hieunangpin()
     {
-        return $this->belongsTo(HieuNangPin::class);
+        return $this->belongsTo('App\Models\HieuNangPin', 'id_hieunangpin', 'id');
     }
     public function thietke()
     {
-        return $this->belongsTo(ThietKe::class);
+        return $this->belongsTo('App\Models\ThietKe', 'id_thietke', 'id');
+    }
+    public function loaisanpham()
+    {
+        return $this->belongsTo('App\Models\LoaiSanPham', 'id_loaisp', 'id');
     }
     public function mapping()
     {

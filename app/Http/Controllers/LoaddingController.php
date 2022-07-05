@@ -44,10 +44,11 @@ class LoaddingController extends Controller
    }
    public function detail($id)
    {
-    $sanPham = SanPham::find($id);
-    $mapping = mapping::where('id_sanpham','=',$id,)->get();
+    $sanPham = SanPham::where('id','=',$id)->first();
+    $mapping = mapping::where('id_sanpham','=',$id)->get();
     $lsthinhanh = HinhAnh::where('id_sanpham','=',$id)->get();
     $lstloai= LoaiSanPham::where('id','=',$id)->get();
+    $spcungloai=SanPham::where('id_loaisp','=',$sanPham->id_loaisp,'and id<>',$sanPham->id)->get();
     foreach($mapping as $mp)
     {  
     }
@@ -55,6 +56,6 @@ class LoaddingController extends Controller
     {  
         $this->fixImageab($hinhanh);
     }
-    return View('user.sanpham.detailproduct',['sanPham'=>$sanPham,'mapping'=>$mapping,'lsthinhanh'=>$lsthinhanh,'lstloai'=>$lstloai]);
+    return View('user.sanpham.detailproduct',['sanPham'=>$sanPham,'mapping'=>$mapping,'lsthinhanh'=>$lsthinhanh,'lstloai'=>$lstloai,'spcungloai'=>$spcungloai]);
    }
 }

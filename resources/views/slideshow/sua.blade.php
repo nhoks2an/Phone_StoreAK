@@ -36,30 +36,37 @@
                                 <label class="custom-file-label mb-0" data-browse="Chọn" for="hinhanh">Chọn file</label>
                             </div>
                         </label>
-                        <strong class="d-block text-sm">Width: 1366px - Height: 500px(.jpg|.gif|.png|.jpeg|.gif)</strong>
-                             @if($errors->has('hinhanh'))
-                                <div class="alert alert-danger" style="margin-top:10px;">
-                                {{$errors->first('hinhanh')}}
-                                </div>
-                            @endif
+                        <strong class="d-block text-sm">Width: 1366px - Height:
+                            500px(.jpg|.gif|.png|.jpeg|.gif)</strong>
+                        @if($errors->has('hinhanh'))
+                        <div class="alert alert-danger" style="margin-top:10px;">
+                            {{$errors->first('hinhanh')}}
+                        </div>
+                        @endif
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="link0">Link:</label>
-                    <input type="text" class="form-control text-sm" name="link" id="link0" placeholder="Link" value="{{$slideShow->lienket}}">
-                        @if($errors->has('link'))
-                        <div class="alert alert-danger" style="margin-top:10px;">
+                    <input type="text" class="form-control text-sm" name="link" id="link0" placeholder="Link"
+                        value="{{$slideShow->lienket}}">
+                    @if($errors->has('link'))
+                    <div class="alert alert-danger" style="margin-top:10px;">
                         {{$errors->first('link')}}
-                        </div>
+                    </div>
                     @endif
                 </div>
                 <div class="form-group">
                     <div class="form-group d-inline-block mb-2 mr-2">
-                        <label for="hienthi-checkbox0" class="d-inline-block align-middle mb-0 mr-2">Hiển thị:</label>
+                        <label for="hienthi-checkbox" class="d-inline-block align-middle mb-0 mr-2">Hiển thị:</label>
                         <div class="custom-control custom-checkbox d-inline-block align-middle">
-                            <input type="checkbox" class="custom-control-input hienthi-checkbox0"
-                                name="dataMulti[0][status][]" id="hienthi-checkbox0" value="hienthi" checked="">
-                            <label for="hienthi-checkbox0" class="custom-control-label"></label>
+                            @if($slideShow->hienthi)
+                            <input type="checkbox" class="custom-control-input hienthi-checkbox" name="hienthi"
+                                id="hienthi-checkbox" checked="" value="">
+                            @else
+                            <input type="checkbox" class="custom-control-input hienthi-checkbox" name="hienthi"
+                                id="hienthi-checkbox" value="">
+                            @endif
+                            <label for="hienthi-checkbox" class="custom-control-label"></label>
                         </div>
                     </div>
                 </div>

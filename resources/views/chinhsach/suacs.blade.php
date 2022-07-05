@@ -16,7 +16,7 @@
         </div>
         <div class="row">
             <div class="col-xl-12">
-              
+
                 <div class="card card-primary card-outline text-sm">
                     <div class="card-header">
                         <h3 class="card-title">Nội dung tin tức</h3>
@@ -44,21 +44,21 @@
                                             <label for="namevi">Tiêu đề (vi):</label>
                                             <input type="text" class="form-control for-seo text-sm" name="tieude"
                                                 id="namevi" placeholder="Tiêu đề (vi)" value="{{$chinhSach->tieude}}">
-                                                @if($errors->has('tieude'))
-                                                <div class="alert alert-danger" style="margin-top:10px;">
+                                            @if($errors->has('tieude'))
+                                            <div class="alert alert-danger" style="margin-top:10px;">
                                                 {{$errors->first('tieude')}}
-                                                </div>
-                                                @endif
+                                            </div>
+                                            @endif
                                         </div>
                                         <div class="form-group">
                                             <label for="descvi">Nội dung:</label>
                                             <textarea class="form-control for-seo text-sm " name="content" id="descvi"
                                                 rows="5" placeholder="Mô tả (vi)">{{$chinhSach->noidung}}</textarea>
-                                                @if($errors->has('content'))
-                                                <div class="alert alert-danger" style="margin-top:10px;">
+                                            @if($errors->has('content'))
+                                            <div class="alert alert-danger" style="margin-top:10px;">
                                                 {{$errors->first('content')}}
-                                                </div>
-                                                    @endif
+                                            </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -67,7 +67,7 @@
                     </div>
                 </div>
             </div>
-        
+
         </div>
         <div class="card card-primary card-outline text-sm">
             <div class="card-header">
@@ -80,25 +80,22 @@
             <div class="card-body">
                 <div class="form-group">
                     <div class="form-group d-inline-block mb-2 mr-2">
-                        <label for="noibat-checkbox" class="d-inline-block align-middle mb-0 mr-2">Nổi bật:</label>
-                        <div class="custom-control custom-checkbox d-inline-block align-middle">
-                            <input type="checkbox" class="custom-control-input noibat-checkbox" name="status[noibat]"
-                                id="noibat-checkbox" checked="" value="noibat">
-                            <label for="noibat-checkbox" class="custom-control-label"></label>
-                        </div>
-                    </div>
-                    <div class="form-group d-inline-block mb-2 mr-2">
                         <label for="hienthi-checkbox" class="d-inline-block align-middle mb-0 mr-2">Hiển thị:</label>
                         <div class="custom-control custom-checkbox d-inline-block align-middle">
-                            <input type="checkbox" class="custom-control-input hienthi-checkbox" name="status[hienthi]"
-                                id="hienthi-checkbox" checked="" value="hienthi">
+                            @if($chinhSach->hienthi)
+                            <input type="checkbox" class="custom-control-input hienthi-checkbox" name="hienthi"
+                                id="hienthi-checkbox" checked="" value="">
+                            @else
+                            <input type="checkbox" class="custom-control-input hienthi-checkbox" name="hienthi"
+                                id="hienthi-checkbox" value="">
+                            @endif
                             <label for="hienthi-checkbox" class="custom-control-label"></label>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-      
+
         <input type="hidden" name="hash" value="dd30IA6mWW">
     </form>
 </section>

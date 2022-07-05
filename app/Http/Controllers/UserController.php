@@ -76,16 +76,22 @@ class UserController extends Controller
             'password.required' => 'Mật Khẩu Không Được Bỏ Trống',
         ]);
         $user = User::where('email','=',$request->email)->first();
-        if($user){
-            if(Hash::check($request->password,$user->password))
-            {
-                $request->session()->put('loginId',$user->id);
-                return redirect('trangchu');
+        if($user)
+        {
+            if($user->hienthi==1){
+                if(Hash::check($request->password,$user->password))
+                {
+                    $request->session()->put('loginId',$user->id);
+                    return redirect('/');
+                }
+                else{
+                    return back()->with('fail','Mật khẩu không chính xác!');
+                }
+            } else {
+                return back()->with('fail','Tài khoản đã bị khoá!');
             }
-            else{
-                return back()->with('fail','Mật khẩu không chính xác!');
-            }
-        } else {
+        } else
+        {
             return back()->with('fail','Email chưa được đăng ký!');
         }
     }
@@ -125,7 +131,7 @@ class UserController extends Controller
         {
             Session::pull('loginId');
         }
-        return view('user.index.index');
+        return redirect('/');
     }
 
 

@@ -109,7 +109,7 @@ class ChinhSachController extends Controller
         $chinhSach->fill([
             'tieude'=>$request->input('tieude'),
             'noidung'=>$request->input('content'),
-            'hienthi'=>'1',
+            'hienthi'=>$request->has('hienthi'),
         ]);
         $chinhSach->save();
         return Redirect::route('chinhSach.index',['chinhSach'=>$chinhSach]);

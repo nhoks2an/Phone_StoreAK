@@ -24,6 +24,7 @@ use App\Http\Controllers\BinhLuanController;
 use App\Http\Controllers\SlideShowController;
 use App\Http\Controllers\SologanController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------
@@ -51,9 +52,9 @@ Route::get('/lienhe', function () {
 Route::get('/sanpham', function () {
     return view('user.sanpham.index');
 })->name('sanpham');
-Route::get('/giohang', function () {
-    return view('user.cart.cart');
-})->name('giohang');
+// Route::get('/giohang', function () {
+//     return view('user.cart.cart');
+// })->name('giohang');
 Route::get('/thongtinkhachhang', function () {
     return view('user.profile.profile');
 })->name('profile');
@@ -124,3 +125,5 @@ Route::get('/admin/cthoadon', function () {
 Route::get('/', [LoaddingController::class, 'loadding'])->name('user');  
 Route::get('/detail/{id}', [LoaddingController::class, 'detail'])->name('loadding.detail'); 
 Route::post('/mau/{id}', [LoaddingController::class, 'loadmau'])->name('loadding.loadmau'); 
+Route::get('/giohang', [CartController::class, 'show'])->name('cart.show'); 
+Route::get('/giohang/{sanPham}', [CartController::class, 'cart'])->name('cart.cart');

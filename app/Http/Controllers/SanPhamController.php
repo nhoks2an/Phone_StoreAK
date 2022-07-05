@@ -181,7 +181,8 @@ class SanPhamController extends Controller
             'id_thietke'=>$request->input('id_thietke'),
             'danhgia'=>'1',
             'id_loaisp'=>$request->input('id_loai'),
-            'hienthi'=>'1',
+            'hienthi'=>$request->has('hienthi'),
+            'noibat'=>$request->has('noibat'),
         ]);
         $sanPham->save();
         if($request->hasFile('hinhanh')){
@@ -237,14 +238,11 @@ class SanPhamController extends Controller
     {
         $validatedData = $request->validate(
             [
-                'tensanpham' => 'required |unique:san_phams,tensanpham',
-                'hinhanh' => 'required',
+                'tensanpham' => 'required',
                 'mota' => 'required',
             ],
             [
                 'tensanpham.required' => 'Tên Sản Phẩm Không Được Bỏ Trống',
-                'tensanpham.unique' => 'Tên Sản Phẩm Đã Tồn Tại',
-                'hinhanh.required' => 'Hình Ảnh Không Được Bỏ Trống',
                 'mota.required' => 'Mô Tả Ảnh Không Được Bỏ Trống',
             ]
         );
@@ -268,7 +266,8 @@ class SanPhamController extends Controller
             'id_danhgia'=>'5',
           
             'id_loaisp'=>$request->input('id_loai'),
-            'hienthi'=>'1',
+            'hienthi'=>$request->has('hienthi'),
+            'noibat'=>$request->has('noibat'),
         ]);
         $sanPham->save();
         return Redirect::route('sanPham.show',['sanPham'=>$sanPham]);

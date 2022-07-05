@@ -1,7 +1,7 @@
 @extends('layout.layout')
 @section('sidebar')
 @parent
-<form method="post" action="{{route('sanPham.store')}}" enctype="multipart/form-data" class="validation-form"> 
+<form method="post" action="{{route('sanPham.store')}}" enctype="multipart/form-data" class="validation-form">
     @csrf
     <div class="btn-themmoi">
         <button class="btn btn-sm bg-gradient-primary submit-check" type="submit">
@@ -40,51 +40,52 @@
                                     aria-labelledby="tabs-lang">
                                     <div class="form-group">
                                         <label for="namevi">Tiêu đề (vi):</label>
-                                        <input type="text" class="form-control for-seo text-sm" name="tensanpham" id="namevi" placeholder="Tiêu đề (vi)" >
+                                        <input type="text" class="form-control for-seo text-sm" name="tensanpham"
+                                            id="namevi" placeholder="Tiêu đề (vi)">
                                         @if($errors->has('tensanpham'))
                                         <div class="alert alert-danger" style="margin-top:10px;">
                                             {{$errors->first('tensanpham')}}
                                         </div>
-                                    @endif
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <label for="descvi">Mô tả (vi):</label>
-                                        <textarea class="form-control for-seo text-sm " name="mota" id="descvi"
-                                            rows="5" placeholder="Mô tả (vi)"></textarea>
-                                            @if($errors->has('mota'))
+                                        <textarea class="form-control for-seo text-sm " name="mota" id="descvi" rows="5"
+                                            placeholder="Mô tả (vi)"></textarea>
+                                        @if($errors->has('mota'))
                                         <div class="alert alert-danger" style="margin-top:10px;">
                                             {{$errors->first('mota')}}
                                         </div>
-                                    @endif
+                                        @endif
                                     </div>
                                     <div class="form-group-category row">
                                         <div class="form-group col-xl-6 col-sm-4">
                                             <label class="d-block" for="id_list">Camera:</label>
-                                            <select id="id_list" name="id_camera" data-level="0"
-                                                data-type="san-pham" data-table="#_product_cat" data-child="id_cat"
+                                            <select id="id_list" name="id_camera" data-level="0" data-type="san-pham"
+                                                data-table="#_product_cat" data-child="id_cat"
                                                 class="form-control select2 select-category select2-hidden-accessible"
                                                 data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                                <option >Chọn camera</option>
+                                                <option>Chọn camera</option>
                                                 @foreach($lstcamera as $camera)
                                                 <option value="{{$camera->id}}">{{$camera->tencamera}}</option>
                                                 @endforeach
-                                                </select></span>
+                                            </select></span>
                                         </div>
                                         <div class="form-group col-xl-6 col-sm-4">
                                             <label class="d-block" for="id_list">Màn hình:</label>
-                                            <select id="id_list" name="id_manhinh" data-level="0"
-                                                data-type="san-pham" data-table="#_product_cat" data-child="id_cat"
+                                            <select id="id_list" name="id_manhinh" data-level="0" data-type="san-pham"
+                                                data-table="#_product_cat" data-child="id_cat"
                                                 class="form-control select2 select-category select2-hidden-accessible"
                                                 data-select2-id="id_list" tabindex="-1" aria-hidden="true">
                                                 <option value="0" data-select2-id="2">Chọn màn hình</option>
                                                 @foreach($lstmanhinh as $manhinh)
-                                            <option value="{{$manhinh->id}}">{{$manhinh->thongso}}</option>
-                                            @endforeach
+                                                <option value="{{$manhinh->id}}">{{$manhinh->thongso}}</option>
+                                                @endforeach
                                             </select></span>
                                         </div>
                                     </div>
                                 </div>
-                            
+
                                 <div class="form-group-category row">
                                     <div class="form-group col-xl-6 col-sm-4">
                                         <label class="d-block" for="id_list">Hệ điều hành:</label>
@@ -112,7 +113,7 @@
                                 </div>
                                 <div class="form-group-category row">
                                     <div class="form-group col-xl-6 col-sm-4">
-                                    <label class="d-block" for="id_list">Thiết kế:</label>
+                                        <label class="d-block" for="id_list">Thiết kế:</label>
                                         <select id="id_list" name="id_thietke" data-level="0" data-type="san-pham"
                                             data-table="#_product_cat" data-child="id_cat"
                                             class="form-control select2 select-category select2-hidden-accessible"
@@ -121,7 +122,7 @@
                                             @foreach($lstthietke as $thietke)
                                             <option value="{{$thietke->id}}">{{$thietke->ten}}</option>
                                             @endforeach
-                                        </select></span>    
+                                        </select></span>
                                     </div>
                                     <div class="form-group col-xl-6 col-sm-4">
                                         <label class="d-block" for="id_list">Hiệu năng & Pin:</label>
@@ -142,7 +143,7 @@
                 </div>
             </div>
         </div>
-      
+
         <div class="col-xl-4">
             <div class="card card-primary card-outline text-sm">
                 <div class="card-header">
@@ -170,75 +171,76 @@
                 </div>
             </div>
             <div class="card card-primary card-outline text-sm">
-            <div class="card-header">
-                <h3 class="card-title">Hình ảnh 1 Sản phẩm</h3>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                <div class="card-header">
+                    <h3 class="card-title">Hình ảnh 1 Sản phẩm</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                                class="fas fa-minus"></i></button>
+                    </div>
                 </div>
-            </div>
-            <div class="card-body">
-                <div class="photoUpload-zone">
-                    <div class="photoUpload-detail" id="photoUpload-preview"><img class="rounded"  src="../img/noimage.jpg" alt="Alt Photo" id="hinhanh_sanpham"></div>
-                    <label class="photoUpload-file" id="photo-zone" for="file-zone">
-                        <input type="file" name="hinhanh" id="file-zone">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                        <p class="photoUpload-drop">Kéo và thả hình vào đây</p>
-                        <p class="photoUpload-or">hoặc</p>
-                        <p class="photoUpload-choose btn btn-sm bg-gradient-success">Chọn hình</p>
-                    </label>
-                </div>
-                @if($errors->has('hinhanh'))
+                <div class="card-body">
+                    <div class="photoUpload-zone">
+                        <div class="photoUpload-detail" id="photoUpload-preview"><img class="rounded"
+                                src="../img/noimage.jpg" alt="Alt Photo" id="hinhanh_sanpham"></div>
+                        <label class="photoUpload-file" id="photo-zone" for="file-zone">
+                            <input type="file" name="hinhanh" id="file-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p class="photoUpload-drop">Kéo và thả hình vào đây</p>
+                            <p class="photoUpload-or">hoặc</p>
+                            <p class="photoUpload-choose btn btn-sm bg-gradient-success">Chọn hình</p>
+                        </label>
+                    </div>
+                    @if($errors->has('hinhanh'))
                     <div class="alert alert-danger" style="margin-top:10px;">
                         {{$errors->first('hinhanh')}}
                     </div>
-                @endif			    
+                    @endif
+                </div>
             </div>
+        </div>
     </div>
-    </div>
-    </div>   
     <div class="card card-primary card-outline text-sm">
         <div class="card-header">
             <h3 class="card-title">Thông tin Sản phẩm</h3>
             <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                        class="fas fa-minus"></i></button>
             </div>
         </div>
         <div class="card-body">
             <div class="form-group">
-                    <div class="form-group d-inline-block mb-2 mr-2">
-                        <label for="noibat-checkbox" class="d-inline-block align-middle mb-0 mr-2">Nổi bật:</label>
-                        <div class="custom-control custom-checkbox d-inline-block align-middle">
-                            <input type="checkbox" class="custom-control-input noibat-checkbox" name="status[noibat]" id="noibat-checkbox" checked="" value="noibat">
-                            <label for="noibat-checkbox" class="custom-control-label"></label>
-                        </div>
+                <div class="form-group d-inline-block mb-2 mr-2">
+                    <label for="noibat-checkbox" class="d-inline-block align-middle mb-0 mr-2">Nổi bật:</label>
+                    <div class="custom-control custom-checkbox d-inline-block align-middle">
+                        <input type="checkbox" class="custom-control-input noibat-checkbox" name="noibat"
+                            id="noibat-checkbox" checked="" value="noibat">
+                        <label for="noibat-checkbox" class="custom-control-label"></label>
                     </div>
-                    <div class="form-group d-inline-block mb-2 mr-2">
-                        <label for="hienthi-checkbox" class="d-inline-block align-middle mb-0 mr-2">Hiển thị:</label>
-                        <div class="custom-control custom-checkbox d-inline-block align-middle">
-                            <input type="checkbox" class="custom-control-input hienthi-checkbox" name="status[hienthi]" id="hienthi-checkbox" checked="" value="hienthi">
-                            <label for="hienthi-checkbox" class="custom-control-label"></label>
-                        </div>
+                </div>
+                <div class="form-group d-inline-block mb-2 mr-2">
+                    <label for="hienthi-checkbox" class="d-inline-block align-middle mb-0 mr-2">Hiển thị:</label>
+                    <div class="custom-control custom-checkbox d-inline-block align-middle">
+                        <input type="checkbox" class="custom-control-input hienthi-checkbox" name="hienthi"
+                            id="hienthi-checkbox" checked="" value="hienthi">
+                        <label for="hienthi-checkbox" class="custom-control-label"></label>
                     </div>
+                </div>
             </div>
         </div>
-    </div>    
+    </div>
 </form>
 <script>
-    /* Img Preview */
-	const input = document.getElementById("file-zone");
-    const image = document.getElementById("hinhanh_sanpham");
+/* Img Preview */
+const input = document.getElementById("file-zone");
+const image = document.getElementById("hinhanh_sanpham");
 
-    input.addEventListener("change", (e) => {
-        if (e.target.files.length) {
-            const src = URL.createObjectURL(e.target.files[0]);
-            image.src = src;
-        }
-	});
-</script> 
+input.addEventListener("change", (e) => {
+    if (e.target.files.length) {
+        const src = URL.createObjectURL(e.target.files[0]);
+        image.src = src;
+    }
+});
+</script>
 @endsection
 @section('Them')
 @endsection
-
-
-
-
