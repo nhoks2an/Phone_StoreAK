@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\LienHe;
-use App\Http\Requests\StoreLienHeRequest;
-use App\Http\Requests\UpdateLienHeRequest;
+use Illuminate\Http\Request;
+use App\Http\Controllers\equest;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
 
 class LienHeController extends Controller
 {
@@ -15,7 +18,8 @@ class LienHeController extends Controller
      */
     public function index()
     {
-        //
+        $lienhe = LienHe::orderBy('created_at','DESC')->where('hienthi','=','1')->paginate(1);
+       return view('nhantin.index',['lienhe'=>$lienhe]);
     }
 
     /**
@@ -31,12 +35,38 @@ class LienHeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreLienHeRequest  $request
+     * @param  \App\Http\Requests\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreLienHeRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate(
+            [
+                'hoten' => 'required',
+                'sodienthoai' => 'required|min:10|max:10',
+                'email' => 'required|regex:/^[a-zA-Z0-9_]+@gmail.com$/',
+            ],
+            [
+                'hoten.required' => 'Họ Tên Không Được Bỏ Trống',
+                'sodienthoai.required' => 'Số Điện Thoại Không Được Bỏ Trống',
+                'sodienthoai.min' => 'Số Điện Thoại Không Đúng',
+                'sodienthoai.max' => 'Số Điện Thoại Không Đúng',
+                'email.required' => 'Email Không Được Bỏ Trống',
+                'email.regex' => 'Email Không Đúng Định Dạng',
+                
+               
+            ]
+        );
+        $lienhe= new LienHe();
+        $lienhe->fill([
+            'hoten'=>$request->input('hoten'),
+            'sodienthoai'=>$request->input('sodienthoai'),
+            'email'=>$request->input('email'),
+            'noidung'=>$request->input('noidung'),
+            'hienthi'=>'1',
+        ]);
+        $lienhe->save();
+        return Redirect::route('user',['lienhe'=>$lienhe]);
     }
 
     /**
@@ -45,9 +75,9 @@ class LienHeController extends Controller
      * @param  \App\Models\LienHe  $lienHe
      * @return \Illuminate\Http\Response
      */
-    public function show(LienHe $lienHe)
+    public function show(LienHe $lienhe)
     {
-        //
+        return view('nhantin.detail',['lienhe'=>$lienhe]);
     }
 
     /**
@@ -56,21 +86,30 @@ class LienHeController extends Controller
      * @param  \App\Models\LienHe  $lienHe
      * @return \Illuminate\Http\Response
      */
-    public function edit(LienHe $lienHe)
+    public function edit(LienHe $lienhe)
     {
-        //
+      
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateLienHeRequest  $request
+     * @param  \App\Http\Requests\Request  $request
      * @param  \App\Models\LienHe  $lienHe
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateLienHeRequest $request, LienHe $lienHe)
+    public function update(Request $request, LienHe $lienhe)
     {
-        //
+       
+        $lienhe->fill([
+            'hoten'=>$lienhe->hoten,
+            'sodienthoai'=>$lienhe->sodienthoai,
+            'email'=>$lienhe->email,
+            'noidung'=>$lienhe->noidung,
+            'hienthi'=>'0',
+        ]);
+        $lienhe->save();
+        return Redirect::route('lienhe.index',['lienhe'=>$lienhe]);
     }
 
     /**

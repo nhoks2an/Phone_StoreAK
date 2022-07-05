@@ -16,6 +16,8 @@ use App\Http\Controllers\HeDieuHanhController;
 use App\Http\Controllers\ThietKeController;
 use App\Http\Controllers\HangController;
 use App\Http\Controllers\LoaiSanPhamController;
+use App\Http\Controllers\LienHeController;
+use App\Http\Controllers\TTLienHeController;
 use App\Http\Controllers\SanPhamController;
 use App\Http\Controllers\TaiKhoanController;
 use App\Http\Controllers\DangnhapController;
@@ -44,9 +46,7 @@ Route::get('/sanpham', function () {
 Route::get('/chitietsanpham', function () {
     return view('user.sanpham.detailproduct');
 })->name('chitietsanpham');
-Route::get('/lienhe', function () {
-    return view('user.lienhe.index');
-})->name('lienhe');
+
 
 Route::get('/sanpham', function () {
     return view('user.sanpham.index');
@@ -96,10 +96,13 @@ Route::resource('/hedieuhanh',HeDieuHanhController::class)->middleware('auth');
 Route::resource('/thietke',ThietKeController::class)->middleware('auth');
 Route::resource('/mausac',MauSacController::class)->middleware('auth');
 Route::resource('/hang',HangController::class)->middleware('auth');
+Route::resource('/lienhe',LienHeController::class)->middleware('auth');
+Route::resource('/tTLienHe',TTLienHeController::class)->middleware('auth');
 Route::resource('/loaiSanPham',LoaiSanPhamController::class)->middleware('auth');
 Route::resource('/sanPham',SanPhamController::class)->middleware('auth');
-// Route::get('/chitietsanpham/{id}', [SanPhamController::class, 'detail'])->name('sanPham.detail');
 Route::get('/stock/{id}', [SanPhamController::class, 'indexmp'])->name('sanPham.stock');
+Route::get('/lienheuser', [LoaddingController::class, 'loadlienhe'])->name('loadding.lienheuser');
+Route::get('/gioithieuuser', [LoaddingController::class, 'loadgioithieu'])->name('loadding.gioithieu');
 Route::get('/abum/{id}', [SanPhamController::class, 'indexab'])->name('sanPham.abum');
 Route::post('/stock/add', [SanPhamController::class, 'storemp'])->name('sanPham.storemp');
 Route::post('/abum/add', [SanPhamController::class, 'storeab'])->name('sanPham.storeab');
@@ -122,5 +125,7 @@ Route::get('/admin/cthoadon', function () {
     })->name('cthoadon');
 
 Route::get('/', [LoaddingController::class, 'loadding'])->name('user');  
+Route::get('/tintuc', [LoaddingController::class, 'loadtintuc'])->name('tinTuc1.index');  
 Route::get('/detail/{id}', [LoaddingController::class, 'detail'])->name('loadding.detail'); 
 Route::post('/mau/{id}', [LoaddingController::class, 'loadmau'])->name('loadding.loadmau'); 
+Route::post('/lienhe', [LienHeController::class, 'store'])->name('lienhe.create'); 

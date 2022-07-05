@@ -87,13 +87,13 @@
 </div>
 <div class="box-filter center">
     <div class="box-quicklink  block-scroll-main">
-        <div class="lst-quickfilter q-manu ">
-          
+        <div class="lst-quickfilter q-manu js_hang ">
+          @foreach($lsthang as $hang)
             <a href="dtdd-apple-iphone" data-href="dtdd-apple-iphone" data-index="0"
                 class="box-quicklink__item bd-radius quicklink-logo">
-                <img src="../images/logo-iphone.png" width="30" class="no-text">
+                <img src="{{$hang->hinhanh}}" width="30" class="no-text">
             </a>
-          
+          @endforeach
         </div>
     </div>
 </div>
@@ -111,8 +111,8 @@
                 <div class=" noidung">
                     <div class="ten"><a href="" class="text-split">{{$sp->tensanpham}}</a></div>
                     <div class="tt-gia">
-                        <div class="gia"><span>đ</span></div>
-                        <div class="giacu">10000000đ</div>
+                        <div class="gia"></div>
+                        <div class="giacu" ></div>
                     </div>
                 </div>
                 <div class="promote">
@@ -135,19 +135,20 @@
     </div>
 </div>
 <div class="box-sanpham">
+    @foreach($lsthang as $hang)
     <div class="center-layout">
         <div class="center">
-            <div class="title-name">SAMSUNG</div>
+            <div class="title-name">{{$hang->tenhang}}</div>
         </div>
         <div class="list-item">
-         
+            @foreach($lstloai as $loai)
             <div class="item">
                 <div class="img"><a class="scale-img" href="chitietsanpham"><img
                             src=""></a></div>
                 <div class=" noidung">
                     <div class="ten"><a href="">Điện thoại OPPO A5</a></div>
                     <div class="tt-gia">
-                        <div class="gia"><span>5000000đ</span></div>
+                        <div class="gia"><span>{{$loai->tenloaisp}}</span></div>
                         <div class="giacu">10000000đ</div>
                     </div>
                 </div>
@@ -161,10 +162,12 @@
                     </a>
                 </div>
             </div>
-         
+         @endforeach
         </div>
     </div>
+    @endforeach
 </div>
+
 @endsection
 @section('Them')
 @endsection

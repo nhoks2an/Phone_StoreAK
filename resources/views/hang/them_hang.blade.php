@@ -2,7 +2,7 @@
 @section('sidebar')
     @parent
 <form method="post" action="{{route('hang.store')}}" enctype="multipart/form-data">
-@csrf   
+    @csrf   
     <div class="btn-themmoi">
         <button class="btn btn-sm bg-gradient-primary submit-check" type="submit" data-toggle="modal" data-target="#myModal">
             <i class="far fa-save mr-2"></i>
@@ -17,7 +17,6 @@
             Thoát
         </a>  
     </div>
-
     <div class="row">
         <div class="col-xl-8">
             <div class="card card-primary card-outline text-sm ">

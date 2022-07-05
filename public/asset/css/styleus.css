@@ -7,6 +7,7 @@
 .photoUpload-zone .photoUpload-dimension{font-weight: 600;}
 .hinhanh{margin: auto;}
 .content{padding: 0 0.5rem;}
+.ten a{display: inline !important;}
 /* user */
 body{position: relative;width: 100%;max-width: 1366px;margin: auto!important;}
 .center-layout{width: 100%;max-width: 1200px;position: relative;margin: auto;}
@@ -179,9 +180,12 @@ ul .tt-dt{font-size: 20px;color: #fff;}
 .footer{background-color: #ffd400;}
 .footer .thongtin{color: #fff;margin: 20px 0;line-height: 25px;}
 .footer .design{color: #fff;text-align: center;border-top: 1px solid #fff;padding: 10px 0;}
-.title-tt{font-size: 25px;margin-bottom: 10px;}
+.title-tt{font-size: 15px;margin-bottom: 10px;}
+.title-ft{font-size: 30px;text-transform: uppercase;margin-bottom: 10px;}
 .thongtin .diachi p{font-size: 17px;color: #fff;margin-bottom: 0px;}
 .form-row,.contact-input{margin-bottom: 10px;}
+.title-lienhe{text-align: center;margin-top:130px ;}
+.title-lienhe span {font-size: 30px; text-transform: uppercase;}
 /*login*/
 
 
@@ -676,7 +680,7 @@ iframe {
 }
 .register{padding: 30px 0;display: flex;justify-content: center;background-color: #fff;}
 .box-dangki{width:45%;}
-.lienhe{background-color: #fff;padding: 30px 0;}
+.lienhe{background-color: #fff;padding-bottom: 30px;}
 .grid-pro-detail{padding-top: 30px;}
 .grid-pro-detail .row{flex-wrap: nowrap;}
 .title-pro-detail{text-transform:capitalize;font-size:20px;display:block;font-weight:700;color: #000;}
@@ -1017,6 +1021,7 @@ input[type="number"]::-webkit-inner-spin-button {
   margin-bottom: 1.5rem;
   text-align: center;
 }
+
 .content-main {
   margin-bottom: 20px;
   text-align: justify;
@@ -1931,4 +1936,13 @@ img:not([src]) {
 .text-split{-webkit-line-clamp: 2;}
 .freeship{background: #006600;width: 63%; text-align: center;}
 .freeship span{color: #fff;}
-.options{}
+
+
+
+.title-spcat{list-style: none; padding: 0px;margin: 0px;margin-bottom: 15px;}
+.title-spcat li{margin: 5px 10px;}
+.title-spcat li a{display: block;align-items: center;color: #187346;padding: 8px 20px;cursor: default;font-family: 'NunitoSansBold';font-size: 16px;text-transform: capitalize;}
+.title-spcat li.active a, .title-spcat li a:hover{color: #f3b702 !important;}
+.news-name a{text-transform: uppercase; font-size: 20px; color: #000;}
+.news-desc.text-split{-webkit-line-clamp: 4;}
+.chinhsach.text-split{-webkit-line-clamp: 1;}

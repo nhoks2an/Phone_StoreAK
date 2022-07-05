@@ -7,6 +7,12 @@ $cs = [];
 while($row = $result->fetch_assoc()) {
 	$cs[]=$row;
 }
+$sql = 'SELECT * FROM footers'; 
+$result = $conn->query($sql);
+$ft = [];
+while($row = $result->fetch_assoc()) {
+	$ft[]=$row;
+}
 mysqli_close($conn);
 ?>
 <div class="footer">
@@ -14,9 +20,12 @@ mysqli_close($conn);
         <div class="top-footer flex">
             <div class="thongtin">
                 <div class="title-tt">THÔNG TIN</div>
+                @foreach($ft as $item)
+                <div class="title-ft"><?php echo $item['tieude'];?></div>
                 <div class="diachi">
-                    @include('user.source.footer')
+                    <?php echo $item['noidung'];?>
                 </div>
+                @endforeach
             </div>
             <div class="chinhsach">
                 <div class="title-tt">CHÍNH SÁCH</div>

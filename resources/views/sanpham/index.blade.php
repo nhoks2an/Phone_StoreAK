@@ -1,7 +1,6 @@
 @extends('layout.layout')
 @section('sidebar')
     @parent
-  
 <div class="taikhoan">
     <div class="btn-themmoi">
         <a class="btn btn-sm bg-gradient-primary text-white" href="{{route('sanPham.create')}}" ><i class="fas fa-plus mr-2"></i>Thêm mới</a>
@@ -66,7 +65,7 @@
                         
                         <td class="align-middle text-center text-md text-nowrap">
                      
-                             <a href="{{route('sanPham.show',['sanPham'=>$sanPham])}}">
+                            <a href="{{route('sanPham.show',['sanPham'=>$sanPham])}}">
                                 <i class="fas fa-edit"></i>
                             </a> 
                             <button  type="submit" class="btnxoa text-danger "style="border: none;background: none;" value="{{$sanPham->id}}">
@@ -94,7 +93,7 @@
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>  
-                        <form method="post" action="{{route('sanPham.destroymp',$sanPham->id)}}">
+                        <form method="post" action="{{route('sanPham.destroy',$sanPham->id)}}">
                         @csrf
                         @method('DELETE')
                             <div class="modal-body">

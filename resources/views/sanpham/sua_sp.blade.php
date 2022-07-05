@@ -168,7 +168,7 @@
                                 data-select2-id="id_list" tabindex="-1" aria-hidden="true">
                                 <option value="0" data-select2-id="2">Chọn loại</option>
                                 @foreach($lstloai as $loai)
-                                <option value="{{$loai->id}}"  @if($sanPham->id_loaisp == $loai->id) selected @endif >{{$loai->tenloaisp}}</option>
+                                <option value="{{$loai->id}}" @if($sanPham->id_loaisp == $loai->id) selected @endif >{{$loai->tenloaisp}}</option>
                                 @endforeach
                             </select></span>
                         </div>

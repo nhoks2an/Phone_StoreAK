@@ -7,18 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class LienHe extends Model
+class TTLienHe extends Model
 {
+    use HasFactory;
     use HasFactory, Notifiable;
     use SoftDeletes;
     protected $guarded = [];
-    protected $table ="lien_hes";
+    protected $table ="t_t_lien_hes";
     protected $fillable = [
         'id',
-       'hoten',
-       'email',
-       'sodienthoai',
        'noidung',
-        'hienthi',
     ];
 }
