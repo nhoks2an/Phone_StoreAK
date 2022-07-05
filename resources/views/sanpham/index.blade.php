@@ -133,10 +133,6 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form method="post" action="{{route('sanPham.destroymp',$sanPham->id)}}">
-                            @csrf
-                            @method('DELETE')
-                            =======
                     </div>
                     <form method="post" action="{{route('sanPham.destroy',$sanPham->id)}}">
                         @csrf
