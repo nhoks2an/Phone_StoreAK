@@ -6,6 +6,7 @@ use App\Models\User;
 use Hash;
 use Session;
 use Illuminate\Support\ServiceProvider;
+use App\Models\Sologan;
 
 class ComposerServiceProvider extends ServiceProvider
 {
@@ -28,6 +29,7 @@ class ComposerServiceProvider extends ServiceProvider
     {
         View::composer('*', function ($view) {
             $view->with('datauser', User::where('id','=',Session::get('loginId'))->first());
+            $view->with('sologan', Sologan::all()->first());
         });
     }
 }

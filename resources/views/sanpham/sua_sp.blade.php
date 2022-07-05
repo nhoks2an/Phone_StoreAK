@@ -10,7 +10,7 @@
             Cập nhật
         </button>
         <button class="btn btn-sm bg-gradient-secondary" type="reset">
-            <i class="fas fa-redo mr-2""></i>
+            <i class="fas fa-redo mr-2"></i>
             Làm lại
         </button>
         <a href=" #" class="btn btn-sm bg-gradient-danger"><i class="fas fa-sign-out-alt mr-2"></i>Thoát</a>

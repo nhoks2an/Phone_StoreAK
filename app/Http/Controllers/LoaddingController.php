@@ -57,16 +57,14 @@ class LoaddingController extends Controller
     // tintuc
     public function loadtintuc()
     {
-        $sologan = Sologan::all();
         $lsttt = TinTuc::all();
         foreach($lsttt as $tt){
             $this->fixImage($tt);
         }
-        return view('user.sanpham.index',['lsttt'=>$lsttt,'sologan'=>$sologan]);
+        return view('user.sanpham.index',['lsttt'=>$lsttt]);
     }
    public function loadding()
    {
-    $sologan = Sologan::all();
     $sanPham = SanPham::orderBy('created_at','DESC')->where('noibat','=','1')->get();
     foreach($sanPham as $sp)
     {
@@ -80,7 +78,7 @@ class LoaddingController extends Controller
         $this->fixImageHang($hang);
         $lstloai = LoaiSanPham::where('id_hang','=',$hang->id)->get();
     }
-    return View::make('user.index.index', compact('sanPham','lsthang','lstloai','sologan','lstchinhsach'))->nest('user.index.index','user.layout.footer', compact('sanPham','sologan','lsthang','lstchinhsach'));
+    return View::make('user.index.index', compact('sanPham','lsthang','lstloai','lstchinhsach'))->nest('user.index.index','user.layout.footer', compact('sanPham','lsthang','lstchinhsach'));
    }
 
 
@@ -106,22 +104,13 @@ class LoaddingController extends Controller
    public function loadgioithieu()
    {
     $gioithieu = GioiThieu::all();
-    $sologan = Sologan::all();
-    return View('user.gioithieu.index',['gioithieu'=>$gioithieu,'sologan'=>$sologan]);
+    return View('user.gioithieu.index',['gioithieu'=>$gioithieu]);
    }
-//    sologan
-    public function loadsologan()
-    {
-    $sologan = Sologan::all();
-    return View('user.layout.header',['sologan'=>$sologan]);
-    }
     // lien he
     public function loadlienhe()
     {
     $lh = TTLienHe::all();
-    $sologan = Sologan::all();
-    return View('user.lienhe.index',['sologan'=>$sologan,'lh'=>$lh]);
+    return View('user.lienhe.index');
     }
-   
     
 }

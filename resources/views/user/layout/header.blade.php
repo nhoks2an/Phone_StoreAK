@@ -3,9 +3,7 @@
         <div class="header">
             <div class="header-top flex">
                 <div class="title-banner">
-                    @foreach($sologan as $slg)
-                    <marquee>{{$slg->tieude}}</marquee>
-                    @endforeach
+                    <marquee>{{$sologan->tieude}}</marquee>
                 </div>
             </div>
             <div class="center-layout-header">
