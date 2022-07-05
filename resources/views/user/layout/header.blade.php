@@ -3,7 +3,9 @@
         <div class="header">
             <div class="header-top flex">
                 <div class="title-banner">
-                    <marquee>Chào mừng bạn đến với website AK Phone</marquee>
+                    @foreach($sologan as $slg)
+                    <marquee>{{$slg->tieude}}</marquee>
+                    @endforeach
                 </div>
             </div>
             <div class="center-layout-header">
@@ -36,9 +38,9 @@
                         </div>
                         <ul>
                             <li><a class="box-wall" href="/">Trang chủ</a></li>
-                            <li><a class="box-wall" href="sanpham">Tin tức</a></li>
-                            <li><a class="box-wall" href="">Giới thiệu</a></li>
-                            <li><a href="lienhe">Liên hệ</a></li>
+                            <li><a class="box-wall" href="{{route('tinTuc1.index')}}">Tin tức</a></li>
+                            <li><a class="box-wall" href="{{route('loadding.gioithieu')}}">Giới thiệu</a></li>
+                            <li><a href="{{route('loadding.lienheuser')}}">Liên hệ</a></li>
                             @if($datauser==null)
                             <li class="box-li"><i class="fas fa-shopping-cart"></i><a href="{{route('cart.show')}}">Giỏ
                                     hàng</a>

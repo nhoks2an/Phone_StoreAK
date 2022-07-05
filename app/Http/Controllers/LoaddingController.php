@@ -7,15 +7,20 @@ use App\Models\mapping;
 use App\Models\ROM;
 use App\Models\ThietKe;
 use App\Models\LoaiSanPham;
+use App\Models\GioiThieu;
+use App\Models\Sologan;
+use App\Models\ChinhSach;
 use App\Models\HeDieuHanh;
 use App\Models\TinhNangDB;
 use App\Models\ManHinh;
 use App\Models\MauSac;
+use App\Models\TTLienHe;
 use App\Models\Hang;
 use App\Models\HieuNangPin;
 use App\Models\Camera;
 use App\Models\HinhAnh;
 use App\Models\Post;
+use App\Models\TinTuc;
 use Illuminate\Http\Request;
 use App\Http\Controllers\equest;
 use Illuminate\Support\Facades\Storage;
@@ -33,15 +38,52 @@ class LoaddingController extends Controller
             $hinhanh->hinhanh = '/images/noimage.jpg';
         }
     }
+    protected function fixImage(TinTuc $tinTuc)
+    {
+        if(Storage::disk('public')->exists($tinTuc->hinhanh)){
+            $tinTuc->hinhanh = Storage::url($tinTuc->hinhanh);
+        }else{
+            $tinTuc->hinhanh = '/images/noimage.jpg';
+        }
+    }
+    protected function fixImageHang(Hang $hang)
+    {
+        if(Storage::disk('public')->exists($hang->hinhanh)){
+            $hang->hinhanh = Storage::url($hang->hinhanh);
+        }else{
+            $hang->hinhanh = '/images/noimage.jpg';
+        }
+    }
+    // tintuc
+    public function loadtintuc()
+    {
+        $sologan = Sologan::all();
+        $lsttt = TinTuc::all();
+        foreach($lsttt as $tt){
+            $this->fixImage($tt);
+        }
+        return view('user.sanpham.index',['lsttt'=>$lsttt,'sologan'=>$sologan]);
+    }
    public function loadding()
    {
+    $sologan = Sologan::all();
     $sanPham = SanPham::orderBy('created_at','DESC')->where('noibat','=','1')->get();
     foreach($sanPham as $sp)
     {
         $mapping = mapping::where('id_sanpham','=',$sp->id)->get();
     }
-    return View::make('user.index.index', compact('sanPham','mapping'))->nest('user.index.index','user.layout.footer', compact('sanPham','mapping'));
+    
+    $lstchinhsach = ChinhSach::all();
+    $lsthang = Hang::all();
+    foreach($lsthang as $hang)
+    {
+        $this->fixImageHang($hang);
+        $lstloai = LoaiSanPham::where('id_hang','=',$hang->id)->get();
+    }
+    return View::make('user.index.index', compact('sanPham','lsthang','lstloai','sologan','lstchinhsach'))->nest('user.index.index','user.layout.footer', compact('sanPham','sologan','lsthang','lstchinhsach'));
    }
+
+
    public function detail($id)
    {
     $sanPham = SanPham::where('id','=',$id)->first();
@@ -49,6 +91,7 @@ class LoaddingController extends Controller
     $lsthinhanh = HinhAnh::where('id_sanpham','=',$id)->get();
     $lstloai= LoaiSanPham::where('id','=',$id)->get();
     $spcungloai=SanPham::where('id_loaisp','=',$sanPham->id_loaisp,'and id<>',$sanPham->id)->get();
+
     foreach($mapping as $mp)
     {  
     }
@@ -56,6 +99,28 @@ class LoaddingController extends Controller
     {  
         $this->fixImageab($hinhanh);
     }
+
     return View('user.sanpham.detailproduct',['sanPham'=>$sanPham,'mapping'=>$mapping,'lsthinhanh'=>$lsthinhanh,'lstloai'=>$lstloai,'spcungloai'=>$spcungloai]);
+//    gioi thieu
+   public function loadgioithieu()
+   {
+    $gioithieu = GioiThieu::all();
+    $sologan = Sologan::all();
+    return View('user.gioithieu.index',['gioithieu'=>$gioithieu,'sologan'=>$sologan]);
    }
+//    sologan
+    public function loadsologan()
+    {
+    $sologan = Sologan::all();
+    return View('user.layout.header',['sologan'=>$sologan]);
+    }
+    // lien he
+    public function loadlienhe()
+    {
+    $lh = TTLienHe::all();
+    $sologan = Sologan::all();
+    return View('user.lienhe.index',['sologan'=>$sologan,'lh'=>$lh]);
+    }
+   
+    
 }

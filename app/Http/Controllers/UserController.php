@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Sologan;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
@@ -24,11 +25,13 @@ class UserController extends Controller
     }
     public function show()
     {
-        return view('user.login.register');
+        $sologan = Sologan::all();
+        return view('user.login.register',['sologan'=>$sologan]);
     }
     public function login()
     {
-        return view('user.login.login');
+        $sologan = Sologan::all();
+        return view('user.login.login',['sologan'=>$sologan]);
     }
     public function showprofile(User $user)
     {

@@ -1,7 +1,6 @@
 @extends('layout.layout')
 @section('sidebar')
 @parent
-
 <div class="taikhoan">
     <div class="btn-themmoi">
         <a class="btn btn-sm bg-gradient-primary text-white" href="{{route('sanPham.create')}}"><i
@@ -102,7 +101,6 @@
                             </div>
                         </td>
                         <td class="align-middle text-center text-md text-nowrap">
-
                             <a href="{{route('sanPham.show',['sanPham'=>$sanPham])}}">
                                 <i class="fas fa-edit"></i>
                             </a>
@@ -138,21 +136,27 @@
                         <form method="post" action="{{route('sanPham.destroymp',$sanPham->id)}}">
                             @csrf
                             @method('DELETE')
-                            <div class="modal-body">
-                                Bạn có chắc chắn muốn xóa !
-                            </div>
-                            <input type="hidden" name="tensanpham" id="tensanpham">
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
-                                <button type="submit" class="btn btn-primary">Xác nhận</button>
-                            </div>
-                        </form>
+                            =======
                     </div>
+                    <form method="post" action="{{route('sanPham.destroy',$sanPham->id)}}">
+                        @csrf
+                        @method('DELETE')
+
+                        <div class="modal-body">
+                            Bạn có chắc chắn muốn xóa !
+                        </div>
+                        <input type="hidden" name="tensanpham" id="tensanpham">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+                            <button type="submit" class="btn btn-primary">Xác nhận</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-            @endforeach
         </div>
+        @endforeach
     </div>
+</div>
 </div>
 <hr>
 <!-- phan trang -->
