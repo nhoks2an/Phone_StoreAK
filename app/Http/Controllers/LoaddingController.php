@@ -101,7 +101,8 @@ class LoaddingController extends Controller
     }
 
     return View('user.sanpham.detailproduct',['sanPham'=>$sanPham,'mapping'=>$mapping,'lsthinhanh'=>$lsthinhanh,'lstloai'=>$lstloai,'spcungloai'=>$spcungloai]);
-//    gioi thieu
+   }
+    //    gioi thieu
    public function loadgioithieu()
    {
     $gioithieu = GioiThieu::all();
