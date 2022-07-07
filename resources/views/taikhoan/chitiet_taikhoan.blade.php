@@ -1,10 +1,13 @@
 @extends('layout.layout')
 @section('sidebar')
     @parent
+<form method="post" action="{{route('taikhoan.update',['taikhoan'=>$taikhoan])}}" enctype="multipart/form-data">
+@csrf
+@method('PATCH')
 <div class="btn-themmoi">
     <button class="btn btn-sm bg-gradient-primary submit-check" type="submit">
         <i class="far fa-save mr-2"></i>
-        Khóa
+        Khóa tài khoản
     </button>
     <a href="#" class="btn btn-sm bg-gradient-danger">
         <i class="fas fa-sign-out-alt mr-2"></i>
@@ -41,7 +44,7 @@
                         <div class="tab-pane fade show active" id="tabs-lang-vi" role="tabpanel" aria-labelledby="tabs-lang">
                             <div class="form-group">
                                 <label for="namevi">Họ và tên:</label>
-                                <input type="text" class="form-control for-seo text-sm" name="hoten" id="hoten" placeholder="Họ và tên" value="{{$taikhoan->hoten}}" required="">
+                                <input type="text" class="form-control for-seo text-sm" name="hoten" id="hoten" placeholder="Họ và tên" value="{{$taikhoan->hoten}}" required="" >
                             </div>
                             <div class="form-group">
                                 <label for="namevi">Địa chỉ:</label>
@@ -50,17 +53,17 @@
                                <div class="row">
                                 <div class="form-group col-xl-6 ">
                                         <label class="d-block" for="id_list">Phái:</label>
-                                        <input type="email" class="form-control for-seo text-sm" name="email" id="email" placeholder="Email" value="{{$taikhoan->phai}}" disable>
+                                        <input type="text" class="form-control for-seo text-sm" name="email" id="email" placeholder="Email" value="{{$taikhoan->phai}}" disable>
                                     </div>
                                     <div class="form-group col-xl-6">
                                         <label for="namevi">SĐT:</label>
-                                        <input type="number" class="form-control for-seo text-sm" name="SDT" id="sdt" placeholder="Số điện thoại" value="{{$taikhoan->sodienthoai}}" required="">
+                                        <input type="number" class="form-control for-seo text-sm" name="sodienthoai" id="sdt" placeholder="Số điện thoại" value="{{$taikhoan->sodienthoai}}" required="">
                                     </div>
                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="namevi">Địa chỉ:</label>
-                                <input type="email" class="form-control for-seo text-sm" name="ngaysinh" id="email" placeholder="Email" value="{{$taikhoan->ngaysinh}}" required="">
+                                <input type="text" class="form-control for-seo text-sm" name="diachi" id="diachi" placeholder="Email" value="{{$taikhoan->diachi}}" required="">
                             </div>
                             <div class="form-group">
                                 <label for="namevi">Email:</label>
@@ -79,6 +82,7 @@
 </div> 
 </div>  
 </div> 
+</form>
 @section('Them')
 @endsection
 @endsection

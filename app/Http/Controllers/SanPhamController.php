@@ -47,12 +47,20 @@ class SanPhamController extends Controller
      */
     public function index()
     {
-        $lstsanpham = SanPham::orderBy('created_at','DESC')->search()->paginate(10);
+        $lstsanpham = SanPham::orderBy('created_at','DESC')->search()->paginate(5);
         foreach($lstsanpham as $sanPham)
         {
             $this->fixImage($sanPham);
         }
         return view('sanpham.index',['lstsanpham'=>$lstsanpham]);
+    }
+
+    public function timkiemsanpham()
+    {
+    
+        $lstsanpham = SanPham::orderBy('created_at','DESC')->search()->paginate(8);
+     
+        return View('user.timkiem.index',['lstsanpham'=>$lstsanpham]);
     }
     // Abum
     public function indexab($id)
@@ -156,14 +164,19 @@ class SanPhamController extends Controller
     {
         $validatedData = $request->validate(
             [
-                'tensanpham' => 'required',
+                'tensanpham' => 'required|unique:san_phams,tensanpham',
                 'hinhanh' => 'required',
-                'mota' => 'required',    
+                'mota' => 'required',  
+                'giamin' => 'required',
+                'giamax' => 'required',  
             ],
             [
                 'tensanpham.required' => 'Tên Sản Phẩm Không Được Bỏ Trống',
+                'tensanpham.unique' => 'Tên Sản Phẩm Đã Tồn Tại',
                 'hinhanh.required' => 'Hình Ảnh Không Được Bỏ Trống',
                 'mota.required' => 'Mô Tả Ảnh Không Được Bỏ Trống',
+                'giamin.required' => 'Giá Min Không Được Bỏ Trống',
+                'giamax.required' => 'Giá Max Không Được Bỏ Trống',
 
             ]
         );
@@ -172,6 +185,8 @@ class SanPhamController extends Controller
             'tensanpham'=>$request->input('tensanpham'),
             'hinhanh'=>'',
             'mota'=>$request->input('mota'),
+            'giamin'=>$request->input('giamin'),
+            'giamax'=>$request->input('giamax'),
             'id_camera'=>$request->input('id_camera'),
             'id_manhinh'=>$request->input('id_manhinh'),
             'id_tinhnangdb'=>$request->input('id_tinhnangdb'),
@@ -240,10 +255,14 @@ class SanPhamController extends Controller
             [
                 'tensanpham' => 'required',
                 'mota' => 'required',
+                'giamin' => 'required',
+                'giamax' => 'required',
             ],
             [
                 'tensanpham.required' => 'Tên Sản Phẩm Không Được Bỏ Trống',
                 'mota.required' => 'Mô Tả Ảnh Không Được Bỏ Trống',
+                'giamin.required' => 'Giá Min Không Được Bỏ Trống',
+                'giamax.required' => 'Giá Max Không Được Bỏ Trống',
             ]
         );
         if($request->hasFile('hinhanh'))
@@ -253,7 +272,8 @@ class SanPhamController extends Controller
         $sanPham->fill([
             'tensanpham'=>$request->input('tensanpham'),
             'mota'=>$request->input('mota'),
-        
+            'giamin'=>$request->input('giamin'),
+            'giamax'=>$request->input('gimax'),
             'id_camera'=>$request->input('id_camera'),
       
             'id_manhinh'=>$request->input('id_manhinh'),

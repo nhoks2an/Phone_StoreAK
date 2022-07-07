@@ -18,7 +18,10 @@ class Hang extends Model
        'hinhanh',
         'hienthi',
     ];
-
+    public function loaisp()
+    {
+        return $this->hasMany('App\Models\LoaiSanPham', 'id_hang', 'id');
+    }
     public function scopeSearch($query){
         if($key = request()->key)
             {

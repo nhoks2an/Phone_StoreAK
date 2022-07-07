@@ -41,12 +41,23 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'email'=>'required|email',
-            'sodienthoai'=>'required|numeric'
+            'email' => 'required|regex:/^[a-zA-Z0-9_]+@gmail.com$/|unique:users,email',
+            'sodienthoai' => 'required|min:10|max:10',
+            'matkhau'=>'required|min:6',
+            'hoten'=>'required',
+            'diachi'=>'required',
         ],
         [
-            'email.required' => 'Email Không Đúng Định Dạng',
+            'email.required' => 'Email Không Được Bỏ Trống',
+            'email.unique' => 'Email Đã Tồn Tại',
+            'hoten.required' => 'Họ Tên Không Được Bỏ Trống',
+            'diachi.required' => 'Địa Chỉ Không Được Bỏ Trống',
+            'matkhau.required' => 'Password Không Được Bỏ Trống',
+            'email.regex' => 'Email Không Đúng Định Dạng',
             'sodienthoai.required' => 'Số Điện Thoại Không Đúng Định Dạng',
+            'sodienthoai.min' => 'Số Điện Thoại Không Đúng',
+            'matkhau.min' => 'Password Phải Lớn Hơn 6 Ký Tự',
+            'sodienthoai.max' => 'Số Điện Thoại Không Đúng',
         ]);
 
             $user = DB::table('users')->where('email',$request->email)->first();

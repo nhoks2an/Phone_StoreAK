@@ -22,7 +22,7 @@ class LoaiSanPham extends Model
 
     public function hang()
     {
-        return $this->belongsTo(Hang::class);
+        return $this->belongsTo('App\Models\Hang', 'id_hang', 'id');
     }
 
     public function scopeSearch($query){

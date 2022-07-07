@@ -65,12 +65,13 @@ class LoaddingController extends Controller
     }
    public function loadding()
    {
-    $sanPham = SanPham::orderBy('created_at','DESC')->where('noibat','=','1')->get();
+    $sanPham = SanPham::where('noibat','=','1')->get();
+    $lstsanpham = SanPham::where('noibat','=','0')->get();
     foreach($sanPham as $sp)
-    {
+    {     
         $mapping = mapping::where('id_sanpham','=',$sp->id)->get();
     }
-    
+  
     $lstchinhsach = ChinhSach::all();
     $lsthang = Hang::all();
     foreach($lsthang as $hang)
@@ -78,10 +79,10 @@ class LoaddingController extends Controller
         $this->fixImageHang($hang);
         $lstloai = LoaiSanPham::where('id_hang','=',$hang->id)->get();
     }
-    return View::make('user.index.index', compact('sanPham','lsthang','lstloai','lstchinhsach'))->nest('user.index.index','user.layout.footer', compact('sanPham','lsthang','lstchinhsach'));
+    return View::make('user.index.index', compact('sanPham','lsthang','lstloai','lstchinhsach','lstsanpham','mapping'))->nest('user.index.index','user.layout.footer', compact('sanPham','lsthang','lstchinhsach','lstsanpham'));
    }
 
-
+// chi tiet sp
    public function detail($id)
    {
     $sanPham = SanPham::where('id','=',$id)->first();
@@ -89,7 +90,6 @@ class LoaddingController extends Controller
     $lsthinhanh = HinhAnh::where('id_sanpham','=',$id)->get();
     $lstloai= LoaiSanPham::where('id','=',$id)->get();
     $spcungloai=SanPham::where('id_loaisp','=',$sanPham->id_loaisp,'and id<>',$sanPham->id)->get();
-
     foreach($mapping as $mp)
     {  
     }
@@ -97,9 +97,19 @@ class LoaddingController extends Controller
     {  
         $this->fixImageab($hinhanh);
     }
-
     return View('user.sanpham.detailproduct',['sanPham'=>$sanPham,'mapping'=>$mapping,'lsthinhanh'=>$lsthinhanh,'lstloai'=>$lstloai,'spcungloai'=>$spcungloai]);
    }
+//    load chi tiet tin tuc
+    public function detailchitiet($id)
+    {
+    $sologan = Sologan::all();
+    $tintuc = TinTuc::where('id','=',$id)->first();
+    // return dd($tintuc);
+    foreach($tintuc as $tt)
+    {
+    }
+    return View('user.sanpham.chitiet',['tintuc'=>$tintuc,'sologan'=>$sologan]);
+    }
     //    gioi thieu
    public function loadgioithieu()
    {
@@ -110,7 +120,89 @@ class LoaddingController extends Controller
     public function loadlienhe()
     {
     $lh = TTLienHe::all();
-    return View('user.lienhe.index');
+    return View('user.lienhe.index',['lh'=>$lh]);
+    }
+
+    public function load_more_sanpham(Request $request)
+    {
+        $data = $request->all();
+
+        if($data['id'] > 0){
+            $lstsanpham = SanPham::where('noibat','=','0')->where('id','<',$data['id'])->orderby('id','DESC')->take(3)->get();
+        }
+        else{
+            $lstsanpham = SanPham::where('noibat','=','0')->orderby('id','DESC')->take(3)->get();
+        }
+        $output = '';
+        if(!$lstsanpham->isEmpty()){
+            foreach($lstsanpham as $key => $sanpham)
+            {
+                $last_id = $sanpham->id;
+                $output.= '<div class="item">
+                                <div class="img"><a class="scale-img" href="'.url('/detail/'.$sanpham->id).'"><img src="'.url('storage/'.$sanpham->hinhanh).'""></a></div>
+                                <div class=" noidung">
+                                    <div class="ten"><a href="'.url('/detail/'.$sanpham->id).'">'.$sanpham->tensanpham.'</a></div>
+                                    <div class="tt-gia">
+                                    <div class="gia" >'.$sanpham->giamin.'đ - '.$sanpham->giamax.'đ</div>
+                                    </div>
+                                    <div class ="mota">
+                                        <ul>
+                                            <li><span class="">Màn hình:</span> '.$sanpham->manhinh->thongso.'</li>
+                                            <li><span class="">Hệ điều hành:</span>'.$sanpham->hedieuhanh->tenhedieuhanh.'</li>
+                                            <li><span class="">Camera:</span> '.$sanpham->camera->tencamera.'</li>
+                                            <li><span class="">Pin:</span>'.$sanpham->hieunangpin->tenhieunang.'</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="promote">
+                                    <a href="#">
+                                        <ul>
+                                        <li><span class="bag">KM</span> Thanh toán qua VNPAY giảm thêm tới 500.000đ</li>
+                                        <li><span class="bag">KM</span> GIẢM THÊM TỚI 1.200.000đ khi Thu cũ - Lên đời iPhone Series
+                                        </li>
+                                        </ul>
+                                    </a>
+                                </div>
+                            </div>';    
+                        
+            }
+            $output.='
+            <div id= "load_more">
+                <button type="button" name="load_more_button" class="btn btn-success form-control" data-id="'.$last_id.'"id ="load_more_button">
+                    Xem Thêm
+                </button>     
+            </div>';
+        }else{
+            $output.='
+            <div id= "load_more">
+                <button type="button" name="load_more_button" class="btn btn-default form-control"id ="load_more_button">
+                  Đang Cập Nhật Dữ Liệu....
+                </button>     
+            </div>'; 
+        }
+        echo $output;
+    }
+
+    public function timkiem()
+    {
+    $lstsanpham = SanPham::all();
+    return View('user.timkiem.index',['lstsanpham'=>$lstsanpham]);
+    }
+
+    public function loadhangtheosp(Request $request)
+    {
+        $data= $request->all();
+    $lsthang = Hang::all();
+    foreach($lsthang as $hang)
+    {
+        $this->fixImageHang($hang);    
+    }
+    $lstloai = LoaiSanPham::where('id_hang','=',$request->id_hang)->get();
+    foreach($lstloai as $loai)
+    {
+        $lstsanpham = SanPham::where('id_loaisp','=',$loai->id)->paginate(5);
+    }
+    return View('user.index.loadsanpham',['lstsanpham'=>$lstsanpham,'lsthang'=>$lsthang]);
     }
     
 }

@@ -12,12 +12,12 @@
                             data-was-processed="true"></span>
                 </a>
                 <div class="news-info col-sm-7">
-                    <h3 class="news-name">
-                        <a class="text-decoration-none text-split transition" href="make-up-co-dau-ee"
+                    <h3 class="news-name text-split">
+                        <a class="text-decoration-none text-split transition" href="{{route('loadding.detailchitiet',[$tt->id])}}"
                             title="Make up Cô Dâu ee">{{$tt->tieude}}</a>
                     </h3>
-                    <p class="news-time">Ngày đăng: 19/04/2022 03:54 PM</p>
-                    <div class="news-desc text-split">{{$tt->mota}}</div>
+                    <p class="news-time">{{$tt->created_at}}</p>
+                    <div class="noidung text-split">{{$tt->mota}}</div>
                 </div>
             </div>
         </div>

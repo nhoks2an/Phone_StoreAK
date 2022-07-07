@@ -27,7 +27,7 @@ class HangController extends Controller
      */
     public function index()
     {
-        $lsthang = hang::orderBy('created_at','DESC')->search()->paginate(1);
+        $lsthang = hang::orderBy('created_at','DESC')->search()->paginate(3);
         foreach($lsthang as $hang)
         {
             $this->fixImage($hang);

@@ -110,7 +110,7 @@ Route::post('/abum/add', [SanPhamController::class, 'storeab'])->name('sanPham.s
 Route::put('/stock/update', [SanPhamController::class, 'updatemp'])->name('sanPham.updatemp');
 Route::delete('/stock/delete', [SanPhamController::class, 'destroymp'])->name('sanPham.destroymp');
 Route::delete('/abum/delete', [SanPhamController::class, 'destroyab'])->name('sanPham.destroyab');
-Route::resource('/taikhoan',TaiKhoanController::class);
+Route::resource('/taikhoan',TaiKhoanController::class)->middleware('auth');
 Route::resource('/binhluan',BinhLuanController::class)->middleware('auth');
 Route::get('/admin', [DangnhapController::class,'showForm'])->name('loginadmin');
 Route::post('/admin', [DangnhapController::class,'authenticate'])->name('loginadmin');
@@ -128,7 +128,13 @@ Route::get('/admin/cthoadon', function () {
 Route::get('/', [LoaddingController::class, 'loadding'])->name('user');  
 Route::get('/tintuc', [LoaddingController::class, 'loadtintuc'])->name('tinTuc1.index');  
 Route::get('/detail/{id}', [LoaddingController::class, 'detail'])->name('loadding.detail'); 
+Route::get('/chitiettintuc/{id}', [LoaddingController::class, 'detailchitiet'])->name('loadding.detailchitiet'); 
 Route::post('/mau/{id}', [LoaddingController::class, 'loadmau'])->name('loadding.loadmau'); 
 Route::get('/giohang', [CartController::class, 'show'])->name('cart.show'); 
 Route::get('/giohang/{sanPham}', [CartController::class, 'cart'])->name('cart.cart');
 Route::post('/lienhe', [LienHeController::class, 'store'])->name('lienhe.create'); 
+Route::PATCH('/khoataikhoan', [TaiKhoanController::class, 'khoataikhoan'])->name('taikhoan.khoataikhoan'); 
+Route::post('/load_more_sanpham', [LoaddingController::class, 'load_more_sanpham'])->name('loadding.load_more_sanpham'); 
+Route::get('/timkiem', [LoaddingController::class, 'timkiem'])->name('timkiem'); 
+Route::get('/timkiemsanpham', [SanPhamController::class, 'timkiemsanpham'])->name('timkiemsanpham'); 
+Route::get('/hangsp', [LoaddingController::class, 'loadhangtheosp'])->name('loadhangtheosp'); 

@@ -40,7 +40,7 @@
                                     aria-labelledby="tabs-lang">
                                     <div class="form-group">
                                         <label for="namevi">Tiêu đề (vi):</label>
-                                        <input type="text" class="form-control for-seo text-sm" name="tensanpham"
+                                        <input type="text" class="form-control for-seo text-sm" name="tensanpham" value="{{old('tensanpham')}}"
                                             id="namevi" placeholder="Tiêu đề (vi)">
                                         @if($errors->has('tensanpham'))
                                         <div class="alert alert-danger" style="margin-top:10px;">
@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="descvi">Mô tả (vi):</label>
-                                        <textarea class="form-control for-seo text-sm " name="mota" id="descvi" rows="5"
+                                        <textarea class="form-control for-seo text-sm " name="mota" id="descvi" rows="5" value="{{old('mota')}}"
                                             placeholder="Mô tả (vi)"></textarea>
                                         @if($errors->has('mota'))
                                         <div class="alert alert-danger" style="margin-top:10px;">
@@ -180,8 +180,8 @@
                 </div>
                 <div class="card-body">
                     <div class="photoUpload-zone">
-                        <div class="photoUpload-detail" id="photoUpload-preview"><img class="rounded"
-                                src="../img/noimage.jpg" alt="Alt Photo" id="hinhanh_sanpham"></div>
+                        <div class="photoUpload-detail" id="photoUpload-preview"><img class="rounded" 
+                                src="../img/noimage.jpg" alt="Alt Photo" id="hinhanh_sanpham" ></div>
                         <label class="photoUpload-file" id="photo-zone" for="file-zone">
                             <input type="file" name="hinhanh" id="file-zone">
                             <i class="fas fa-cloud-upload-alt"></i>
@@ -223,6 +223,28 @@
                         <input type="checkbox" class="custom-control-input hienthi-checkbox" name="hienthi"
                             id="hienthi-checkbox" checked="" value="hienthi">
                         <label for="hienthi-checkbox" class="custom-control-label"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div  class="form-group-category row">
+                <div class="form-group col-md-6">
+                    <label class="d-block" for="regular_price">Giá min:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control format-price regular_price text-sm" name="giamin" id="regular_price" placeholder="Giá min" value="">
+                        <div class="input-group-append">
+                            <div class="input-group-text"><strong> VNĐ</strong></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="d-block" for="sale_price">Giá max:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control format-price sale_price text-sm" name="giamax" id="sale_price" placeholder="Giá max" value="">
+                        <div class="input-group-append">
+                            <div class="input-group-text"><strong> VNĐ</strong></div>
+                        </div>
                     </div>
                 </div>
             </div>

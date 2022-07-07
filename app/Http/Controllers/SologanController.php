@@ -88,7 +88,7 @@ class SologanController extends Controller
         );
         $sologan->fill([
             'tieude'=>$request->input('tieude'),
-            'hienthi'=>'1',
+            'trangthai'=>'1',
         ]);
         $sologan->save();
         return Redirect::route('sologan.index');

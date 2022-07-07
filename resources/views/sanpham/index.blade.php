@@ -26,17 +26,7 @@
         </div>
     </div>
     <div class="card-footer form-group-category text-sm bg-light row">
-        <div class="form-group col-xl-2 col-lg-3 col-md-4 col-sm-4 mb-2"><select id="id_list" name="id_list"
-                onchange="onchangeCategory($(this))"
-                class="form-control filter-category select2 select2-hidden-accessible" data-select2-id="id_list"
-                tabindex="-1" aria-hidden="true">
-                <option value="0" data-select2-id="2">Chọn danh mục</option>
-                <option value="4" data-select2-id="4">Tiêu đề tên vấy cưới</option>
-                <option value="3" data-select2-id="5">áo polo</option>
-                <option value="2" data-select2-id="6">Áo Thun</option>
-            </select><span class="select2 select2-container select2-container--default select2-container--below"
-                dir="ltr" data-select2-id="1" style="width: 183px;"><span class="selection"></span></span><span
-                class="dropdown-wrapper" aria-hidden="true"></span></span></div>
+     
     </div>
     <div class="card card-primary card-outline text-sm mb-0">
         <div class="card-header">
@@ -121,57 +111,55 @@
                 </tbody>
                 @endforeach
             </table>
-            @foreach($lstsanpham as $sanPham)
-            <!-- modal -->
-            <div class="modal fade" id="SanPhamModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+        @foreach($lstsanpham as $sanPham)
+                <div class="modal fade" id="SanPhamModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form method="post" action="{{route('sanPham.destroy',$sanPham->id)}}">
+                                @csrf
+                                @method('DELETE')
+                                <div class="modal-body">
+                                    Bạn có chắc chắn muốn xóa !
+                                </div>
+                                <input type="hidden" name="hang" id="hang">
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+                                    <button type="submit" class="btn btn-primary">Xác nhận</button>
+                                 
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    <form method="post" action="{{route('sanPham.destroy',$sanPham->id)}}">
-                        @csrf
-                        @method('DELETE')
-
-                        <div class="modal-body">
-                            Bạn có chắc chắn muốn xóa !
-                        </div>
-                        <input type="hidden" name="tensanpham" id="tensanpham">
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
-                            <button type="submit" class="btn btn-primary">Xác nhận</button>
-                        </div>
-                    </form>
                 </div>
-            </div>
-        </div>
         @endforeach
+        </div>
+        </div>
     </div>
-</div>
-</div>
 <hr>
 <!-- phan trang -->
 <div class="search">
     {{$lstsanpham->appends(request()->all())->links()}}
 </div>
-
 @section('scripts')
 <script>
-$(document).on('click', '.btnxoa', function() {
-    $('#SanPhamModal').modal({
-        show: true
-    });
-    var sanpham_id = $(this).val();
-    $('#tensanpham').val(sanpham_id);
+    $(document).on('click', '.btnxoa', function() {
+        $('#SanPhamModal').modal({
+            show: true
+        });
+        var sanpham_id = $(this).val();
+        $('#tensanpham').val(sanpham_id);
 
-});
+    });
 </script>
 @endsection
+
 @section('Them')
 @endsection
 @endsection

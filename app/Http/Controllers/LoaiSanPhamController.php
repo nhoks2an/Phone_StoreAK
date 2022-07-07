@@ -19,7 +19,7 @@ class LoaiSanPhamController extends Controller
      */
     public function index()
     {
-        $lstloai = LoaiSanPham::orderBy('created_at','DESC')->search()->paginate(1);
+        $lstloai = LoaiSanPham::orderBy('created_at','DESC')->search()->paginate(3);
         foreach($lstloai as $loaiSanPham){
          
         }

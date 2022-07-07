@@ -43,6 +43,7 @@
                             </div>
                         </th>
                         <th class="align-middle" style="width:30%">Tên loại</th>
+                        <th class="align-middle" style="width:30%">Tên hãng</th>
                         <th class="align-middle text-center">Thao tác</th>
                     </tr>
                 </thead>
@@ -57,6 +58,9 @@
                         </td>
                         <td class="align-middle">
                             <span>{{$loaiSanPham->tenloaisp}}</span>
+                        </td>
+                        <td class="align-middle">
+                            <span>{{$loaiSanPham->hang->tenhang}}</span>
                         </td>
                         <td class="align-middle text-center text-md text-nowrap">
                             <a href="{{route('loaiSanPham.show',['loaiSanPham'=>$loaiSanPham])}}">

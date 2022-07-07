@@ -14,6 +14,8 @@
     integrity="sha512-WNZwVebQjhSxEzwbettGuQgWxbpYdoLf7mH+25A7sfQbbxKeS5SQ9QBf97zOY4nOlwtksgDA/czSTmfj4DUEiQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
+
+
 const swiper = new Swiper('.swiper', {
     loop: true,
     slidesPerView: 1,
@@ -129,6 +131,49 @@ jQuery(document).ready(function($) {
     // from right to left
 
 });
+</script>
+
+<meta name="csrf-token" content="{{csrf_token()}}">
+
+<script type="text/javascript">
+    load_more_sanpham();
+    function load_more_sanpham(id= ''){
+        $.ajax({
+            url:'{{url('/load_more_sanpham')}}',
+            method:"POST",
+
+            headers:{
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data:{id:id},
+            success:function(data){
+                $('#load_more_button').remove();
+                $('#all_sanpham').append(data);
+            }
+        });
+    }
+    $(document).on('click','#load_more_button',function(){
+        var id = $(this).data('id');
+        load_more_sanpham(id);
+    });
+</script>
+
+<script>
+        $(document).ready(function (){
+            $(document).on('keyup',#keyword,function(){
+                    var keyword = $(this).val();
+                    $.ajax({
+                        type:"GET",
+                        url:"/timkiemsanpham",
+                        data:{
+                            keyword: keyword
+                        },
+                        dataType:"json",
+                        success:function(response){
+                        }
+                    });
+            });
+        });
 </script>
 </body>
 
