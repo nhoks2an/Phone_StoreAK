@@ -15,20 +15,12 @@
                         <div class="regions_search">
                             <div id="search" class="search search-contain s_close fr">
                                 <div class="search-content">
-                                    <form name="search_form" id="search_form" method="get"
-                                        onsubmit="javascript: submit_form_search();return false;">
-                                        <input type="text" value="" aria-label="Tìm kiếm sản phẩm?"
-                                            placeholder="Tìm kiếm sản phẩm?" id="keyword" name="keyword"
-                                            class="keyword input-text" autocomplete="off">
-
-                                        <button type="submit" class="button-search button" aria-label="tìm kiếm">
+                                    <form name="search_form" id="search_form" method="" acction="">
+                                        <input type="text" value="" aria-label="Tìm kiếm sản phẩm?" placeholder="Tìm kiếm sản phẩm?" id="keyword" name="keyword"
+                                            class="keyword input-text">
+                                        <button type="submit" class="button-search button" aria-label="tìm kiếm" onclick="">
                                             <i class="fas fa-search"></i>
                                         </button>
-
-                                        <input type="hidden" name="module" value="news">
-                                        <input type="hidden" name="module" id="link_search" value="">
-                                        <input type="hidden" name="view" value="search">
-                                        <input type="hidden" name="Itemid" value="10">
                                     </form>
                                 </div>
 

@@ -100,69 +100,26 @@
         </div>
     </div>
 </div>
-<div class="box-noibat">
-    <div class="center-layout">
-        <div class="center">
-            <div class="title-name">SẢN PHẨM NỔI BẬT</div>
-        </div>
-        <div class="multiple-items">
-            @foreach($sanPham as $sp)
-            <div class="item">
-                <div class="img"><a class="scale-img" href="{{route('loadding.detail',[$sp->id])}}"><img src="/storage/{{$sp->hinhanh}}"></a></div>
-                <div class="noidung">
-                    <div class="ten"><a href="{{route('loadding.detail',[$sp->id])}}" class="text-split">{{$sp->tensanpham}}</a></div>
-                    <div class="tt-gia">
-                        <div class="gia" >{{$sp->giamin}}đ - {{$sp->giamax}}đ</div>
-                    </div>
-                    <div class ="mota">
-                        <ul>
-                            <li><span class="text-split">Màn hình:</span> {{$sp->manhinh->thongso}}</li>
-                            <li><span class="">Hệ điều hành:</span> {{$sp->hedieuhanh->tenhedieuhanh}}</li>
-                            <li><span class="">Camera:</span> {{$sp->camera->tencamera}}</li>
-                            <li class="lst-item"><span >Pin:{{$sp->hieunangpin->tenhieunang}}</span> </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="promote">
-                    <a href="">
-                        <ul>
-                            <li><span class="bag">KM</span> Thanh toán qua VNPAY giảm thêm tới 500.000đ</li>
-                            <li><span class="bag">KM</span> GIẢM THÊM TỚI 1.200.000đ khi Thu cũ - Lên đời iPhone Series
-                            </li>
-                        </ul>
-                    </a>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</div>
-<div class="banner-sanpham">
-    <div class="owl-theme owl-carousel">
-        <div class="img-sp"><img src="../images/samsung-galaxy-z-fold-3.jpg" alt=""></div>
-    </div>
-</div>
+
 <div class="box-sanpham">
- 
     <div class="center-layout">
-        <div class="list-item" id="all_sanpham">
-        <!-- @foreach($lstsanpham as $sanpham)
+        <div class="list-item" id="">
+        @foreach($lstsanpham as $sanpham)
             <div class="item">
                 <div class="img"><a class="scale-img" href="{{route('loadding.detail',[$sanpham->id])}}"><img src="/storage/{{$sanpham->hinhanh}}"></a></div>
                 <div class=" noidung">
-                    <div class="ten"><a >{{$sanpham->tensanpham}}</a></div>
+                    <div class="ten"><a href="{{route('loadding.detail',[$sp->id])}}">{{$sanpham->tensanpham}}</a></div>
                     <div class="tt-gia">
-                        <div class="gia"><span>{{$sanpham->id_camera}}</span></div>
-                        <div class="giacu">10000000đ</div>
+                    <div class="gia" >{{$sanpham->giamin}}đ - {{$sanpham->giamax}}đ</div>
                     </div>
-                    <div class ="mota">
-                        <ul>
-                            <li><span class="">Màn hình:</span> {{$sp->manhinh->thongso}}</li>
-                            <li><span class="">Hệ điều hành:</span> {{$sp->hedieuhanh->tenhedieuhanh}}</li>
-                            <li><span class="">Camera:</span> {{$sp->camera->tencamera}}</li>
-                            <li><span class="">Pin:</span> {{$sp->hieunangpin->tenhieunang}}</li>
-                        </ul>
-                    </div>
+                </div>
+                <div class ="mota">
+                    <ul>
+                        <li><span class="">Màn hình:</span> {{$sanpham->manhinh->thongso}}</li>
+                        <li><span class="">Hệ điều hành:</span> {{$sanpham->hedieuhanh->tenhedieuhanh}}</li>
+                        <li><span class="">Camera:</span> {{$sanpham->camera->tencamera}}</li>
+                        <li><span class="">Pin:</span> {{$sanpham->hieunangpin->tenhieunang}}</li>
+                    </ul>
                 </div>
                 <div class="promote">
                     <a href="">
@@ -174,11 +131,15 @@
                     </a>
                 </div>
             </div>
-        @endforeach -->
+     @endforeach
         </div>
+        <hr>
+<!-- phan trang -->
+<div class="search" style="margin: auto;">
+    {{$lstsanpham->appends(request()->all())->links()}}
+</div>
     </div>
 </div>
-
 @endsection
 @section('Them')
 @endsection

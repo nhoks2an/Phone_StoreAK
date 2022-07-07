@@ -18,6 +18,8 @@ class CreateSanPhamsTable extends Migration
             $table->string('tensanpham');
             $table->string('hinhanh');
             $table->mediumText('mota');
+            $table->double('giamin');
+            $table->double('giamax');
             $table->foreignId('id_camera');
             $table->foreignId('id_manhinh');
             $table->foreignId('id_tinhnangdb');

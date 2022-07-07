@@ -19,6 +19,7 @@ class TinTuc extends Model
        'hinhanh',
        'noidung',
         'hienthi',
+        'created_at'
     ];
     public function scopeSearch($query){
         if($key = request()->key)

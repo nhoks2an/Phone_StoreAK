@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class HinhAnh extends Model
 {
     use HasFactory;
+    use SoftDeletes;
     protected $guarded = [];
     protected $table ="hinh_anhs";
     protected $fillable = [

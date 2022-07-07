@@ -4,21 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class mapping extends Model
 {
     use HasFactory;
+    use SoftDeletes;
     protected $guarded = [];
     protected $table ="mappings";
     protected $fillable = [
         'id',
         'id_sanpham',
-       'giacu',
-       'giamoi',
        'id_rom',
        'id_ram',
        'id_mau',
        'soluong',
+       'giacu',
+       'giamoi',
         'hienthi',
     ];
     public function RAM()
@@ -37,4 +39,5 @@ class mapping extends Model
     {
         return $this->belongsTo('App\Models\SanPham', 'id_sanpham', 'id');
     }
+    
 }

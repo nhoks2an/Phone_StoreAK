@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class SanPham extends Model
 {
     use HasFactory;
+    use SoftDeletes;
     protected $guarded = [];
     protected $table ="san_phams";
     protected $fillable = [
@@ -16,6 +17,8 @@ class SanPham extends Model
        'tensanpham',
        'hinhanh',
        'mota',
+       'giamin',
+       'giamax',
        'id_camera',
        'id_manhinh',
        'id_tinhnangdb',
@@ -65,6 +68,8 @@ class SanPham extends Model
     {
         return $this->hasMany('App\Models\mapping', 'id_sanpham', 'id');
     }
+  
+
     public function hinhanh()
     {
         return $this->hasMany('App\Models\HinhAnh', 'id_sanpham', 'id');

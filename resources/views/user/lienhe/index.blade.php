@@ -11,7 +11,7 @@
                 <form class="contact-form validation-contact col-lg-6" novalidate method="post"
                     action="{{route('lienhe.create')}}" enctype="multipart/form-data">
                     @csrf
-                    <div class="form-row">
+                    <div class="">
                         <div class="contact-input col-sm-12">
                             <input type="text" class="form-control text-sm" id="fullname-contact" name="hoten"
                                 value="{{old('hoten')}}" placeholder="Nhập họ tên" />
@@ -22,7 +22,7 @@
                         </div>
                         @endif
                     </div>
-                    <div class="form-row">
+                    <div class="">
                         <div class="contact-input col-sm-12">
                             <input type="text" class="form-control text-sm" id="address-contact" name="sodienthoai"
                                 value="{{old('sodienthoai')}}" placeholder="Nhập số điện thoại" />

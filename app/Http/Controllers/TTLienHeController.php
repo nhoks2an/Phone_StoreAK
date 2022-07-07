@@ -20,7 +20,7 @@ class TTLienHeController extends Controller
         foreach( $tTLienHe as $lh){
          
         }
-        return view('lienhe.index',['lh'=>$lh]);
+        return view('user.lienhe.index',['lh'=>$lh]);
     }
     /**
      * Show the form for creating a new resource.

@@ -9,35 +9,37 @@
                 ĐĂNG KÝ
             </span>
             <div class="form-group wrap-input100 validate-input">
-                <input asp-for="Email" class="input100" type="text" name="email" placeholder="Nhập email" required>
+                <input asp-for="Email" class="input100" type="text" name="email" placeholder="Nhập email" value="{{old('email')}}">
             </div>
             @if($errors->has('email'))
             <div class="text-danger">{{$errors->first('email')}}</div>
             @endif
             <div class="form-group wrap-input100 validate-input">
-                <input asp-for="Password" class="input100 " name="matkhau" placeholder="Nhập mật khẩu" required>
-                @if($errors->has('matkhau'))
+                <input asp-for="Password" type="password" class="input100 " name="matkhau" placeholder="Nhập mật khẩu" >
+              
+            </div>
+            @if($errors->has('matkhau'))
                 <div class="text-danger">{{$errors->first('matkhau')}}</div>
                 @endif
-            </div>
             <div class="wrap-input100 validate-input form-group">
-                <input name="sodienthoai" class="input100" type="number" placeholder="Nhập số điện thoại" required>
-                @if($errors->has('sodienthoai'))
+                <input name="sodienthoai" class="input100" type="number" placeholder="Nhập số điện thoại" value="{{old('sodienthoai')}}">
+            </div>
+                 @if($errors->has('sodienthoai'))
                 <div class="text-danger">{{$errors->first('sodienthoai')}}</div>
                 @endif
-            </div>
             <div class="wrap-input100 validate-input form-group">
-                <input name="hoten" class="input100" placeholder="Nhập họ tên" required>
-                @if($errors->has('hoten'))
+                <input name="hoten" class="input100" placeholder="Nhập họ tên" value="{{old('hoten')}}">
+            </div>
+            @if($errors->has('hoten'))
                 <div class="text-danger">{{$errors->first('hoten')}}</div>
                 @endif
-            </div>
             <div class="wrap-input100 validate-input form-group">
-                <input name="diachi" class="input100 " placeholder="Nhập địa chỉ" required>
-                @if($errors->has('diachi'))
+                <input name="diachi" class="input100 " placeholder="Nhập địa chỉ" value="{{old('diachi')}}">
+              
+            </div>
+            @if($errors->has('diachi'))
                 <div class="text-danger">{{$errors->first('diachi')}}</div>
                 @endif
-            </div>
             <div>
                 @if(session('message'))
                 <div class="text-danger">
