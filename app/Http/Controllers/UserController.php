@@ -123,7 +123,6 @@ class UserController extends Controller
                 'hienthi'=>1,
             ]);
             $user->save(); 
-                return dd($user);
         return back()->with('message','Lưu Thành Công!');
 
     }

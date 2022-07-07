@@ -6,9 +6,7 @@
         <div class="center-layout">
             <div class="row">
                 <div class="contact-text col-lg-6">
-                    @foreach($lh as $lhh)
-                    <div>{{$lhh->noidung}}</div>
-                    @endforeach
+                    <div>{{$lh->noidung}}</div>
                 </div>
                 <form class="contact-form validation-contact col-lg-6" novalidate method="post"
                     action="{{route('lienhe.create')}}" enctype="multipart/form-data">

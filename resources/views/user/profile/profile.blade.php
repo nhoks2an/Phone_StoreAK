@@ -32,10 +32,6 @@
                                 value="{{$datauser->email}}">
                         </div>
                         <div class="input-pro">
-                            <div class="name-pro">Hình</div> <input type="file" name="hinhanh"
-                                value="{{$datauser->hinhanh}}">
-                        </div>
-                        <div class="input-pro">
                             <div class="name-pro">Số điện thoại</div> <input type="number" name="sodienthoai"
                                 value="{{$datauser->sodienthoai}}">
                         </div>

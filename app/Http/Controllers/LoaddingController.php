@@ -109,8 +109,7 @@ class LoaddingController extends Controller
     // lien he
     public function loadlienhe()
     {
-    $lh = TTLienHe::all();
-    return View('user.lienhe.index');
+    return View('user.lienhe.index',);
     }
     
 }

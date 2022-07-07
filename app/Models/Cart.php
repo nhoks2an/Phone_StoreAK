@@ -1,33 +1,31 @@
-<?php 
+<?php
 namespace App\Models;
-use App\Models\SanPham;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\mapping;
-class Cart{
-    public $sp=null;
-    public $tongtien =0;
-    public $tongsoluong=0;
-    public function constant($cart){
-        if($cart)
-        {
-            $this->sp=$cart->sp;
-            $this->tongtien=$cart->tongtien;
-            $this->tongsoluong=$cart->tongsoluong;
-
-        }
+use Illuminate\Notifications\Notifiable;
+class Cart extends Model
+{
+    use HasFactory, Notifiable;
+    protected $guarded = [];
+    protected $table ="carts";
+    protected $fillable = [
+        'id',
+       'id_kh',
+       'id_sp',
+        'id_map',
+        'soluong'
+    ];
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'id_kh', 'id');
     }
-    public function addcart(SanPham $sanpham,$id){
-        $newsp=new SanPham();
-        if($this->sanpham){
-            if(array_key_exists($id,$sanpham)){
-                $newsp=$sanpham[$id];
-            }
-        }
-        // $newsp['soluong']++;
-        // $newsp['gia']=$newsp['soluong']*$sanpham->gia;
-        $this->sanpham[$id]=$newsp;
-        // $this->tongtien+=$sanpham->gia;
-        // $this->soluong++;
+    public function sanpham()
+    {
+        return $this->belongsTo('App\Models\SanPham', 'id_sp', 'id');
+    }
+    public function mapping()
+    {
+        return $this->belongsTo('App\Models\mapping', 'id_map', 'id');
     }
 }
 ?>

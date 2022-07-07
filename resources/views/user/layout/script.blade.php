@@ -13,6 +13,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"
     integrity="sha512-WNZwVebQjhSxEzwbettGuQgWxbpYdoLf7mH+25A7sfQbbxKeS5SQ9QBf97zOY4nOlwtksgDA/czSTmfj4DUEiQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="path/to/jquery-ui.min.js"></script>
 <script>
 const swiper = new Swiper('.swiper', {
     loop: true,
@@ -130,6 +131,7 @@ jQuery(document).ready(function($) {
 
 });
 </script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
 </html>

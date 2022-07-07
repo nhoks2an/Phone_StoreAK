@@ -40,7 +40,7 @@
                             <li><a class="box-wall" href="{{route('loadding.gioithieu')}}">Giới thiệu</a></li>
                             <li><a href="{{route('loadding.lienheuser')}}">Liên hệ</a></li>
                             @if($datauser==null)
-                            <li class="box-li"><i class="fas fa-shopping-cart"></i><a href="{{route('cart.show')}}">Giỏ
+                            <li class="box-li"><i class="fas fa-shopping-cart"></i><a href="">Giỏ
                                     hàng</a>
                             </li>
                             <li class="box-li"><i class="fas fa-sign-in-alt"></i><a href="{{route('user.login')}}">Đăng
@@ -49,7 +49,8 @@
                             <li class="box-li"></i><a href="{{route('user.showprofile',['user'=>$datauser])}}">Thông tin
                                     đăng nhập</a></li>
                             <li class="box-li"></i><a href="#">Lịch sử mua hàng</a></li>
-                            <li class="box-li"><i class="fas fa-shopping-cart"></i><a href="{{route('cart.show')}}">Giỏ
+                            <li class="box-li"><i class="fas fa-shopping-cart"></i><a
+                                    href="{{route('cart.show',$datauser->id)}}">Giỏ
                                     hàng</a>
                             </li>
                             <li class="box-li"><i class="fas fa-sign-out-alt"></i><a
