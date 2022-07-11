@@ -33,4 +33,13 @@ class CTHoaDon extends Model
     {
         return $this->belongsTo('App\Models\mapping', 'id_map', 'id');
     }
+
+    
+    public function scopeSearch($query){
+        if($key = request()->key)
+            {
+                $query = $query->where('id_hoadon','like','%'.$key.'%');
+            }
+        return $query;           
+    }
 }

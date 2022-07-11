@@ -12,7 +12,7 @@
             <form action="" >
                 <div class="input-group input-group-sm" >
                     <input class="form-control form-control-navbar text-sm" name="key"
-                        placeholder="Tìm kiếm" aria-label="Tìm kiếm">
+                        placeholder="Nhập tên thiết kế" aria-label="Tìm kiếm">
                     <div class="input-group-append bg-primary rounded-right">
                         <button class="btn btn-navbar text-white" type="submit"
                             onclick="">

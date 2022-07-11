@@ -15,7 +15,7 @@
     <div class="form-inline form-search d-inline-block align-middle ml-3">
         <form action="">
             <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar text-sm" name="key" placeholder="Tìm kiếm"
+                <input class="form-control form-control-navbar text-sm" name="key" placeholder="Nhập tên tin tức"
                     aria-label="Tìm kiếm">
                 <div class="input-group-append bg-primary rounded-right">
                     <button class="btn btn-navbar text-white" type="submit" onclick="">

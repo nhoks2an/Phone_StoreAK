@@ -17,7 +17,7 @@ class HoaDonController extends Controller
      */
     public function index()
     {
-        $hoaDon=HoaDon::all();
+        $hoaDon=HoaDon::orderBy('created_at','DESC')->search()->paginate(1);
         return view('hoadon.index',['hoadon'=>$hoaDon]);
     }
 
