@@ -2160,3 +2160,27 @@ img:not([src]) {
 .list-item:nth-child(4n+1){clear:both;}
 .list-item:nth-child(4n){margin-right:0px;} */
 .ten a {font-size: 15px; -webkit-line-clamp: 2;}
+table.greyGridTable {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+table.greyGridTable td, table.greyGridTable th {
+  border: 2px solid #F2F2F2;
+  padding: 3px 4px;
+}
+table.greyGridTable tbody td {
+  font-size: 14px;
+}
+table.greyGridTable thead {
+  background: #FFFFFF;
+  border-bottom: 2px solid #333333;
+}
+table.greyGridTable thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #333333;
+  text-align: center;
+}

@@ -17,8 +17,9 @@ class CreateCTHoaDonsTable extends Migration
             $table->id();
             $table->foreignId('id_hoadon');
             $table->foreignId('id_sanpham');
+            $table->foreignId('id_map');
             $table->integer('soluong');
-            $table->integer('thanhtien');
+            $table->double('thanhtien');
             $table->boolean('hienthi');
             $table->timestamps();
             $table->softDeletes();

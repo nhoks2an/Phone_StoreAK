@@ -58,14 +58,11 @@
                             </div>
                             <div class="flex">
                                 @if($datauser!=null)
-                                <input type="hidden" id="" name="id_user" value="{{$datauser->id}}">
+                                <input type="hidden" id="" class="id_user" name="id_user" value="{{$datauser->id}}">
                                 @endif
 
                                 <button class="btn-giohang add-to-cart" tyle="submit" name="" type="submit">
                                     <span>Thêm vào giỏ hàng</span>
-                                </button>
-                                <button class="btn-dathang " tyle="button" style="margin-top:10px">
-                                    <span>Đặt hàng</span>
                                 </button>
 
                             </div>

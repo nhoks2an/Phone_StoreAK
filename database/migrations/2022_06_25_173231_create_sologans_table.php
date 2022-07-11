@@ -16,7 +16,7 @@ class CreateSologansTable extends Migration
         Schema::create('sologans', function (Blueprint $table) {
             $table->id();
             $table->string('tieude')->nullable(true);
-            $table->string('trangthai');
+            $table->boolean('hienthi');
             $table->timestamps();
             $table->softDeletes();
         });

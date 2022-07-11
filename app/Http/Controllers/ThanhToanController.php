@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\ThanhToan;
-use App\Http\Requests\StoreThanhToanRequest;
-use App\Http\Requests\UpdateThanhToanRequest;
+use App\Models\HoaDon;
+use App\Models\CTHoaDon;
+use App\Models\Cart;
+use App\Http\Requests\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
 
 class ThanhToanController extends Controller
 {
@@ -15,7 +19,7 @@ class ThanhToanController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -34,11 +38,14 @@ class ThanhToanController extends Controller
      * @param  \App\Http\Requests\StoreThanhToanRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreThanhToanRequest $request)
+    public function store(Request $request)
     {
-        //
     }
-
+    public function addhd(Request $request)
+    {
+        $data=$request->all();
+        return dd($data);
+    }
     /**
      * Display the specified resource.
      *

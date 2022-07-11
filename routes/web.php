@@ -27,6 +27,9 @@ use App\Http\Controllers\SlideShowController;
 use App\Http\Controllers\SologanController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\dathangController;
+use App\Http\Controllers\HoaDonController;
+use App\Http\Controllers\CTHoaDonController;
 use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +61,10 @@ Route::get('/sanpham', function () {
 Route::get('/thongtinkhachhang', function () {
     return view('user.profile.profile');
 })->name('profile');
+Route::post('/donhang',[dathangController::class,'huy'])->name('dathang.huy');
+Route::post('/ctdonhang',[dathangController::class,'show'])->name('dathang.show');
+Route::post('/dathang',[dathangController::class,'addhd'])->name('dathang.addhd');
+Route::get('/lichsumuahang/{hoadon}',[dathangController::class,'showhd'])->name('dathang.showhd');
 Route::get('/thongtincanhan/{user}',[UserController::class,'showprofile'])->name('user.showprofile');
 Route::get('/capnhap/{user}',[UserController::class,'update'])->name('user.update');
 Route::get('/logout',[UserController::class,'logout'])->name('user.logout');
@@ -81,7 +88,11 @@ Route::get('/admin/cthoadon', function () {
     return view('cthoadon.index');
     })->name('cthoadon');
     //  dang nhap
+Route::get('/duyethoadon',[HoaDonController::class,'sua'])->name('hoadon.sua')->middleware('auth');
+Route::post('/duyethoadonhd',[HoaDonController::class,'duyet'])->name('hoadon.duyet')->middleware('auth');
 Route::resource('/RAM',RAMController::class)->middleware('auth');
+Route::resource('/hoadon',HoaDonController::class)->middleware('auth');
+Route::resource('/cthoadon',CTHoaDonController::class)->middleware('auth');
 Route::resource('/footer',FooterController::class)->middleware('auth');
 Route::resource('/gioithieu',GioiThieuController::class)->middleware('auth');
 Route::resource('/tinTuc',TinTucController::class)->middleware('auth');

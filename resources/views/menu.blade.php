@@ -87,9 +87,10 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('hoadon')}}"> <i class="far fa-caret-square-right"></i> Hóa
+                <a class="collapse-item" href="{{route('hoadon.index')}}"> <i class="far fa-caret-square-right"></i> Hóa
                     đơn</a>
-                <a class="collapse-item" href="{{route('cthoadon')}}"> <i class="far fa-caret-square-right"></i> Chi
+                <a class="collapse-item" href="{{route('cthoadon.index')}}"> <i class="far fa-caret-square-right"></i>
+                    Chi
                     tiết hóa đơn</a>
             </div>
         </div>
@@ -109,7 +110,7 @@
                     Slogan</a>
                 <a class="collapse-item" href="{{route('gioithieu.index')}}"> <i class="far fa-caret-square-right"></i>
                     Giới thiệu</a>
-                    <a class="collapse-item" href="{{route('tTLienHe.index')}}"> <i class="far fa-caret-square-right"></i>
+                <a class="collapse-item" href="{{route('tTLienHe.index')}}"> <i class="far fa-caret-square-right"></i>
                     Liên hệ</a>
                 <a class="collapse-item" href="{{route('footer.index')}}"> <i class="far fa-caret-square-right"></i>
                     Footer</a>
@@ -161,7 +162,7 @@
     <!-- Nav Item - Tables -->
     <li class="nav-item {{(request()->is('lienhe')) ? 'active' : '' }}">
         <a class="nav-link" href="{{route('lienhe.index')}}">
-        <i class="fas fa-envelope"></i>
+            <i class="fas fa-envelope"></i>
             <span>Quản lý nhận tin</span></a>
     </li>
     <!-- Divider -->
