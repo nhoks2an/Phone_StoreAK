@@ -6,6 +6,7 @@ use App\Models\mapping;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 class CartController extends Controller
 {
     public function show($id){
@@ -30,7 +31,7 @@ class CartController extends Controller
         }
         return back();
         }else{
-        return view('user.login.login');
+            return Redirect::route('user.login');
         }
     }
     public function updateminus(Request $request){
