@@ -86,7 +86,7 @@
                             @csrf
                             @method('DELETE')
                             <div class="modal-body">
-                                Bạn có chắc chắn muốn xóa !
+                                Bạn có chắc chắn muốn xóa ?
                             </div>
                             <input type="hidden"  name="tinhnang" id="tinhnang">
                             <div class="modal-footer">
