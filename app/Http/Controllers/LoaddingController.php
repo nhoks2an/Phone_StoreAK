@@ -113,6 +113,10 @@ class LoaddingController extends Controller
    public function loadgioithieu()
    {
     $gioithieu = GioiThieu::all();
+    foreach($gioithieu as $gt)
+    {
+        
+    }
     return View('user.gioithieu.index',['gioithieu'=>$gioithieu]);
    }
     // lien he

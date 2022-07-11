@@ -109,7 +109,7 @@ Route::resource('/thietke',ThietKeController::class)->middleware('auth');
 Route::resource('/mausac',MauSacController::class)->middleware('auth');
 Route::resource('/hang',HangController::class)->middleware('auth');
 Route::resource('/lienhe',LienHeController::class)->middleware('auth');
-Route::resource('/tTLienHe',TTLienHeController::class)->middleware('auth');
+Route::resource('/thongtinlh',TTLienHeController::class)->middleware('auth');
 Route::resource('/loaiSanPham',LoaiSanPhamController::class)->middleware('auth');
 Route::resource('/sanPham',SanPhamController::class)->middleware('auth');
 Route::get('/stock/{id}', [SanPhamController::class, 'indexmp'])->name('sanPham.stock');

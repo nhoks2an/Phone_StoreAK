@@ -3,7 +3,7 @@
 @parent
 <div class="bg-container">
 <div class="title-lienhe"><span class="title-name">Liên Hệ</span>
-            <p class="tilte-dichvu2">{{$sologan->tieude}}</p>
+            <p class="tilte-dichvu2"></p>
         </div>
     <div class="lienhe">
         <div class="center-layout">

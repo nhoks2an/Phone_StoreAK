@@ -2,7 +2,7 @@
 @section('sidebar')
     @parent
 
-<form method="post" action="{{route('tTLienHe.update',['tTLienHe'=>$lh])}}" enctype="multipart/form-data">
+<form method="post" action="{{route('thongtinlh.update',['thongtinlh'=>$thongtinlh])}}" enctype="multipart/form-data">
     @csrf
     @method('PATCH')
         <div class="card-footer text-sm sticky-top">
@@ -43,9 +43,9 @@
                                             <label for="contentvi">Nội dung (vi):</label>
                                             <textarea class="form-control for-seo text-sm " name="content" placeholder="Nội dung">{{$lh->noidung}}</textarea>
                                         </div>
-                                        @if($errors->has('noidung'))
+                                        @if($errors->has('content'))
                                         <div class="alert alert-danger" style="margin-top:10px;">
-                                            {{$errors->first('noidung')}}
+                                            {{$errors->first('content')}}
                                         </div>
                                     @endif
                                 </div>
