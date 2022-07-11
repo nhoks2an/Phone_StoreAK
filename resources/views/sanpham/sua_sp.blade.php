@@ -253,6 +253,28 @@
                     </div>
                 </div>
             </div>
+            <div class="card-body">
+            <div  class="form-group-category row">
+                <div class="form-group col-md-6">
+                    <label class="d-block" for="regular_price">Giá min:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control format-price regular_price text-sm" name="giamin" id="regular_price" placeholder="Giá min" value="">
+                        <div class="input-group-append">
+                            <div class="input-group-text"><strong> VNĐ</strong></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="d-block" for="sale_price">Giá max:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control format-price sale_price text-sm" name="giamax" id="sale_price" placeholder="Giá max" value="">
+                        <div class="input-group-append">
+                            <div class="input-group-text"><strong> VNĐ</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
     </div>
 </form>
