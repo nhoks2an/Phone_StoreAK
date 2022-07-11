@@ -44,8 +44,8 @@ class RAMController extends Controller
                 'soram' => 'required |unique:r_a_m_s,soram',
             ],
             [
-                'soram.required' => 'Số RAM Không Được Bỏ Trống',
-                'soram.unique' => 'Số RAM Đã Tồn Tại',
+                'soram.required' => 'Thông Số RAM Không Được Bỏ Trống',
+                'soram.unique' => 'Thông Số RAM Đã Tồn Tại',
             ]
         );
         $rAM = new RAM();

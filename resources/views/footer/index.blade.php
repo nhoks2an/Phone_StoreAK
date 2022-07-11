@@ -37,13 +37,23 @@
                             <div class="form-group">
                                 <label for="namevi">Tiêu đề:</label>
                                 <input type="text" class="form-control for-seo text-sm" name="tieude" id="namevi"
-                                    placeholder="Tiêu đề (vi)" value="{{$footer->tieude}}" required="">
+                                    placeholder="Tiêu đề (vi)" value="{{$footer->tieude}}">
                             </div>
+                            @if($errors->has('tieude'))
+                                        <div class="alert alert-danger" style="margin-top:10px;">
+                                            {{$errors->first('tieude')}}
+                                        </div>
+                                    @endif
                             <div class="form-group">
                                 <label for="descvi">Nội dung:</label>
                                 <textarea class="form-control for-seo text-sm " name="content" id="descvi" rows="5"
                                     placeholder="Mô tả (vi)">{{$footer->noidung}}</textarea>
                             </div>
+                            @if($errors->has('noidung'))
+                                        <div class="alert alert-danger" style="margin-top:10px;">
+                                            {{$errors->first('noidung')}}
+                                        </div>
+                                    @endif
                         </div>
                     </div>
                 </div>

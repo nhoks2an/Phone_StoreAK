@@ -27,18 +27,38 @@
                         <div class="input-pro">
                             <div class="name-pro">Tên</div><input type="text" name="hoten" value="{{$datauser->hoten}}">
                         </div>
+                        @if($errors->has('hoten'))
+                                        <div class="alert alert-danger" style="margin-top:10px;">
+                                            {{$errors->first('hoten')}}
+                                        </div>
+                                    @endif
                         <div class="input-pro">
                             <div class="name-pro">Email</div> <input type="text" name="email"
                                 value="{{$datauser->email}}">
                         </div>
+                        @if($errors->has('email'))
+                                        <div class="alert alert-danger" style="margin-top:10px;">
+                                            {{$errors->first('email')}}
+                                        </div>
+                                    @endif
                         <div class="input-pro">
                             <div class="name-pro">Số điện thoại</div> <input type="number" name="sodienthoai"
                                 value="{{$datauser->sodienthoai}}">
                         </div>
+                        @if($errors->has('sodienthoai'))
+                                        <div class="alert alert-danger" style="margin-top:10px;">
+                                            {{$errors->first('sodienthoai')}}
+                                        </div>
+                                    @endif
                         <div class="input-pro">
                             <div class="name-pro">Địa chỉ</div> <input type="text" name="diachi"
                                 value="{{$datauser->diachi}}">
                         </div>
+                        @if($errors->has('diachi'))
+                                        <div class="alert alert-danger" style="margin-top:10px;">
+                                            {{$errors->first('diachi')}}
+                                        </div>
+                                    @endif
                         <div class="input-pro">
                             <div class="name-pro">Giới tính</div>
                             <div class="flex-gioitinh">
@@ -56,6 +76,7 @@
                             <div class="name-pro">Ngày sinh</div><input type="date" id="birthdaytime" name="ngaysinh"
                                 value="{{$datauser->ngaysinh}}">
                         </div>
+                        
                         <div class="btn-pro-save"> <button tyle="submit">Lưu</button></div>
                     </div>
                 </div>

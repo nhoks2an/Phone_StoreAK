@@ -108,7 +108,7 @@
             <div class="item">
                 <div class="img"><a class="scale-img" href="{{route('loadding.detail',[$sanpham->id])}}"><img src="/storage/{{$sanpham->hinhanh}}"></a></div>
                 <div class=" noidung">
-                    <div class="ten"><a href="{{route('loadding.detail',[$sp->id])}}">{{$sanpham->tensanpham}}</a></div>
+                    <div class="ten"><a href="{{route('loadding.detail',[$sanpham->id])}}">{{$sanpham->tensanpham}}</a></div>
                     <div class="tt-gia">
                     <div class="gia" >{{$sanpham->giamin}}đ - {{$sanpham->giamax}}đ</div>
                     </div>

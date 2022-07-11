@@ -16,11 +16,12 @@ class TTLienHeController extends Controller
      */
     public function index()
     {
+
         $tTLienHe = TTLienHe::all();
         foreach( $tTLienHe as $lh){
          
         }
-        return view('user.lienhe.index',['lh'=>$lh]);
+        return view('lienhe.index',['tTLienHe'=>$tTLienHe]);
     }
     /**
      * Show the form for creating a new resource.
@@ -40,6 +41,7 @@ class TTLienHeController extends Controller
      */
     public function store(Request $request)
     {
+
         $tTLienHe = new TTLienHe();
         $tTLienHe->fill([
             'noidung'=>$request->input('content'),
@@ -79,6 +81,15 @@ class TTLienHeController extends Controller
      */
     public function update(Request $request, TTLienHe $lh)
     {
+        $validatedData = $request->validate(
+            [
+                'noidung' => 'required ',
+            ],
+            [
+                'noidung.required' => 'Nội Dung Không Được Bỏ Trống',
+               
+            ]
+        );
         $lh->fill([
             'noidung'=>$request->input('content'),
         ]);
