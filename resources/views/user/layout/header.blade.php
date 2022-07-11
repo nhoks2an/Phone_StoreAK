@@ -29,20 +29,20 @@
                             </div>
                         </div>
                         <ul>
-                            <li><a class="box-wall" href="/">Trang chủ</a></li>
-                            <li><a class="box-wall" href="{{route('tinTuc1.index')}}">Tin tức</a></li>
-                            <li><a class="box-wall" href="{{route('loadding.gioithieu')}}">Giới thiệu</a></li>
-                            <li><a href="{{route('loadding.lienheuser')}}">Liên hệ</a></li>
+                            <li class=""><a class="box-wall {{(request()->is('/')) ? 'active' : '' }}" href="/">Trang chủ</a></li>
+                            <li><a class="box-wall {{(request()->is('tintuc1')) ? 'active' : '' }}" href="{{route('tinTuc1.index')}}">Tin tức</a></li>
+                            <li><a class="box-wall {{(request()->is('gioithieuuser')) ? 'active' : '' }}" href="{{route('loadding.gioithieu')}}">Giới thiệu</a></li>
+                            <li><a class="{{(request()->is('lienheuser')) ? 'active' : '' }}" href="{{route('loadding.lienheuser')}}">Liên hệ</a></li>
                             @if($datauser==null)
                             <li class="box-li"><i class="fas fa-shopping-cart"></i><a href="">Giỏ
                                     hàng</a>
                             </li>
-                            <li class="box-li"><i class="fas fa-sign-in-alt"></i><a href="{{route('user.login')}}">Đăng
+                            <li class="box-li"><i class="fas fa-sign-in-alt"></i><a class="{{(request()->is('dangnhap')) ? 'active' : '' }}" href="{{route('user.login')}}">Đăng
                                     nhập</a></li>
                             @else
-                            <li class="box-li"></i><a href="{{route('user.showprofile',['user'=>$datauser])}}">Thông tin
+                            <li class="box-li"></i><a class="{{(request()->is('thongtincanhan')) ? 'active' : '' }}" href="{{route('user.showprofile',['user'=>$datauser])}}">Thông tin
                                     đăng nhập</a></li>
-                            <li class="box-li"></i><a href="{{route('dathang.showhd',$datauser->id)}}">Lịch sử mua
+                            <li class="box-li"></i><a class="{{(request()->is('lichsumuahang')) ? 'active' : '' }}"  href="{{route('dathang.showhd',$datauser->id)}}">Lịch sử mua
                                     hàng</a></li>
                             <li class="box-li"><i class="fas fa-shopping-cart"></i><a
                                     href="{{route('cart.show',$datauser->id)}}">Giỏ

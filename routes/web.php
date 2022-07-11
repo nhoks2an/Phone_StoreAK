@@ -65,7 +65,7 @@ Route::post('/donhang',[dathangController::class,'huy'])->name('dathang.huy');
 Route::post('/ctdonhang',[dathangController::class,'show'])->name('dathang.show');
 Route::post('/dathang',[dathangController::class,'addhd'])->name('dathang.addhd');
 Route::get('/lichsumuahang/{hoadon}',[dathangController::class,'showhd'])->name('dathang.showhd');
-Route::get('/thongtincanhan/{user}',[UserController::class,'showprofile'])->name('user.showprofile');
+Route::get('/thongtincanhan',[UserController::class,'showprofile'])->name('user.showprofile');
 Route::get('/capnhap/{user}',[UserController::class,'update'])->name('user.update');
 Route::get('/logout',[UserController::class,'logout'])->name('user.logout');
 Route::get('/trangchu',[UserController::class,'index'])->name('user.index');
@@ -137,7 +137,7 @@ Route::get('/admin/cthoadon', function () {
     })->name('cthoadon');
 
 Route::get('/', [LoaddingController::class, 'loadding'])->name('user');  
-Route::get('/tintuc', [LoaddingController::class, 'loadtintuc'])->name('tinTuc1.index');  
+Route::get('/tintuc1', [LoaddingController::class, 'loadtintuc'])->name('tinTuc1.index');  
 Route::get('/detail/{id}', [LoaddingController::class, 'detail'])->name('loadding.detail'); 
 Route::get('/chitiettintuc/{id}', [LoaddingController::class, 'detailchitiet'])->name('loadding.detailchitiet'); 
 Route::post('/mau/{id}', [LoaddingController::class, 'loadmau'])->name('loadding.loadmau'); 
