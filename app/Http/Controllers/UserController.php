@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\tbl_social;
+use Socialite;
 use App\Models\Sologan;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
@@ -82,11 +84,12 @@ class UserController extends Controller
     public function loginUser(Request $request)
     {
         $request->validate([
-            'email'=>'required|email',
+            'email'=>'required|email|regex:/^[a-zA-Z0-9_]+@gmail.com$/',
             'password'=>'required|min:6'
         ],
         [
             'email.required' => 'Email Không Được Bỏ Trống',
+            'email.regex' => 'Email Không Đúng Định Dạng',
             'password.required' => 'Mật Khẩu Không Được Bỏ Trống',
         ]);
         $user = User::where('email','=',$request->email)->first();
@@ -121,6 +124,23 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
+        $request->validate([
+            'hoten'=>'required',
+            'email'=>'required|email|regex:/^[a-zA-Z0-9_]+@gmail.com$/',
+            'sodienthoai'=>'required',
+            'ngaysinh'=>'required',
+            
+            'diachi'=>'required',
+            
+        ],
+        [
+            'hoten.required' => 'Họ Tên Không Được Bỏ Trống',
+            'sodienthoai.required' => 'Số Điện Thoại Không Được Bỏ Trống',
+            'diachi.required' => 'Địa Chỉ Không Được Bỏ Trống',
+            'ngaysinh.required' => 'Ngày Sinh Không Được Bỏ Trống',
+            'email.regex' => 'Email Không Đúng Định Dạng',
+            'password.required' => 'Mật Khẩu Không Được Bỏ Trống',
+        ]);
         if($request->hasFile('hinhanh')){
             $user->hinhanh = $request->file('hinhanh')->store('images/user/'.$user->id,'public');
         }
@@ -147,5 +167,54 @@ class UserController extends Controller
         return redirect('/');
     }
 
+
+//     public function login_google(){
+//         return Socialite::driver('google')->redirect();
+//    }
+//     public function callback_google(){
+//         $users = Socialite::driver('google')->stateless()->user(); 
+//         //  dd($users);
+//         $authUser = $this->findOrCreateUser($users,'google');
+//         $account_name = User::where('id',$authUser->user)->first();
+//         Session::put('admin_name',$account_name->name);
+//         Session::put('admin_id',$account_name->id);
+//         return redirect('/')->with('message', 'Đăng nhập thành công');
+      
+       
+//      }
+
+//     public function findOrCreateUser($users,$provider){
+//         $authUser = tbl_social::where('provider_user_id', $users->id)->first();
+//         if($authUser){
+
+//             return $authUser;
+//         }
+      
+//         $hieu = new tbl_social([
+//             'provider_user_id' => $users->id,
+//             'provider' => strtoupper($provider)
+//         ]);
+
+//         $orang = User::where('email',$users->email)->first();
+
+//             if(!$orang){
+//                 $orang = User::create([
+//                     'name' => $users->name,
+//                     'email' => $users->email,
+//                     'password' => '',
+
+//                     'sodienthoai' => '',
+//                     'hienthi' => 1
+//                 ]);
+//             }
+//         $hieu->login()->associate($orang);
+//         $hieu->save();
+
+//         $account_name = User::where('id',$authUser->user)->first();
+//         Session::put('admin_name',$account_name->name);
+//         Session::put('admin_id',$account_name->id);
+//         return redirect('/')->with('message', 'Đăng nhập  thành công');
+
+//     }
 
 }

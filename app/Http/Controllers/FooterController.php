@@ -84,6 +84,17 @@ class FooterController extends Controller
      */
     public function update(Request $request, Footer $footer)
     {
+        $validatedData = $request->validate(
+            [
+                'noidung' => 'required ',
+                'tieude' => 'required ',
+            ],
+            [
+                'noidung.required' => 'Nội Dung Không Được Bỏ Trống',
+                'tieude.required' => 'Tiêu Đề Không Được Bỏ Trống',
+               
+            ]
+        );
         $footer->fill([
             'tieude'=>$request->input('tieude'),
             'noidung'=>$request->input('content'),

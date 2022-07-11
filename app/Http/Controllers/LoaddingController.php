@@ -57,7 +57,7 @@ class LoaddingController extends Controller
     // tintuc
     public function loadtintuc()
     {
-        $lsttt = TinTuc::all();
+        $lsttt = TinTuc::orderBy('created_at','DESC')->paginate(2);
         foreach($lsttt as $tt){
             $this->fixImage($tt);
         }
@@ -104,7 +104,6 @@ class LoaddingController extends Controller
     {
     $sologan = Sologan::all();
     $tintuc = TinTuc::where('id','=',$id)->first();
-    // return dd($tintuc);
     foreach($tintuc as $tt)
     {
     }

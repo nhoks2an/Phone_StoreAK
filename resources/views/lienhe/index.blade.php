@@ -43,6 +43,11 @@
                                             <label for="contentvi">Nội dung (vi):</label>
                                             <textarea class="form-control for-seo text-sm " name="content" placeholder="Nội dung">{{$lh->noidung}}</textarea>
                                         </div>
+                                        @if($errors->has('noidung'))
+                                        <div class="alert alert-danger" style="margin-top:10px;">
+                                            {{$errors->first('noidung')}}
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                     </div>

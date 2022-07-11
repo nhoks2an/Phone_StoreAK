@@ -6,7 +6,7 @@
 <div class="bg-container">
     <div class="wrap-main w-clear">
         @foreach($gioithieu as $gt)
-        <div class="title-lienhe"><span>{{$gt->tieude}}</span>
+        <div class="title-lienhe"><span class="title-name">{{$gt->tieude}}</span>
             <p class="tilte-dichvu2">{{$sologan->tieude}}</p>
         </div>
         <div class=" w-clear">

@@ -104,7 +104,7 @@ class GioiThieuController extends Controller
         $gioiThieu->fill([
             'tieude'=>$request->input('tieude'),
             'noidung'=>$request->input('content'),
-            'trangthai'=>'Hiển thị',
+            'hienthi'=>'1',
         ]);
         $gioiThieu->save();
         return Redirect::route('gioithieu.index',['gioiThieu'=>$gioiThieu]);

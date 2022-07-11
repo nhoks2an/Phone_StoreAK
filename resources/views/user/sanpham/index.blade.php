@@ -2,6 +2,9 @@
 @section('sidebar')
 @parent
 <div class=" wrap-main w-clear">
+<div class="title-lienhe"><span class="title-name">Tin Tức</span>
+            <p class="tilte-dichvu2">{{$sologan->tieude}}</p>
+        </div>
     <div class="content-main row">
         @foreach($lsttt as $tt)
         <div class="news col-md-6">
@@ -27,6 +30,13 @@
             <div class="pagination-home w-100"></div>
         </div>
     </div>
+    <hr>
+<!-- phan trang -->
+<div class="search" style="
+    margin: auto;
+">
+    {{$lsttt->appends(request()->all())->links()}}
+</div>
 </div>
 @endsection
 @section('Them')

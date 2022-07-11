@@ -178,7 +178,12 @@
         </div>
     </div>
 </div>
-
+<!-- fb -->
+<!-- Messenger Plugin chat Code -->
+<!-- <div id="fb-root"></div> -->
+<!-- Your Plugin chat code -->
+<!-- <div id="fb-customer-chat" class="fb-customerchat">
+</div> -->
 @endsection
 @section('Them')
 @endsection
