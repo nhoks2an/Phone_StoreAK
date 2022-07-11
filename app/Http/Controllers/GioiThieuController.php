@@ -18,11 +18,11 @@ class GioiThieuController extends Controller
      */
     public function index()
     {
-        $gioiThieu = GioiThieu::all();
-        foreach($gioiThieu as $gioiThieu){
+        $gioithieu = GioiThieu::all();
+        foreach($gioithieu as $gioithieu){
          
         }
-        return view('gioithieu.index',['gioiThieu'=>$gioiThieu]);
+        return view('gioithieu.index',['gioithieu'=>$gioithieu]);
     }
 
     /**
@@ -32,7 +32,7 @@ class GioiThieuController extends Controller
      */
     public function create()
     {
-        return View('gioithieu.index');
+     
     }
 
     /**
@@ -43,22 +43,7 @@ class GioiThieuController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate(
-            [
-                'tieude' => 'required',
-            ],
-            [
-                'tieude.required' => 'Tiêu đề Không Được Bỏ Trống',
-            ]
-        );
-        $gioiThieu = new GioiThieu();
-        $gioiThieu->fill([
-            'tieude'=>$request->input('tieude'),
-            'noidung'=>$request->input('content'),
-            'hienthi'=>'1',
-        ]);
-        $gioiThieu->save();
-        return Redirect::route('gioithieu.index',['gioiThieu'=>$gioiThieu]);
+   
     }
 
     /**
@@ -67,7 +52,7 @@ class GioiThieuController extends Controller
      * @param  \App\Models\GioiThieu  $gioiThieu
      * @return \Illuminate\Http\Response
      */
-    public function show(GioiThieu $gioiThieu)
+    public function show(GioiThieu $gioithieu)
     {
         //
     }
@@ -78,7 +63,7 @@ class GioiThieuController extends Controller
      * @param  \App\Models\GioiThieu  $gioiThieu
      * @return \Illuminate\Http\Response
      */
-    public function edit(GioiThieu $gioiThieu)
+    public function edit(GioiThieu $gioithieu)
     {
 
     }
@@ -90,7 +75,7 @@ class GioiThieuController extends Controller
      * @param  \App\Models\GioiThieu  $gioiThieu
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GioiThieu $gioiThieu)
+    public function update(Request $request, GioiThieu $gioithieu)
     {
         $validatedData = $request->validate(
             [
@@ -101,13 +86,13 @@ class GioiThieuController extends Controller
                 'tieude.required' => 'Tiêu Đề Không Được Bỏ Trống',
             ]
         );
-        $gioiThieu->fill([
+        $gioithieu->fill([
             'tieude'=>$request->input('tieude'),
             'noidung'=>$request->input('content'),
             'hienthi'=>'1',
         ]);
-        $gioiThieu->save();
-        return Redirect::route('gioithieu.index',['gioiThieu'=>$gioiThieu]);
+        $gioithieu->save();
+        return Redirect::route('gioithieu.index');
     }
 
     /**

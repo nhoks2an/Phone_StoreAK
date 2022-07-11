@@ -86,11 +86,11 @@ class FooterController extends Controller
     {
         $validatedData = $request->validate(
             [
-                'noidung' => 'required ',
+                'content' => 'required ',
                 'tieude' => 'required ',
             ],
             [
-                'noidung.required' => 'Nội Dung Không Được Bỏ Trống',
+                'content.required' => 'Nội Dung Không Được Bỏ Trống',
                 'tieude.required' => 'Tiêu Đề Không Được Bỏ Trống',
                
             ]

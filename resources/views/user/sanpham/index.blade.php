@@ -3,7 +3,7 @@
 @parent
 <div class=" wrap-main w-clear">
 <div class="title-lienhe"><span class="title-name">Tin Tức</span>
-            <p class="tilte-dichvu2">{{$sologan->tieude}}</p>
+            <p class="tilte-dichvu2"></p>
         </div>
     <div class="content-main row">
         @foreach($lsttt as $tt)

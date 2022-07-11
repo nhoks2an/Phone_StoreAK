@@ -273,7 +273,7 @@ class SanPhamController extends Controller
             'tensanpham'=>$request->input('tensanpham'),
             'mota'=>$request->input('mota'),
             'giamin'=>$request->input('giamin'),
-            'giamax'=>$request->input('gimax'),
+            'giamax'=>$request->input('giamax'),
             'id_camera'=>$request->input('id_camera'),
       
             'id_manhinh'=>$request->input('id_manhinh'),

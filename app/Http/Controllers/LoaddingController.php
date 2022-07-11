@@ -79,7 +79,7 @@ class LoaddingController extends Controller
         $this->fixImageHang($hang);
         $lstloai = LoaiSanPham::where('id_hang','=',$hang->id)->get();
     }
-    return View::make('user.index.index', compact('sanPham','lsthang','lstloai','lstchinhsach','lstsanpham','mapping'))->nest('user.index.index','user.layout.footer', compact('sanPham','lsthang','lstchinhsach','lstsanpham'));
+    return View::make('user.index.index', compact('sanPham','lsthang','lstloai','lstchinhsach','lstsanpham'))->nest('user.index.index','user.layout.footer', compact('sanPham','lsthang','lstchinhsach','lstsanpham'));
    }
 
 // chi tiet sp
@@ -113,6 +113,10 @@ class LoaddingController extends Controller
    public function loadgioithieu()
    {
     $gioithieu = GioiThieu::all();
+    foreach($gioithieu as $gt)
+    {
+        
+    }
     return View('user.gioithieu.index',['gioithieu'=>$gioithieu]);
    }
     // lien he
@@ -179,6 +183,8 @@ class LoaddingController extends Controller
             </div>'; 
         }
         echo $output;
+
+    
     }
 
     public function timkiem()

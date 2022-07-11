@@ -10,21 +10,7 @@
         <a class="btn btn-sm bg-gradient-danger text-white" id="delete-all" data-url="index.php?com=product&amp;act=delete&amp;type=san-pham" title="Xóa tất cả"><i class="far fa-trash-alt mr-2"></i>Xóa tất cả</a>
         <a class="btn btn-sm bg-gradient-secondary" id="delete-all" href=""
         title=""><i class="fas fa-redo mr-2"></i>Quay lại</a>
-        <!-- Topbar Search -->
-        <div class="form-inline form-search d-inline-block align-middle ml-3">
-            <form action="" >
-                <div class="input-group input-group-sm" >
-                    <input class="form-control form-control-navbar text-sm" name="key"
-                        placeholder="Tìm kiếm" aria-label="Tìm kiếm">
-                    <div class="input-group-append bg-primary rounded-right">
-                        <button class="btn btn-navbar text-white" type="submit"
-                            onclick="">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>     
-        </div>
+       
     </div>
     <div class="card-footer form-group-category text-sm bg-light row">     
 </div>
@@ -274,12 +260,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="input-group">
-                            <input type="text" class="form-control discount text-sm" name="discount" id="discount" placeholder="Chiết khấu" value="" maxlength="3" readonly="">
-                            <div class="input-group-append">
-                                <div class="input-group-text"><strong>%</strong></div>
-                            </div>
-                        </div>
+                       
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
@@ -305,7 +286,7 @@
                         @csrf
                         @method('DELETE')
                         <div class="modal-body">
-                            Bạn có chắc chắn muốn xóa !
+                            Bạn có chắc chắn muốn xóa ?
                         </div>
                         
                         <div class="modal-footer">
@@ -318,8 +299,6 @@
                 </div>
             </div>
         </div>
-    
- 
 @section('scripts')
 <script>
 	$(document).on('click', '.sua', function() {

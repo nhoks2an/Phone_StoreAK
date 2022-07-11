@@ -45,7 +45,7 @@ class dathangController extends Controller
         }
     public function showhd($id)
     {
-        $hoadon=HoaDon::where('id_kh',$id)->get();
+        $hoadon=HoaDon::where('id_kh',$id)->paginate(1);
         return view('user.profile.hisshop',['hoadon'=>$hoadon]);
     }
     public function huy(Request $request)

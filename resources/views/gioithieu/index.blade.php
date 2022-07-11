@@ -1,7 +1,7 @@
 @extends('layout.layout')
 @section('sidebar')
 @parent
-<form method="post" action="{{route('gioithieu.update',['gioithieu'=>$gioiThieu])}}" enctype="multipart/form-data">
+<form class="validation-form" novalidate="" method="post" action="{{route('gioithieu.update',['gioithieu'=>$gioithieu])}}" enctype="multipart/form-data">
     @csrf
     @method('PATCH')
     <div class="card-footer text-sm sticky-top">
@@ -50,7 +50,7 @@
                                     <div class="form-group">
                                         <label for="namevi">Tiêu đề (vi):</label>
                                         <input type="text" class="form-control for-seo text-sm" name="tieude"
-                                            id="namevi" placeholder="Tiêu đề (vi)" value="{{$gioiThieu->tieude}}">
+                                            id="namevi" placeholder="Tiêu đề (vi)" value="{{$gioithieu->tieude}}">
                                         @if($errors->has('tieude'))
                                         <div class="alert alert-danger" style="margin-top:10px;">
                                             {{$errors->first('tieude')}}
@@ -60,7 +60,7 @@
                                     <div class="form-group">
                                         <label for="contentvi">Nội dung (vi):</label>
                                         <textarea class="form-control for-seo text-sm " name="content" id="descvi"
-                                            rows="5" placeholder="Nội dung">{{$gioiThieu->noidung}}</textarea>
+                                            rows="5" placeholder="Nội dung">{{$gioithieu->noidung}}</textarea>
                                     </div>
                                 </div>
                             </div>

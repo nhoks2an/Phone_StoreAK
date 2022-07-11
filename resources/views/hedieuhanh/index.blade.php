@@ -13,7 +13,7 @@
             <form action="" >
                 <div class="input-group input-group-sm" >
                     <input class="form-control form-control-navbar text-sm" name="key"
-                        placeholder="Tìm kiếm" aria-label="Tìm kiếm">
+                        placeholder="Nhập tên hệ điều hành" aria-label="Tìm kiếm">
                     <div class="input-group-append bg-primary rounded-right">
                         <button class="btn btn-navbar text-white" type="submit"
                             onclick="">
@@ -89,7 +89,7 @@
                             @csrf
                             @method('DELETE')
                             <div class="modal-body">
-                                Bạn có chắc chắn muốn xóa !
+                                Bạn có chắc chắn muốn xóa ?
                             </div>
                             <input type="hidden"  name="hedieuhanh" id="hedieuhanh">
                             <div class="modal-footer">

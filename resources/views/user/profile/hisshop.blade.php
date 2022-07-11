@@ -48,6 +48,13 @@
 
     </div>
 </div>
+<hr>
+<!-- phan trang -->
+<div class="search" style="
+    margin: auto;
+">
+    {{$hoadon->appends(request()->all())->links()}}
+</div>
 @endsection
 @section('Them')
 @endsection

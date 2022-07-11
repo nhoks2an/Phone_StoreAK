@@ -98,7 +98,7 @@
     <hr class="sidebar-divider my-0">
     <!-- tĩnh -->
     <li
-        class="nav-item {{(request()->is('sologan')) ? 'active' : '' }} {{(request()->is('gioithieu')) ? 'active' : '' }} {{(request()->is('banner')) ? 'active' : '' }} {{(request()->is('footer')) ? 'active' : '' }}{{(request()->is('tTLienHe')) ? 'active' : '' }}">
+        class="nav-item {{(request()->is('sologan')) ? 'active' : '' }} {{(request()->is('gioithieu')) ? 'active' : '' }} {{(request()->is('banner')) ? 'active' : '' }} {{(request()->is('footer')) ? 'active' : '' }}{{(request()->is('thongtinlh')) ? 'active' : '' }}">
         <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
             aria-controls="collapseTwo">
             <i class="fas fas fa-bookmark"></i>
@@ -110,7 +110,7 @@
                     Slogan</a>
                 <a class="collapse-item" href="{{route('gioithieu.index')}}"> <i class="far fa-caret-square-right"></i>
                     Giới thiệu</a>
-                <a class="collapse-item" href="{{route('tTLienHe.index')}}"> <i class="far fa-caret-square-right"></i>
+                <a class="collapse-item" href="{{route('thongtinlh.index')}}"> <i class="far fa-caret-square-right"></i>
                     Liên hệ</a>
                 <a class="collapse-item" href="{{route('footer.index')}}"> <i class="far fa-caret-square-right"></i>
                     Footer</a>
@@ -151,13 +151,7 @@
             </div>
         </div>
     </li>
-    <hr class="sidebar-divider my-0">
-    <!-- Nav Item - Charts -->
-    <li class="nav-item {{(request()->is('binhluan')) ? 'active' : '' }}">
-        <a class="nav-link" href="{{route('binhluan.index')}}">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Quản lý bình luận</span></a>
-    </li>
+    
     <hr class="sidebar-divider my-0">
     <!-- Nav Item - Tables -->
     <li class="nav-item {{(request()->is('lienhe')) ? 'active' : '' }}">

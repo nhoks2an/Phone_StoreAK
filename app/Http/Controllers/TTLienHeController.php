@@ -16,12 +16,10 @@ class TTLienHeController extends Controller
      */
     public function index()
     {
-
-        $tTLienHe = TTLienHe::all();
-        foreach( $tTLienHe as $lh){
-         
+        $thongtinlh = TTLienHe::all();
+        foreach( $thongtinlh as $thongtinlh){
         }
-        return view('lienhe.index',['tTLienHe'=>$tTLienHe]);
+        return view('lienhe.index',['thongtinlh'=>$thongtinlh]);
     }
     /**
      * Show the form for creating a new resource.
@@ -30,7 +28,7 @@ class TTLienHeController extends Controller
      */
     public function create()
     {
-        return View('lienhe.index');
+       
     }
 
     /**
@@ -42,12 +40,7 @@ class TTLienHeController extends Controller
     public function store(Request $request)
     {
 
-        $tTLienHe = new TTLienHe();
-        $tTLienHe->fill([
-            'noidung'=>$request->input('content'),
-        ]);
-        $tTLienHe->save();
-        return Redirect::route('tTLienHe.index',['tTLienHe'=>$tTLienHe]);
+       
     }
 
     /**
@@ -56,7 +49,7 @@ class TTLienHeController extends Controller
      * @param  \App\Models\TTLienHe  $tTLienHe
      * @return \Illuminate\Http\Response
      */
-    public function show(TTLienHe $tTLienHe)
+    public function show(TTLienHe $thongtinlh)
     {
         //
     }
@@ -67,7 +60,7 @@ class TTLienHeController extends Controller
      * @param  \App\Models\TTLienHe  $tTLienHe
      * @return \Illuminate\Http\Response
      */
-    public function edit(TTLienHe $tTLienHe)
+    public function edit(TTLienHe $thongtinlh)
     {
         //
     }
@@ -79,22 +72,22 @@ class TTLienHeController extends Controller
      * @param  \App\Models\TTLienHe  $tTLienHe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TTLienHe $lh)
+    public function update(Request $request, TTLienHe $thongtinlh)
     {
         $validatedData = $request->validate(
             [
-                'noidung' => 'required ',
+                'content' => 'required ',
             ],
             [
-                'noidung.required' => 'Nội Dung Không Được Bỏ Trống',
+                'content.required' => 'Nội Dung Không Được Bỏ Trống',
                
             ]
         );
-        $lh->fill([
+        $thongtinlh->fill([
             'noidung'=>$request->input('content'),
         ]);
-        $lh->save();
-        return Redirect::route('tTLienHe.index',['lh'=>$lh]);
+        $thongtinlh->save();
+        return Redirect::route('thongtinlh.index');
     }
 
     /**
