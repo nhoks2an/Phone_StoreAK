@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\CTHoaDon;
 use App\Http\Requests\StoreCTHoaDonRequest;
 use App\Http\Requests\UpdateCTHoaDonRequest;
-
+use App\Http\Requests\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
 class CTHoaDonController extends Controller
 {
     /**
@@ -15,7 +17,8 @@ class CTHoaDonController extends Controller
      */
     public function index()
     {
-        //
+        $cthoaDon=CTHoaDon::all();
+        return view('cthoadon.index',['cthoadon'=>$cthoaDon]);
     }
 
     /**

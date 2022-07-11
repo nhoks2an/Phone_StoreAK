@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\HoaDon;
-use App\Http\Requests\StoreHoaDonRequest;
-use App\Http\Requests\UpdateHoaDonRequest;
+use App\Models\Trangthaihd;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
 
 class HoaDonController extends Controller
 {
@@ -15,7 +17,8 @@ class HoaDonController extends Controller
      */
     public function index()
     {
-        //
+        $hoaDon=HoaDon::all();
+        return view('hoadon.index',['hoadon'=>$hoaDon]);
     }
 
     /**
@@ -34,9 +37,9 @@ class HoaDonController extends Controller
      * @param  \App\Http\Requests\StoreHoaDonRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreHoaDonRequest $request)
+    public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -60,6 +63,12 @@ class HoaDonController extends Controller
     {
         //
     }
+    public function sua(Request $request)
+    {
+        $hoaDon=HoaDon::where('id',$request->idhd)->first();
+        $trangthaihd=Trangthaihd::all();
+        return view('hoadon.sua',['hoadon'=>$hoaDon,'trangthaihd'=>$trangthaihd]);
+    }
 
     /**
      * Update the specified resource in storage.
@@ -68,9 +77,15 @@ class HoaDonController extends Controller
      * @param  \App\Models\HoaDon  $hoaDon
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateHoaDonRequest $request, HoaDon $hoaDon)
+    public function duyet(Request $request)
     {
-        //
+        $hoaDon=HoaDon::where('id',$request->id_hd)->first();
+        $hoaDon->fill([
+            'trangthai'=>$request->trangthaihd,
+        ]);
+        $hoaDon->save();
+        $hoaDon=HoaDon::all();
+        return view('hoadon.index',['hoadon'=>$hoaDon]);
     }
 
     /**

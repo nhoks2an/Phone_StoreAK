@@ -51,11 +51,11 @@
                                         <label for="namevi">Tiêu đề (vi):</label>
                                         <input type="text" class="form-control for-seo text-sm" name="tieude"
                                             id="namevi" placeholder="Tiêu đề (vi)" value="{{$gioiThieu->tieude}}">
-                                            @if($errors->has('tieude'))
-                                            <div class="alert alert-danger" style="margin-top:10px;">
-                                                {{$errors->first('tieude')}}
-                                            </div>
-                                            @endif
+                                        @if($errors->has('tieude'))
+                                        <div class="alert alert-danger" style="margin-top:10px;">
+                                            {{$errors->first('tieude')}}
+                                        </div>
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <label for="contentvi">Nội dung (vi):</label>
@@ -69,7 +69,7 @@
                 </div>
             </div>
         </div>
-    
+
     </div>
 </form>
 

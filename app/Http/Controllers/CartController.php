@@ -14,7 +14,9 @@ class CartController extends Controller
     }
     public function cart(Request $request,SanPham $sanPham){
         $cart = Cart::where('id_map',$request->cart_idmap)->where('id_sp',$sanPham->id)->where('id_kh',$request->id_user)->first();
-        if(!$cart)
+        if($request->id_user!=null)
+        {
+            if(!$cart)
         {
         $cart = new Cart();
         $cart->id_kh=$request->id_user;
@@ -27,6 +29,9 @@ class CartController extends Controller
             $cart->save();
         }
         return back();
+        }else{
+        return view('user.login.login');
+        }
     }
     public function updateminus(Request $request){
         $cart = Cart::where('id',$request->idcart)->first();

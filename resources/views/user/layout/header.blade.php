@@ -16,9 +16,11 @@
                             <div id="search" class="search search-contain s_close fr">
                                 <div class="search-content">
                                     <form name="search_form" id="search_form" method="" acction="">
-                                        <input type="text" value="" aria-label="Tìm kiếm sản phẩm?" placeholder="Tìm kiếm sản phẩm?" id="keyword" name="keyword"
+                                        <input type="text" value="" aria-label="Tìm kiếm sản phẩm?"
+                                            placeholder="Tìm kiếm sản phẩm?" id="keyword" name="keyword"
                                             class="keyword input-text">
-                                        <button type="submit" class="button-search button" aria-label="tìm kiếm" onclick="">
+                                        <button type="submit" class="button-search button" aria-label="tìm kiếm"
+                                            onclick="">
                                             <i class="fas fa-search"></i>
                                         </button>
                                     </form>
@@ -40,7 +42,8 @@
                             @else
                             <li class="box-li"></i><a href="{{route('user.showprofile',['user'=>$datauser])}}">Thông tin
                                     đăng nhập</a></li>
-                            <li class="box-li"></i><a href="#">Lịch sử mua hàng</a></li>
+                            <li class="box-li"></i><a href="{{route('dathang.showhd',$datauser->id)}}">Lịch sử mua
+                                    hàng</a></li>
                             <li class="box-li"><i class="fas fa-shopping-cart"></i><a
                                     href="{{route('cart.show',$datauser->id)}}">Giỏ
                                     hàng</a>

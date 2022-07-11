@@ -30,7 +30,7 @@
     <div class="card card-primary card-outline text-sm mb-0">
         <div class="card-header">
             <h3 class="card-title">
-                Danh sách hóa đơn
+                Danh sách chi tiết hóa đơn
             </h3>
         </div>
         <div class="card-body table-responsive p-0">
@@ -43,20 +43,16 @@
                                 <label for="selectall-checkbox" class="custom-control-label"></label>
                             </div>
                         </th>
-                        <th class="align-middle">Mã HĐ</th>
-                        <th class="align-middle">Khách hàng</th>
-                        <th class="align-middle">Địa chỉ</th>
-                        <th class="align-middle">Số điện thoại</th>
-                        <th class="align-middle">Thành phố/Tỉnh</th>
-                        <th class="align-middle">Quận/huyện</th>
-                        <th class="align-middle">Phường/Xã</th>
-                        <th class="align-middle">Tổng tiền</th>
-                        <th class="align-middle">Trạng thái</th>
-                        <th class="align-middle text-center">Thao tác</th>
+                        <th class="align-middle">Mã chi tiết</th>
+                        <th class="align-middle">Mã đơn hàng</th>
+                        <th class="align-middle">Mã sãn phẩm</th>
+                        <th class="align-middle">Mã loại</th>
+                        <th class="align-middle">Số lượng</th>
+                        <th class="align-middle">Thành tiền</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($hoadon as $hd)
+                    @foreach($cthoadon as $cthd)
                     <tr>
                         <td class="align-middle">
                             <div class="custom-control custom-checkbox my-checkbox">
@@ -65,40 +61,22 @@
                             </div>
                         </td>
                         <td class="align-middle">
-                            {{$hd->id}}
+                            {{$cthd->id}}
                         </td>
                         <td class="align-middle">
-                            {{$hd->id_kh}}
+                            {{$cthd->id_hoadon}}
                         </td>
                         <td class="align-middle">
-                            {{$hd->diachi}}
+                            {{$cthd->id_sanpham}}
                         </td>
                         <td class="align-middle">
-                            {{$hd->sodienthoai}}
+                            {{$cthd->id_map}}
                         </td>
                         <td class="align-middle">
-                            {{$hd->thanhpho->tenthanhpho}}
+                            {{$cthd->soluong}}
                         </td>
                         <td class="align-middle">
-                            {{$hd->quan->tenquan}}
-                        </td>
-                        <td class="align-middle">
-                            {{$hd->phuong->tenphuong}}
-                        </td>
-                        <td class="align-middle">
-                            {{$hd->tongtien}} VNĐ
-                        </td>
-                        <td class="align-middle">
-                            {{$hd->trangthaihd->tentrangthai}}
-                        </td>
-                        <td class="align-middle text-center text-md text-nowrap">
-                            <form action="{{route('hoadon.sua')}}">
-                                @csrf
-                                <input type="hidden" value="{{$hd->id}}" name="idhd">
-                                <button type="submit">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                            </form>
+                            {{$cthd->thanhtien}}VNĐ
                         </td>
                     </tr>
                     @endforeach

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Createfkdanhgia extends Migration
+class Createfkcthoadon extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class Createfkdanhgia extends Migration
      */
     public function up()
     {
-        Schema::table('danh_gias', function (Blueprint $table) {
-            $table->foreign('id_kh')->references('id')->on('users');
-            $table->foreign('id_sanpham')->references('id_sanpham')->on('c_t_hoa_dons');
+        Schema::table('c_t_hoa_dons', function (Blueprint $table) {
+            $table->foreign('id_sanpham')->references('id')->on('san_phams');
+            $table->foreign('id_map')->references('id')->on('mappings');
         });
     }
 
@@ -26,7 +26,7 @@ class Createfkdanhgia extends Migration
      */
     public function down()
     {
-        Schema::table('danh_gias', function (Blueprint $table) {
+        Schema::table('c_t_hoa_dons', function (Blueprint $table) {
             //
         });
     }

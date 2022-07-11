@@ -17,6 +17,7 @@ class CreateVouchersTable extends Migration
             $table->id();
             $table->integer('giamgia');
             $table->foreignId('id_kh');
+            $table->foreignId('id_hoadon');
             $table->boolean('hienthi');
             $table->timestamps();
             $table->softDeletes();

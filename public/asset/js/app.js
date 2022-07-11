@@ -16,7 +16,13 @@ $('.multiple-items').slick({
     autoplaySpeed: 3000,
   });
   $('.add-to-cart').click(function(){ 
+    var $data= $('.id_user').val();
+    if($data==null){
+      swal("Chưa đăng nhập!", "Hãy đăng nhập để thực hiện!", "error");
+    }
+    else{
     swal("Thành công!", "Đã thêm sản phẩm vào giỏ hàng!", "success");
+    }
 
 });
 $('.minus').click(function () {

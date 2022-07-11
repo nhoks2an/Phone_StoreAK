@@ -14,7 +14,6 @@ class CreatefkHoadon extends Migration
     public function up()
     {
         Schema::table('hoa_dons', function (Blueprint $table) {
-            $table->foreign('id_voucher')->references('id')->on('vouchers');
             $table->foreign('id_kh')->references('id')->on('users');
             $table->foreign('id_thanhpho')->references('id')->on('thanh_phos');
             $table->foreign('id_quan')->references('id')->on('quans');

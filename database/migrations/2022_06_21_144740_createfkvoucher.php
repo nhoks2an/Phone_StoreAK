@@ -15,6 +15,7 @@ class Createfkvoucher extends Migration
     {
         Schema::table('vouchers', function (Blueprint $table) {
             $table->foreign('id_kh')->references('id')->on('users');
+            $table->foreign('id_hoadon')->references('id')->on('hoa_dons');
         });
     }
 
