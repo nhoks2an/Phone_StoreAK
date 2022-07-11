@@ -14,7 +14,8 @@ class dathangController extends Controller
         public function addhd(Request $request)
         {
             
-            $hoadon=new HoaDon();
+            if($request->tongtien!=0){
+                $hoadon=new HoaDon();
             $hoadon->fill([
                 'id_kh'=>$request->input('id_user'),
                 'tongtien'=>$request->input('tongtien'),
@@ -40,6 +41,7 @@ class dathangController extends Controller
                 ]);
                 $item->delete();
                 $cthd->save();
+            }
             }
             return back();
         }

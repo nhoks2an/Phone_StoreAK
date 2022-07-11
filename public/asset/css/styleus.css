@@ -2073,6 +2073,20 @@ img:not([src]) {
 .freeship{background: #006600;width: 63%; text-align: center;}
 .freeship span{color: #fff;}
 .specs-special ol li{padding: 10px 0;}
+.specs-special{
+  border: 1px solid #000;
+  width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+}
+.specs-special h3{
+  border-bottom: 1px solid #000;
+  text-align: center;
+  padding-bottom: 10px;
+}
+.specs-special li {
+  border-bottom: 1px dashed #000;
+}
 #etalage .etalage_thumb_image{width: 80%!important;max-width: 300px;}
 .title-spcat{list-style: none; padding: 0px;margin: 0px;margin-bottom: 15px;}
 .title-spcat li{margin: 5px 10px;}

@@ -69,8 +69,9 @@
                         </ul>
                     </div>
                     <div class="col-xl-6">
-                        <h3>Thông số kĩ thuật</h3>
+
                         <div class="specs-special">
+                            <h3>Thông số kĩ thuật</h3>
                             <ol>
                                 <li>
                                     <strong>Màn hình: </strong>
@@ -121,9 +122,11 @@
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     {{$sanPham->mota}}</div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                <div id="fb-root"></div>
-                    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v14.0" nonce="CjbcdpFc"></script>
-                    <div class="fb-comments" data-href="{{route('loadding.detail',[$sanPham->id])}}" data-width="" data-numposts="10"></div>
+                    <div id="fb-root"></div>
+                    <script async defer crossorigin="anonymous"
+                        src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v14.0" nonce="CjbcdpFc"></script>
+                    <div class="fb-comments" data-href="{{route('loadding.detail',[$sanPham->id])}}" data-width=""
+                        data-numposts="10"></div>
                 </div>
             </div>
         </div>

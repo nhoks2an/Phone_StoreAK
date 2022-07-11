@@ -22,7 +22,7 @@
 
                                 <a class="text-decoration-none" href="" target="_blank" title="">
 
-                                    <img src="../images/oppoa5.jpg" alt="">
+                                    <img src="/storage/{{$item->sanpham->hinhanh}}" alt="">
                                 </a>
 
 
