@@ -87,8 +87,14 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('hoadon.index')}}"> <i class="far fa-caret-square-right"></i> Hóa
-                    đơn</a>
+                <a class="collapse-item" href="{{route('hoadon.index')}}"> <i class="far fa-caret-square-right"></i>Chưa
+                    duyệt</a>
+                <a class="collapse-item" href="{{route('hoadon.indexduyet')}}"> <i
+                        class="far fa-caret-square-right"></i>Đã
+                    duyệt</a>
+                <a class="collapse-item" href="{{route('hoadon.indexgiao')}}"> <i
+                        class="far fa-caret-square-right"></i>Đã
+                    giao</a>
                 <a class="collapse-item" href="{{route('cthoadon.index')}}"> <i class="far fa-caret-square-right"></i>
                     Chi
                     tiết hóa đơn</a>
@@ -151,7 +157,7 @@
             </div>
         </div>
     </li>
-    
+
     <hr class="sidebar-divider my-0">
     <!-- Nav Item - Tables -->
     <li class="nav-item {{(request()->is('lienhe')) ? 'active' : '' }}">

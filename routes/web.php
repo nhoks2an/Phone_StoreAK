@@ -88,7 +88,9 @@ Route::get('/admin/cthoadon', function () {
     return view('cthoadon.index');
     })->name('cthoadon');
     //  dang nhap
-Route::get('/duyethoadon',[HoaDonController::class,'sua'])->name('hoadon.sua')->middleware('auth');
+Route::get('/hoadon1',[HoaDonController::class,'sua'])->name('hoadon.sua')->middleware('auth');
+Route::get('/hoadon23',[HoaDonController::class,'indexduyet'])->name('hoadon.indexduyet')->middleware('auth');
+Route::get('/hoadon4',[HoaDonController::class,'indexgiao'])->name('hoadon.indexgiao')->middleware('auth');
 Route::post('/duyethoadonhd',[HoaDonController::class,'duyet'])->name('hoadon.duyet')->middleware('auth');
 Route::resource('/RAM',RAMController::class)->middleware('auth');
 Route::resource('/hoadon',HoaDonController::class)->middleware('auth');
@@ -154,6 +156,6 @@ Route::post('/load_more_sanpham', [LoaddingController::class, 'load_more_sanpham
 Route::get('/timkiem', [LoaddingController::class, 'timkiem'])->name('timkiem'); 
 Route::get('/timkiemsanpham', [SanPhamController::class, 'timkiemsanpham'])->name('timkiemsanpham'); 
 Route::get('/hangsp', [LoaddingController::class, 'loadhangtheosp'])->name('loadhangtheosp'); 
-
+Route::get('/themgiohang/{sanPham}', [CartController::class, 'getvt'])->name('cart.getvt');
 // Route::get('/login-google',[UserController::class, 'login_google'])->name('login_google'); 
 // Route::get('/dangnhap/google/callback',[UserController::class, 'callback_google'])->name('callback_google'); 

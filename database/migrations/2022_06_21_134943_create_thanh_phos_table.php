@@ -15,10 +15,8 @@ class CreateThanhPhosTable extends Migration
     {
         Schema::create('thanh_phos', function (Blueprint $table) {
             $table->id();
-            $table->string('tenthanhpho');
-            $table->boolean('hienthi');
-            $table->timestamps();
-            $table->softDeletes();
+            $table->string('_name');
+            $table->string('_code');
         });
     }
 

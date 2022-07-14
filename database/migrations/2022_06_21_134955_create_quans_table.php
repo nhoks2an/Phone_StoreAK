@@ -15,11 +15,9 @@ class CreateQuansTable extends Migration
     {
         Schema::create('quans', function (Blueprint $table) {
             $table->id();
-            $table->string('tenquan');
-            $table->foreignId('id_thanhpho');
-            $table->boolean('hienthi');
-            $table->timestamps();
-            $table->softDeletes();
+            $table->string('_name');
+            $table->string('_prefix');
+            $table->bigInteger('_province_id');
         });
     }
 

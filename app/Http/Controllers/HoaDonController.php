@@ -17,10 +17,19 @@ class HoaDonController extends Controller
      */
     public function index()
     {
-        $hoaDon=HoaDon::orderBy('created_at','DESC')->search()->paginate(1);
+        $hoaDon=HoaDon::orderBy('created_at','DESC')->where('trangthai',1)->search()->paginate(1);
         return view('hoadon.index',['hoadon'=>$hoaDon]);
     }
-
+    public function indexduyet()
+    {
+        $hoaDon=HoaDon::orderBy('created_at','DESC')->where('trangthai','<>',1)->where('trangthai','<>',4)->search()->paginate(1);
+        return view('hoadon.index',['hoadon'=>$hoaDon]);
+    }
+    public function indexgiao()
+    {
+        $hoaDon=HoaDon::orderBy('created_at','DESC')->where('trangthai',4)->search()->paginate(1);
+        return view('hoadon.index',['hoadon'=>$hoaDon]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -69,7 +78,6 @@ class HoaDonController extends Controller
         $trangthaihd=Trangthaihd::all();
         return view('hoadon.sua',['hoadon'=>$hoaDon,'trangthaihd'=>$trangthaihd]);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -84,10 +92,8 @@ class HoaDonController extends Controller
             'trangthai'=>$request->trangthaihd,
         ]);
         $hoaDon->save();
-        $hoaDon=HoaDon::all();
-        return view('hoadon.index',['hoadon'=>$hoaDon]);
+        return Redirect::route('hoadon.index');
     }
-
     /**
      * Remove the specified resource from storage.
      *

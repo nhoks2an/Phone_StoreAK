@@ -15,11 +15,10 @@ class CreatePhuongsTable extends Migration
     {
         Schema::create('phuongs', function (Blueprint $table) {
             $table->id();
-            $table->string('tenphuong');
-            $table->foreignId('id_quan');
-            $table->boolean('hienthi');
-            $table->timestamps();
-            $table->softDeletes();
+            $table->string('_name');
+            $table->string('_prefix');
+            $table->bigInteger('_province_id');
+            $table->bigInteger('_district_id');
         });
     }
 

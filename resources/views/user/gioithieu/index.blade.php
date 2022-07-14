@@ -10,7 +10,7 @@
             <p class="tilte-dichvu2"></p>
         </div>
         <div class=" w-clear">
-            {{$gt->noidung}}
+            <?php echo htmlspecialchars_decode($gt->noidung); ?>
         </div>
         @endforeach
     </div>
