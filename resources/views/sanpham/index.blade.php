@@ -34,6 +34,11 @@
                 Danh sách sản phẩm
             </h3>
         </div>
+        @if(count($lstsanpham)===0)
+        <div class="alert alert-warning w-100" role="alert" style="margin-top: 10px;">
+            <p style="margin: auto;">Không tìm thấy nội dung bạn yêu cầu</p>
+        </div>
+        @else
         <div class="card-body table-responsive p-0">
             <table class="table table-hover">
                 <thead>
@@ -111,7 +116,7 @@
                 </tbody>
                 @endforeach
             </table>
-        @foreach($lstsanpham as $sanPham)
+             @foreach($lstsanpham as $sanPham)
                 <div class="modal fade" id="SanPhamModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -138,8 +143,9 @@
                         </div>
                     </div>
                 </div>
-        @endforeach
+          @endforeach
         </div>
+        @endif
         </div>
     </div>
 <hr>

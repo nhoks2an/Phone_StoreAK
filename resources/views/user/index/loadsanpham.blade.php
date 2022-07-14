@@ -20,20 +20,10 @@
 <div class="boloc center">
     <div class="custom-select">
         <select>
-            <option value="0">Hãng</option>
-
-            <option value=""></option>
-
-        </select>
-    </div>
-    <div class="custom-select">
-        <select>
-            <option value="0">Giá</option>
-            <option value="1">1.000.000 - 3.000.000đ</option>
-            <option value="2">3.000.000 - 5.000.000đ</option>
-            <option value="3">5.000.000 - 10.000.000đ</option>
-            <option value="4">10.000.000 - 20.000.000đ</option>
-            <option value="5">>20.000.000đ</option>
+        @foreach($lstloai as $loai)
+            <option value="0">Loại Sản Phẩm</option>
+            <option value="1">{{$loai->tenloaisp}}</option>
+        @endforeach  
         </select>
     </div>
     <div class="custom-select">
@@ -103,9 +93,9 @@
 
 <div class="box-sanpham">
     <div class="center-layout">
-        <div class="list-item" id="">
+        <div class="list-item-sanpham" id="">
         @foreach($lstsanpham as $sanpham)
-            <div class="item">
+            <div class="item-sanpham">
                 <div class="img"><a class="scale-img" href="{{route('loadding.detail',[$sanpham->id])}}"><img src="/storage/{{$sanpham->hinhanh}}"></a></div>
                 <div class=" noidung">
                     <div class="ten"><a href="{{route('loadding.detail',[$sanpham->id])}}">{{$sanpham->tensanpham}}</a></div>
@@ -122,13 +112,9 @@
                     </ul>
                 </div>
                 <div class="promote">
-                    <a href="">
-                        <ul>
-                            <li><span class="bag">KM</span> Thanh toán qua VNPAY giảm thêm tới 500.000đ</li>
-                            <li><span class="bag">KM</span> GIẢM THÊM TỚI 1.200.000đ khi Thu cũ - Lên đời iPhone Series
-                            </li>
-                        </ul>
-                    </a>
+                <a href="{{route('loadding.detail',[$sanpham->id])}}">
+                    <div class= "mota-sampham">{{$sanpham->mota}}</div>
+                </a>
                 </div>
             </div>
      @endforeach

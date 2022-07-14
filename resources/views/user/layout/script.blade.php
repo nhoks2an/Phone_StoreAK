@@ -131,6 +131,26 @@ jQuery(document).ready(function($) {
 
 });
 </script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script type="text/javascript">
+    
+        $(document).ready(function(){
+
+            $('#sort-b').on('change',function(){
+
+                var url = $(this).val();
+                alert(url);
+                // if(url){
+                //     window.location = url;
+                // }
+                // return false;
+            });
+
+        });
+       
+</script>
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
@@ -204,6 +224,9 @@ $(document).ready(function() {
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 </script> -->
+
+
+
 </body>
 
 </html>

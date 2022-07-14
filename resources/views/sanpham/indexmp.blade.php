@@ -164,12 +164,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="input-group">
-                            <input type="text" class="form-control discount text-sm" name="data[discount]" id="discount" placeholder="Chiết khấu" value="" maxlength="3" readonly="">
-                            <div class="input-group-append">
-                                <div class="input-group-text"><strong>%</strong></div>
-                            </div>
-                        </div>
+                       
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
@@ -246,21 +241,20 @@
                                 <div class="input-group">
                                     <input type="text" class="form-control format-price regular_price text-sm" name="giacu" id="regular_price" placeholder="Giá bán" value="">
                                     <div class="input-group-append">
-                                        <div class="input-group-text"><strong>VNĐ</strong></div>
+                                        <div class="input-group-text"><strong> VNĐ</strong></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group col-md-6">
-                                <label class="d-block" for="regular_price">Giá mới:</label>
+                                <label class="d-block" for="sale_price">Giá mới:</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control format-price regular_price text-sm" name="giamoi" id="regular_price" placeholder="Giá mới" value="">
+                                    <input type="text" class="form-control format-price sale_price text-sm" name="giamoi" id="sale_price" placeholder="Giá mới" value="">
                                     <div class="input-group-append">
-                                        <div class="input-group-text"><strong>VNĐ</strong></div>
+                                        <div class="input-group-text"><strong> VNĐ</strong></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                       
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>

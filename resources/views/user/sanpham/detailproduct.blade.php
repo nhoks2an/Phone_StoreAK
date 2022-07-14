@@ -136,9 +136,9 @@
         <div class="center">
             <div class="title-name">SẢN PHẨM CÙNG LOẠI</div>
         </div>
-        <div class="list-item">
+        <div class="list-item-sanpham">
             @foreach($spcungloai as $sp)
-            <div class="item">
+            <div class="item-sanpham">
                 <div class="img"><a class="scale-img" href="{{route('loadding.detail',[$sp->id])}}"><img
                             src="/storage/{{$sp->hinhanh}}"></a></div>
                 <div class=" noidung">
@@ -149,13 +149,8 @@
                     </div>
                 </div>
                 <div class="promote">
-                    <a href="">
-                        <ul>
-                            <li><span class="bag">KM</span> Thanh toán qua VNPAY giảm thêm tới 500.000đ</li>
-                            <li><span class="bag">KM</span> GIẢM THÊM TỚI 1.200.000đ khi Thu cũ - Lên đời iPhone
-                                Series
-                            </li>
-                        </ul>
+                    <a href="{{route('loadding.detail',[$sp->id])}}">
+                        <div class= "mota-sampham">{{$sp->mota}}</div>
                     </a>
                 </div>
             </div>
