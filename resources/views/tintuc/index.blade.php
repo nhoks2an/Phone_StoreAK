@@ -26,11 +26,16 @@
         </form>
     </div>
 </div>
-</div>
+
 <div class="card card-primary card-outline text-sm mb-0">
     <div class="card-header">
         <h3 class="card-title">Danh sách Tin tức</h3>
     </div>
+    @if(count($lsttt)===0)
+        <div class="alert alert-warning w-100" role="alert" style="margin-top: 10px;">
+            <p style="margin: auto;">Không tìm thấy nội dung bạn yêu cầu</p>
+        </div>
+        @else
     <div class="card-body table-responsive p-0">
         <table class="table table-hover">
             <thead>
@@ -119,7 +124,7 @@
         </div>
         @endforeach
     </div>
-
+    @endif
 
     <hr>
     <!-- phan trang -->

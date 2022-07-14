@@ -19,12 +19,18 @@
 </div>
 <div class="boloc center">
     <div class="custom-select">
-        <select>
-            <option value="0">Hãng</option>
-
-            <option value=""></option>
-
-        </select>
+            <div class=" col-md-4">
+                <form>
+                    @csrf
+                    <select name="sort" id="sort" class="form-control">
+                        <option value="{{Request::url()}}?sort_by=none">--Lọc--</option>
+                        <option value="{{Request::url()}}?sort_by=tang_dan">--Giá tăng dần--</option>
+                        <option value="{{Request::url()}}?sort_by=giam_dan">--Giảm giảm dần--</option>
+                        <option value="{{Request::url()}}?sort_by=kytu_az">--A đến Z--</option>
+                        <option value="{{Request::url()}}?sort_by=kytu_za">--Z đến A--</option>
+                    </select>   
+                </form>
+            </div> 
     </div>
     <div class="custom-select">
         <select>
@@ -100,6 +106,7 @@
         </div>
     </div>
 </div>
+
 <div class="box-noibat">
     <div class="center-layout">
         <div class="center">
@@ -124,13 +131,9 @@
                     </div>
                 </div>
                 <div class="promote">
-                    <a href="">
-                        <ul>
-                            <li><span class="bag">KM</span> Thanh toán qua VNPAY giảm thêm tới 500.000đ</li>
-                            <li><span class="bag">KM</span> GIẢM THÊM TỚI 1.200.000đ khi Thu cũ - Lên đời iPhone Series
-                            </li>
-                        </ul>
-                    </a>
+                <a href="{{route('loadding.detail',[$sp->id])}}">
+                    <div class= "mota-sampham">{{$sp->mota}}</div>
+                </a>
                 </div>
             </div>
             @endforeach
@@ -142,39 +145,12 @@
         <div class="img-sp"><img src="../images/samsung-galaxy-z-fold-3.jpg" alt=""></div>
     </div>
 </div>
+
+
 <div class="box-sanpham">
  
     <div class="center-layout">
         <div class="list-item" id="all_sanpham">
-        <!-- @foreach($lstsanpham as $sanpham)
-            <div class="item">
-                <div class="img"><a class="scale-img" href="{{route('loadding.detail',[$sanpham->id])}}"><img src="/storage/{{$sanpham->hinhanh}}"></a></div>
-                <div class=" noidung">
-                    <div class="ten"><a >{{$sanpham->tensanpham}}</a></div>
-                    <div class="tt-gia">
-                        <div class="gia"><span>{{$sanpham->id_camera}}</span></div>
-                        <div class="giacu">10000000đ</div>
-                    </div>
-                    <div class ="mota">
-                        <ul>
-                            <li><span class="">Màn hình:</span> {{$sp->manhinh->thongso}}</li>
-                            <li><span class="">Hệ điều hành:</span> {{$sp->hedieuhanh->tenhedieuhanh}}</li>
-                            <li><span class="">Camera:</span> {{$sp->camera->tencamera}}</li>
-                            <li><span class="">Pin:</span> {{$sp->hieunangpin->tenhieunang}}</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="promote">
-                    <a href="">
-                        <ul>
-                            <li><span class="bag">KM</span> Thanh toán qua VNPAY giảm thêm tới 500.000đ</li>
-                            <li><span class="bag">KM</span> GIẢM THÊM TỚI 1.200.000đ khi Thu cũ - Lên đời iPhone Series
-                            </li>
-                        </ul>
-                    </a>
-                </div>
-            </div>
-        @endforeach -->
         </div>
     </div>
 </div>
@@ -184,6 +160,8 @@
 <!-- Your Plugin chat code -->
 <!-- <div id="fb-customer-chat" class="fb-customerchat">
 </div> -->
+
+
 @endsection
 @section('Them')
 @endsection

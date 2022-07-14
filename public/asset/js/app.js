@@ -40,7 +40,6 @@ $('.plus').click(function () {
   return false;
 }); 
 
-
 $('.js_location').change(function (event) {
  event.preventDefault();
  let route = "{{ route('cart.getvt') }}"

@@ -130,10 +130,10 @@ class LoaddingController extends Controller
         $data = $request->all();
 
         if($data['id'] > 0){
-            $lstsanpham = SanPham::where('noibat','=','0')->where('id','<',$data['id'])->orderby('id','DESC')->take(3)->get();
+            $lstsanpham = SanPham::where('noibat','=','0')->where('id','<',$data['id'])->orderby('id','DESC')->take(4)->get();
         }
         else{
-            $lstsanpham = SanPham::where('noibat','=','0')->orderby('id','DESC')->take(3)->get();
+            $lstsanpham = SanPham::where('noibat','=','0')->orderby('id','DESC')->take(4)->get();
         }
         $output = '';
         if(!$lstsanpham->isEmpty()){
@@ -157,34 +157,26 @@ class LoaddingController extends Controller
                                     </div>
                                 </div>
                                 <div class="promote">
-                                    <a href="#">
-                                        <ul>
-                                        <li><span class="bag">KM</span> Thanh toán qua VNPAY giảm thêm tới 500.000đ</li>
-                                        <li><span class="bag">KM</span> GIẢM THÊM TỚI 1.200.000đ khi Thu cũ - Lên đời iPhone Series
-                                        </li>
-                                        </ul>
+                                    <a href="'.url('/detail/'.$sanpham->id).'">
+                                       <div class= "mota-sampham">'.$sanpham->mota.'</div>
                                     </a>
                                 </div>
                             </div>';    
                         
             }
             $output.='
-            <div id= "load_more">
-                <button type="button" name="load_more_button" class="btn btn-success form-control" data-id="'.$last_id.'"id ="load_more_button">
+                <button  type="button" name="load_more_button" class="btn btn-success form-control" data-id="'.$last_id.'"id ="load_more_button">
                     Xem Thêm
                 </button>     
-            </div>';
+          ';
         }else{
             $output.='
-            <div id= "load_more">
-                <button type="button" name="load_more_button" class="btn btn-default form-control"id ="load_more_button">
+                <button  type="button" name="load_more_button" class="btn btn-default form-control"id ="load_more_button">
                   Đang Cập Nhật Dữ Liệu....
                 </button>     
-            </div>'; 
+           '; 
         }
         echo $output;
-
-    
     }
 
     public function timkiem()
@@ -206,7 +198,7 @@ class LoaddingController extends Controller
     {
         $lstsanpham = SanPham::where('id_loaisp','=',$loai->id)->paginate(5);
     }
-    return View('user.index.loadsanpham',['lstsanpham'=>$lstsanpham,'lsthang'=>$lsthang]);
+    return View('user.index.loadsanpham',['lstsanpham'=>$lstsanpham,'lsthang'=>$lsthang,'lstloai'=>$lstloai]);
     }
     
 }

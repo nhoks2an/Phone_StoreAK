@@ -19,10 +19,15 @@
                 </div>
             </form>
         </div>
+        @if(count($lstsanpham)===0)
+        <div class="alert alert-warning w-100" role="alert" style="margin-top: 10px;">
+            <p style="margin: auto;">Không tìm thấy nội dung bạn yêu cầu</p>
+        </div>
+        @else
     <div class="center-layout">
-        <div class="list-item" id="">
+        <div class="list-item-sanpham" id="">
          @foreach($lstsanpham as $sanpham)
-            <div class="item">
+            <div class="item-sanpham">
                 <div class="img"><a class="scale-img" href="{{route('loadding.detail',[$sanpham->id])}}"><img src="/storage/{{$sanpham->hinhanh}}"></a></div>
                 <div class=" noidung">
                     <div class="ten"><a >{{$sanpham->tensanpham}}</a></div>
@@ -39,18 +44,15 @@
                     </div>
                 </div>
                 <div class="promote">
-                    <a href="">
-                        <ul>
-                            <li><span class="bag">KM</span> Thanh toán qua VNPAY giảm thêm tới 500.000đ</li>
-                            <li><span class="bag">KM</span> GIẢM THÊM TỚI 1.200.000đ khi Thu cũ - Lên đời iPhone Series
-                            </li>
-                        </ul>
-                    </a>
+                <a href="{{route('loadding.detail',[$sanpham->id])}}">
+                    <div class= "mota-sampham">{{$sanpham->mota}}</div>
+                </a>
                 </div>
             </div>
         @endforeach
         </div>
     </div>
+    @endif
     <hr>
 <!-- phan trang -->
 <div class="search" style="margin: auto;">

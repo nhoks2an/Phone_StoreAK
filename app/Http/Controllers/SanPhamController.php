@@ -169,6 +169,7 @@ class SanPhamController extends Controller
                 'mota' => 'required',  
                 'giamin' => 'required',
                 'giamax' => 'required',  
+                'id_loai' => 'required',  
             ],
             [
                 'tensanpham.required' => 'Tên Sản Phẩm Không Được Bỏ Trống',
@@ -177,6 +178,7 @@ class SanPhamController extends Controller
                 'mota.required' => 'Mô Tả Ảnh Không Được Bỏ Trống',
                 'giamin.required' => 'Giá Min Không Được Bỏ Trống',
                 'giamax.required' => 'Giá Max Không Được Bỏ Trống',
+                'id_loai.required' => 'Loại Không Được Bỏ Trống',
 
             ]
         );
