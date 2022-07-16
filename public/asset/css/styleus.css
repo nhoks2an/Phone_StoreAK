@@ -938,6 +938,7 @@ iframe {
 .lst-quickfilter {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .box-quicklink__item.bd-radius {
   border-radius: 52px;
