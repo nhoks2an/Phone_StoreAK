@@ -33,11 +33,6 @@
                 Danh sách hóa đơn
             </h3>
         </div>
-        @if(count($hoadon)===0)
-        <div class="alert alert-warning w-100" role="alert" style="margin-top: 10px;">
-            <p style="margin: auto;">Không tìm thấy nội dung bạn yêu cầu</p>
-        </div>
-        @else
         <div class="card-body table-responsive p-0">
             <table class="table table-hover">
                 <thead>
@@ -110,7 +105,6 @@
                 </tbody>
             </table>
         </div>
-        @endif
     </div>
 </div>
 <hr>

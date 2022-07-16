@@ -3,13 +3,18 @@
 @parent
 <div class="bg-container">
     <div class="title-lienhe"><span class="title-name">Liên Hệ</span>
+
             <p class="tilte-dichvu2"></p>
         </div>
+
+        <p class="tilte-dichvu2"></p>
+    </div>
+
     <div class="lienhe">
         <div class="center-layout">
             <div class="row">
                 <div class="contact-text col-lg-6">
-                    <div>{{$lh->noidung}}</div>
+                    <div> <?php echo htmlspecialchars_decode($lh->noidung); ?></div>
                 </div>
                 <form class="contact-form validation-contact col-lg-6" novalidate method="post"
                     action="{{route('lienhe.create')}}" enctype="multipart/form-data">
