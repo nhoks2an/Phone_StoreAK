@@ -78,7 +78,6 @@
         <div class="center">
             <div class="title-name">SẢN PHẨM</div>
         </div>
-     
     <div class="center-layout">
         <div class="list-item" id="all_sanpham">
         </div>
