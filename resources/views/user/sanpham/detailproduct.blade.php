@@ -82,7 +82,7 @@
                                     <span>{{$sanPham->camera->tencamera}}</span>
                                 </li>
                                 <li>
-                                    <strong>Hệ hành: </strong>
+                                    <strong>Hệ điều hành: </strong>
                                     <span>{{$sanPham->hedieuhanh->tenhedieuhanh}}</span>
                                 </li>
                                 <li>

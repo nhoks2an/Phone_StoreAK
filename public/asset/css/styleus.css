@@ -135,6 +135,7 @@ a {font-family: 'RobotoRegular';}
 .ten a{display: inline !important;}
 /* user */
 body{position: relative;width: 100%;max-width: 1366px;margin: auto!important;}
+body{font-family:Roboto-Medium!important;}
 .center-layout{width: 100%;max-width: 1200px;position: relative;margin: auto;}
 .flex{display: flex; justify-content: space-between;}
 .scale-img{overflow:hidden;display:block;}
@@ -272,6 +273,21 @@ ul .tt-dt{font-size: 20px;color: #fff;}
   text-overflow: ellipsis;
   display: -webkit-box;
 }
+.item-sanpham{position: relative;}
+.item-sanpham .img{display: inline-block;margin-top: 10px;max-width: 150px;}
+.item-sanpham .img img{width:100%;height: 150px;}
+.item-sanpham{border:1px solid #e7e7e77d;text-align: center; border-radius: 10px;}
+.item-sanpham .noidung{margin-bottom: 10px;margin-top: 10px;line-height: 25px;font-weight:bold ;}
+.item-sanpham .noidung .ten a{color: #000;
+  height: 24px;
+  line-height: 22px;
+  margin-top: 0px;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+}
 .tensanpham{font-size: 25px;font-weight: bold;text-transform: capitalize;}
 .product-option .options{
   display: grid;
@@ -290,6 +306,7 @@ ul .tt-dt{font-size: 20px;color: #fff;}
     border-radius: 4px;
     background: #fff;
     position: relative;
+    width: 95%;
 }
 .giaban{color: #cd0000;}
 .soluong{color: #000;font-weight: bold;}
@@ -311,6 +328,7 @@ button.btn-giohang{color:#FFF;background-color: #00483d;padding: 15px 10px;borde
 	position: relative;
   font-family: 'Oswald-SemiBold';
 	padding: 0 30px;}
+.list-item{margin-top: 30px;}
  .list-item-sanpham{display: grid; grid-template-columns: repeat(4, calc(25% - (25px * 3 / 4))); grid-gap: 25px;padding: 20px 20px;background-color: #fff;border-radius: 20px;}
 .alert p{font-family: "RobotoRegular";}
 
@@ -978,6 +996,7 @@ iframe {
 }
 .promote{display: none;}
 .item:hover .promote{display: block;}
+.item-sanpham:hover .promote{display: block;}
 .cart-items .item-cart {
   margin-bottom: 15px;
   background: #fff 0% 0% no-repeat padding-box;
@@ -1055,7 +1074,7 @@ iframe {
 .counter-procart-plus button{width: 30%;}
 .counter-procart-minus button{width: 30%;}
 .quantity-counter-procart .quantity-procart{width:40%;box-sizing:border-box;border:0px;border-right:1px solid #dfdfdf;border-left:1px solid #dfdfdf;outline:none;box-shadow:none;padding:0px;color:#333;text-align:center;}
-.price-procart{width:20%;text-align:right;display: flex;align-items: center;}
+.price-procart{text-align:right;display: flex;align-items: center;}
 .price-procart .txt-sl{margin-right: 5px;}
 .del-procart{padding: 5px 10px;background-color: #c80000;color: #FFF;border-radius: 5px;cursor: pointer;}
 .del-procart:hover{color: #000;}
@@ -2224,3 +2243,11 @@ table.greyGridTable thead th {
   margin-right: 6px;
   padding: 8px 9px;
 }
+.thong-bao{position: relative;}
+.thong-bao span{position:absolute;}
+.tonkho{margin-top: 10px;}
+.tonkho{font-size: 12px;color: #a69191;}
+.form-row .input-cart select{margin-top: 0px;}
+.payments-cart.custom-control.custom-radio{display: flex;align-items: center;}
+.payments-cart.custom-control.custom-radio label{width: 100%;margin-left: 10px;}
+.properties-procart .price-new-cart{font-family:Roboto-Medium!important;}

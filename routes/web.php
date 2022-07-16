@@ -156,6 +156,7 @@ Route::post('/load_more_sanpham', [LoaddingController::class, 'load_more_sanpham
 Route::get('/timkiem', [LoaddingController::class, 'timkiem'])->name('timkiem'); 
 Route::get('/timkiemsanpham', [SanPhamController::class, 'timkiemsanpham'])->name('timkiemsanpham'); 
 Route::get('/hangsp', [LoaddingController::class, 'loadhangtheosp'])->name('loadhangtheosp'); 
-Route::get('/themgiohang/{sanPham}', [CartController::class, 'getvt'])->name('cart.getvt');
+Route::post('/loadvt', [CartController::class, 'getvt'])->name('loadvt');
+Route::post('/loadphuong', [CartController::class, 'getphuong'])->name('loadphuong');
 // Route::get('/login-google',[UserController::class, 'login_google'])->name('login_google'); 
 // Route::get('/dangnhap/google/callback',[UserController::class, 'callback_google'])->name('callback_google'); 

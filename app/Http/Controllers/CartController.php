@@ -74,13 +74,30 @@ class CartController extends Controller
         return back();
     }
     public function getvt(Request $request){
-        return dd($request);
-        $parentID = $request->parentID;
-        if($parentID){
-            $location = Quan::where('province_id',$parentID)->get();
-            return reponse(['data'=>$location]);
-        }
-
+        $id = $request->id;
+       
+            $location = Quan::where('_province_id',$id)->get();
+           
+            $loadquan = '';
+            $loadquan.='<select class="select-district-cart select-district custom-select text-sm thanhpho"
+            required="" id="quan" name="quan" data-type="quan">';
+            foreach($location as $value){
+            $loadquan.='<option value="'.$value->id.'">'.$value->_prefix.' '.$value->_name.'</option> </select>';
+            }
+            return $loadquan;
+    }
+    public function getphuong(Request $request){
+        $id = $request->id;
+       
+            $location = Phuong::where('_district_id',$id)->get();
+           
+            $loadphuong = '';
+            $loadphuong.='<select class="select-district-cart select-district custom-select text-sm thanhpho"
+            required="" id="phuong" name="phuong" data-type="phuong">';
+            foreach($location as $value){
+            $loadphuong.='<option value="'.$value->id.'">'.$value->_prefix.' '.$value->_name.'</option> </select>';
+            }
+            return $loadphuong;
     }
         
 }
