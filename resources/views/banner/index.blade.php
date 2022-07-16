@@ -1,69 +1,101 @@
 @extends('layout.layout')
 @section('sidebar')
-    @parent
-
-    <section>
-    <form class="validation-form" novalidate="" method="post" action="index.php?com=static&amp;act=save&amp;type=banner" enctype="multipart/form-data">
-        <div class="card-footer text-sm sticky-top">
-            <button type="submit" class="btn btn-sm bg-gradient-primary submit-check"><i class="far fa-save mr-2"></i>Lưu</button>
-            <button type="reset" class="btn btn-sm bg-gradient-secondary"><i class="fas fa-redo mr-2"></i>Làm lại</button>
+@parent
+<section class="content">
+    <div class="card-footer text-sm sticky-top">
+        <a class="btn btn-sm bg-gradient-primary text-white" href="{{route('banner.create')}}" title="Thêm mới"><i
+                class="fas fa-plus mr-2"></i>Thêm mới</a>
+        <a class="btn btn-sm bg-gradient-danger text-white" id="delete-all"
+            data-url="index.php?com=photo&amp;act=delete_photo&amp;type=slide" title="Xóa tất cả"><i
+                class="far fa-trash-alt mr-2"></i>Xóa tất cả</a>
+    </div>
+    <div class="card card-primary card-outline text-sm mb-0">
+        <div class="card-header">
+            <h3 class="card-title">Danh sách banner</h3>
         </div>
-
-                
-        <div class="row">
-            <div class="col-12">
-                <div class="card card-primary card-outline text-sm">
-                    <div class="card-header">
-                        <h3 class="card-title">Nội dung Banner</h3>
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                                                <div class="form-group">
-                                                                                        <div class="form-group d-inline-block mb-2 mr-2">
-                                    <label for="hienthi-checkbox" class="d-inline-block align-middle mb-0 mr-2">Hiển thị:</label>
-                                    <div class="custom-control custom-checkbox d-inline-block align-middle">
-                                        <input type="checkbox" class="custom-control-input hienthi-checkbox" name="status[hienthi]" id="hienthi-checkbox" checked="" value="hienthi">
-                                        <label for="hienthi-checkbox" class="custom-control-label"></label>
-                                    </div>
-                                </div>
-                                                    </div>
-                                                    <div class="card card-primary card-outline card-outline-tabs">
-                                <div class="card-header p-0 border-bottom-0">
-                                    <ul class="nav nav-tabs" id="custom-tabs-three-tab-lang" role="tablist">
-                                                                                    <li class="nav-item">
-                                                <a class="nav-link active" id="tabs-lang" data-toggle="pill" href="#tabs-lang-vi" role="tab" aria-controls="tabs-lang-vi" aria-selected="true">Tiếng Việt</a>
-                                            </li>
-                                                                            </ul>
-                                </div>
-                                <div class="card-body card-article">
-                                    <div class="tab-content" id="custom-tabs-three-tabContent-lang">
-                                                                                    <div class="tab-pane fade show active" id="tabs-lang-vi" role="tabpanel" aria-labelledby="tabs-lang">
-                                                                                                    <div class="form-group">
-                                                        <label for="namevi">Tiêu đề (vi):</label>
-                                                        <input type="text" class="form-control for-seo text-sm" name="data[namevi]" id="namevi" placeholder="Tiêu đề (vi)" value="công ty thời trang" required="">
-                                                    </div>
-                                                                                                                                                    <div class="form-group">
-                                                        <label for="descvi">Mô tả (vi):</label>
-                                                        <textarea class="form-control for-seo text-sm " name="data[descvi]" id="descvi" rows="5" placeholder="Mô tả (vi)">14/6b Ấp Thới Tứ, Xã Thới Tam Thôn, Hóc Môn , HCM</textarea>
-                                                    </div>
-                                                                                                                                            </div>
-                                                                            </div>
-                                </div>
+        <div class="card-body table-responsive p-0">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="align-middle" width="5%">
+                            <div class="custom-control custom-checkbox my-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="selectall-checkbox">
+                                <label for="selectall-checkbox" class="custom-control-label"></label>
                             </div>
-                                            </div>
+                        </th>
+
+                        <th class="align-middle text-center">Hình</th>
+                        <th class="align-middle text-center">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach( $lstbanner as $banner)
+                    <tr>
+                        <td class="align-middle">
+                            <div class="custom-control custom-checkbox my-checkbox">
+                                <input type="checkbox" class="custom-control-input select-checkbox"
+                                    id="select-checkbox-1" value="1">
+                                <label for="select-checkbox-1" class="custom-control-label"></label>
+                            </div>
+                        </td>
+                        <td class="align-middle text-center">
+                            <a href="" title="">
+                                <img class="rounded img-preview" onerror="" src="{{$banner->hinhanh}}" alt=""> </a>
+                        </td>
+                  
+                        <td class="align-middle text-center text-md text-nowrap">
+                            <button type="submit" class="btnxoa text-danger " style="border: none;background: none;"
+                                value="{{$banner->id}}">
+                                <i class="color fas fa-trash-alt"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            @foreach($lstbanner as $babner)
+            <!-- modal -->
+            <div class="modal fade" id="bannerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form method="post" action="{{route('banner.destroy',$banner->id)}}">
+                            @csrf
+                            @method('DELETE')
+                            <div class="modal-body">
+                                Bạn có chắc chắn muốn xóa ?
+                            </div>
+                            <input type="hidden" name="bn" id="bn">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+                                <button type="submit" class="btn btn-primary">Xác nhận</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <div class="d-none">
-                            </div>
+            @endforeach
         </div>
-                <div class="card-footer text-sm">
-            <button type="submit" class="btn btn-sm bg-gradient-primary submit-check"><i class="far fa-save mr-2"></i>Lưu</button>
-            <button type="reset" class="btn btn-sm bg-gradient-secondary"><i class="fas fa-redo mr-2"></i>Làm lại</button>
-        </div>
-    <input type="hidden" name="hash" value="OCOC4Y3fmc"></form>
+    </div>
 </section>
-@section('Them')
+@section('scripts')
+<script>
+$(document).on('click', '.btnxoa', function() {
+    $('#bannerModal').modal({
+        show: true
+    });
+    var bn_id = $(this).val();
+    $('#bn').val(bn_id);
+
+});
+</script>
 @endsection
+@endsection
+@section('Them')
 @endsection

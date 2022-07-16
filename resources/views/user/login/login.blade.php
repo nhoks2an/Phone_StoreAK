@@ -54,6 +54,10 @@
                         Đăng ký
                     </a>
                 </div>
+
+                <div class="gg" style=" text-align: center; margin-top: 5px;">
+                    <a class="hvr-float-shadow" href="{{route('login_google')}}"> <img src="images/gg.png"  width="10%" alt="Đăng nhập bằng google"></a>
+                </div>
             </form>
         </div>
     </div>

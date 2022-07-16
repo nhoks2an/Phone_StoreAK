@@ -2,7 +2,7 @@
 @section('sidebar')
 @parent
 <div class="bg-container">
-<div class="title-lienhe"><span class="title-name">Liên Hệ</span>
+    <div class="title-lienhe"><span class="title-name">Liên Hệ</span>
             <p class="tilte-dichvu2"></p>
         </div>
     <div class="lienhe">

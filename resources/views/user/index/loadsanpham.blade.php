@@ -3,20 +3,6 @@
 @parent
 <?php 
 ?>
-<div class="bg-container">
-    <div class="swiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="images/slider.png"></div>
-            <div class="swiper-slide"><img src="images/slider.png"></div>
-            <div class="swiper-slide"><img src="images/slider.png"></div>
-            <div class="swiper-slide"><img src="images/slider.png"></div>
-            <div class="swiper-slide"><img src="images/slider.png"></div>
-        </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-    </div>
-</div>
 <div class="boloc center">
     <div class="custom-select">
         <select>
