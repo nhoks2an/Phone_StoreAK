@@ -32,9 +32,7 @@
     </div>
     <hr>
 <!-- phan trang -->
-<div class="search" style="
-    margin: auto;
-">
+<div class="search" style="margin: auto;">
     {{$lsttt->appends(request()->all())->links()}}
 </div>
 </div>

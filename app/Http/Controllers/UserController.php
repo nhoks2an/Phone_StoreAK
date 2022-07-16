@@ -168,53 +168,58 @@ class UserController extends Controller
     }
 
 
-//     public function login_google(){
-//         return Socialite::driver('google')->redirect();
-//    }
-//     public function callback_google(){
-//         $users = Socialite::driver('google')->stateless()->user(); 
-//         //  dd($users);
-//         $authUser = $this->findOrCreateUser($users,'google');
-//         $account_name = User::where('id',$authUser->user)->first();
-//         Session::put('admin_name',$account_name->name);
-//         Session::put('admin_id',$account_name->id);
-//         return redirect('/')->with('message', 'Đăng nhập thành công');
-      
-       
-//      }
+    public function login_google(Request $request ){
+        return Socialite::driver('google')->redirect();
+   }
+    public function callback_google(){
+        $users = Socialite::driver('google')->stateless()->user(); 
+        $authUser = $this->findOrCreateUser($users,'google');
+        if($authUser)
+        {
+        $account_name = User::where('id',$authUser->id_user)->first();
+        Session::put('name',$account_name->name);
+        Session::put('login_normal',true);
+        Session::put('loginId',$account_name->id);
+        } else if($customer_new){
+            $account_name = User::where('id',$authUser->id_user)->first();
+            Session::put('name',$account_name->name);
+            Session::put('login_normal',true);
+            Session::put('loginId',$account_name->id);
+        }
+        return redirect('/')->with('message', 'Đăng nhập thành công');
+     }
 
-//     public function findOrCreateUser($users,$provider){
-//         $authUser = tbl_social::where('provider_user_id', $users->id)->first();
-//         if($authUser){
+    public function findOrCreateUser($users, $provider){
+        $authUser = tbl_social::where('provider_user_id', $users->id)->first();
+        if($authUser){
+            return $authUser;
+        } else {
+            $customer_new = new tbl_social([
+                'provider_user_id' => $users->id,
+                'provider' => strtoupper($provider)
+            ]);
+        // $hieu = new tbl_social([
+        //     'provider_user_id' => $users->id,
+        //     'provider' => strtoupper($provider)
+        // ]);
+        $orang = User::where('email',$users->email)->first();
 
-//             return $authUser;
-//         }
-      
-//         $hieu = new tbl_social([
-//             'provider_user_id' => $users->id,
-//             'provider' => strtoupper($provider)
-//         ]);
+            if(!$orang){
+                $orang = User::create([
+                    'hoten' =>'',
+                    'name' => $users->name,
+                    'email' => $users->email,
+                    'password' => '',
+                    'sodienthoai' => '',
+                    'diachi'=>'',
+                    'hienthi' => 1, 
+                ]);
+            }
+        $customer_new->login()->associate($orang);
+        $customer_new->save();
+        return $customer_new;
+        }
 
-//         $orang = User::where('email',$users->email)->first();
-
-//             if(!$orang){
-//                 $orang = User::create([
-//                     'name' => $users->name,
-//                     'email' => $users->email,
-//                     'password' => '',
-
-//                     'sodienthoai' => '',
-//                     'hienthi' => 1
-//                 ]);
-//             }
-//         $hieu->login()->associate($orang);
-//         $hieu->save();
-
-//         $account_name = User::where('id',$authUser->user)->first();
-//         Session::put('admin_name',$account_name->name);
-//         Session::put('admin_id',$account_name->id);
-//         return redirect('/')->with('message', 'Đăng nhập  thành công');
-
-//     }
+    }
 
 }

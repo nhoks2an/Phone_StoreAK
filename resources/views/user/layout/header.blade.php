@@ -15,9 +15,10 @@
                         <div class="regions_search">
                             <div id="search" class="search search-contain s_close fr">
                                 <div class="search-content">
-                                    <form name="search_form" id="search_form" method="" acction="">
+                                    <form name="search_form" id="search_form" method="" action="{{route('timkiemsanpham')}}">
+                                        @csrf
                                         <input type="text" value="" aria-label="Tìm kiếm sản phẩm?"
-                                            placeholder="Tìm kiếm sản phẩm?" id="keyword" name="keyword"
+                                            placeholder="Tìm kiếm sản phẩm?" id="key" name="key"
                                             class="keyword input-text">
                                         <button type="submit" class="button-search button" aria-label="tìm kiếm"
                                             onclick="">
@@ -25,9 +26,9 @@
                                         </button>
                                     </form>
                                 </div>
-
                             </div>
                         </div>
+                 
                         <ul>
                             <li class=""><a class="box-wall {{(request()->is('/')) ? 'active' : '' }}" href="/">Trang chủ</a></li>
                             <li><a class="box-wall {{(request()->is('tintuc1')) ? 'active' : '' }}" href="{{route('tinTuc1.index')}}">Tin tức</a></li>

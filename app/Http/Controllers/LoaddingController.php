@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\SanPham;
 use App\Models\RAM;
+use App\Models\SlideShow;
 use App\Models\mapping;
 use App\Models\ROM;
 use App\Models\ThietKe;
@@ -13,6 +14,7 @@ use App\Models\ChinhSach;
 use App\Models\HeDieuHanh;
 use App\Models\TinhNangDB;
 use App\Models\ManHinh;
+use App\Models\Banner;
 use App\Models\MauSac;
 use App\Models\TTLienHe;
 use App\Models\Hang;
@@ -46,6 +48,22 @@ class LoaddingController extends Controller
             $tinTuc->hinhanh = '/images/noimage.jpg';
         }
     }
+    protected function fixImageSH(SlideShow $slideShow)
+    {
+        if(Storage::disk('public')->exists($slideShow->hinhanh)){
+            $slideShow->hinhanh = Storage::url($slideShow->hinhanh);
+        }else{
+            $slideShow->hinhanh = '/images/noimage.jpg';
+        }
+    }
+    protected function fixImageBN(Banner $banner)
+    {
+        if(Storage::disk('public')->exists($banner->hinhanh)){
+            $banner->hinhanh = Storage::url($banner->hinhanh);
+        }else{
+            $banner->hinhanh = '/images/noimage.jpg';
+        }
+    }
     protected function fixImageHang(Hang $hang)
     {
         if(Storage::disk('public')->exists($hang->hinhanh)){
@@ -65,6 +83,16 @@ class LoaddingController extends Controller
     }
    public function loadding()
    {
+    $lshow = SlideShow::all();
+    foreach($lshow as $sh)
+    {
+       $this->fixImageSH($sh);
+    }
+    $lstbanner = Banner::all();
+    foreach($lstbanner as $banner)
+    {
+       $this->fixImageBN($banner);
+    }
     $sanPham = SanPham::where('noibat','=','1')->get();
     $lstsanpham = SanPham::where('noibat','=','0')->get();
     foreach($sanPham as $sp)
@@ -79,7 +107,7 @@ class LoaddingController extends Controller
         $this->fixImageHang($hang);
         $lstloai = LoaiSanPham::where('id_hang','=',$hang->id)->get();
     }
-    return View::make('user.index.index', compact('sanPham','lsthang','lstloai','lstchinhsach','lstsanpham'))->nest('user.index.index','user.layout.footer', compact('sanPham','lsthang','lstchinhsach','lstsanpham'));
+    return View::make('user.index.index', compact('sanPham','lsthang','lstloai','lstchinhsach','lstsanpham','lshow','lstbanner'))->nest('user.index.index','user.layout.footer', compact('sanPham','lsthang','lstchinhsach','lstsanpham','lshow','lstbanner'));
    }
 
 // chi tiet sp
@@ -89,7 +117,7 @@ class LoaddingController extends Controller
     $mapping = mapping::where('id_sanpham','=',$id)->get();
     $lsthinhanh = HinhAnh::where('id_sanpham','=',$id)->get();
     $lstloai= LoaiSanPham::where('id','=',$id)->get();
-    $spcungloai=SanPham::where('id_loaisp','=',$sanPham->id_loaisp,'and id<>',$sanPham->id)->get();
+    $spcungloai=SanPham::where('id_loaisp','=',$sanPham->id_loaisp,'and id<>',$sanPham->id)->paginate(4);;
     foreach($mapping as $mp)
     {  
     }
@@ -198,7 +226,13 @@ class LoaddingController extends Controller
     {
         $lstsanpham = SanPham::where('id_loaisp','=',$loai->id)->paginate(5);
     }
+
+
     return View('user.index.loadsanpham',['lstsanpham'=>$lstsanpham,'lsthang'=>$lsthang,'lstloai'=>$lstloai]);
+    
     }
+
+   
+  
     
 }

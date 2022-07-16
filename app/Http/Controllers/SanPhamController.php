@@ -54,12 +54,39 @@ class SanPhamController extends Controller
         }
         return view('sanpham.index',['lstsanpham'=>$lstsanpham]);
     }
-
+// tim kiem sp
     public function timkiemsanpham()
     {
-    
         $lstsanpham = SanPham::orderBy('created_at','DESC')->search()->paginate(8);
-     
+        foreach ($lstsanpham as $sanpham) {
+            $this->fixImage($sanpham);
+        }
+        if(isset($_GET['sort_by'])){
+
+            $sort_by = $_GET['sort_by'];
+            if ($sort_by == 'tang_dan') {
+                $lstsanpham = SanPham::orderBy('giamin', 'ASC')->orderBy('giamax', 'ASC')->paginate(8)->appends(request()->query());
+                foreach ($lstsanpham as $sanpham) {
+                    $this->fixImage($sanpham);
+                }
+            } else if ($sort_by == 'giam_dan') {
+                $lstsanpham = SanPham::orderBy('giamin', 'DESC')->orderBy('giamax', 'DESC')->paginate(8)->appends(request()->query());
+                foreach ($lstsanpham as $sanpham) {
+                    $this->fixImage($sanpham);
+                }
+            } else if ($sort_by == 'kytu_az') {
+                $lstsanpham = SanPham::orderBy('tensanpham', 'ASC')->paginate(8)->appends(request()->query());
+                foreach ($lstsanpham as $sanpham) {
+                    $this->fixImage($sanpham);
+                }
+            }
+            else if ($sort_by == 'kytu_za') {
+                $lstsanpham = SanPham::orderBy('tensanpham', 'DESC')->paginate(8)->appends(request()->query());
+                foreach ($lstsanpham as $sanpham) {
+                    $this->fixImage($sanpham);
+                }
+            }
+        }
         return View('user.timkiem.index',['lstsanpham'=>$lstsanpham]);
     }
     // Abum

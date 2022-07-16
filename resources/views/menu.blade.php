@@ -32,7 +32,7 @@
             <i class="fas fas fa-boxes"></i>
             <span>Quản lý sản phẩm</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div id="collapseUtilities" class="collapse " aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{route('hang.index')}}"> <i class="far fa-caret-square-right"></i>
                     Hãng</a>
@@ -104,13 +104,13 @@
     <hr class="sidebar-divider my-0">
     <!-- tĩnh -->
     <li
-        class="nav-item {{(request()->is('sologan')) ? 'active' : '' }} {{(request()->is('gioithieu')) ? 'active' : '' }} {{(request()->is('banner')) ? 'active' : '' }} {{(request()->is('footer')) ? 'active' : '' }}{{(request()->is('thongtinlh')) ? 'active' : '' }}">
+        class="nav-item {{(request()->is('sologan')) ? 'active' : '' }} {{(request()->is('gioithieu')) ? 'active' : '' }}  {{(request()->is('footer')) ? 'active' : '' }}{{(request()->is('thongtinlh')) ? 'active' : '' }}">
         <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
             aria-controls="collapseTwo">
             <i class="fas fas fa-bookmark"></i>
             <span>Quản lý trang tĩnh</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{route('sologan.index')}}"> <i class="far fa-caret-square-right"></i>
                     Slogan</a>
@@ -124,9 +124,10 @@
             </div>
         </div>
     </li>
+    
     <hr class="sidebar-divider my-0">
     <!-- tĩnh -->
-    <li class="nav-item {{(request()->is('logo')) ? 'active' : '' }} {{(request()->is('slideShow')) ? 'active' : '' }}">
+    <li class="nav-item ">
         <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo1" aria-expanded="false"
             aria-controls="collapseTwo1">
             <i class="fas fas fa-photo-video"></i>
@@ -136,6 +137,8 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{route('slideShow.index')}}"> <i class="far fa-caret-square-right"></i>
                     SlideShow</a>
+                    <a class="collapse-item" href="{{route('banner.index')}}"> <i class="far fa-caret-square-right"></i>
+                    Banner</a>
             </div>
         </div>
     </li>

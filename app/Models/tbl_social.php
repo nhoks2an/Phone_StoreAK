@@ -15,7 +15,7 @@ class tbl_social extends Model
    ];
    protected $primarykey = 'id';
    public function login(){
-    return $this->belongsto ('App\Models\User', 'id','id_user');
+    return $this->belongsto ('App\Models\User','id_user');
    }
 
 }

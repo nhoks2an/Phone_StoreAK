@@ -39,38 +39,4 @@ $('.plus').click(function () {
   $input.change();
   return false;
 }); 
-
-// $('.js_location').change(function (event) {
-//  event.preventDefault();
-//  let route = "{{ route('cart.getvt') }}"
-//  let $this = $(this);
-//  let type = $this.attr('data-type');
-//  let parentID = $this.val();
-//  $.ajax({
-//   method:"GET",
-//   url:route,
-//   data: {type,parent : parentID}
-//  })
-//  .done(function(msg){
-//   if(msg.data)
-//   {
-//     let html = '';
-//     let element ='';
-//     if(type=='thanhpho')
-//     {
-//       html="<option>Chọn quận/huyện</option>" ;
-//       element='#quan';
-//     }else{
-//       html="<option>Chọn phường/xã</option>" ;
-//       element='#phuong';
-//     }
-//     $.each(msg.data,function(index,value){
-//       html +=<option value='"value.id"'>"value.name"</option>
-//     })
-//     $(element).html('').append(html);
-
-//   }
-//  })
-
-// });
 });

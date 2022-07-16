@@ -142,10 +142,9 @@
                 <div class="img"><a class="scale-img" href="{{route('loadding.detail',[$sp->id])}}"><img
                             src="/storage/{{$sp->hinhanh}}"></a></div>
                 <div class=" noidung">
-                    <div class="ten"><a href="" class="text-split">{{$sp->tensanpham}}</a></div>
+                    <div class="ten"><a href="{{route('loadding.detail',[$sp->id])}}" class="text-split">{{$sp->tensanpham}}</a></div>
                     <div class="tt-gia">
-                        <div class="gia"><span>đ</span></div>
-                        <div class="giacu">10000000đ</div>
+                    <div class="gia" >{{$sanpham->giamin}}đ - {{$sanpham->giamax}}đ</div>
                     </div>
                 </div>
                 <div class="promote">
@@ -157,6 +156,11 @@
             @endforeach
         </div>
     </div>
+</div>
+<hr>
+<!-- phan trang -->
+<div class="search" style="margin: auto;">
+    {{$spcungloai->appends(request()->all())->links()}}
 </div>
 @endsection
 @section('Them')
