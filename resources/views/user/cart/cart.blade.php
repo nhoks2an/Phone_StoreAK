@@ -52,32 +52,35 @@
 
 
 
-                            <div class="price-procart col-3 col-md-4">
-                                <div class="txt-sl">
-                                    Số lượng:
+                            <div class="col-3 col-md-4">
+                                <div class="price-procart">
+                                    <div class="txt-sl">
+                                        Số lượng:
+                                    </div>
+                                    <div class="flex">
+                                        <form method="post" action="{{route('cart.updateminus')}}"
+                                            enctype="multipart/form-data">
+                                            @csrf
+                                            @method('POST')
+                                            <input type="hidden" name="idcart" value="{{$item->id}}">
+                                            <button class="" type="submit">
+                                                <span class="flus is-form">-</span>
+                                            </button>
+                                        </form>
+                                        <input aria-label="quantity" class="input-qty" max="999" min="1" type="number"
+                                            value="{{$item->soluong}}">
+                                        <form method="post" action="{{route('cart.updateplus')}}"
+                                            enctype="multipart/form-data">
+                                            @csrf
+                                            @method('POST')
+                                            <input type="hidden" name="idcart" value="{{$item->id}}">
+                                            <button class="" type="submit">
+                                                <span class="flus is-form">+</span>
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
-                                <div class="flex">
-                                    <form method="post" action="{{route('cart.updateminus')}}"
-                                        enctype="multipart/form-data">
-                                        @csrf
-                                        @method('POST')
-                                        <input type="hidden" name="idcart" value="{{$item->id}}">
-                                        <button class="" type="submit">
-                                            <span class="flus is-form">-</span>
-                                        </button>
-                                    </form>
-                                    <input aria-label="quantity" class="input-qty" max="999" min="1" type="number"
-                                        value="{{$item->soluong}}">
-                                    <form method="post" action="{{route('cart.updateplus')}}"
-                                        enctype="multipart/form-data">
-                                        @csrf
-                                        @method('POST')
-                                        <input type="hidden" name="idcart" value="{{$item->id}}">
-                                        <button class="" type="submit">
-                                            <span class="flus is-form">+</span>
-                                        </button>
-                                    </form>
-                                </div>
+                                <div class="tonkho"><span>Tồn kho: {{$item->mapping->soluong}}</span></div>
                             </div>
                             <div class="price-procart col-3 col-md-2">
                                 <form method="post" action="{{route('cart.deletecart')}}" enctype="multipart/form-data">
@@ -113,7 +116,18 @@
                         </p>
 
                     </div>
-
+                    <div class="thong-bao">
+                        @if(session('message'))
+                        <span class="alert alert-success">
+                            <strong>{{session('message')}}</strong>
+                        </span>
+                        @endif
+                        @if(session('fail'))
+                        <span class="alert alert-danger">
+                            <strong>{{session('fail')}}</strong>
+                        </span>
+                        @endif
+                    </div>
                 </div>
 
             </div>
@@ -144,20 +158,23 @@
                         <div class="information-cart">
                             <div class="form-row">
                                 <div class="input-cart col-md-6">
+                                    Tên:
                                     <input type="text" class="form-control text-sm" id="fullname" name="name"
-                                        placeholder="Họ tên" value="" required="">
+                                        placeholder="Họ tên" value="{{$datauser->hoten}}" required="">
                                     <div class="invalid-feedback">Vui lòng nhập họ và tên</div>
                                 </div>
                                 <div class="input-cart col-md-6">
+                                    Số điện thoại:
                                     <input type="number" class="form-control text-sm" id="phone" name="sodienthoai"
-                                        placeholder="Số điện thoại" value="" required="">
+                                        placeholder="Số điện thoại" value="{{$datauser->sodienthoai}}" required="">
                                     <div class="invalid-feedback">Vui lòng nhập số điện thoại</div>
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="input-cart col-md-4">
-                                    <select class="select-city-cart custom-select text-sm js_location" required=""
-                                        id="thanhpho" name="thanhpho" data-type="thanhpho">
+                                <div class="input-cart">
+
+                                    <select class="select-city-cart custom-select text-sm thanhpho" required=""
+                                        id="thanhpho" name="thanhpho" data-type="thanhpho" onchange="load()">
                                         <option value="">Tỉnh/thành phố</option>
                                         @foreach($tp as $ttp)
                                         <option value="{{$ttp->id}}">{{$ttp->_name}}</option>
@@ -166,18 +183,18 @@
 
                                     <div class="invalid-feedback">Vui lòng chọn tỉnh thành</div>
                                 </div>
-                                <div class="input-cart col-md-4">
-                                    <select
-                                        class="select-district-cart select-district custom-select text-sm js_location"
-                                        required="" id="quan" name="quan" data-type="quan">
+                                <div class="input-cart">
+                                    <select class="select-district-cart select-district custom-select text-sm thanhpho"
+                                        required="" id="quan" name="quan" data-type="quan" id="quan"
+                                        onchange="loadphuong()">
                                         <option value="">Quận/huyện</option>
                                     </select>
                                     <div class="invalid-feedback">Vui lòng chọn quận huyện</div>
                                 </div>
 
-                                <div class="input-cart col-md-4">
+                                <div class="input-cart">
                                     <select class="select-ward-cart select-ward custom-select text-sm js_location"
-                                        required="" id="xa" name="xa" data-type="xa">
+                                        required="" id="phuong" name="phuong" data-type="phuong">
                                         <option value="">Phường/xã</option>
                                     </select>
 
@@ -188,9 +205,9 @@
                             </div>
 
                             <div class="input-cart">
-
+                                Địa chỉ giao hàng:
                                 <input type="text" class="form-control text-sm" id="address" name="diachi"
-                                    placeholder="Địa chỉ" value="" required="">
+                                    placeholder="Địa chỉ" value="{{$datauser->diachi}}" required="">
 
                                 <div class="invalid-feedback">Vui lòng nhập địa chỉ</div>
 
@@ -214,6 +231,88 @@
 
 
 </div>
+<script>
+function load() {
+    var id = $('#thanhpho').val();
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        type: "POST",
+        url: "{{ route('loadvt') }}",
+        data: {
+            id: id
+        },
+
+        success: function(data) {
+            console.log(data);
+            $('#quan').html('');
+            $('#quan').append(data);
+        }
+    })
+}
+
+function loadphuong() {
+    var id = $('#quan').val();
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        type: "POST",
+        url: "{{ route('loadphuong') }}",
+        data: {
+            id: id
+        },
+
+        success: function(data) {
+            console.log(data);
+            $('#phuong').html('');
+            $('#phuong').append(data);
+        }
+    })
+}
+// $(document).ready(function() {
+//     $('.js_location').change(function(event) {
+//         event.preventDefault();
+//         console.log("1")
+
+//         let $this = $(this);
+//         let type = $this.attr('data-type');
+//         let parentID = $this.val();
+//         $.ajax({
+//                 method: "GET",
+//                 url: route,
+//                 data: {
+//                     type,
+//                     parent: parentID
+//                 }
+//             })
+//             .done(function(msg) {
+//                 if (msg.data) {
+//                     let html = '';
+//                     let element = '';
+//                     if (type == 'thanhpho') {
+//                         html = "<option>Chọn quận/huyện</option>";
+//                         element = '#quan';
+//                     } else {
+//                         html = "<option>Chọn phường/xã</option>";
+//                         element = '#phuong';
+//                     }
+//                     $.each(msg.data, function(index, value) {
+//                         html += < option value = '"value.id"' > "value.name" < /option>
+//                     })
+//                     $(element).html('').append(html);
+
+//                 }
+//             })
+
+//     });
+// });
+</script>
 @endsection
 @section('Them')
 @endsection

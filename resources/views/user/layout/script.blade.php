@@ -10,13 +10,15 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="../asset/js/app.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"integrity="sha512-WNZwVebQjhSxEzwbettGuQgWxbpYdoLf7mH+25A7sfQbbxKeS5SQ9QBf97zOY4nOlwtksgDA/czSTmfj4DUEiQ=="crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"
+    integrity="sha512-WNZwVebQjhSxEzwbettGuQgWxbpYdoLf7mH+25A7sfQbbxKeS5SQ9QBf97zOY4nOlwtksgDA/czSTmfj4DUEiQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- <script src="path/to/jquery-ui.min.js"></script> -->
 <!-- sort -->
 <script type="text/javascript">
-    $(document).ready(function(){
-        $('#sort').on('change', function () {
-        
+$(document).ready(function() {
+    $('#sort').on('change', function() {
+
         var url = $(this).val();
         // alert(url);
         if (url) {
@@ -25,7 +27,7 @@
         // $('.modalloading').modal('show');
         return false;
     });
-    }); 
+});
 </script>
 <script>
 const swiper = new Swiper('.swiper', {
@@ -144,8 +146,6 @@ jQuery(document).ready(function($) {
 
 });
 </script>
-
-
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
@@ -156,7 +156,7 @@ load_more_sanpham();
 
 function load_more_sanpham(id = '') {
     $.ajax({
-        url: '{{url('/load_more_sanpham')}}',
+        url: '{{url(' / load_more_sanpham ')}}',
         method: "POST",
 
         headers: {

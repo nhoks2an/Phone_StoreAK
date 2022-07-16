@@ -2,11 +2,13 @@
 @section('sidebar')
 @parent
 
-@if(session('message'))
-<span class="alert alert-success">
-    <strong>{{session('message')}}</strong>
-</span>
-@endif
+<div class="thong-bao">
+    @if(session('message'))
+    <span class="alert alert-success">
+        <strong>{{session('message')}}</strong>
+    </span>
+    @endif
+</div>
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
@@ -22,17 +24,17 @@
                     <input class="input100" type="text" name="email" placeholder="Nhập email" value="{{old('email')}}">
                 </div>
                 @if($errors->has('email'))
-            <div class="text-danger">{{$errors->first('email')}}</div>
-            @endif
+                <div class="text-danger">{{$errors->first('email')}}</div>
+                @endif
                 <div class="wrap-input100 validate-input">
                     <span class="btn-show-pass">
                         <i class="zmdi zmdi-eye"></i>
                     </span>
-                    <input class="input100" type="password" name="password" placeholder="Nhập mật khẩu" >
+                    <input class="input100" type="password" name="password" placeholder="Nhập mật khẩu">
                 </div>
                 @if($errors->has('password'))
-            <div class="text-danger">{{$errors->first('password')}}</div>
-            @endif
+                <div class="text-danger">{{$errors->first('password')}}</div>
+                @endif
                 @if(Session::has('fail'))
                 <div class="alert alert-danger">{{Session::get('fail')}}</div>
                 @endif
