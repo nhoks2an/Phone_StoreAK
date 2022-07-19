@@ -6,9 +6,7 @@
     <div class="btn-themmoi">
         <a class="btn btn-sm bg-gradient-primary text-white" href="index.php?com=product&amp;act=add&amp;type=san-pham"
             title="Thêm mới"><i class="fas fa-plus mr-2"></i>Thêm mới</a>
-        <a class="btn btn-sm bg-gradient-danger text-white" id="delete-all"
-            data-url="index.php?com=product&amp;act=delete&amp;type=san-pham" title="Xóa tất cả"><i
-                class="far fa-trash-alt mr-2"></i>Xóa tất cả</a>
+
        <!-- Topbar Search -->
        <div class="form-inline form-search d-inline-block align-middle ml-3">
             <form action="">
@@ -42,12 +40,7 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th class="align-middle" with="5%">
-                            <div class="custom-control custom-checkbox my-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="selectall-checkbox">
-                                <label for="selectall-checkbox" class="custom-control-label"></label>
-                            </div>
-                        </th>
+                 
                         <th class="align-middle">Mã chi tiết</th>
                         <th class="align-middle">Mã đơn hàng</th>
                         <th class="align-middle">Mã sãn phẩm</th>
@@ -59,12 +52,7 @@
                 <tbody>
                     @foreach($cthoadon as $cthd)
                     <tr>
-                        <td class="align-middle">
-                            <div class="custom-control custom-checkbox my-checkbox">
-                                <input type="checkbox" class="custom-control-input select-checkbox">
-                                <label for="select-checkbox-35" class="custom-control-label"></label>
-                            </div>
-                        </td>
+                     
                         <td class="align-middle">
                             {{$cthd->id}}
                         </td>

@@ -6,9 +6,7 @@
 <div class="card-footer text-sm sticky-top">
     <a class="btn btn-sm bg-gradient-primary text-white" href="{{route('tinTuc.create')}}" title="Thêm mới"><i
             class="fas fa-plus mr-2"></i>Thêm mới</a>
-    <a class="btn btn-sm bg-gradient-danger text-white" id="delete-all"
-        data-url="index.php?com=news&amp;act=delete&amp;type=tin-tuc" title="Xóa tất cả"><i
-            class="far fa-trash-alt mr-2"></i>Xóa tất cả</a>
+ 
     <a class="btn btn-sm bg-gradient-secondary" id="delete-all" href="{{route('tinTuc.index')}}" title=""><i
             class="fas fa-redo mr-2"></i>Quay lại</a>
     <!-- Topbar Search -->
@@ -40,12 +38,7 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th class="align-middle" width="5%">
-                        <div class="custom-control custom-checkbox my-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="selectall-checkbox">
-                            <label for="selectall-checkbox" class="custom-control-label"></label>
-                        </div>
-                    </th>
+                
                     <th class="align-middle">Hình</th>
                     <th class="align-middle" style="width:30%">Tiêu đề</th>
                     <th class="align-middle text-center">Hiển thị</th>
@@ -55,14 +48,6 @@
             <tbody>
                 @foreach($lsttt as $tt)
                 <tr>
-                    <td class="align-middle">
-                        <div class="custom-control custom-checkbox my-checkbox">
-                            <input type="checkbox" class="custom-control-input select-checkbox" id="select-checkbox-3"
-                                value="3">
-                            <label for="select-checkbox-3" class="custom-control-label"></label>
-                        </div>
-                    </td>
-
                     <td class="align-middle">
                         <a href="index.php?com=news&amp;act=edit&amp;type=tin-tuc&amp;id=3" title="{{$tt->tieude}}">
                             <img class="rounded img-preview" src="{{$tt->hinhanh}}" alt="">
@@ -125,12 +110,19 @@
         @endforeach
     </div>
     @endif
-
+    </div>
     <hr>
     <!-- phan trang -->
     <div class="search">
         {{$lsttt->appends(request()->all())->links()}}
     </div>
+    <div class="thong-bao">
+            @if(session('message'))
+            <span class="alert alert-success">
+                <strong>{{session('message')}}</strong>
+            </span>
+            @endif
+        </div>
     @section('scripts')
     <script>
     $(document).on('click', '.btnxoa', function() {

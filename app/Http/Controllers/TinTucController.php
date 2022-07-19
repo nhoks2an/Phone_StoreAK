@@ -53,7 +53,7 @@ class TinTucController extends Controller
         $validatedData = $request->validate(
             [
                 'tieude' => 'required |unique:tin_tucs,tieude',
-                'hinhanh' => 'required',
+                'hinhanh' => 'required |image|mimes:jpg,jpeg,png,gif|max:2048',
                 'mota' => 'required',
                 'content' => 'required',
             ],
@@ -63,6 +63,9 @@ class TinTucController extends Controller
                 'hinhanh.required' => 'Hình Ảnh Không Được Bỏ Trống',
                 'mota.required' => 'Mô Tả Không Được Bỏ Trống',
                 'content.required' => 'Nội Dung Không Được Bỏ Trống',
+                'hinhanh.image' => 'Không Phải File Hình Anh',
+                'hinhanh.mimes' => 'Hình Ảnh Không Đúng Định Dạng',
+                'hinhanh.max' => 'Kích Thước Quá Lớn',
             ]
         );
         $tinTuc = new TinTuc();
@@ -77,7 +80,7 @@ class TinTucController extends Controller
             $tinTuc->hinhanh = $request->file('hinhanh')->store('images/tintuc/'.$tinTuc->id,'public');
         }
         $tinTuc->save();
-        return Redirect::route('tinTuc.index',['tinTuc'=>$tinTuc]);
+        return Redirect::route('tinTuc.index',['tinTuc'=>$tinTuc])->with('message','Thêm Tin Tức Thành Công');
     }
 
     /**
@@ -88,6 +91,10 @@ class TinTucController extends Controller
      */
     public function show(TinTuc $tinTuc)
     {
+        $lsttt = TinTuc::all();
+        foreach($lsttt as $tt){
+            $this->fixImage($tt);
+        }
         return View('tintuc.sua_tintuc',['tinTuc'=>$tinTuc]);
     }
 
@@ -112,14 +119,15 @@ class TinTucController extends Controller
     {
         $validatedData = $request->validate(
             [
-                'tieude' => 'required',
-                'hinhanh' => 'required',
+                'tieude' => 'required |unique:tin_tucs,tieude,' . $tinTuc->id .',id',
+              
                 'mota' => 'required',
                 'content' => 'required',
             ],
             [
                 'tieude.required' => 'Tiêu Đề Không Được Bỏ Trống',
-                'hinhanh.required' => 'Hình Ảnh Không Được Bỏ Trống',
+                'tieude.unique' => 'Tiêu Đề Đã Tồn Tại',
+               
                 'mota.required' => 'Mô Tả Không Được Bỏ Trống',
                 'content.required' => 'Nội Dung Không Được Bỏ Trống',
             ]
@@ -134,7 +142,7 @@ class TinTucController extends Controller
             'hienthi'=>$request->has('hienthi'),
         ]);
         $tinTuc->save();
-        return Redirect::route('tinTuc.index',['tinTuc'=>$tinTuc]);
+        return Redirect::route('tinTuc.index',['tinTuc'=>$tinTuc])->with('message','Cập Nhật Tin Tức Thành Công');
     }
 
     /**
@@ -146,6 +154,6 @@ class TinTucController extends Controller
     public function destroy($id)
     {
         TinTuc::find($id)->delete();
-        return Redirect::route('tinTuc.index');
+        return Redirect::route('tinTuc.index')->with('message','Xóa Tin Tức Thành Công');
     }
 }

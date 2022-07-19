@@ -58,10 +58,13 @@ class BannerController extends Controller
     {
         $validatedData = $request->validate(
             [
-                'hinhanh' => 'required',
+                'hinhanh' => 'required |image|mimes:jpg,jpeg,png,gif|max:2048',
             ],
             [
-                'hinhanh.required' => 'Hình Ảnh Năng Không Được Bỏ Trống',
+                'hinhanh.required' => 'Hình Ảnh Banner Không Được Bỏ Trống',
+                'hinhanh.image' => 'Không Phải File Hình Anh',
+                'hinhanh.mimes' => 'Hình Ảnh Không Đúng Định Dạng',
+                'hinhanh.max' => 'Kích Thước Quá Lớn',
             ]
         );
         $banner = new Banner();
@@ -73,7 +76,7 @@ class BannerController extends Controller
             $banner->hinhanh = $request->file('hinhanh')->store('images/banner/'.$banner->id,'public');
         }
         $banner->save();
-        return Redirect::route('banner.index',['banner'=>$banner]);
+        return Redirect::route('banner.index',['banner'=>$banner])->with('message','Thêm Banner Thành Công');
     }
 
     /**
@@ -119,6 +122,6 @@ class BannerController extends Controller
     public function destroy($id)
     {
         Banner::find($id)->delete();
-        return Redirect::route('banner.index');
+        return Redirect::route('banner.index')->with('message','Xóa Banner Thành Công');
     }
 }

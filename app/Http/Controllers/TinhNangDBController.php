@@ -58,7 +58,7 @@ class TinhNangDBController extends Controller
             'hienthi'=>'1',
         ]);
         $tinhnangdb->save();
-        return Redirect::route('tinhnangdb.index',['tinhnangdb'=>$tinhnangdb]);
+        return Redirect::route('tinhnangdb.index',['tinhnangdb'=>$tinhnangdb])->with('message','Thêm Tính Năng Thành Công');
     }
 
     /**
@@ -104,6 +104,6 @@ class TinhNangDBController extends Controller
     public function destroy($id)
     {
         TinhNangDB::find($id)->delete();
-        return Redirect::route('tinhnangdb.index');
+        return Redirect::route('tinhnangdb.index')->with('message','Xóa Tính Năng Thành Công');
     }
 }

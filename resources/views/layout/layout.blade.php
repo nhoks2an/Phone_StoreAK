@@ -19,6 +19,7 @@
     <link href="../asset/css/adminlte.css" rel="stylesheet">
     <link href="../asset/css/adminlte-style.css" rel="stylesheet">
     <link href="../asset/css/style.css" rel="stylesheet">
+    <link href="../asset/css/menu-style.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -36,7 +37,6 @@
             </div>
             @include('footer')
         </div>
-
         @yield('Them')
         @include('scripts')
         @yield('scripts')

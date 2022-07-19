@@ -54,7 +54,7 @@ class RAMController extends Controller
             'hienthi'=>'1',
         ]);
         $rAM->save();
-        return Redirect::route('RAM.index',['RAM'=>$rAM]);
+        return Redirect::route('RAM.index',['RAM'=>$rAM])->with('message','Thêm RAM Thành Công');
     }
 
     /**
@@ -99,7 +99,7 @@ class RAMController extends Controller
     public function destroy($id)
     {   
         RAM::find($id)->delete();
-        return Redirect::route('RAM.index');
+        return Redirect::route('RAM.index')->with('message','Xóa RAM Thành Công');
     }
 
 

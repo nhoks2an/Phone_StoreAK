@@ -9,7 +9,7 @@
         @foreach($lsttt as $tt)
         <div class="news col-md-6">
             <div class="row">
-                <a class="news-image col-sm-5" href="make-up-co-dau-ee" title="Make up Cô Dâu ee">
+                <a class="news-image col-sm-5" href="{{route('loadding.detailchitiet',[$tt->id])}}" title="Make up Cô Dâu ee">
                     <span class="scale-img">
                         <img class="lazy w-100 loaded" style="height:160px;" src="{{$tt->hinhanh}}"
                             data-was-processed="true"></span>

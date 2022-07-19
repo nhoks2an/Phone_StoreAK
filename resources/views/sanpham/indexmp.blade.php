@@ -7,7 +7,7 @@
         <button type="button" class="btn btn-sm bg-gradient-primary text-white" data-toggle="modal" data-target="#addadminprofile">
          <i class="fas fa-plus mr-2"></i> Thêm mới
         </button>
-        <a class="btn btn-sm bg-gradient-danger text-white" id="delete-all" data-url="index.php?com=product&amp;act=delete&amp;type=san-pham" title="Xóa tất cả"><i class="far fa-trash-alt mr-2"></i>Xóa tất cả</a>
+      
         <a class="btn btn-sm bg-gradient-secondary" id="delete-all" href=""
         title=""><i class="fas fa-redo mr-2"></i>Quay lại</a>
        
@@ -24,12 +24,6 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th class="align-middle" with="5%">
-                            <div class="custom-control custom-checkbox my-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="selectall-checkbox">
-                                <label for="selectall-checkbox" class="custom-control-label"></label>
-                            </div>
-                        </th>
                         <th class="align-middle text-center">Sản Phẩm</th>
                         <th class="align-middle text-center">Màu</th>
                         <th class="align-middle text-center">RAM</th>
@@ -42,12 +36,7 @@
                 @foreach($lstspmp as $spmp)
                 <tbody>
                     <tr>
-                        <td class="align-middle text-center">
-                            <div class="custom-control custom-checkbox my-checkbox">
-                                <input type="checkbox" class="custom-control-input select-checkbox">
-                                <label for="select-checkbox-35"class="custom-control-label"></label>
-                            </div>
-                        </td>
+            
                         <td class="align-middle text-center">
                             <span>{{$spmp->sanpham->tensanpham}}</span>
                         </td>
@@ -101,7 +90,7 @@
                                     data-table="#_product_cat" data-child="id_cat"
                                     class="form-control select2 select-category select2-hidden-accessible"
                                     data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                    <option value="0" data-select2-id="2">Chọn màu</option>
+                                
                                     @foreach($lstmausac as $mau)
                                         <option value="{{$mau->id}}">{{$mau->tenmau}}</option>
                                     @endforeach
@@ -110,7 +99,11 @@
                             <div class="form-group col-xl-6 col-sm-4">
                                 <label class="d-block" for="id_list">Số lượng:</label>
                                 <input type="number" name="soluong" class="form-control" placeholder="Số lượng">
-                                
+                                @if($errors->has('soluong'))
+                                <div class="alert alert-danger" style="margin-top:10px;">
+                                    {{$errors->first('soluong')}}
+                                </div>
+                                @endif
                             </div>
                         </div>
                         <div  class="form-group-category row">
@@ -120,7 +113,7 @@
                                     data-table="#_product_cat" data-child="id_cat"
                                     class="form-control select2 select-category select2-hidden-accessible"
                                     data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                    <option value="0" data-select2-id="2">Chọn ram</option>
+                                 
                                     @foreach($lstram as $ram)
                                         <option value="{{$ram->id}}">{{$ram->soram}}</option>
                                     @endforeach
@@ -137,7 +130,7 @@
                                     data-table="#_product_cat" data-child="id_cat"
                                     class="form-control select2 select-category select2-hidden-accessible"
                                     data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                    <option value="0" data-select2-id="2">Chọn rom</option>
+                               
                                     @foreach($lstrom as $rom)
                                         <option value="{{$rom->id}}">{{$rom->sorom}}</option>
                                     @endforeach
@@ -148,20 +141,30 @@
                             <div class="form-group col-md-6">
                                 <label class="d-block" for="regular_price">Giá bán:</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control format-price regular_price text-sm" name="giacu" id="regular_price" placeholder="Giá bán" value="">
+                                    <input type="text" class="form-control format-price regular_price text-sm" name="giacu" id="regular_price" placeholder="Giá bán" value="{{old('giacu')}}">
                                     <div class="input-group-append">
                                         <div class="input-group-text"><strong> VNĐ</strong></div>
                                     </div>
                                 </div>
+                                @if($errors->has('giacu'))
+                                <div class="alert alert-danger" style="margin-top:10px;">
+                                    {{$errors->first('giacu')}}
+                                </div>
+                                @endif
                             </div>
                             <div class="form-group col-md-6">
                                 <label class="d-block" for="sale_price">Giá mới:</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control format-price sale_price text-sm" name="giamoi" id="sale_price" placeholder="Giá mới" value="">
+                                    <input type="text" class="form-control format-price sale_price text-sm" name="giamoi" id="sale_price" placeholder="Giá mới" value="{{old('giamoi')}}">
                                     <div class="input-group-append">
                                         <div class="input-group-text"><strong> VNĐ</strong></div>
                                     </div>
                                 </div>
+                                @if($errors->has('giamoi'))
+                                <div class="alert alert-danger" style="margin-top:10px;">
+                                    {{$errors->first('giamoi')}}
+                                </div>
+                                @endif
                             </div>
                         </div>
                        
@@ -197,7 +200,7 @@
                                     data-table="#_product_cat" data-child="id_cat"
                                     class="form-control select2 select-category select2-hidden-accessible"
                                     data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                    <option value="0" data-select2-id="2">Chọn màu</option>
+                                 
                                     @foreach($lstmausac as $mau)
                                         <option value="{{$mau->id}}">{{$mau->tenmau}}</option>
                                     @endforeach
@@ -206,7 +209,13 @@
                             <div class="form-group col-xl-6 col-sm-4">
                                 <label class="d-block" for="id_list">Số lượng:</label>
                                 <input type="number" name="soluong" class="form-control" placeholder="Số lượng">
+                                @if($errors->has('soluong'))
+                                <div class="alert alert-danger" style="margin-top:10px;">
+                                    {{$errors->first('soluong')}}
+                                </div>
+                                @endif
                             </div>
+                          
                         </div>
                         <div  class="form-group-category row">
                             <div class="form-group col-xl-6 col-sm-4">
@@ -215,12 +224,11 @@
                                     data-table="#_product_cat" data-child="id_cat"
                                     class="form-control select2 select-category select2-hidden-accessible"
                                     data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                    <option value="0" data-select2-id="2">Chọn ram</option>
+                                 
                                     @foreach($lstram as $ram)
-                                        <option value="{{$ram->id}}">{{$ram->soram}}</option>
+                                        <option value="{{$ram->id}}" >{{$ram->soram}}</option>
                                     @endforeach
                                 </select></span>
-                                
                             </div>
                             <div class="form-group col-xl-6 col-sm-4">
                                 <label class="d-block" for="id_list">ROM:</label>
@@ -228,7 +236,7 @@
                                     data-table="#_product_cat" data-child="id_cat"
                                     class="form-control select2 select-category select2-hidden-accessible"
                                     data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                    <option value="0" data-select2-id="2">Chọn rom</option>
+                                
                                     @foreach($lstrom as $rom)
                                         <option value="{{$rom->id}}">{{$rom->sorom}}</option>
                                     @endforeach
@@ -239,20 +247,30 @@
                             <div class="form-group col-md-6">
                                 <label class="d-block" for="regular_price">Giá bán:</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control format-price regular_price text-sm" name="giacu" id="regular_price" placeholder="Giá bán" value="">
+                                    <input type="text" class="form-control format-price regular_price text-sm" name="giacu" id="regular_price" placeholder="Giá bán" >
                                     <div class="input-group-append">
                                         <div class="input-group-text"><strong> VNĐ</strong></div>
                                     </div>
                                 </div>
+                                @if($errors->has('giacu'))
+                                    <div class="alert alert-danger" style="margin-top:10px;">
+                                        {{$errors->first('giacu')}}
+                                    </div>
+                                    @endif
                             </div>
                             <div class="form-group col-md-6">
                                 <label class="d-block" for="sale_price">Giá mới:</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control format-price sale_price text-sm" name="giamoi" id="sale_price" placeholder="Giá mới" value="">
+                                    <input type="text" class="form-control format-price sale_price text-sm" name="giamoi" id="sale_price" placeholder="Giá mới" >
                                     <div class="input-group-append">
                                         <div class="input-group-text"><strong> VNĐ</strong></div>
                                     </div>
                                 </div>
+                                @if($errors->has('giamoi'))
+                                    <div class="alert alert-danger" style="margin-top:10px;">
+                                        {{$errors->first('giamoi')}}
+                                    </div>
+                                    @endif
                             </div>
                         </div>
                     </div>
@@ -292,6 +310,17 @@
                     </form>
                 </div>
             </div>
+        </div>
+        <hr>
+        <div class="search">
+    {{$lstspmp->appends(request()->all())->links()}}
+</div>
+        <div class="thong-bao">
+            @if(session('message'))
+            <span class="alert alert-success">
+                <strong>{{session('message')}}</strong>
+            </span>
+            @endif
         </div>
 @section('scripts')
 <script>

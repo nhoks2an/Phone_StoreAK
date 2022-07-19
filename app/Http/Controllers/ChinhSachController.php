@@ -62,7 +62,7 @@ class ChinhSachController extends Controller
             'hienthi'=>'1',
         ]);
         $chinhSach->save();
-        return Redirect::route('chinhSach.index',['chinhSach'=>$chinhSach]);
+        return Redirect::route('chinhSach.index',['chinhSach'=>$chinhSach])->with('message','Thêm Chính Sách Thành Công');
     }
 
     /**
@@ -98,11 +98,12 @@ class ChinhSachController extends Controller
     {
         $validatedData = $request->validate(
             [
-                'tieude' => 'required',
+                'tieude' => 'required | unique:chinh_saches,tieude,' .$chinhSach->id.',id',
                 'content' => 'required',
             ],
             [
                 'tieude.required' => 'Tiêu Đề Không Được Bỏ Trống',
+                'tieude.unique' => 'Tiêu Đề Không Đã Tồn Tại',
                 'content.required' => 'Nội Dung Không Được Bỏ Trống',
             ]
         );
@@ -112,7 +113,7 @@ class ChinhSachController extends Controller
             'hienthi'=>$request->has('hienthi'),
         ]);
         $chinhSach->save();
-        return Redirect::route('chinhSach.index',['chinhSach'=>$chinhSach]);
+        return Redirect::route('chinhSach.index',['chinhSach'=>$chinhSach])->with('message','Cập Nhật Chính Sách Thành Công');
     }
 
     /**
@@ -124,6 +125,6 @@ class ChinhSachController extends Controller
     public function destroy($id)
     {
         ChinhSach::find($id)->delete();
-        return Redirect::route('chinhSach.index');
+        return Redirect::route('chinhSach.index')->with('message','Xóa Chính Sách Thành Công');
     }
 }

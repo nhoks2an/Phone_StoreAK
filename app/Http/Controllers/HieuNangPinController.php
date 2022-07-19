@@ -58,7 +58,7 @@ class HieuNangPinController extends Controller
             'hienthi'=>'1',
         ]);
         $hieunangpin->save();
-        return Redirect::route('hieunangpin.index',['hieunangpin'=>$hieunangpin]);
+        return Redirect::route('hieunangpin.index',['hieunangpin'=>$hieunangpin])->with('message','Thêm Hiệu Năng & Pin Thành Công');
     }
 
     /**
@@ -104,6 +104,6 @@ class HieuNangPinController extends Controller
     public function destroy($id)
     {
         HieuNangPin::find($id)->delete();
-        return Redirect::route('hieunangpin.index');
+        return Redirect::route('hieunangpin.index')->with('message','Xóa Hiệu Năng & Pin Thành Công');
     }
 }

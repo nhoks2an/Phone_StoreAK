@@ -3,7 +3,7 @@
     @parent
 <div class="taikhoan">
     <div class="btn-themmoi">
-        <a class="btn btn-sm bg-gradient-danger text-white" id="delete-all" data-url="index.php?com=product&amp;act=delete&amp;type=san-pham" title="Xóa tất cả"><i class="far fa-trash-alt mr-2"></i>Xóa tất cả</a>
+      
         <a class="btn btn-sm bg-gradient-secondary" id="delete-all" href="{{route('taikhoan.index')}}"
         title=""><i class="fas fa-redo mr-2"></i>Quay lại</a>
         <!-- Topbar Search -->
@@ -39,12 +39,7 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th class="align-middle" with="5%">
-                            <div class="custom-control custom-checkbox my-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="selectall-checkbox">
-                                <label for="selectall-checkbox" class="custom-control-label"></label>
-                            </div>
-                        </th>
+                      
                         <th class="align-middle">Hình</th>
                         <th class="align-middle" style="width:30%">Họ tên</th>
                         <th class="align-middle" style="width:30%">Email</th>
@@ -54,12 +49,7 @@
                 @foreach($lsttaikhoan as $taikhoan)
                 <tbody>
                     <tr>
-                        <td class="align-middle">
-                        <div class="custom-control custom-checkbox my-checkbox">
-                                <input type="checkbox" class="custom-control-input select-checkbox">
-                                <label for="select-checkbox-35"class="custom-control-label"></label>
-                        </div>
-                        </td>
+                      
                         <td class="align-middle">
                             <a><img src="{{$taikhoan->hinhanh}}" alt=""class="rounded img-preview"></a>
                         </td>

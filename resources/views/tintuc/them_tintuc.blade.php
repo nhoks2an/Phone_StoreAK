@@ -39,7 +39,7 @@
                                     <div class="form-group">
                                         <label for="namevi">Tiêu đề:</label>
                                         <input type="text" class="form-control for-seo text-sm" name="tieude"
-                                            id="namevi" placeholder="Tiêu đề" value="">
+                                            id="namevi" placeholder="Tiêu đề" value="{{old('tieude')}}">
                                             @if($errors->has('tieude'))
                                             <div class="alert alert-danger" style="margin-top:10px;">
                                             {{$errors->first('tieude')}}
@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="descvi">Nội dung:</label>
-                                        <textarea class="form-control for-seo text-sm " name="mota" id="descvi" rows="5"
+                                        <textarea class="form-control for-seo text-sm " name="mota" id="descvi" rows="5" value="{{old('mota')}}"
                                             placeholder="Mô tả"></textarea>
                                             @if($errors->has('mota'))
                                             <div class="alert alert-danger" style="margin-top:10px;">
@@ -59,7 +59,7 @@
                                     <div class="form-group">
                                         <label for="descvi">Nội dung:</label>
                                         <textarea class="form-control for-seo text-sm " name="content" id="descvi"
-                                            rows="5" placeholder="Nội dung"></textarea>
+                                            rows="5" placeholder="Nội dung" value="{{old('content')}}"></textarea>
                                             @if($errors->has('content'))
                                             <div class="alert alert-danger" style="margin-top:10px;">
                                             {{$errors->first('content')}}

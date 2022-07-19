@@ -8,19 +8,22 @@
         <div class="center-layout">
             <div class="txt-pro">Hồ Sơ Của Tôi</div>
             <div class="flex">
-                <div class="left-box">
-                    <div class="btn-pro">
-                        <div class="center-pro">
-                            <div class="input-file-container">
-                                <img id="blah" src="../images/noimg.png" alt="your image" class="img-pro" />
-                                <input class="input-file" id="imgInp" type="file" name="hinhanh">
-                                <label tabindex=" 0" for="imgInp" class="input-file-trigger">Chọn
-                                    Ảnh</label>
+                    <div class="card-body">
+                        <div class="photoUpload-zone">
+                            <div class="photoUpload-detail" id="photoUpload-preview">
+                                <img class="rounded" src="/storage/{{$datauser->hinhanh}}" alt="Alt Photo" id="hinhanh_taikhoan">
                             </div>
-                            <p class=" file-return"></p>
+                            <label class="photoUpload-file" id="photo-zone" for="file-zone">
+                                <input type="file" name="hinhanh" id="file-zone" accept="image/*">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p class="photoUpload-drop">Kéo và thả hình vào đây</p>
+                                <p class="photoUpload-or">hoặc</p>
+                                <p class="photoUpload-choose btn btn-sm bg-gradient-success">Chọn hình</p>
+                            </label>
+                            <div class="photoUpload-dimension">
+                            </div>
                         </div>
                     </div>
-                </div>
                 <div class="right-box">
                     <div class="thongtin">
                         <div class="border-tt">Thông tin cá nhân</div>

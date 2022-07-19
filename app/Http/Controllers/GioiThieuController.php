@@ -92,7 +92,7 @@ class GioiThieuController extends Controller
             'hienthi'=>'1',
         ]);
         $gioithieu->save();
-        return Redirect::route('gioithieu.index');
+        return Redirect::route('gioithieu.index')->with('message','Cập Nhật Giới Thiệu Thành Công');
     }
 
     /**

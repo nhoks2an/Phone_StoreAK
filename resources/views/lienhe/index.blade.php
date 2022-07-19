@@ -59,6 +59,15 @@
                             </div>
         </div>
     </form>
+
+    <hr>
+<div class="thong-bao">
+    @if(session('message'))
+    <span class="alert alert-success">
+        <strong>{{session('message')}}</strong>
+    </span>
+    @endif
+</div>
 @section('Them')
 @endsection
 @endsection

@@ -4,7 +4,7 @@
 <div class="taikhoan">
     <div class="btn-themmoi">
         <a class="btn btn-sm bg-gradient-primary text-white" href="{{route('thietke.create')}}" title="Thêm mới"><i class="fas fa-plus mr-2"></i>Thêm mới</a>
-        <a class="btn btn-sm bg-gradient-danger text-white" id="delete-all" data-url="index.php?com=product&amp;act=delete&amp;type=san-pham" title="Xóa tất cả"><i class="far fa-trash-alt mr-2"></i>Xóa tất cả</a>
+     
         <a class="btn btn-sm bg-gradient-secondary" id="delete-all" href="{{route('thietke.index')}}"
         title=""><i class="fas fa-redo mr-2"></i>Quay lại</a>
         <!-- Topbar Search -->
@@ -39,13 +39,6 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th class="align-middle" with="5%">
-                            <div class="custom-control custom-checkbox my-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="selectall-checkbox">
-                                <label for="selectall-checkbox" class="custom-control-label"></label>
-                            </div>
-                        </th>
-                       
                         <th class="align-middle">Thiết kế</th>
                         <th class="align-middle text-center">Thao tác</th>
                     </tr>
@@ -53,13 +46,6 @@
                 @foreach($lstthietke as $thietke)
                 <tbody>
                     <tr>
-                        <td class="align-middle">
-                        <div class="custom-control custom-checkbox my-checkbox">
-                                <input type="checkbox" class="custom-control-input select-checkbox">
-                                <label for="select-checkbox-35"class="custom-control-label"></label>
-                        </div>
-                        </td>
-                       
                         <td class="align-middle">
                            <span>{{$thietke->ten}}</span>
                         </td>
@@ -111,6 +97,13 @@
 <div class="search">
     {{$lstthietke->appends(request()->all())->links()}}
 </div>
+<div class="thong-bao">
+            @if(session('message'))
+            <span class="alert alert-success">
+                <strong>{{session('message')}}</strong>
+            </span>
+            @endif
+        </div>
 @section('scripts')
 <script>
 	$(document).on('click', '.btnxoa', function() {

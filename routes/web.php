@@ -166,6 +166,7 @@ Route::get('/hangsp', [LoaddingController::class, 'loadhangtheosp'])->name('load
 
 Route::post('/loadvt', [CartController::class, 'getvt'])->name('loadvt');
 Route::post('/loadphuong', [CartController::class, 'getphuong'])->name('loadphuong');
+Route::post('/insert_rating', [LoaddingController::class, 'insert_rating']);
 
 Route::get('/login-google',[UserController::class, 'login_google'])->name('login_google'); 
 Route::get('/dangnhap/google/callback',[UserController::class, 'callback_google'])->name('callback_google'); 

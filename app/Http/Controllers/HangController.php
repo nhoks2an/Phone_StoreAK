@@ -57,12 +57,16 @@ class HangController extends Controller
         $validatedData = $request->validate(
             [
                 'tenhang' => 'required |unique:hangs,tenhang',
-                'hinhanh' => 'required',
+                'hinhanh' => 'required |image|mimes:jpg,jpeg,png,gif|max:2048',
             ],
             [
                 'tenhang.required' => 'Tên Hãng Không Được Bỏ Trống',
                 'tenhang.unique' => 'Tên Hãng Đã Tồn Tại',
+        
                 'hinhanh.required' => 'Hình Ảnh Không Được Bỏ Trống',
+                'hinhanh.image' => 'Không Phải File Hình Anh',
+                'hinhanh.mimes' => 'Hình Ảnh Không Đúng Định Dạng',
+                'hinhanh.max' => 'Kích Thước Quá Lớn',
             ]
         );
         $hang = new Hang();
@@ -76,7 +80,7 @@ class HangController extends Controller
             $hang->hinhanh = $request->file('hinhanh')->store('images/hang/'.$hang->id,'public');
         }
         $hang->save();
-        return Redirect::route('hang.index',['hang'=>$hang]);
+        return Redirect::route('hang.index',['hang'=>$hang])->with('message','Thêm Hãng Thành Công');
 
     }
 
@@ -114,11 +118,15 @@ class HangController extends Controller
     {
         $validatedData = $request->validate(
             [
-                'tenhang' => 'required',
-             
+                'tenhang' => 'required |unique:hangs,tenhang,' . $hang->id .',id',
+                'hinhanh' => 'image|mimes:jpg,jpeg,png,gif|max:2048',
             ],
             [
                 'tenhang.required' => 'Tên Hãng Không Được Bỏ Trống',
+                'tenhang.unique' => 'Tên Hãng Đã Tồn Tại',
+                'hinhanh.image' => 'Không Phải File Hình Anh',
+                'hinhanh.mimes' => 'Hình Ảnh Không Đúng Định Dạng',
+                'hinhanh.max' => 'Kích Thước Quá Lớn',
             ]
         );
         if($request->hasFile('hinhanh'))
@@ -130,7 +138,7 @@ class HangController extends Controller
             'hienthi'=>'1',
         ]);
         $hang->save();
-        return Redirect::route('hang.index',['hang'=>$hang]);
+        return Redirect::route('hang.index',['hang'=>$hang])->with('message','Cập Nhật Hãng Thành Công');
     }
 
     /**
@@ -142,6 +150,6 @@ class HangController extends Controller
     public function destroy($id)
     {
         Hang::find($id)->delete();
-        return Redirect::route('hang.index');
+        return Redirect::route('hang.index')->with('message','Xóa Hãng Thành Công');
     }
 }

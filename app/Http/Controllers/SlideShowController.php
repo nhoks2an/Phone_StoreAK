@@ -27,7 +27,7 @@ class SlideShowController extends Controller
      */
     public function index()
     {
-        $lstslide = SlideShow::all();
+        $lstslide = SlideShow::orderBy('created_at','DESC')->paginate(1);
         foreach($lstslide as $slide){
             $this->fixImage($slide);
         }
@@ -54,12 +54,15 @@ class SlideShowController extends Controller
     {
         $validatedData = $request->validate(
             [
-                'hinhanh' => 'required',
-                'link' => 'required',
+                'hinhanh' => 'required |image|mimes:jpg,jpeg,png,gif|max:2048',
+                'link' => 'required ',
             ],
             [
                 'hinhanh.required' => 'Hình Ảnh Năng Không Được Bỏ Trống',
                 'link.required' => 'Đường Link Năng Không Được Bỏ Trống',
+                'hinhanh.image' => 'Không Phải File Hình Anh',
+                'hinhanh.mimes' => 'Hình Ảnh Không Đúng Định Dạng',
+                'hinhanh.max' => 'Kích Thước Quá Lớn',
             ]
         );
         $slideShow = new SlideShow();
@@ -72,7 +75,7 @@ class SlideShowController extends Controller
             $slideShow->hinhanh = $request->file('hinhanh')->store('images/slide/'.$slideShow->id,'public');
         }
         $slideShow->save();
-        return Redirect::route('slideShow.index',['slideShow'=>$slideShow]);
+        return Redirect::route('slideShow.index',['slideShow'=>$slideShow])->with('message','Thêm Slideshow Thành Công');
     }
 
     /**
@@ -107,6 +110,20 @@ class SlideShowController extends Controller
      */
     public function update(Request $request, SlideShow $slideShow)
     {
+
+        $validatedData = $request->validate(
+            [
+                'hinhanh' => 'required |image|mimes:jpg,jpeg,png,gif|max:2048',
+                'link' => 'required ',
+            ],
+            [
+                'hinhanh.required' => 'Hình Ảnh Năng Không Được Bỏ Trống',
+                'link.required' => 'Đường Link Năng Không Được Bỏ Trống',
+                'hinhanh.image' => 'Không Phải File Hình Anh',
+                'hinhanh.mimes' => 'Hình Ảnh Không Đúng Định Dạng',
+                'hinhanh.max' => 'Kích Thước Quá Lớn',
+            ]
+        );
         if($request->hasFile('hinhanh')){
             $slideShow->hinhanh = $request->file('hinhanh')->store('images/slide/'.$slideShow->id,'public');
         }
@@ -116,7 +133,7 @@ class SlideShowController extends Controller
         ]);
 
         $slideShow->save();
-        return Redirect::route('slideShow.index',['slideShow'=>$slideShow]);
+        return Redirect::route('slideShow.index',['slideShow'=>$slideShow])->with('message','Cập Nhật Slideshow Thành Công');
     }
 
     /**
@@ -128,6 +145,6 @@ class SlideShowController extends Controller
     public function destroy($id)
     {
         SlideShow::find($id)->delete();
-        return Redirect::route('slideShow.index');
+        return Redirect::route('slideShow.index')->with('message','Xóa Slideshow Thành Công');
     }
 }

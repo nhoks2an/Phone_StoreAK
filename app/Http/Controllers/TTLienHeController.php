@@ -87,7 +87,7 @@ class TTLienHeController extends Controller
             'noidung'=>$request->input('content'),
         ]);
         $thongtinlh->save();
-        return Redirect::route('thongtinlh.index');
+        return Redirect::route('thongtinlh.index')->with('message','Cập Nhật Thông Tin Liên Hệ Thành Công');
     }
 
     /**

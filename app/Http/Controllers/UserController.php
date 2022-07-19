@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Post;
 use Hash;
 use Session;
-use Illuminate\Support\File;
+
 class UserController extends Controller
 {
     protected function fixImage(User $user)
@@ -54,43 +54,48 @@ class UserController extends Controller
             'email.unique' => 'Email Đã Tồn Tại',
             'hoten.required' => 'Họ Tên Không Được Bỏ Trống',
             'diachi.required' => 'Địa Chỉ Không Được Bỏ Trống',
-            'matkhau.required' => 'Password Không Được Bỏ Trống',
+            'matkhau.required' => 'Mật Khẩu Không Được Bỏ Trống',
             'email.regex' => 'Email Không Đúng Định Dạng',
-            'sodienthoai.required' => 'Số Điện Thoại Không Đúng Định Dạng',
+            'sodienthoai.required' => 'Số Điện Thoại Không Được Bỏ Trống',
             'sodienthoai.min' => 'Số Điện Thoại Không Đúng',
-            'matkhau.min' => 'Password Phải Lớn Hơn 6 Ký Tự',
+            'matkhau.min' => 'Mật Khẩu Phải Lớn Hơn 6 Kí Tự',
             'sodienthoai.max' => 'Số Điện Thoại Không Đúng',
         ]);
-
-            $user = DB::table('users')->where('email',$request->email)->first();
-            if(!$user){
-                $newUser = new User();
-                $newUser->name= '';
-                $newUser->diachi = $request ->diachi;
-                $newUser->email = $request ->email;
-                $newUser->hoten = $request ->hoten;
-                $newUser->sodienthoai = $request ->sodienthoai;
-                $newUser->hinhanh = '../images/noimg.png';
-                $newUser->password = $request ->matkhau;
-                $newUser->hienthi = 1;
-                $newUser->save();
-
-                return redirect()->route('user.login')->with('message','Đăng ký thành công!');
+        $user = DB::table('users')->where('email',$request->email)->first();
+        if(!$user){
+            $newUser = new User();
+            $newUser->name= '';
+            $newUser->diachi = $request ->diachi;
+            $newUser->email = $request ->email;
+            $newUser->hoten = $request ->hoten;
+            $newUser->sodienthoai = $request ->sodienthoai;
+            $newUser->hinhanh = '';
+            $newUser->password = $request ->matkhau;
+            $newUser->hienthi = 1;
+            $newUser->save();
+            
+            if($request->hasFile('hinhanh')){
+                $newUser->hinhanh = $request->file('hinhanh')->store('images/user/'.$newUser->id,'public');
             }
-            else{
-                return back()->with('message','Tài khoản đã tồn tại!');
-            }
+            $newUser->save();
+
+            return redirect()->route('user.login')->with('message','Đăng ký thành công!');
+        }
+        else{
+            return back()->with('message','Tài khoản đã tồn tại!');
+        }
     }
     public function loginUser(Request $request)
     {
         $request->validate([
-            'email'=>'required|email|regex:/^[a-zA-Z0-9_]+@gmail.com$/',
-            'password'=>'required|min:6'
+            'email'=>'required |regex:/^[a-zA-Z0-9_]+@gmail.com$/',
+            'password'=>'required'
         ],
         [
             'email.required' => 'Email Không Được Bỏ Trống',
             'email.regex' => 'Email Không Đúng Định Dạng',
             'password.required' => 'Mật Khẩu Không Được Bỏ Trống',
+
         ]);
         $user = User::where('email','=',$request->email)->first();
         if($user)
@@ -102,14 +107,14 @@ class UserController extends Controller
                     return redirect('/');
                 }
                 else{
-                    return back()->with('fail','Mật khẩu không chính xác!');
+                    return back()->with('fail','Email Hoặc Mật Khẩu Không Đúng!');
                 }
             } else {
-                return back()->with('fail','Tài khoản đã bị khoá!');
+                return back()->with('fail','Tài Khoản Đã Bị Khóa!');
             }
         } else
         {
-            return back()->with('fail','Email chưa được đăng ký!');
+            return back()->with('fail','Email Hoặc Mật Khẩu Không Đúng!');
         }
     }
     public function index()

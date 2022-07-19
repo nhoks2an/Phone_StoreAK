@@ -58,7 +58,7 @@ class MauSacController extends Controller
             'hienthi'=>'1',
         ]);
         $mauSac->save();
-        return Redirect::route('mausac.index',['mausac'=>$mauSac]);
+        return Redirect::route('mausac.index',['mausac'=>$mauSac])->with('message','Thêm Màu Sắc Thành Công');
     }
 
     /**
@@ -104,7 +104,7 @@ class MauSacController extends Controller
     public function destroy($id)
     {
         MauSac::find($id)->delete();
-        return Redirect::route('mausac.index');
+        return Redirect::route('mausac.index')->with('message','Xóa Màu Sắc Thành Công');
        
     }
 }
