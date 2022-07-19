@@ -156,7 +156,7 @@ load_more_sanpham();
 
 function load_more_sanpham(id = '') {
     $.ajax({
-        url: '{{url(' / load_more_sanpham ')}}',
+        url: '{{url('/load_more_sanpham')}}',
         method: "POST",
 
         headers: {

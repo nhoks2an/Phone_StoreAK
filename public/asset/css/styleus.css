@@ -312,11 +312,11 @@ ul .tt-dt{font-size: 20px;color: #fff;}
 .soluong{color: #000;font-weight: bold;}
 .btn-dathang{background: #cd0000;text-align: center;padding:10px 0px;border-radius:10px ;width: 45%;height: 50px;}
 .btn-dathang span{font-size: 20px;color: #fff;font-family: Roboto-Regular;}
-button.btn-giohang{color:#FFF;background-color: #00483d;padding: 15px 10px;border-radius:10px;font-size: 20px;margin-top: 10px;width: 50%;display: flex;align-items: center;justify-content: center;height: 50px;font-family: Roboto-Regular;}
+button.btn-giohang{color:#FFF;background-color: #006600;padding: 15px 10px;border-radius:10px;font-size: 20px;margin-top: 10px;width: 50%;display: flex;align-items: center;justify-content: center;height: 50px;font-family: Roboto-Regular;}
 .dungluong.active{ border: 1px solid #e5101d;}
 .btn-giohang{width: 50px;}
 .btn-giohang span {font-family: 'RobotoRegular';}  
-
+button.btn-giohang:hover{background-color: #00483d;}
 
 
 
@@ -388,7 +388,6 @@ button.btn-giohang{color:#FFF;background-color: #00483d;padding: 15px 10px;borde
 
 body, html {
     height: 100%;
-    font-family: Poppins-Regular, sans-serif;
 }
 
 /*---------------------------------------------*/
@@ -1093,7 +1092,7 @@ iframe {
 .total-procart p{margin-bottom:0px;font-size:15px;}
 .total-procart p:last-child{color:var(--color-red);}
 .section-cart{position:-webkit-sticky;position:sticky;top:15px;}
-.title-cart{font-size:15px;text-transform:uppercase;color:var(--color-red);border-bottom:1px solid #eee;padding-bottom:5px;margin-bottom:15px;}
+.title-cart{font-size:15px;text-transform:uppercase;color:var(--color-red);border-bottom:1px solid #eee;padding-bottom:5px;margin-bottom:15px;font-family: Roboto-Medium;}
 .information-cart{margin-bottom:1.5rem;}
 .input-cart{margin-bottom:0.5rem;position:relative;}
 .input-cart textarea{resize:none;height:100px;}
@@ -2094,7 +2093,7 @@ img:not([src]) {
 }
 .box-profile{background-color: #f2f2f2;}
 .right-box .border-tt{border-bottom: 0.5px solid #f2f2f2;padding-bottom: 10px;margin-bottom: 10px;}
-.right-box .thongtin input{border: 1px solid #f2f2f2; padding: 3px 0 5px 10px ;width: 100%;margin-left: 10px;}
+.right-box .thongtin input{border: 1px solid #f2f2f2; padding: 3px 0 5px 10px ;width: 100%;margin-left: 10px; border-radius: 5px;}
 .right-box .thongtin input:focus{outline-color: #f2f2f2;border: #f2f2f2;}
 .right-box .thongtin{width: 80%;}
 .right-box .input-pro{display: flex; justify-items: center; align-items: center;margin-bottom: 10px;}
@@ -2102,8 +2101,9 @@ img:not([src]) {
 .right-box .input-pro .flex-gioitinh{display: flex;width: 100%; justify-content: flex-start;}
 .right-box .input-pro .gioitinh{width: 70px;display: flex;justify-content: center;align-items: center;margin-right: 20px;}
 .right-box .btn-pro-save button{padding: 5px 15px;background-color:red;color: #fff;border-radius: 5px;}
-.right-box .btn-pro-save{display: flex;justify-content: flex-end;}
-
+.right-box .btn-pro-save{display: flex;justify-content: space-between;}
+.right-box .btn-pro-save .doimatkhau{margin-left: 50px;width: 130px;padding: 5px 15px;background-color: #0d6efd;display: flex;justify-content: center;border-radius: 5px;}
+.right-box .btn-pro-save .doimatkhau a{color: #FFF;font-family: Roboto-Medium;}
 .text-split{-webkit-line-clamp: 2;}
 .freeship{background: #006600;width: 63%; text-align: center;}
 .freeship span{color: #fff;font-family: 'RobotoRegular';}
@@ -2262,3 +2262,36 @@ table.greyGridTable thead th {
 .hvr-float-shadow:active:before,.hvr-float-shadow:focus:before,.hvr-float-shadow:hover:before{opacity:1;-webkit-transform:translateY(5px);transform:translateY(5px)}
 
 .span{ font-family: 'RobotoRegular';}
+.total-procart p{font-family: Roboto-Medium;}
+.tab-pane#home{padding-left: 20px;padding-top: 10px;}
+.box-profile .center-box{max-width: 800px;width: 100%;background: #fff;padding: 20px;border-radius: 10px; margin: auto;}
+.box-profile .center-box .btn-pro-save button{
+  padding: 5px 15px;
+  background-color: red;
+  color: #fff;
+  border-radius: 5px;
+}
+.box-profile .center-box .btn-pro-save{
+  display: flex;
+  justify-content: flex-end;
+}
+.box-profile .center-box .input-pro {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.box-profile .center-box .thongtin input {
+  border: 1px solid #f2f2f2;
+  padding: 3px 0 5px 10px;
+  width: 100%;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+.box-profile .center-box .input-pro .name-pro {
+  width: 250px;
+  text-align: right;
+}
+.box-doimatkhau{margin-top: 20px;}
+.box-profile .right-box .alert-success{margin-top: 20px;}
+.box-profile .thongbao{margin-top: 20px;}

@@ -216,7 +216,7 @@
                         </div>
 
                         <input type="submit" class="btn-cart btn btn-primary btn-lg btn-block" name="thanhtoan"
-                            value="Thanh toán">
+                            value="Đặt hàng">
 
                     </div>
 

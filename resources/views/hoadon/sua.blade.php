@@ -73,7 +73,8 @@
                                         <label class="d-block" for="id_list">Trạng thái:</label>
                                         <select name="trangthaihd"
                                             class="form-control select2 select-category select2-hidden-accessible">
-                                            <option>{{$hoadon->trangthaihd->tentrangthai}}</option>
+                                            <option value={{$hoadon->trangthai}}>{{$hoadon->trangthaihd->tentrangthai}}
+                                            </option>
                                             @foreach($trangthaihd as $tt)
                                             <option value="{{$tt->id}}">{{$tt->tentrangthai}}
                                             </option>

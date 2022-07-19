@@ -25,43 +25,45 @@
                     <div class="thongtin">
                         <div class="border-tt">Thông tin cá nhân</div>
                         <div class="input-pro">
-                            <div class="name-pro">Tên</div><input type="text" name="hoten" value="{{$datauser->hoten}}">
+                            <div class="name-pro">Tên</div><input type="text" name="hoten" value="{{$datauser->hoten}}"
+                                required>
                         </div>
                         @if($errors->has('hoten'))
-                                        <div class="alert alert-danger" style="margin-top:10px;">
-                                            {{$errors->first('hoten')}}
-                                        </div>
-                                    @endif
+                        <div class="alert alert-danger" style="margin-top:10px;">
+                            {{$errors->first('hoten')}}
+                        </div>
+                        @endif
                         <div class="input-pro">
                             <div class="name-pro">Email</div> <input type="text" name="email"
-                                value="{{$datauser->email}}">
+                                value="{{$datauser->email}}" required>
                         </div>
                         @if($errors->has('email'))
-                                        <div class="alert alert-danger" style="margin-top:10px;">
-                                            {{$errors->first('email')}}
-                                        </div>
-                                    @endif
+                        <div class="alert alert-danger" style="margin-top:10px;">
+                            {{$errors->first('email')}}
+                        </div>
+                        @endif
                         <div class="input-pro">
                             <div class="name-pro">Số điện thoại</div> <input type="number" name="sodienthoai"
-                                value="{{$datauser->sodienthoai}}">
+                                value="{{$datauser->sodienthoai}}" required>
                         </div>
                         @if($errors->has('sodienthoai'))
-                                        <div class="alert alert-danger" style="margin-top:10px;">
-                                            {{$errors->first('sodienthoai')}}
-                                        </div>
-                                    @endif
+                        <div class="alert alert-danger" style="margin-top:10px;">
+                            {{$errors->first('sodienthoai')}}
+                        </div>
+                        @endif
                         <div class="input-pro">
                             <div class="name-pro">Địa chỉ</div> <input type="text" name="diachi"
-                                value="{{$datauser->diachi}}">
+                                value="{{$datauser->diachi}}" required>
                         </div>
                         @if($errors->has('diachi'))
-                                        <div class="alert alert-danger" style="margin-top:10px;">
-                                            {{$errors->first('diachi')}}
-                                        </div>
-                                    @endif
+                        <div class="alert alert-danger" style="margin-top:10px;">
+                            {{$errors->first('diachi')}}
+                        </div>
+                        @endif
                         <div class="input-pro">
                             <div class="name-pro">Giới tính</div>
                             <div class="flex-gioitinh">
+                                @if($datauser->phai==null)
                                 <div class="gioitinh">
                                     <input type="radio" name="phai" value="Nam">
                                     <label for="html">Nam</label><br>
@@ -70,14 +72,48 @@
                                     <input type="radio" name="phai" value="Nữ">
                                     <label for="html">Nữ</label><br>
                                 </div>
+                                @elseif($datauser->phai=='Nam')
+                                <div class="gioitinh">
+                                    <input type="radio" name="phai" value="Nam" checked>
+                                    <label for="html">Nam</label><br>
+                                </div>
+                                <div class="gioitinh">
+                                    <input type="radio" name="phai" value="Nữ">
+                                    <label for="html">Nữ</label><br>
+                                </div>
+                                @else
+                                <div class="gioitinh">
+                                    <input type="radio" name="phai" value="Nam" checked>
+                                    <label for="html">Nam</label><br>
+                                </div>
+                                <div class="gioitinh">
+                                    <input type="radio" name="phai" value="Nữ" checked>
+                                    <label for="html">Nữ</label><br>
+                                </div>
+                                @endif
+
                             </div>
                         </div>
                         <div class="input-pro">
                             <div class="name-pro">Ngày sinh</div><input type="date" id="birthdaytime" name="ngaysinh"
                                 value="{{$datauser->ngaysinh}}">
                         </div>
-                        
-                        <div class="btn-pro-save"> <button tyle="submit">Lưu</button></div>
+                        <div class="btn-pro-save">
+                            <div class="doimatkhau"><a href="{{route('user.doimatkhau')}}">Đổi mật khẩu</a></div>
+                            <button tyle="submit">Lưu</button>
+                        </div>
+                        <div class="thongbao">
+                            @if(session('message'))
+                            <span class="alert alert-success">
+                                <strong>{{session('message')}}</strong>
+                            </span>
+                            @endif
+                            @if(session('fail'))
+                            <span class="alert alert-danger">
+                                <strong>{{session('fail')}}</strong>
+                            </span>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>

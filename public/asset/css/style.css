@@ -165,3 +165,8 @@ x.modal {top: 0%;}
 .box-chitiet i:hover{ color: #00483d !important;}
 
 
+.doanhthuthang option{text-align: center;}
+.doanhthuthangthucte option{text-align: center;}
+.thongkehoadon option{text-align: center;}
+.doanhthuthang,.doanhthuthangthucte,.thongkehoadon{border: none;border-bottom: 1px solid #f2f2f2;outline: 0;}
+.text-font-hd{font-size: 14px}

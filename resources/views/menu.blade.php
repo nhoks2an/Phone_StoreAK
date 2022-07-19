@@ -32,7 +32,8 @@
             <i class="fas fas fa-boxes"></i>
             <span>Quản lý sản phẩm</span>
         </a>
-        <div id="collapseUtilities" class="collapse " aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div id="collapseUtilities" class="collapse " aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{route('hang.index')}}"> <i class="far fa-caret-square-right"></i>
                     Hãng</a>
@@ -92,6 +93,8 @@
                 <a class="collapse-item" href="{{route('hoadon.indexduyet')}}"> <i
                         class="far fa-caret-square-right"></i>Đã
                     duyệt</a>
+                <a class="collapse-item" href="{{route('hoadon.indexvanchuyen')}}"> <i
+                        class="far fa-caret-square-right"></i>Đang giao</a>
                 <a class="collapse-item" href="{{route('hoadon.indexgiao')}}"> <i
                         class="far fa-caret-square-right"></i>Đã
                     giao</a>
@@ -124,7 +127,7 @@
             </div>
         </div>
     </li>
-    
+
     <hr class="sidebar-divider my-0">
     <!-- tĩnh -->
     <li class="nav-item ">
@@ -137,7 +140,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{route('slideShow.index')}}"> <i class="far fa-caret-square-right"></i>
                     SlideShow</a>
-                    <a class="collapse-item" href="{{route('banner.index')}}"> <i class="far fa-caret-square-right"></i>
+                <a class="collapse-item" href="{{route('banner.index')}}"> <i class="far fa-caret-square-right"></i>
                     Banner</a>
             </div>
         </div>

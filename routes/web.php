@@ -31,6 +31,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\dathangController;
 use App\Http\Controllers\HoaDonController;
 use App\Http\Controllers\CTHoaDonController;
+use App\Http\Controllers\ThongKeController;
 use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +70,8 @@ Route::get('/lichsumuahang/{hoadon}',[dathangController::class,'showhd'])->name(
 Route::get('/thongtincanhan',[UserController::class,'showprofile'])->name('user.showprofile');
 Route::get('/capnhap/{user}',[UserController::class,'update'])->name('user.update');
 Route::get('/logout',[UserController::class,'logout'])->name('user.logout');
+Route::get('/doimatkhau',[UserController::class,'doimatkhau'])->name('user.doimatkhau');
+Route::get('/updatepass',[UserController::class,'updatepass'])->name('user.updatepass');
 Route::get('/trangchu',[UserController::class,'index'])->name('user.index');
 Route::get('/register',[UserController::class,'show'])->name('user.show');
 Route::get('/dangky',[UserController::class,'store'])->name('user.store');
@@ -78,9 +81,9 @@ Route::get('/xtdangnhap',[UserController::class,'loginUser'])->name('user.loginU
 //     return view('dangnhap.index');
 // })->name('dangnhap');
 Route::get('/login',[UserController::class,'loginUser'])->name('user.loginUser');
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
-})->name('dashboard')->middleware('auth');
+// Route::get('/dashboard', function () {
+//     return view('dashboard.index');
+// })->name('dashboard')->middleware('auth');
     // hoa don
 Route::get('/admin/hoadon', function () {
     return view('hoadon.index');
@@ -89,10 +92,12 @@ Route::get('/admin/cthoadon', function () {
     return view('cthoadon.index');
     })->name('cthoadon');
     //  dang nhap
-Route::get('/hoadon1',[HoaDonController::class,'sua'])->name('hoadon.sua')->middleware('auth');
-Route::get('/hoadon23',[HoaDonController::class,'indexduyet'])->name('hoadon.indexduyet')->middleware('auth');
+Route::get('/hoadon1',[HoaDonController::class,'index'])->name('hoadon.index')->middleware('auth');
+Route::get('/duyethd',[HoaDonController::class,'sua'])->name('hoadon.sua')->middleware('auth');
+Route::get('/hoadon2',[HoaDonController::class,'indexduyet'])->name('hoadon.indexduyet')->middleware('auth');
 Route::get('/hoadon4',[HoaDonController::class,'indexgiao'])->name('hoadon.indexgiao')->middleware('auth');
-Route::post('/duyethoadonhd',[HoaDonController::class,'duyet'])->name('hoadon.duyet')->middleware('auth');
+Route::get('/hoadon3',[HoaDonController::class,'indexvanchuyen'])->name('hoadon.indexvanchuyen')->middleware('auth');
+Route::post('/duyethoadon',[HoaDonController::class,'duyet'])->name('hoadon.duyet')->middleware('auth');
 Route::resource('/RAM',RAMController::class)->middleware('auth');
 Route::resource('/hoadon',HoaDonController::class)->middleware('auth');
 Route::resource('/cthoadon',CTHoaDonController::class)->middleware('auth');
@@ -167,3 +172,7 @@ Route::get('/dangnhap/google/callback',[UserController::class, 'callback_google'
 Route::get('/themgiohang/{sanPham}', [CartController::class, 'getvt'])->name('cart.getvt');
 // Route::get('/login-google',[UserController::class, 'login_google'])->name('login_google'); 
 // Route::get('/dangnhap/google/callback',[UserController::class, 'callback_google'])->name('callback_google'); 
+Route::get('/thongkethang', [ThongKeController::class, 'thongkethang'])->name('thongkethang');
+Route::get('/thongkethangthucte', [ThongKeController::class, 'thongkethangthucte'])->name('thongkethangthucte');
+Route::get('/dashboard', [ThongKeController::class, 'dashboard'])->name('dashboard');
+Route::get('/thongkehoadon', [ThongKeController::class, 'thongkehoadon'])->name('thongkehoadon');

@@ -129,7 +129,6 @@ class UserController extends Controller
             'email'=>'required|email|regex:/^[a-zA-Z0-9_]+@gmail.com$/',
             'sodienthoai'=>'required',
             'ngaysinh'=>'required',
-            
             'diachi'=>'required',
             
         ],
@@ -141,20 +140,29 @@ class UserController extends Controller
             'email.regex' => 'Email Không Đúng Định Dạng',
             'password.required' => 'Mật Khẩu Không Được Bỏ Trống',
         ]);
-        if($request->hasFile('hinhanh')){
-            $user->hinhanh = $request->file('hinhanh')->store('images/user/'.$user->id,'public');
+        $us=User::where('email',$request->email)->where('id','<>',$user->id)->first();
+        if($us==null)
+        {
+            if($request->hasFile('hinhanh')){
+                $user->hinhanh = $request->file('hinhanh')->store('images/user/'.$user->id,'public');
+                $user->save(); 
+            }
+                $user->fill([
+                    'hoten'=>$request->input('hoten'),
+                    'email'=>$request->input('email'),
+                    'phai'=>$request->input('phai'),
+                    'sodienthoai'=>$request->input('sodienthoai'),
+                    'diachi'=>$request->input('diachi'),
+                    'ngaysinh'=>$request->input('ngaysinh'),
+                    'hienthi'=>1,
+                ]);
+                $user->save(); 
+            return back()->with('message','Lưu Thành Công!');
         }
-            $user->fill([
-                'hoten'=>$request->input('hoten'),
-                'email'=>$request->input('email'),
-                'phai'=>$request->input('phai'),
-                'sodienthoai'=>$request->input('sodienthoai'),
-                'diachi'=>$request->input('diachi'),
-                'ngaysinh'=>$request->input('ngaysinh'),
-                'hienthi'=>1,
-            ]);
-            $user->save(); 
-        return back()->with('message','Lưu Thành Công!');
+        else
+        {
+            return back()->with('fail','Email đã tồn tại!');
+        }
 
     }
 
@@ -165,6 +173,37 @@ class UserController extends Controller
             Session::pull('loginId');
         }
         return redirect('/');
+    }
+    public function doimatkhau()
+    {
+        return view('user.profile.doimatkhau');
+    }
+    public function updatepass(Request $request)
+    {
+        $request->validate([
+            'newpass'=>'required|min:6',
+        ],
+        [
+            'newpass.required' => 'Mật khẩu ít nhất 6 kí tự!',
+        ]);   
+        $user = User::where('id','=',$request->iduser)->first();
+        if($request->newpass==$request->newpw)
+        {
+            if(Hash::check($request->oldpass,$user->password))
+                {
+                    $user->password=$request->newpass;
+                    $user->save();
+                    return Redirect::route('user.showprofile')->with('message','Đổi mật khẩu thành công!');
+                }
+                else
+                {
+                    return back()->with('fail','Mật khẩu không chính xác!');
+                }
+        }
+        else
+        {
+            return back()->with('fail','Mật khẩu xác nhận không khớp!');
+        }
     }
 
 
