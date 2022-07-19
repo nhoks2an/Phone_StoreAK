@@ -9,10 +9,6 @@
             <i class="far fa-save mr-2"></i>
             Cập nhật
         </button>
-        <button class="btn btn-sm bg-gradient-success submit-check" type="submit">
-            <i class="fas fa-redo mr-2""></i>
-            Lưu tại trang
-        </button>
         <button class="btn btn-sm bg-gradient-secondary" type="reset">
             <i class="fas fa-redo mr-2""></i>
             Làm lại
@@ -80,6 +76,11 @@
                         <p class="photoUpload-choose btn btn-sm bg-gradient-success">Chọn hình</p>
                         </label>
                     </div>	
+                    @if($errors->has('hinhanh'))
+                        <div class="alert alert-danger" style="margin-top:10px;">
+                            {{$errors->first('hinhanh')}}
+                        </div>  
+                        @endif
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@
         <button type="button" class="btn btn-sm bg-gradient-primary text-white" data-toggle="modal" data-target="#themab">
          <i class="fas fa-plus mr-2"></i> Thêm mới
         </button>
-        <a class="btn btn-sm bg-gradient-danger text-white" id="delete-all" data-url="index.php?com=product&amp;act=delete&amp;type=san-pham" title="Xóa tất cả"><i class="far fa-trash-alt mr-2"></i>Xóa tất cả</a>
+   
         <a class="btn btn-sm bg-gradient-secondary" id="delete-all" href=""
         title=""><i class="fas fa-redo mr-2"></i>Quay lại</a>
       
@@ -23,12 +23,6 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th class="align-middle" with="5%">
-                            <div class="custom-control custom-checkbox my-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="selectall-checkbox">
-                                <label for="selectall-checkbox" class="custom-control-label"></label>
-                            </div>
-                        </th>
                         <th class="align-middle text-center">Sản Phẩm</th>
                         <th class="align-middle text-center">Hình ảnh</th>
                         <th class="align-middle text-center">Thao tác</th>
@@ -37,12 +31,6 @@
               @foreach($lsthinhanh as $hinhanh)
                 <tbody>
                     <tr>
-                        <td class="align-middle text-center">
-                            <div class="custom-control custom-checkbox my-checkbox">
-                                <input type="checkbox" class="custom-control-input select-checkbox">
-                                <label for="select-checkbox-35"class="custom-control-label"></label>
-                            </div>
-                        </td>
                         <td class="align-middle text-center">
                             <span>{{$hinhanh->sanpham->tensanpham}}</span>
                         </td>
@@ -90,6 +78,11 @@
                                                     </label>
                                                 </div>
                                             </div>
+                                            @if($errors->has('hinhanh'))
+                                    <div class="alert alert-danger" style="margin-top:10px;">
+                                        {{$errors->first('hinhanh')}}
+                                    </div>
+                                    @endif
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -130,6 +123,18 @@
                 </div>
         </div>
    </div> 
+</div>
+<hr>
+<!-- phan trang -->
+<div class="search">
+    {{$lsthinhanh->appends(request()->all())->links()}}
+</div>
+<div class="thong-bao">
+    @if(session('message'))
+    <span class="alert alert-success">
+        <strong>{{session('message')}}</strong>
+    </span>
+    @endif
 </div>
 <script>
     /* Img Preview */

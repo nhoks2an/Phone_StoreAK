@@ -66,7 +66,7 @@
                                                 data-table="#_product_cat" data-child="id_cat"
                                                 class="form-control select2 select-category select2-hidden-accessible"
                                                 data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                                <option>Chọn camera</option>
+                                             
                                                 @foreach($lstcamera as $camera)
                                                 <option value="{{$camera->id}} " @if($sanPham->id_camera == $camera->id)
                                                     selected @endif >{{$camera->tencamera}}</option>
@@ -79,7 +79,7 @@
                                                 data-table="#_product_cat" data-child="id_cat"
                                                 class="form-control select2 select-category select2-hidden-accessible"
                                                 data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                                <option value="0" data-select2-id="2">Chọn màn hình</option>
+                                              
                                                 @foreach($lstmanhinh as $manhinh)
                                                 <option value="{{$manhinh->id}}" @if($sanPham->id_manhinh ==
                                                     $manhinh->id) selected @endif >{{$manhinh->thongso}}</option>
@@ -95,7 +95,7 @@
                                         <select id="id_list" name="id_hedieuhanh" data-level="0"
                                             class="form-control select2 select-category select2-hidden-accessible"
                                             data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                            <option value="0" data-select2-id="2">Chọn hệ điều hành</option>
+                                          
                                             @foreach($lsthedieuhanh as $hedieuhanh)
                                             <option value="{{$hedieuhanh->id}}" @if($sanPham->id_hedieuhanh ==
                                                 $hedieuhanh->id) selected @endif >{{$hedieuhanh->tenhedieuhanh}}
@@ -109,7 +109,7 @@
                                             data-table="#_product_cat" data-child="id_cat"
                                             class="form-control select2 select-category select2-hidden-accessible"
                                             data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                            <option value="0" data-select2-id="2">Tính năng năng đặc biệt</option>
+                                          
                                             @foreach($lsttinhnangdb as $tinhnangdb)
                                             <option value="{{$tinhnangdb->id}}" @if($sanPham->id_tinhnangdb ==
                                                 $tinhnangdb->id) selected @endif >{{$tinhnangdb->tentinhnang}}</option>
@@ -124,7 +124,7 @@
                                             data-table="#_product_cat" data-child="id_cat"
                                             class="form-control select2 select-category select2-hidden-accessible"
                                             data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                            <option value="0" data-select2-id="2">Chọn thiết kế</option>
+                                          
                                             @foreach($lstthietke as $thietke)
                                             <option value="{{$thietke->id}}" @if($sanPham->id_thietke == $thietke->id)
                                                 selected @endif >{{$thietke->ten}}</option>
@@ -137,7 +137,7 @@
                                             data-table="#_product_cat" data-child="id_cat"
                                             class="form-control select2 select-category select2-hidden-accessible"
                                             data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                            <option value="0" data-select2-id="2">Chọn hiệu năng & pin</option>
+                                         
                                             @foreach($lsthieunangpin as $hieunangpin)
                                             <option value="{{$hieunangpin->id}}" @if($sanPham->id_hieunangpin ==
                                                 $hieunangpin->id) selected @endif >{{$hieunangpin->tenhieunang}}
@@ -175,7 +175,7 @@
                                 data-table="#_product_cat" data-child="id_cat"
                                 class="form-control select2 select-category select2-hidden-accessible"
                                 data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                <option value="0" data-select2-id="2">Chọn loại</option>
+                         
                                 @foreach($lstloai as $loai)
                                 <option value="{{$loai->id}}" @if($sanPham->id_loaisp == $loai->id) selected @endif
                                     >{{$loai->tenloaisp}}</option>

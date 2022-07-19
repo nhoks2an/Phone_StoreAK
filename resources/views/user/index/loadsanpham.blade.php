@@ -3,64 +3,9 @@
 @parent
 <?php 
 ?>
-<div class="boloc center">
-    <div class="custom-select">
-        <select>
-        @foreach($lstloai as $loai)
-            <option value="0">Loại Sản Phẩm</option>
-            <option value="1">{{$loai->tenloaisp}}</option>
-        @endforeach  
-        </select>
+    <div class="center">
+        <div class="title-name">SẢN PHẨM THEO HÃNG</div>
     </div>
-    <div class="custom-select">
-        <select>
-            <option value="0">Loại điện thoại</option>
-
-            <option value=""></option>
-
-        </select>
-    </div>
-    <div class="custom-select">
-        <select>
-            <option value="0">Màu</option>
-
-            <option value=""></option>
-
-        </select>
-    </div>
-    <div class="custom-select">
-        <select>
-            <option value="0">RAM</option>
-
-            <option value=""></option>
-
-        </select>
-    </div>
-    <div class="custom-select">
-        <select>
-            <option value="0">Bộ nhớ trong</option>
-
-            <option value=""></option>
-
-        </select>
-    </div>
-    <div class="custom-select">
-        <select>
-            <option value="0">Camera</option>
-
-            <option value=""></option>
-
-        </select>
-    </div>
-    <div class="custom-select">
-        <select>
-            <option value="0">Màn hình</option>
-
-            <option value=""></option>
-
-        </select>
-    </div>
-</div>
 <div class="box-filter center">
     <div class="box-quicklink  block-scroll-main">
         <div class="lst-quickfilter q-manu js_hang ">

@@ -90,7 +90,7 @@
                     <div class="card-body">
                         <div class="photoUpload-zone">
                             <div class="photoUpload-detail" id="photoUpload-preview">
-                                <img class="rounded" src="{{$tinTuc->hinhanh}}" alt="Alt Photo" id="item-img">
+                                <img class="rounded" src="/storage/{{$tinTuc->hinhanh}}" alt="Alt Photo" id="item-img">
                             </div>
                             <label class="photoUpload-file" id="photo-zone" for="file-zone">
                                 <input type="file" name="hinhanh" id="file-zone" accept="image/*">

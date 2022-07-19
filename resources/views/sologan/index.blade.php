@@ -69,6 +69,14 @@
     </div>
     <input type="hidden" name="hash" value="vZeTxjelfE">
 </form>
+<hr>
+<div class="thong-bao">
+    @if(session('message'))
+    <span class="alert alert-success">
+        <strong>{{session('message')}}</strong>
+    </span>
+    @endif
+</div>
 </section>
 @section('scripts')
 <script>

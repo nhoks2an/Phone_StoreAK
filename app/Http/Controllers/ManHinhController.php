@@ -58,7 +58,7 @@ class ManHinhController extends Controller
             'hienthi'=>'1',
         ]);
         $manhinh->save();
-        return Redirect::route('manhinh.index',['manhinh'=>$manhinh]);
+        return Redirect::route('manhinh.index',['manhinh'=>$manhinh])->with('message','Thêm Màn Hình Thành Công');
     }
 
     /**
@@ -104,6 +104,6 @@ class ManHinhController extends Controller
     public function destroy($id)
     {
         ManHinh::find($id)->delete();
-        return Redirect::route('manhinh.index');
+        return Redirect::route('manhinh.index')->with('message','Xóa Màn Hình Thành Công');
     }
 }

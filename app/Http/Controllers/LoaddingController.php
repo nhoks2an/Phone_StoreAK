@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\SanPham;
 use App\Models\RAM;
+use App\Models\DanhGia;
 use App\Models\SlideShow;
 use App\Models\mapping;
 use App\Models\ROM;
@@ -29,6 +30,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\DB;
+use Auth;
+use Session;
 
 class LoaddingController extends Controller
 {
@@ -81,6 +84,8 @@ class LoaddingController extends Controller
         }
         return view('user.sanpham.index',['lsttt'=>$lsttt]);
     }
+
+    //
    public function loadding()
    {
     $lshow = SlideShow::all();
@@ -114,10 +119,11 @@ class LoaddingController extends Controller
    public function detail($id)
    {
     $sanPham = SanPham::where('id','=',$id)->first();
+
     $mapping = mapping::where('id_sanpham','=',$id)->get();
     $lsthinhanh = HinhAnh::where('id_sanpham','=',$id)->get();
     $lstloai= LoaiSanPham::where('id','=',$id)->get();
-    $spcungloai=SanPham::where('id_loaisp','=',$sanPham->id_loaisp,'and id<>',$sanPham->id)->paginate(4);;
+    $spcungloai=SanPham::where('id_loaisp','=',$sanPham->id_loaisp)->where('id','<>',$sanPham->id)->paginate(4);;
     foreach($mapping as $mp)
     {  
     }
@@ -125,7 +131,55 @@ class LoaddingController extends Controller
     {  
         $this->fixImageab($hinhanh);
     }
-    return View('user.sanpham.detailproduct',['sanPham'=>$sanPham,'mapping'=>$mapping,'lsthinhanh'=>$lsthinhanh,'lstloai'=>$lstloai,'spcungloai'=>$spcungloai]);
+
+  
+
+    $lstrating = DanhGia::where('id_sanpham', $sanPham->id)->get();
+        $rating5star = DanhGia::where('id_sanpham', $id)->where('rating', 5)->count();
+        $rating4star = DanhGia::where('id_sanpham', $id)->where('rating', 4)->count();
+        $rating3star = DanhGia::where('id_sanpham', $id)->where('rating', 3)->count();
+        $rating2star = DanhGia::where('id_sanpham', $id)->where('rating', 2)->count();
+        $rating1star = DanhGia::where('id_sanpham', $id)->where('rating', 1)->count();
+
+        if(Session::get('loginId') != null)
+            {
+            $checkrating = DB::table('hoa_dons')
+                ->join('c_t_hoa_dons', 'hoa_dons.id', '=', 'c_t_hoa_dons.id_hoadon')->where('id_kh',Session::get('loginId'))->where('id_sanpham', $sanPham->id)->where('trangthai', 4)
+                ->select('*')
+                ->count();
+            }else{
+            $checkrating = 0;
+            }
+
+        $rating5star == 0 ? $avg5star = 0 : $avg5star = ($rating5star / ($rating5star + $rating4star + $rating3star + $rating2star + $rating1star)) * 100;
+        $rating4star == 0 ? $avg4star = 0 : $avg4star = ($rating4star / ($rating5star + $rating4star + $rating3star + $rating2star + $rating1star)) * 100;
+        $rating3star == 0 ? $avg3star = 0 : $avg3star = ($rating3star / ($rating5star + $rating4star + $rating3star + $rating2star + $rating1star)) * 100;
+        $rating2star == 0 ? $avg2star = 0 : $avg2star = ($rating2star / ($rating5star + $rating4star + $rating3star + $rating2star + $rating1star)) * 100;
+        $rating1star == 0 ? $avg1star = 0 : $avg1star = ($rating1star / ($rating5star + $rating4star + $rating3star + $rating2star + $rating1star)) * 100;
+
+        $rating = DanhGia::where('id_sanpham',$sanPham->id)->avg('rating');
+        $rating = round($rating);
+
+    return View('user.sanpham.detailproduct',['sanPham'=>$sanPham,'mapping'=>$mapping,'lsthinhanh'=>$lsthinhanh,'lstloai'=>$lstloai,'spcungloai'=>$spcungloai,'rating'=>$rating,'checkrating'=>$checkrating,  'rating1star'=>$rating1star,  'rating2star'=>$rating2star,  'rating3star'=>$rating3star,  'rating4star'=>$rating4star,'rating5star'=>$rating5star,'avg5star'=>$avg5star,'avg4star'=>$avg4star,'avg3star'=>$avg3star,'avg2star'=>$avg2star,'avg1star'=>$avg1star]);
+   }
+
+   public function insert_rating(Request $request)
+   {
+
+        $data = $request->all(); 
+        $rating = DanhGia::where('id_user', '=', Session::get('loginId'))->where('id_sanpham', '=', $data['id_sanpham'])->first();
+        if ($rating != null) {
+            $rating->rating = $data['index'];
+            $rating->update();
+            echo 'done';
+        } else if ($rating == null) {
+            $rating = new DanhGia();
+            $rating->id_sanpham = $data['id_sanpham'];
+            $rating->id_user =$data['datauser'];
+            $rating->rating = $data['index'];
+            $rating->save();
+            echo 'done';
+        }
    }
 //    load chi tiet tin tuc
     public function detailchitiet($id)
@@ -215,18 +269,18 @@ class LoaddingController extends Controller
 
     public function loadhangtheosp(Request $request)
     {
-        $data= $request->all();
+    $data= $request->all();
     $lsthang = Hang::all();
     foreach($lsthang as $hang)
     {
         $this->fixImageHang($hang);    
     }
-    $lstloai = LoaiSanPham::where('id_hang','=',$request->id_hang)->get();
+        $lstloai = LoaiSanPham::where('id_hang','=',$request->id_hang)->get();
     foreach($lstloai as $loai)
     {
-        $lstsanpham = SanPham::where('id_loaisp','=',$loai->id)->paginate(5);
+       
     }
-
+    $lstsanpham = SanPham::where('id_loaisp','=',$loai->id)->paginate(4);
 
     return View('user.index.loadsanpham',['lstsanpham'=>$lstsanpham,'lsthang'=>$lsthang,'lstloai'=>$lstloai]);
     

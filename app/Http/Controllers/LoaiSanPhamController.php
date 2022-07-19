@@ -64,7 +64,7 @@ class LoaiSanPhamController extends Controller
             'hienthi'=>'1',
         ]);
         $loaiSanPham->save();
-        return Redirect::route('loaiSanPham.index',['loaiSanPham'=>$loaiSanPham]);
+        return Redirect::route('loaiSanPham.index',['loaiSanPham'=>$loaiSanPham])->with('message','Thêm Loại Sản Phẩm Thành Công');
     }
 
     /**
@@ -101,10 +101,11 @@ class LoaiSanPhamController extends Controller
     {
         $validatedData = $request->validate(
             [
-                'tenloaisp' => 'required',
+                'tenloaisp' => 'required |unique:loai_san_phams,tenloaisp,' . $loaiSanPham->id .',id',
             ],
             [
                 'tenloaisp.required' => 'Tên Loại Sản Phẩm Không Được Bỏ Trống',
+                'tenloaisp.unique' => 'Tên Loại Sản Phẩm Đã Tồn Tại',
             ]
         );
         $loaiSanPham->fill([
@@ -113,7 +114,7 @@ class LoaiSanPhamController extends Controller
             'hienthi'=>'1',
         ]);
         $loaiSanPham->save();
-        return Redirect::route('loaiSanPham.index',['loaiSanPham'=>$loaiSanPham]);
+        return Redirect::route('loaiSanPham.index',['loaiSanPham'=>$loaiSanPham])->with('message','Cập Nhật Loại Sản Phẩm Thành Công');
     }
 
     /**
@@ -125,6 +126,6 @@ class LoaiSanPhamController extends Controller
     public function destroy($id)
     {
         LoaiSanPham::find($id)->delete();
-        return Redirect::route('loaiSanPham.index');
+        return Redirect::route('loaiSanPham.index')->with('message','Xóa Loại Sản Phẩm Thành Công');
     }
 }

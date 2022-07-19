@@ -91,7 +91,7 @@ class SologanController extends Controller
             'trangthai'=>'1',
         ]);
         $sologan->save();
-        return Redirect::route('sologan.index');
+        return Redirect::route('sologan.index')->with('message','Cập Nhật Sologan Thành Công');
     }
 
     /**

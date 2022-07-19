@@ -36,8 +36,6 @@
                                 <label class="custom-file-label mb-0" data-browse="Chọn" for="hinhanh">Chọn file</label>
                             </div>
                         </label>
-                        <strong class="d-block text-sm">Width: 1366px - Height:
-                            500px(.jpg|.gif|.png|.jpeg|.gif)</strong>
                         @if($errors->has('hinhanh'))
                         <div class="alert alert-danger" style="margin-top:10px;">
                             {{$errors->first('hinhanh')}}

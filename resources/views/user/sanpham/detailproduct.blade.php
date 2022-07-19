@@ -117,16 +117,191 @@
                     <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
                         type="button" role="tab" aria-controls="profile" aria-selected="false">Bình luận</button>
                 </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="raiting-tab" data-bs-toggle="tab" data-bs-target="#raiting"
+                        type="button" role="tab" aria-controls="raiting" aria-selected="false">Đánh giá</button>
+                </li>
             </ul>
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    {{$sanPham->mota}}</div>
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">{{$sanPham->mota}}</div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <div id="fb-root"></div>
                     <script async defer crossorigin="anonymous"
                         src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v14.0" nonce="CjbcdpFc"></script>
                     <div class="fb-comments" data-href="{{route('loadding.detail',[$sanPham->id])}}" data-width=""
                         data-numposts="10"></div>
+                </div>
+                <div class="tab-pane fade" id="raiting" role="tabpanel" aria-labelledby="raiting-tab">
+                    @if(Illuminate\Support\Facades\Auth::check())
+                    @if($checkrating === 1)
+                    <ul class="" title="Average-Rating" style="display: flex;">
+                        @for($count = 1; $count <=5; $count ++)
+                            @php
+                                if($count <= $rating)
+                                {
+                                    $color = 'color:#ffcc00;';
+                                } else{
+                                    $color = 'color:#ccc;';
+                                }
+                                @endphp 
+                            <li title=" Đánh giá sao"
+                            id="{{$sanPham->id}}-{{$count}}"
+                            data-index="{{$count}}"
+                            data-id_sanpham="{{$sanPham->id}}"
+                            data-rating="{{$rating}}" 
+                            class="rating" 
+                            style="cursor:pointer; {{$color}}; font-size:50px;">&#9733;
+                            </li>
+                        @endfor
+                       @if($datauser != null)
+                            <input type="hidden" value="{{$datauser->id}}" name="datauser" id="datauser">
+                       @endif
+
+                       <div class="thongkesao" style="margin-left: 30px;">
+                            <div class="side">
+                                <div>5 star</div>
+                            </div>
+                            <div class="middle">
+                                <div class="bar-container">
+                                    <div class="bar-5" style="width:{{$avg5star}}px"></div>
+                                </div>
+                            </div>
+                            <div class="side right">
+                                <div>{{$rating5star}}</div>
+                            </div>
+                            <div class="side">
+                                <div>4 star</div>
+                            </div>
+                            <div class="middle">
+                                <div class="bar-container">
+                                    <div class="bar-4" style="width:{{$avg4star}}px"></div>
+                                </div>
+                            </div>
+                            <div class="side right">
+                                <div>{{$rating4star}}</div>
+                            </div>
+                            <div class="side">
+                                <div>3 star</div>
+                            </div>
+                            <div class="middle">
+                                <div class="bar-container">
+                                    <div class="bar-3" style="width:{{$avg3star}}px"></div>
+                                </div>
+                            </div>
+                            <div class="side right">
+                                <div>{{$rating3star}}</div>
+                            </div>
+                            <div class="side">
+                                <div>2 star</div>
+                            </div>
+                            <div class="middle">
+                                <div class="bar-container">
+                                    <div class="bar-2" style="width:{{$avg2star}}px"></div>
+                                </div>
+                            </div>
+                            <div class="side right">
+                                <div>{{$rating3star}}</div>
+                            </div>
+                            <div class="side">
+                                <div>1 star</div>
+                            </div>
+                            <div class="middle">
+                                <div class="bar-container">
+                                    <div class="bar-1" style="width:{{$avg1star}}px"></div>
+                                </div>
+                            </div>
+                            <div class="side right">
+                             <div>{{$rating1star}}</div>
+                            </div>
+                        </div>
+                    </ul>
+             
+                    @else
+                    <ul class="" title="Average-Rating" style="display: flex;">
+                        @for($count = 1; $count <=5; $count ++)
+                            @php
+                                if($count <= $rating)
+                                {
+                                    $color = 'color:#ffcc00;';
+                                } else{
+                                    $color = 'color:#ccc;';
+                                }
+                                @endphp 
+                            <li title=" Đánh giá sao"
+                            id="{{$sanPham->id}}-{{$count}}"
+                            data-index="{{$count}}"
+                            data-id_sanpham="{{$sanPham->id}}"
+                            data-rating="{{$rating}}" 
+                            class="" 
+                            style="cursor:pointer; {{$color}}; font-size:50px;">&#9733;
+                            </li>
+                        @endfor
+                       @if($datauser != null)
+                            <input type="hidden" value="{{$datauser->id}}" name="datauser" id="datauser">
+                       @endif
+                        <div class="thongkesao" style="margin-left: 30px;">
+                            <div class="side">
+                                <div>5 star</div>
+                            </div>
+                            <div class="middle">
+                                <div class="bar-container">
+                                    <div class="bar-5" style="width:{{$avg5star}}px"></div>
+                                </div>
+                            </div>
+                            <div class="side right">
+                                <div>{{$rating5star}}</div>
+                            </div>
+                            <div class="side">
+                                <div>4 star</div>
+                            </div>
+                            <div class="middle">
+                                <div class="bar-container">
+                                    <div class="bar-4" style="width:{{$avg4star}}px"></div>
+                                </div>
+                            </div>
+                            <div class="side right">
+                                <div>{{$rating4star}}</div>
+                            </div>
+                            <div class="side">
+                                <div>3 star</div>
+                            </div>
+                            <div class="middle">
+                                <div class="bar-container">
+                                    <div class="bar-3" style="width:{{$avg3star}}px"></div>
+                                </div>
+                            </div>
+                            <div class="side right">
+                                <div>{{$rating3star}}</div>
+                            </div>
+                            <div class="side">
+                                <div>2 star</div>
+                            </div>
+                            <div class="middle">
+                                <div class="bar-container">
+                                    <div class="bar-2" style="width:{{$avg2star}}px"></div>
+                                </div>
+                            </div>
+                            <div class="side right">
+                                <div>{{$rating3star}}</div>
+                            </div>
+                            <div class="side">
+                                <div>1 star</div>
+                            </div>
+                            <div class="middle">
+                                <div class="bar-container">
+                                    <div class="bar-1" style="width:{{$avg1star}}px"></div>
+                                </div>
+                            </div>
+                            <div class="side right">
+                             <div>{{$rating1star}}</div>
+                            </div>
+                        </div>
+                       
+                    </ul>
+                            <div class="alert-warning" style="padding: 20px 0px;text-align: center;"> Vui lòng đăng nhập và mua hàng để có thể đánh giá sản phẩm này!</div>
+                    @endif
+
+                    @endif 
                 </div>
             </div>
         </div>
@@ -144,7 +319,7 @@
                 <div class=" noidung">
                     <div class="ten"><a href="{{route('loadding.detail',[$sp->id])}}" class="text-split">{{$sp->tensanpham}}</a></div>
                     <div class="tt-gia">
-                    <div class="gia" >{{$sanpham->giamin}}đ - {{$sanpham->giamax}}đ</div>
+                    <div class="gia" >{{$sp->giamin}}đ - {{$sp->giamax}}đ</div>
                     </div>
                 </div>
                 <div class="promote">

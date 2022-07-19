@@ -58,7 +58,7 @@ class ThietKeController extends Controller
             'hienthi'=>'1',
         ]);
         $thietke->save();
-        return Redirect::route('thietke.index',['thietke'=>$thietke]);
+        return Redirect::route('thietke.index',['thietke'=>$thietke])->with('message','Thêm Thiết Kế Thành Công');
     }
 
     /**
@@ -104,6 +104,6 @@ class ThietKeController extends Controller
     public function destroy($id)
     {
         ThietKe::find($id)->delete();
-        return Redirect::route('thietke.index');
+        return Redirect::route('thietke.index')->with('message','Xóa Thiết Kế Thành Công');
     }
 }

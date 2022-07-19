@@ -58,7 +58,7 @@ class CameraController extends Controller
             'hienthi'=>'1',
         ]);
         $camera->save();
-        return Redirect::route('camera.index',['camera'=>$camera]);//
+        return Redirect::route('camera.index',['camera'=>$camera])->with('message','Thêm Camera Thành Công');
     }
 
     /**

@@ -93,7 +93,7 @@ class SanPhamController extends Controller
     public function indexab($id)
     {
         $sanPham = $id;
-        $lsthinhanh = HinhAnh::orderBy('created_at','DESC')->where('id_sanpham','=',$id)->get();
+        $lsthinhanh = HinhAnh::orderBy('created_at','DESC')->where('id_sanpham','=',$id)->paginate(1);
       
         foreach($lsthinhanh as $hinhanh)
         {
@@ -109,7 +109,7 @@ class SanPhamController extends Controller
         $lstram = RAM::all();
         $lstrom = ROM::all();
         $lstmausac = MauSac::all();
-        $lstspmp = mapping::orderBy('created_at','DESC')->where('id_sanpham','=',$id)->get();
+        $lstspmp = mapping::orderBy('created_at','DESC')->where('id_sanpham','=',$id)->paginate(1);
         return view('sanpham.indexmp',['lstram'=>$lstram,'lstrom'=>$lstrom,'lstmausac'=>$lstmausac,'lstspmp'=>$lstspmp,'sanPham'=>$sanPham]);
     }
     /**
@@ -139,17 +139,15 @@ class SanPhamController extends Controller
     {
         $validatedData = $request->validate(
             [
-                'id_ram' => 'required',
-                'id_rom' => 'required',
-                'id_mau' => 'required',   
-                'id_mau' => 'required', 
                 'soluong' => 'required', 
                 'giacu' => 'required',   
                 'giamoi' => 'required',   
- 
+
             ],
             [
-                'id_ram.required' => 'Ram Không Được Bỏ Trống',
+                'soluong.required' => 'Số Lượng Không Được Bỏ Trống',
+                'giacu.required' => 'Giá Bán Không Được Bỏ Trống',
+                'giamoi.required' => 'Giá Mới Không Được Bỏ Trống',
             ]
         );
         $mapping = new Mapping();
@@ -164,10 +162,22 @@ class SanPhamController extends Controller
             'hienthi'=>'1',
         ]);
         $mapping->save();
-        return Redirect::route('sanPham.stock',$request->input('themmp'));
+        return Redirect::route('sanPham.stock',$request->input('themmp'))->with('message','Thêm Mapping Thành Công');
     }
     public function storeab(Request $request)
     {
+
+        $validatedData = $request->validate(
+            [
+                'hinhanh' => 'required |image|mimes:jpg,jpeg,png,gif|max:2048',
+            ],
+            [
+                'hinhanh.required' => 'Hình Ảnh Không Được Bỏ Trống',
+                'hinhanh.image' => 'Không Phải File Hình Anh',
+                'hinhanh.mimes' => 'Hình Ảnh Không Đúng Định Dạng',
+                'hinhanh.max' => 'Kích Thước Quá Lớn',
+            ]
+        );
         $hinhanh = new HinhAnh();
         $hinhanh->fill([
             'id_sanpham'=>$request->input('themab'),
@@ -179,7 +189,7 @@ class SanPhamController extends Controller
             $hinhanh->hinhanh = $request->file('hinhanh')->store('images/abum/'.$hinhanh->id,'public');
         }
         $hinhanh->save();
-        return Redirect::route('sanPham.abum',$request->input('themab'));
+        return Redirect::route('sanPham.abum',$request->input('themab'))->with('message','Thêm Hình Ảnh Thành Công');
     }
     /**
      * Store a newly created resource in storage.
@@ -192,11 +202,11 @@ class SanPhamController extends Controller
         $validatedData = $request->validate(
             [
                 'tensanpham' => 'required|unique:san_phams,tensanpham',
-                'hinhanh' => 'required',
+                'hinhanh' => 'required |image|mimes:jpg,jpeg,png,gif|max:2048',
                 'mota' => 'required',  
                 'giamin' => 'required',
                 'giamax' => 'required',  
-                'id_loai' => 'required',  
+               
             ],
             [
                 'tensanpham.required' => 'Tên Sản Phẩm Không Được Bỏ Trống',
@@ -205,8 +215,9 @@ class SanPhamController extends Controller
                 'mota.required' => 'Mô Tả Ảnh Không Được Bỏ Trống',
                 'giamin.required' => 'Giá Min Không Được Bỏ Trống',
                 'giamax.required' => 'Giá Max Không Được Bỏ Trống',
-                'id_loai.required' => 'Loại Không Được Bỏ Trống',
-
+                'hinhanh.image' => 'Không Phải File Hình Anh',
+                'hinhanh.mimes' => 'Hình Ảnh Không Đúng Định Dạng',
+                'hinhanh.max' => 'Kích Thước Quá Lớn',
             ]
         );
         $sanPham = new SanPham();
@@ -233,7 +244,7 @@ class SanPhamController extends Controller
             $sanPham->hinhanh = $request->file('hinhanh')->store('images/sanPham/'.$sanPham->id,'public');
         }
         $sanPham->save();
-        return Redirect::route('sanPham.index',['sanPham'=>$sanPham]);
+        return Redirect::route('sanPham.index',['sanPham'=>$sanPham])->with('message','Thêm Sản Phẩm Thành Công');
     }
 
     /**
@@ -282,16 +293,21 @@ class SanPhamController extends Controller
     {
         $validatedData = $request->validate(
             [
-                'tensanpham' => 'required',
+                'tensanpham' => 'required |unique:san_phams,tensanpham,' . $sanPham->id .',id',
+                'hinhanh' => 'image|mimes:jpg,jpeg,png,gif|max:2048',
                 'mota' => 'required',
                 'giamin' => 'required',
                 'giamax' => 'required',
             ],
             [
                 'tensanpham.required' => 'Tên Sản Phẩm Không Được Bỏ Trống',
+                'tensanpham.unique' => 'Tên Sản Phẩm Đã Tồn Tại',
                 'mota.required' => 'Mô Tả Ảnh Không Được Bỏ Trống',
                 'giamin.required' => 'Giá Min Không Được Bỏ Trống',
                 'giamax.required' => 'Giá Max Không Được Bỏ Trống',
+                'hinhanh.image' => 'Không Phải File Hình Anh',
+                'hinhanh.mimes' => 'Hình Ảnh Không Đúng Định Dạng',
+                'hinhanh.max' => 'Kích Thước Quá Lớn',
             ]
         );
         if($request->hasFile('hinhanh'))
@@ -319,24 +335,23 @@ class SanPhamController extends Controller
             'noibat'=>$request->has('noibat'),
         ]);
         $sanPham->save();
-        return Redirect::route('sanPham.show',['sanPham'=>$sanPham]);
+        return Redirect::route('sanPham.index',['sanPham'=>$sanPham])->with('message','Cập Nhật Sản Phẩm Thành Công');
     }
 
     public function updatemp(Request $request)
     {
         $validatedData = $request->validate(
             [
-                'id_ram' => 'required',
-                'id_rom' => 'required',
-                'id_mau' => 'required',   
-                'id_mau' => 'required', 
                 'soluong' => 'required', 
                 'giacu' => 'required',   
                 'giamoi' => 'required',   
- 
-            ],
+
+            ], 
             [
-                'id_ram.required' => 'Ram Không Được Bỏ Trống',
+                'soluong.required' => 'Số Lượng Không Được Bỏ Trống',
+                'giacu.required' => 'Giá Bán Không Được Bỏ Trống',
+                'giamoi.required' => 'Giá Mới Không Được Bỏ Trống',
+                
             ]
         );
         $mapping = mapping::find($request->input('tensanpham'));
@@ -351,7 +366,7 @@ class SanPhamController extends Controller
             'hienthi'=>'1',
         ]);
         $mapping->save();
-        return Redirect::route('sanPham.stock',$request->input('tensanpham1'));
+        return Redirect::route('sanPham.stock',$request->input('tensanpham1'))->with('message','Cập Nhật Mapping Thành Công');
     }
     /**
      * Remove the specified resource from storage.
@@ -362,7 +377,7 @@ class SanPhamController extends Controller
     public function destroy($id)
     {
         SanPham::find($id)->delete();
-        return Redirect::route('sanPham.index');
+        return Redirect::route('sanPham.index')->with('message','Xóa Sản Phẩm Thành Công');
     }
 
     public function destroymp(Request $request)
@@ -370,13 +385,13 @@ class SanPhamController extends Controller
         $stock_id = $request->input('xoasanpham');
         $stock = mapping::find($stock_id);
         $stock->delete();
-        return Redirect::route('sanPham.stock', $request->input('xoasanpham1'));
+        return Redirect::route('sanPham.stock', $request->input('xoasanpham1'))->with('message','Xóa Mapping Thành Công');
     }
     public function destroyab(Request $request)
     {
         $stock_id = $request->input('xoaabum');
         $stock = HinhAnh::find($stock_id);
         $stock->delete();
-        return Redirect::route('sanPham.abum', $request->input('xoaabum1'));
+        return Redirect::route('sanPham.abum', $request->input('xoaabum1'))->with('message','Xóa Hình Ảnh Thành Công');
     }
 }

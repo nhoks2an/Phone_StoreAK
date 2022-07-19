@@ -6,9 +6,8 @@
     <div class="btn-themmoi">
         <a class="btn btn-sm bg-gradient-primary text-white" href="index.php?com=product&amp;act=add&amp;type=san-pham"
             title="Thêm mới"><i class="fas fa-plus mr-2"></i>Thêm mới</a>
-        <a class="btn btn-sm bg-gradient-danger text-white" id="delete-all"
-            data-url="index.php?com=product&amp;act=delete&amp;type=san-pham" title="Xóa tất cả"><i
-                class="far fa-trash-alt mr-2"></i>Xóa tất cả</a>
+            <a class="btn btn-sm bg-gradient-secondary" id="delete-all" href="{{route('hoadon23.index')}}"
+        title=""><i class="fas fa-redo mr-2"></i>Quay lại</a>
         <!-- Topbar Search -->
         <div class="form-inline form-search d-inline-block align-middle ml-3">
             <form action="">
@@ -37,12 +36,7 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th class="align-middle" with="5%">
-                            <div class="custom-control custom-checkbox my-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="selectall-checkbox">
-                                <label for="selectall-checkbox" class="custom-control-label"></label>
-                            </div>
-                        </th>
+                       
                         <th class="align-middle">Mã HĐ</th>
                         <th class="align-middle">Khách hàng</th>
                         <th class="align-middle">Địa chỉ</th>
@@ -58,12 +52,7 @@
                 <tbody>
                     @foreach($hoadon as $hd)
                     <tr>
-                        <td class="align-middle">
-                            <div class="custom-control custom-checkbox my-checkbox">
-                                <input type="checkbox" class="custom-control-input select-checkbox">
-                                <label for="select-checkbox-35" class="custom-control-label"></label>
-                            </div>
-                        </td>
+                
                         <td class="align-middle">
                             {{$hd->id}}
                         </td>

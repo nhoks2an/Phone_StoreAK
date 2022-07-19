@@ -101,7 +101,7 @@ class FooterController extends Controller
             'hienthi'=>'1',
         ]);
         $footer->save();
-        return Redirect::route('footer.index');
+        return Redirect::route('footer.index')->with('message','Cập Nhật Footer Thành Công');
     }
 
     /**

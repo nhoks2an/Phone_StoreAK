@@ -65,7 +65,7 @@
                                                 data-table="#_product_cat" data-child="id_cat"
                                                 class="form-control select2 select-category select2-hidden-accessible"
                                                 data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                                <option>Chọn camera</option>
+                                             
                                                 @foreach($lstcamera as $camera)
                                                 <option value="{{$camera->id}}">{{$camera->tencamera}}</option>
                                                 @endforeach
@@ -77,7 +77,7 @@
                                                 data-table="#_product_cat" data-child="id_cat"
                                                 class="form-control select2 select-category select2-hidden-accessible"
                                                 data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                                <option value="0" data-select2-id="2">Chọn màn hình</option>
+                                              
                                                 @foreach($lstmanhinh as $manhinh)
                                                 <option value="{{$manhinh->id}}">{{$manhinh->thongso}}</option>
                                                 @endforeach
@@ -92,7 +92,7 @@
                                         <select id="id_list" name="id_hedieuhanh" data-level="0"
                                             class="form-control select2 select-category select2-hidden-accessible"
                                             data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                            <option value="0" data-select2-id="2">Chọn hệ điều hành</option>
+                                       
                                             @foreach($lsthedieuhanh as $hedieuhanh)
                                             <option value="{{$hedieuhanh->id}}">{{$hedieuhanh->tenhedieuhanh}}</option>
                                             @endforeach
@@ -104,7 +104,7 @@
                                             data-table="#_product_cat" data-child="id_cat"
                                             class="form-control select2 select-category select2-hidden-accessible"
                                             data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                            <option value="0" data-select2-id="2">Tính năng năng đặc biệt</option>
+                                        
                                             @foreach($lsttinhnangdb as $tinhnangdb)
                                             <option value="{{$tinhnangdb->id}}">{{$tinhnangdb->tentinhnang}}</option>
                                             @endforeach
@@ -118,7 +118,7 @@
                                             data-table="#_product_cat" data-child="id_cat"
                                             class="form-control select2 select-category select2-hidden-accessible"
                                             data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                            <option value="0" data-select2-id="2">Chọn thiết kế</option>
+                                         
                                             @foreach($lstthietke as $thietke)
                                             <option value="{{$thietke->id}}">{{$thietke->ten}}</option>
                                             @endforeach
@@ -130,7 +130,7 @@
                                             data-table="#_product_cat" data-child="id_cat"
                                             class="form-control select2 select-category select2-hidden-accessible"
                                             data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                            <option value="0" data-select2-id="2">Chọn hiệu năng & pin</option>
+                                        
                                             @foreach($lsthieunangpin as $hieunangpin)
                                             <option value="{{$hieunangpin->id}}">{{$hieunangpin->tenhieunang}}</option>
                                             @endforeach
@@ -161,7 +161,7 @@
                                 data-table="#_product_cat" data-child="id_cat"
                                 class="form-control select2 select-category select2-hidden-accessible"
                                 data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                <option value="0" data-select2-id="2">Chọn loại</option>
+                              
                                 @foreach($lstloai as $loai)
                                 <option value="{{$loai->id}}">{{$loai->tenloaisp}}</option>
                                 @endforeach
@@ -235,9 +235,9 @@
         <div class="card-body">
         <div  class="form-group-category row">
                 <div class="form-group col-md-6">
-                    <label class="d-block" for="regular_price">Giá min:</label>
+                    <label class="d-block" for="regular_price">Giá max:</label>
                     <div class="input-group">
-                        <input type="text" class="form-control format-price regular_price text-sm" name="giamin" id="regular_price" placeholder="Giá bán" value="">
+                        <input type="text" class="form-control format-price regular_price text-sm" name="giamax" id="regular_price" placeholder="Giá max" value="{{old('giamax')}}">
                         <div class="input-group-append">
                             <div class="input-group-text"><strong> VNĐ</strong></div>
                         </div>
@@ -250,9 +250,9 @@
                 </div>
                
                 <div class="form-group col-md-6">
-                    <label class="d-block" for="sale_price">Giá max:</label>
+                    <label class="d-block" for="sale_price">Giá min:</label>
                     <div class="input-group">
-                        <input type="text" class="form-control format-price sale_price text-sm" name="giamax" id="sale_price" placeholder="Giá mới" value="">
+                        <input type="text" class="form-control format-price sale_price text-sm" name="giamin" id="sale_price" placeholder="Giá min" value="{{old('giamin')}}">
                         <div class="input-group-append">
                             <div class="input-group-text"><strong> VNĐ</strong></div>
                         </div>

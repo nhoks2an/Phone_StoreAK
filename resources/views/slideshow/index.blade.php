@@ -5,9 +5,6 @@
     <div class="card-footer text-sm sticky-top">
         <a class="btn btn-sm bg-gradient-primary text-white" href="{{route('slideShow.create')}}" title="Thêm mới"><i
                 class="fas fa-plus mr-2"></i>Thêm mới</a>
-        <a class="btn btn-sm bg-gradient-danger text-white" id="delete-all"
-            data-url="index.php?com=photo&amp;act=delete_photo&amp;type=slide" title="Xóa tất cả"><i
-                class="far fa-trash-alt mr-2"></i>Xóa tất cả</a>
     </div>
     <div class="card card-primary card-outline text-sm mb-0">
         <div class="card-header">
@@ -17,13 +14,6 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th class="align-middle" width="5%">
-                            <div class="custom-control custom-checkbox my-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="selectall-checkbox">
-                                <label for="selectall-checkbox" class="custom-control-label"></label>
-                            </div>
-                        </th>
-
                         <th class="align-middle text-center" width="8%">Hình</th>
                         <th class="align-middle">Link</th>
                         <th class="align-middle text-center">Hiển thị</th>
@@ -33,13 +23,6 @@
                 <tbody>
                     @foreach($lstslide as $slide)
                     <tr>
-                        <td class="align-middle">
-                            <div class="custom-control custom-checkbox my-checkbox">
-                                <input type="checkbox" class="custom-control-input select-checkbox"
-                                    id="select-checkbox-1" value="1">
-                                <label for="select-checkbox-1" class="custom-control-label"></label>
-                            </div>
-                        </td>
                         <td class="align-middle text-center">
                             <a href="index.php?com=photo&amp;act=edit_photo&amp;type=slide&amp;id=1" title="">
                                 <img class="rounded img-preview" onerror="" src="{{$slide->hinhanh}}" alt=""> </a>
@@ -104,6 +87,18 @@
         </div>
     </div>
 </section>
+<hr>
+    <!-- phan trang -->
+    <div class="search">
+        {{$lstslide->appends(request()->all())->links()}}
+    </div>
+    <div class="thong-bao">
+            @if(session('message'))
+            <span class="alert alert-success">
+                <strong>{{session('message')}}</strong>
+            </span>
+            @endif
+        </div>
 @section('scripts')
 <script>
 $(document).on('click', '.btnxoa', function() {

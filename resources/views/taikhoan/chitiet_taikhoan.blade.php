@@ -44,34 +44,31 @@
                         <div class="tab-pane fade show active" id="tabs-lang-vi" role="tabpanel" aria-labelledby="tabs-lang">
                             <div class="form-group">
                                 <label for="namevi">Họ và tên:</label>
-                                <input type="text" class="form-control for-seo text-sm" name="hoten" id="hoten" placeholder="Họ và tên" value="{{$taikhoan->hoten}}" required="" >
+                                <input type="text" class="form-control for-seo text-sm" name="hoten" id="hoten" placeholder="Họ và tên" value="{{$taikhoan->hoten}}" disabled >
                             </div>
                             <div class="form-group">
                                 <label for="namevi">Địa chỉ:</label>
-                                <input type="text" class="form-control for-seo text-sm" name="diachi" id="diachi" placeholder="Địa chỉ" value="{{$taikhoan->diachi}}" required="">
+                                <input type="text" class="form-control for-seo text-sm" name="diachi" id="diachi" placeholder="Địa chỉ" value="{{$taikhoan->diachi}}" disabled>
                             </div>
                                <div class="row">
                                 <div class="form-group col-xl-6 ">
                                         <label class="d-block" for="id_list">Phái:</label>
-                                        <input type="text" class="form-control for-seo text-sm" name="email" id="email" placeholder="Email" value="{{$taikhoan->phai}}" disable>
+                                        <input type="text" class="form-control for-seo text-sm" name="email" id="email" placeholder="Phái" value="{{$taikhoan->phai}}" disabled>
                                     </div>
                                     <div class="form-group col-xl-6">
                                         <label for="namevi">SĐT:</label>
-                                        <input type="number" class="form-control for-seo text-sm" name="sodienthoai" id="sdt" placeholder="Số điện thoại" value="{{$taikhoan->sodienthoai}}" required="">
+                                        <input type="number" class="form-control for-seo text-sm" name="sodienthoai" id="sdt" placeholder="Số điện thoại" value="{{$taikhoan->sodienthoai}}" disabled>
                                     </div>
                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="namevi">Địa chỉ:</label>
-                                <input type="text" class="form-control for-seo text-sm" name="diachi" id="diachi" placeholder="Email" value="{{$taikhoan->diachi}}" required="">
-                            </div>
+                         
                             <div class="form-group">
                                 <label for="namevi">Email:</label>
-                                <input type="email" class="form-control for-seo text-sm" name="email" id="email" placeholder="Email" value="{{$taikhoan->email}}" required="">
+                                <input type="email" class="form-control for-seo text-sm" name="email" id="email" placeholder="Email" value="{{$taikhoan->email}}" disabled>
                             </div>
                             <div class="form-group">
                                 <label for="namevi">Mật khẩu:</label>
-                                <input type="password" class="form-control for-seo text-sm" name="matkhau" id="matkhau" placeholder="Mật khẩu" value="{{$taikhoan->password}}" required="">
+                                <input type="password" class="form-control for-seo text-sm" name="matkhau" id="matkhau" placeholder="Mật khẩu" value="{{$taikhoan->password}}" disabled>
                             </div>
                         </div>
                     </div>
@@ -80,8 +77,7 @@
         </div>           
     </div>
 </div> 
-</div>  
-</div> 
+
 </form>
 @section('Them')
 @endsection

@@ -58,7 +58,7 @@ class HeDieuHanhController extends Controller
             'hienthi'=>'1',
         ]);
         $hedieuhanh->save();
-        return Redirect::route('hedieuhanh.index',['hedieuhanh'=>$hedieuhanh]);
+        return Redirect::route('hedieuhanh.index',['hedieuhanh'=>$hedieuhanh])->with('message','Thêm Hệ Điều Hành Thành Công');
     }
 
     /**
@@ -104,6 +104,6 @@ class HeDieuHanhController extends Controller
     public function destroy($id)
     {
         HeDieuHanh::find($id)->delete();
-        return Redirect::route('hedieuhanh.index');
+        return Redirect::route('hedieuhanh.index')->with('message','Xóa Hệ Điều Hành Thành Công');
     }
 }

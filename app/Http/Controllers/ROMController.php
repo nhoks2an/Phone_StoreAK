@@ -58,7 +58,7 @@ class ROMController extends Controller
             'hienthi'=>'1',
         ]);
         $rOM->save();
-        return Redirect::route('ROM.index',['ROM'=>$rOM]);
+        return Redirect::route('ROM.index',['ROM'=>$rOM])->with('message','Thêm ROM Thành Công');
     }
 
     /**
@@ -104,6 +104,6 @@ class ROMController extends Controller
     public function destroy($id)
     {
         ROM::find($id)->delete();
-        return Redirect::route('ROM.index');
+        return Redirect::route('ROM.index')->with('message','Xóa ROM Thành Công');
     }
 }
