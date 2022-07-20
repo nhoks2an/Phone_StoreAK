@@ -13,7 +13,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"
     integrity="sha512-WNZwVebQjhSxEzwbettGuQgWxbpYdoLf7mH+25A7sfQbbxKeS5SQ9QBf97zOY4nOlwtksgDA/czSTmfj4DUEiQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<!-- <script src="path/to/jquery-ui.min.js"></script> -->
+<script src="path/to/jquery-ui.min.js"></script>
 <!-- danh gia -->
 <script type="text/javascript">
         function remove_background(id_sanpham)
@@ -65,15 +65,13 @@
                     console.log(data);
                     if(data =='done')
                     {
-                        alert("Bạn đã đánh giá"+index+" trên 5");
+                        alert("Bạn đã đánh giá "+index+" trên 5");
                     }else{
                         alert("Lỗi đánh giá");
                     }
                 }
             });
         });
-
-
 </script>
 <!-- sort -->
 <script type="text/javascript">

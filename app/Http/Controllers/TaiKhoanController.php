@@ -110,9 +110,7 @@ class TaiKhoanController extends Controller
                 'hienthi'=>'0',
             ]);
              $taikhoan->save();   
-         
-        return back()->with('message','Lưu Thành Công!');
-
+             return Redirect::route('taikhoan.index')->with('message','Khóa Tài Khoản Thành Công');
     }
 
    

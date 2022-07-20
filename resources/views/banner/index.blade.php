@@ -69,6 +69,10 @@
     </div>
 </section>
 <hr>
+  <!-- phan trang -->
+  <div class="search">
+        {{$lstbanner->appends(request()->all())->links()}}
+    </div>
 <div class="thong-bao">
     @if(session('message'))
     <span class="alert alert-success">

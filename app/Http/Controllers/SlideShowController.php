@@ -113,15 +113,11 @@ class SlideShowController extends Controller
 
         $validatedData = $request->validate(
             [
-                'hinhanh' => 'required |image|mimes:jpg,jpeg,png,gif|max:2048',
                 'link' => 'required ',
             ],
             [
-                'hinhanh.required' => 'Hình Ảnh Năng Không Được Bỏ Trống',
+               
                 'link.required' => 'Đường Link Năng Không Được Bỏ Trống',
-                'hinhanh.image' => 'Không Phải File Hình Anh',
-                'hinhanh.mimes' => 'Hình Ảnh Không Đúng Định Dạng',
-                'hinhanh.max' => 'Kích Thước Quá Lớn',
             ]
         );
         if($request->hasFile('hinhanh')){

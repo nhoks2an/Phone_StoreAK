@@ -29,7 +29,7 @@ class BannerController extends Controller
      */
     public function index()
     {
-        $lstbanner = Banner::all();
+        $lstbanner = Banner::orderBy('created_at','DESC')->paginate(1);
 
         foreach($lstbanner as $banner){
             $this->fixImage($banner);

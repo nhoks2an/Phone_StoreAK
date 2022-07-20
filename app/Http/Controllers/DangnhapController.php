@@ -25,8 +25,8 @@ class DangnhapController extends Controller
                 'password' => 'required',
             ],
             [
-                'name.required' => 'Tài khoản không được bỏ tróng',
-                'password.required' => 'Mật khẩu không được bỏ tróng',
+                'name.required' => 'Tài Khoản Không Được Bỏ Trống',
+                'password.required' => 'Mật Khẩu Không Được Bỏ Trống',
             ]
         );
         $credentials = $request->only('name', 'password');
@@ -41,7 +41,7 @@ class DangnhapController extends Controller
          }
          else{
               return back()->withErrors([
-               'name' => 'Sai Tài Khoản Hoặc Mật Khẩu !',
+               'name' => 'Sai Tài Khoản Hoặc Mật Khẩu',
           ]);
          }
        
