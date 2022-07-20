@@ -254,33 +254,44 @@
                 </div>
             </div>
             <div class="card-body">
-                <div class="form-group-category row">
-                    <div class="form-group col-md-6">
-                        <label class="d-block" for="regular_price">Giá min:</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control format-price regular_price text-sm" name="giamin"
-                                id="regular_price" placeholder="Giá min" value="{{$sanPham->giamin}}">
-                            <div class="input-group-append">
-                                <div class="input-group-text"><strong> VNĐ</strong></div>
-                            </div>
+            <div class="form-group-category row">
+                <div class="form-group col-md-6">
+                    <label class="d-block" for="regular_price">Giá max:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control format-price regular_price text-sm" name="giamax"
+                            id="regular_price" placeholder="Giá max" value="{{$sanPham->gimax}}">
+                        <div class="input-group-append">
+                            <div class="input-group-text"><strong> VNĐ</strong></div>
                         </div>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label class="d-block" for="sale_price">Giá max:</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control format-price sale_price text-sm" name="giamax"
-                                id="sale_price" placeholder="Giá max" value="{{$sanPham->giamax}}">
-                            <div class="input-group-append">
-                                <div class="input-group-text"><strong> VNĐ</strong></div>
-                            </div>
+                    @if($errors->has('giamin'))
+                    <div class="alert alert-danger" style="margin-top:10px;">
+                        {{$errors->first('giamin')}}
+                    </div>
+                    @endif
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label class="d-block" for="sale_price">Giá min:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control format-price sale_price text-sm" name="giamin"
+                            id="sale_price" placeholder="Giá min" value="{{$sanPham->giamin}}">
+                        <div class="input-group-append">
+                            <div class="input-group-text"><strong> VNĐ</strong></div>
                         </div>
                     </div>
+                    @if($errors->has('giamax'))
+                    <div class="alert alert-danger" style="margin-top:10px;">
+                        {{$errors->first('giamax')}}
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>
+        </div>
     </div>
 </form>
-
+@section('scripts')
 <script>
 /* Img Preview */
 const input = document.getElementById("file-zone");
@@ -293,6 +304,41 @@ input.addEventListener("change", (e) => {
     }
 });
 </script>
+
+<script>
+/* Product */
+if ($(".regular_price").length && $(".sale_price").length) {
+    $(".regular_price, .sale_price").keyup(function() {
+        var regular_price = $('.regular_price').val();
+        var sale_price = ($('.sale_price').length) ? $('.sale_price').val() : 0;
+        var discount = 0;
+
+        if (regular_price == '' || regular_price == '0' || sale_price == '' || sale_price == '0') {
+            discount = 0;
+        } else {
+            regular_price = regular_price.replace(/,/g, "");
+            sale_price = (sale_price) ? sale_price.replace(/,/g, "") : 0;
+            regular_price = parseInt(regular_price);
+            sale_price = parseInt(sale_price);
+
+            if (sale_price < regular_price) {
+                discount = 100 - ((sale_price * 100) / regular_price);
+                discount = roundNumber(discount, 0);
+            } else {
+                $('.regular_price, .sale_price').val(0);
+                if ($(".discount").length) {
+                    discount = 0;
+                    $('.sale_price').val(0);
+                }
+            }
+        }
+        if ($(".discount").length) {
+            $('.discount').val(discount);
+        }
+    });
+}
+</script>
+@endsection
 @endsection
 @section('Them')
 @endsection
