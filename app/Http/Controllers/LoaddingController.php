@@ -88,12 +88,12 @@ class LoaddingController extends Controller
     //
    public function loadding()
    {
-    $lshow = SlideShow::all();
+    $lshow = SlideShow::all()->where('hienthi','=','1');
     foreach($lshow as $sh)
     {
        $this->fixImageSH($sh);
     }
-    $lstbanner = Banner::all();
+    $lstbanner = Banner::all()->where('hienthi','=','1');
     foreach($lstbanner as $banner)
     {
        $this->fixImageBN($banner);
@@ -162,10 +162,9 @@ class LoaddingController extends Controller
 
     return View('user.sanpham.detailproduct',['sanPham'=>$sanPham,'mapping'=>$mapping,'lsthinhanh'=>$lsthinhanh,'lstloai'=>$lstloai,'spcungloai'=>$spcungloai,'rating'=>$rating,'checkrating'=>$checkrating,  'rating1star'=>$rating1star,  'rating2star'=>$rating2star,  'rating3star'=>$rating3star,  'rating4star'=>$rating4star,'rating5star'=>$rating5star,'avg5star'=>$avg5star,'avg4star'=>$avg4star,'avg3star'=>$avg3star,'avg2star'=>$avg2star,'avg1star'=>$avg1star]);
    }
-
+//    danh gia
    public function insert_rating(Request $request)
    {
-
         $data = $request->all(); 
         $rating = DanhGia::where('id_user', '=', Session::get('loginId'))->where('id_sanpham', '=', $data['id_sanpham'])->first();
         if ($rating != null) {

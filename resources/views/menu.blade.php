@@ -2,7 +2,7 @@
                 data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('dashboard')}}">
                     <div class="sidebar-brand-icon rotate-n-15">
                         <i class="fas fa-laugh-wink"></i>
                     </div>
@@ -145,9 +145,9 @@
                     </ul>
                 </li>
                 <li
-                    class="nav-item {{ (request()->is('hoadon')) || (request()->is('hoadon23')) || (request()->is('hoadon4')) || (request()->is('cthoadon')) ||(request()->is('hoadon1'))  ? 'menu-open' : '' }}">
+                    class="nav-item {{ (request()->is('hoadon')) || (request()->is('hoadon2')) || (request()->is('hoadon4')) || (request()->is('cthoadon')) ||(request()->is('duyethd'))  ? 'menu-open' : '' }}">
                     <a href="#"
-                        class="nav-link {{ (request()->is('hoadon')) || (request()->is('hoadon23')) || (request()->is('hoadon4')) || (request()->is('cthoadon')) ||(request()->is('hoadon1')) ? 'active' : '' }}">
+                        class="nav-link {{ (request()->is('hoadon')) || (request()->is('hoadon2')) || (request()->is('hoadon4')) || (request()->is('cthoadon')) ||(request()->is('duyethd')) ? 'active' : '' }}">
                         <i class="fas fa-file-invoice-dollar"></i>
                         <p>
                             Quản lý hóa đơn
@@ -158,14 +158,14 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{route('hoadon.index')}}"
-                                class="nav-link {{ (request()->is('hoadon')) ||(request()->is('hoadon1')) ? 'active' : ''}}">
+                                class="nav-link {{ (request()->is('hoadon')) ||(request()->is('duyethd')) ? 'active' : ''}}">
                                 <i class="far fa-caret-square-right"></i>
                                 <p>Chưa duyệt</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('hoadon.indexduyet')}}"
-                                class="nav-link {{ (request()->is('hoadon23')) ? 'active' : ''}}">
+                                class="nav-link {{ (request()->is('hoadon2')) ? 'active' : ''}}">
                                 <i class="far fa-caret-square-right"></i>
                                 <p>Đã duyệt</p>
                             </a>

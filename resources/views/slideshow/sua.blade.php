@@ -36,11 +36,7 @@
                                 <label class="custom-file-label mb-0" data-browse="Chọn" for="hinhanh">Chọn file</label>
                             </div>
                         </label>
-                        @if($errors->has('hinhanh'))
-                        <div class="alert alert-danger" style="margin-top:10px;">
-                            {{$errors->first('hinhanh')}}
-                        </div>
-                        @endif
+                      
                     </div>
                 </div>
                 <div class="form-group">
