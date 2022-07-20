@@ -62,7 +62,7 @@
                     @endforeach
                 </tbody>
             </table>
-            @foreach($lstram as $RAM)
+        
             <!-- modal -->
             <div class="modal fade" id="RamModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
@@ -89,7 +89,7 @@
                     </div>
                 </div>
             </div>
-            @endforeach
+        
         </div>
         @endif
     </div>

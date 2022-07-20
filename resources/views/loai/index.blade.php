@@ -67,7 +67,7 @@
                 </tbody>
                 @endforeach
             </table>
-            @foreach($lstloai as $loaiSanPham)
+     
             <!-- modal -->
             <div class="modal fade" id="LoaiModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
@@ -94,7 +94,7 @@
                     </div>
                 </div>
             </div>
-            @endforeach
+        
         </div>
         @endif
     </div>

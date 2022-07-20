@@ -81,7 +81,7 @@
                 @endforeach
             </tbody>
         </table>
-        @foreach($lsttt as $tt)
+     
         <div class="modal fade" id="TinTucModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -107,7 +107,7 @@
                 </div>
             </div>
         </div>
-        @endforeach
+    
     </div>
     @endif
     </div>

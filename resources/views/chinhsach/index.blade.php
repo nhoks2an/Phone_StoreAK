@@ -79,7 +79,7 @@
         </div>
         @endif
     </div>
-    @foreach($lstcs as $cs)
+ 
     <div class="modal fade" id="ChinhSachModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -105,7 +105,7 @@
             </div>
         </div>
     </div>
-    @endforeach
+ 
 </section>
 <hr>
 <!-- phan trang -->

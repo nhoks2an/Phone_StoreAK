@@ -103,7 +103,6 @@
                 </tbody>
                 @endforeach
             </table>
-             @foreach($lstsanpham as $sanPham)
                 <div class="modal fade" id="SanPhamModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -130,7 +129,6 @@
                         </div>
                     </div>
                 </div>
-          @endforeach
         </div>
         @endif
         </div>

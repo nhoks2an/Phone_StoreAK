@@ -109,7 +109,7 @@ class SanPhamController extends Controller
         $lstram = RAM::all();
         $lstrom = ROM::all();
         $lstmausac = MauSac::all();
-        $lstspmp = mapping::orderBy('created_at','DESC')->where('id_sanpham','=',$id)->paginate(1);
+        $lstspmp = mapping::orderBy('created_at','DESC')->where('id_sanpham','=',$id)->paginate(4);
         return view('sanpham.indexmp',['lstram'=>$lstram,'lstrom'=>$lstrom,'lstmausac'=>$lstmausac,'lstspmp'=>$lstspmp,'sanPham'=>$sanPham]);
     }
     /**

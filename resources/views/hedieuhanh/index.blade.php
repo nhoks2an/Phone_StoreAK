@@ -64,7 +64,7 @@
                 </tbody>
                 @endforeach
             </table>
-            @foreach($lsthedieuhanh as $hedieuhanh)
+          
             <!-- modal -->
             <div class="modal fade" id="HeDieuHanhModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -90,7 +90,7 @@
                     </div>
                 </div>
             </div>
-            @endforeach
+      
         </div>
         @endif
    </div>

@@ -62,7 +62,7 @@
                 </tbody>
                 @endforeach
             </table>
-            @foreach($lsttinhnangdb as $tinhnangdb)
+        
             <!-- modal -->
             <div class="modal fade" id="TinhNangModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -88,7 +88,7 @@
                     </div>
                 </div>
             </div>
-            @endforeach
+        
         </div>
         @endif
    </div>

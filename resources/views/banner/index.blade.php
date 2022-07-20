@@ -37,7 +37,7 @@
                     @endforeach
                 </tbody>
             </table>
-            @foreach($lstbanner as $babner)
+           
             <!-- modal -->
             <div class="modal fade" id="bannerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
@@ -64,7 +64,7 @@
                     </div>
                 </div>
             </div>
-            @endforeach
+       
         </div>
     </div>
 </section>

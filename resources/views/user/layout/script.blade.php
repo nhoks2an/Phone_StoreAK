@@ -62,7 +62,7 @@
                 success:function(data)
                 
                 {
-                    console.log(data);
+               
                     if(data =='done')
                     {
                         alert("Bạn đã đánh giá "+index+" trên 5");

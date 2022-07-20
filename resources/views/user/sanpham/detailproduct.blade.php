@@ -134,156 +134,157 @@
                 </div>
                 <div class="tab-pane fade" id="raiting" role="tabpanel" aria-labelledby="raiting-tab">
                     @if($checkrating === 1)
-                    <ul class="" title="Average-Rating" style="display: flex;">
-                        @for($count = 1; $count <=5; $count ++) 
-                            @php 
-                                if($count <=$rating) { $color='color:#ffcc00;' ; }
-                                else{ $color='color:#ccc;' ; }
-                            @endphp 
-                            <li title=" Đánh giá sao"
-                                id="{{$sanPham->id}}-{{$count}}" 
-                                data-index="{{$count}}" 
-                                data-id_sanpham="{{$sanPham->id}}"
-                                data-rating="{{$rating}}" class="rating"
-                                style="cursor:pointer; {{$color}}; font-size:50px;">&#9733;
-                            </li>
+                        <ul class="" title="Average-Rating" style="display: flex;">
+                            @for($count = 1; $count <=5; $count ++) 
+                                @php 
+                                    if($count <=$rating) { $color='color:#ffcc00;' ; }
+                                    else{ $color='color:#ccc;' ; }
+                                @endphp 
+                                <li title=" Đánh giá sao"
+                                    id="{{$sanPham->id}}-{{$count}}" 
+                                    data-index="{{$count}}" 
+                                    data-id_sanpham="{{$sanPham->id}}"
+                                    data-rating="{{$rating}}" class="rating"
+                                    style="cursor:pointer; {{$color}}; font-size:50px;">&#9733;
+                                </li>
                             @endfor
-                            @if($datauser != null)
-                            <input type="hidden" value="{{$datauser->id}}" name="datauser" id="datauser">
-                            @endif
+                                @if($datauser != null)
+                                <input type="hidden" value="{{$datauser->id}}" name="datauser" id="datauser">
+                                @endif
 
-                            <div class="thongkesao" style="margin-left: 30px;">
-                                <div class="side">
-                                    <div>5 star</div>
-                                </div>
-                                <div class="middle">
-                                    <div class="bar-container">
-                                        <div class="bar-5" style="width:{{$avg5star}}px"></div>
+                                <div class="thongkesao" style="margin-left: 30px;">
+                                    <div class="side">
+                                        <div>5 star</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-5" style="width:{{$avg5star}}px"></div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>{{$rating5star}}</div>
+                                    </div>
+                                    <div class="side">
+                                        <div>4 star</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-4" style="width:{{$avg4star}}px"></div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>{{$rating4star}}</div>
+                                    </div>
+                                    <div class="side">
+                                        <div>3 star</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-3" style="width:{{$avg3star}}px"></div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>{{$rating3star}}</div>
+                                    </div>
+                                    <div class="side">
+                                        <div>2 star</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-2" style="width:{{$avg2star}}px"></div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>{{$rating3star}}</div>
+                                    </div>
+                                    <div class="side">
+                                        <div>1 star</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-1" style="width:{{$avg1star}}px"></div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>{{$rating1star}}</div>
                                     </div>
                                 </div>
-                                <div class="side right">
-                                    <div>{{$rating5star}}</div>
-                                </div>
-                                <div class="side">
-                                    <div>4 star</div>
-                                </div>
-                                <div class="middle">
-                                    <div class="bar-container">
-                                        <div class="bar-4" style="width:{{$avg4star}}px"></div>
-                                    </div>
-                                </div>
-                                <div class="side right">
-                                    <div>{{$rating4star}}</div>
-                                </div>
-                                <div class="side">
-                                    <div>3 star</div>
-                                </div>
-                                <div class="middle">
-                                    <div class="bar-container">
-                                        <div class="bar-3" style="width:{{$avg3star}}px"></div>
-                                    </div>
-                                </div>
-                                <div class="side right">
-                                    <div>{{$rating3star}}</div>
-                                </div>
-                                <div class="side">
-                                    <div>2 star</div>
-                                </div>
-                                <div class="middle">
-                                    <div class="bar-container">
-                                        <div class="bar-2" style="width:{{$avg2star}}px"></div>
-                                    </div>
-                                </div>
-                                <div class="side right">
-                                    <div>{{$rating3star}}</div>
-                                </div>
-                                <div class="side">
-                                    <div>1 star</div>
-                                </div>
-                                <div class="middle">
-                                    <div class="bar-container">
-                                        <div class="bar-1" style="width:{{$avg1star}}px"></div>
-                                    </div>
-                                </div>
-                                <div class="side right">
-                                    <div>{{$rating1star}}</div>
-                                </div>
-                            </div>
-                    </ul>
+                        </ul>
 
                     @else
-                    <ul class="" title="Average-Rating" style="display: flex;">
-                        @for($count = 1; $count <=5; $count ++) @php if($count <=$rating) { $color='color:#ffcc00;' ; }
-                            else{ $color='color:#ccc;' ; } @endphp <li title=" Đánh giá sao"
-                            id="{{$sanPham->id}}-{{$count}}" data-index="{{$count}}" data-id_sanpham="{{$sanPham->id}}"
-                            data-rating="{{$rating}}" class="" style="cursor:pointer; {{$color}}; font-size:50px;">
-                            &#9733;
-                            </li>
+                        <ul class="" title="Average-Rating" style="display: flex;">
+                            @for($count = 1; $count <=5; $count ++) @php if($count <=$rating) { $color='color:#ffcc00;' ; }
+                                else{ $color='color:#ccc;' ; } @endphp <li title=" Đánh giá sao"
+                                id="{{$sanPham->id}}-{{$count}}" data-index="{{$count}}" data-id_sanpham="{{$sanPham->id}}"
+                                data-rating="{{$rating}}" class="" style="cursor:pointer; {{$color}}; font-size:50px;">
+                                &#9733;
+                                </li>
                             @endfor
-                            @if($datauser != null)
-                            <input type="hidden" value="{{$datauser->id}}" name="datauser" id="datauser">
-                            @endif
-                            <div class="thongkesao" style="margin-left: 30px;">
-                                <div class="side">
-                                    <div>5 star</div>
-                                </div>
-                                <div class="middle">
-                                    <div class="bar-container">
-                                        <div class="bar-5" style="width:{{$avg5star}}px"></div>
+                                @if($datauser != null)
+                                <input type="hidden" value="{{$datauser->id}}" name="datauser" id="datauser">
+                                @endif
+                                
+                                <div class="thongkesao" style="margin-left: 30px;">
+                                    <div class="side">
+                                        <div>5 star</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-5" style="width:{{$avg5star}}px"></div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>{{$rating5star}}</div>
+                                    </div>
+                                    <div class="side">
+                                        <div>4 star</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-4" style="width:{{$avg4star}}px"></div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>{{$rating4star}}</div>
+                                    </div>
+                                    <div class="side">
+                                        <div>3 star</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-3" style="width:{{$avg3star}}px"></div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>{{$rating3star}}</div>
+                                    </div>
+                                    <div class="side">
+                                        <div>2 star</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-2" style="width:{{$avg2star}}px"></div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>{{$rating3star}}</div>
+                                    </div>
+                                    <div class="side">
+                                        <div>1 star</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-1" style="width:{{$avg1star}}px"></div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>{{$rating1star}}</div>
                                     </div>
                                 </div>
-                                <div class="side right">
-                                    <div>{{$rating5star}}</div>
-                                </div>
-                                <div class="side">
-                                    <div>4 star</div>
-                                </div>
-                                <div class="middle">
-                                    <div class="bar-container">
-                                        <div class="bar-4" style="width:{{$avg4star}}px"></div>
-                                    </div>
-                                </div>
-                                <div class="side right">
-                                    <div>{{$rating4star}}</div>
-                                </div>
-                                <div class="side">
-                                    <div>3 star</div>
-                                </div>
-                                <div class="middle">
-                                    <div class="bar-container">
-                                        <div class="bar-3" style="width:{{$avg3star}}px"></div>
-                                    </div>
-                                </div>
-                                <div class="side right">
-                                    <div>{{$rating3star}}</div>
-                                </div>
-                                <div class="side">
-                                    <div>2 star</div>
-                                </div>
-                                <div class="middle">
-                                    <div class="bar-container">
-                                        <div class="bar-2" style="width:{{$avg2star}}px"></div>
-                                    </div>
-                                </div>
-                                <div class="side right">
-                                    <div>{{$rating3star}}</div>
-                                </div>
-                                <div class="side">
-                                    <div>1 star</div>
-                                </div>
-                                <div class="middle">
-                                    <div class="bar-container">
-                                        <div class="bar-1" style="width:{{$avg1star}}px"></div>
-                                    </div>
-                                </div>
-                                <div class="side right">
-                                    <div>{{$rating1star}}</div>
-                                </div>
-                            </div>
-
-                    </ul>
-                    <div class="alert-warning" style="padding: 20px 0px;text-align: center;"> Vui lòng đăng nhập và mua
-                        hàng để có thể đánh giá sản phẩm này!</div>
+                            </ul>
+                        <div class="alert-warning" style="padding: 20px 0px;text-align: center;"> Vui lòng đăng nhập và mua
+                            hàng để có thể đánh giá sản phẩm này!
+                        </div>
                     @endif
                 </div>
             </div>

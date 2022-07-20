@@ -62,7 +62,6 @@
                 </tbody>
                 @endforeach
             </table>
-            @foreach($lstmausac as $mausac)
             <!-- modal -->
             <div class="modal fade" id="MauModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
@@ -89,7 +88,6 @@
                     </div>
                 </div>
             </div>
-            @endforeach
         </div>
         @endif
     </div>

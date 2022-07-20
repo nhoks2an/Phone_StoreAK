@@ -73,7 +73,7 @@
                     @endforeach
                 </table>
                 <!-- modal -->
-                @foreach($lsthang as $hang)
+               
                 <div class="modal fade" id="HangModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -99,7 +99,7 @@
                         </div>
                     </div>
                 </div>
-                @endforeach
+           
             </div>
             @endif
         </div>
