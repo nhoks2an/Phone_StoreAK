@@ -9,7 +9,7 @@
             Thêm mới
         </button>
         <button class="btn btn-sm bg-gradient-secondary" type="reset">
-            <i class="fas fa-redo mr-2""></i>
+            <i class="fas fa-redo mr-2"></i>
             Làm lại
         </button>
         <a href=" #" class="btn btn-sm bg-gradient-danger"><i class="fas fa-sign-out-alt mr-2"></i>Thoát</a>
@@ -40,8 +40,8 @@
                                     aria-labelledby="tabs-lang">
                                     <div class="form-group">
                                         <label for="namevi">Tiêu đề (vi):</label>
-                                        <input type="text" class="form-control for-seo text-sm" name="tensanpham" value="{{old('tensanpham')}}"
-                                            id="namevi" placeholder="Tiêu đề (vi)">
+                                        <input type="text" class="form-control for-seo text-sm" name="tensanpham"
+                                            value="{{old('tensanpham')}}" id="namevi" placeholder="Tiêu đề (vi)">
                                         @if($errors->has('tensanpham'))
                                         <div class="alert alert-danger" style="margin-top:10px;">
                                             {{$errors->first('tensanpham')}}
@@ -50,8 +50,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="descvi">Mô tả (vi):</label>
-                                        <textarea class="form-control for-seo text-sm " name="mota" id="descvi" rows="5" value="{{old('mota')}}"
-                                            placeholder="Mô tả (vi)"></textarea>
+                                        <textarea class="form-control for-seo text-sm " name="mota" id="descvi" rows="5"
+                                            value="{{old('mota')}}" placeholder="Mô tả (vi)"></textarea>
                                         @if($errors->has('mota'))
                                         <div class="alert alert-danger" style="margin-top:10px;">
                                             {{$errors->first('mota')}}
@@ -65,7 +65,7 @@
                                                 data-table="#_product_cat" data-child="id_cat"
                                                 class="form-control select2 select-category select2-hidden-accessible"
                                                 data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                             
+
                                                 @foreach($lstcamera as $camera)
                                                 <option value="{{$camera->id}}">{{$camera->tencamera}}</option>
                                                 @endforeach
@@ -77,7 +77,7 @@
                                                 data-table="#_product_cat" data-child="id_cat"
                                                 class="form-control select2 select-category select2-hidden-accessible"
                                                 data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                              
+
                                                 @foreach($lstmanhinh as $manhinh)
                                                 <option value="{{$manhinh->id}}">{{$manhinh->thongso}}</option>
                                                 @endforeach
@@ -92,7 +92,7 @@
                                         <select id="id_list" name="id_hedieuhanh" data-level="0"
                                             class="form-control select2 select-category select2-hidden-accessible"
                                             data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                       
+
                                             @foreach($lsthedieuhanh as $hedieuhanh)
                                             <option value="{{$hedieuhanh->id}}">{{$hedieuhanh->tenhedieuhanh}}</option>
                                             @endforeach
@@ -104,7 +104,7 @@
                                             data-table="#_product_cat" data-child="id_cat"
                                             class="form-control select2 select-category select2-hidden-accessible"
                                             data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                        
+
                                             @foreach($lsttinhnangdb as $tinhnangdb)
                                             <option value="{{$tinhnangdb->id}}">{{$tinhnangdb->tentinhnang}}</option>
                                             @endforeach
@@ -118,7 +118,7 @@
                                             data-table="#_product_cat" data-child="id_cat"
                                             class="form-control select2 select-category select2-hidden-accessible"
                                             data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                         
+
                                             @foreach($lstthietke as $thietke)
                                             <option value="{{$thietke->id}}">{{$thietke->ten}}</option>
                                             @endforeach
@@ -130,7 +130,7 @@
                                             data-table="#_product_cat" data-child="id_cat"
                                             class="form-control select2 select-category select2-hidden-accessible"
                                             data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                        
+
                                             @foreach($lsthieunangpin as $hieunangpin)
                                             <option value="{{$hieunangpin->id}}">{{$hieunangpin->tenhieunang}}</option>
                                             @endforeach
@@ -161,17 +161,17 @@
                                 data-table="#_product_cat" data-child="id_cat"
                                 class="form-control select2 select-category select2-hidden-accessible"
                                 data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                              
+
                                 @foreach($lstloai as $loai)
                                 <option value="{{$loai->id}}">{{$loai->tenloaisp}}</option>
                                 @endforeach
                             </select></span>
                         </div>
                         @if($errors->has('id_loai'))
-                    <div class="alert alert-danger" style="margin-top:10px;">
-                        {{$errors->first('id_loai')}}
-                    </div>
-                    @endif
+                        <div class="alert alert-danger" style="margin-top:10px;">
+                            {{$errors->first('id_loai')}}
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -185,8 +185,8 @@
                 </div>
                 <div class="card-body">
                     <div class="photoUpload-zone">
-                        <div class="photoUpload-detail" id="photoUpload-preview"><img class="rounded" 
-                                src="../img/noimage.jpg" alt="Alt Photo" id="hinhanh_sanpham" ></div>
+                        <div class="photoUpload-detail" id="photoUpload-preview"><img class="rounded"
+                                src="../img/noimage.jpg" alt="Alt Photo" id="hinhanh_sanpham"></div>
                         <label class="photoUpload-file" id="photo-zone" for="file-zone">
                             <input type="file" name="hinhanh" id="file-zone">
                             <i class="fas fa-cloud-upload-alt"></i>
@@ -233,11 +233,12 @@
             </div>
         </div>
         <div class="card-body">
-        <div  class="form-group-category row">
+            <div class="form-group-category row">
                 <div class="form-group col-md-6">
                     <label class="d-block" for="regular_price">Giá max:</label>
                     <div class="input-group">
-                        <input type="text" class="form-control format-price regular_price text-sm" name="giamax" id="regular_price" placeholder="Giá max" value="{{old('giamax')}}">
+                        <input type="text" class="form-control format-price regular_price text-sm" name="giamax"
+                            id="regular_price" placeholder="Giá max" value="{{old('giamax')}}">
                         <div class="input-group-append">
                             <div class="input-group-text"><strong> VNĐ</strong></div>
                         </div>
@@ -248,11 +249,12 @@
                     </div>
                     @endif
                 </div>
-               
+
                 <div class="form-group col-md-6">
                     <label class="d-block" for="sale_price">Giá min:</label>
                     <div class="input-group">
-                        <input type="text" class="form-control format-price sale_price text-sm" name="giamin" id="sale_price" placeholder="Giá min" value="{{old('giamin')}}">
+                        <input type="text" class="form-control format-price sale_price text-sm" name="giamin"
+                            id="sale_price" placeholder="Giá min" value="{{old('giamin')}}">
                         <div class="input-group-append">
                             <div class="input-group-text"><strong> VNĐ</strong></div>
                         </div>
@@ -279,51 +281,40 @@ input.addEventListener("change", (e) => {
         image.src = src;
     }
 });
-
-  
 </script>
 <script>
-    	/* Product */
-        if($(".regular_price").length && $(".sale_price").length)
-	{
-		$(".regular_price, .sale_price").keyup(function(){
-			var regular_price = $('.regular_price').val();
-			var sale_price = ($('.sale_price').length) ? $('.sale_price').val() : 0;
-			var discount = 0;
+/* Product */
+if ($(".regular_price").length && $(".sale_price").length) {
+    $(".regular_price, .sale_price").keyup(function() {
+        var regular_price = $('.regular_price').val();
+        var sale_price = ($('.sale_price').length) ? $('.sale_price').val() : 0;
+        var discount = 0;
 
-			if(regular_price=='' || regular_price=='0' || sale_price=='' || sale_price=='0')
-			{
-				discount = 0;
-			}
-			else
-			{
-				regular_price = regular_price.replace(/,/g,"");
-				sale_price = (sale_price) ? sale_price.replace(/,/g,"") : 0;
-				regular_price = parseInt(regular_price);
-				sale_price = parseInt(sale_price);
+        if (regular_price == '' || regular_price == '0' || sale_price == '' || sale_price == '0') {
+            discount = 0;
+        } else {
+            regular_price = regular_price.replace(/,/g, "");
+            sale_price = (sale_price) ? sale_price.replace(/,/g, "") : 0;
+            regular_price = parseInt(regular_price);
+            sale_price = parseInt(sale_price);
 
-				if(sale_price < regular_price)
-				{
-					discount = 100-((sale_price * 100) / regular_price);
-					discount = roundNumber(discount,0);
-				}
-				else
-				{
-					$('.regular_price, .sale_price').val(0);
-					if($(".discount").length)
-					{
-						discount = 0;
-						$('.sale_price').val(0);
-					}
-				}
-			}
+            if (sale_price < regular_price) {
+                discount = 100 - ((sale_price * 100) / regular_price);
+                discount = roundNumber(discount, 0);
+            } else {
+                $('.regular_price, .sale_price').val(0);
+                if ($(".discount").length) {
+                    discount = 0;
+                    $('.sale_price').val(0);
+                }
+            }
+        }
 
-			if($(".discount").length)
-			{
-				$('.discount').val(discount);
-			}
-		});
-	}
+        if ($(".discount").length) {
+            $('.discount').val(discount);
+        }
+    });
+}
 </script>
 @endsection
 @endsection

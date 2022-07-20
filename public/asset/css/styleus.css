@@ -2363,3 +2363,4 @@ table.greyGridTable thead th {
 .checked {
   color: orange;
 }
+.flex-center{display: flex;justify-content: center;}

@@ -66,7 +66,7 @@
                                                 data-table="#_product_cat" data-child="id_cat"
                                                 class="form-control select2 select-category select2-hidden-accessible"
                                                 data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                             
+
                                                 @foreach($lstcamera as $camera)
                                                 <option value="{{$camera->id}} " @if($sanPham->id_camera == $camera->id)
                                                     selected @endif >{{$camera->tencamera}}</option>
@@ -79,7 +79,7 @@
                                                 data-table="#_product_cat" data-child="id_cat"
                                                 class="form-control select2 select-category select2-hidden-accessible"
                                                 data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                              
+
                                                 @foreach($lstmanhinh as $manhinh)
                                                 <option value="{{$manhinh->id}}" @if($sanPham->id_manhinh ==
                                                     $manhinh->id) selected @endif >{{$manhinh->thongso}}</option>
@@ -95,7 +95,7 @@
                                         <select id="id_list" name="id_hedieuhanh" data-level="0"
                                             class="form-control select2 select-category select2-hidden-accessible"
                                             data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                          
+
                                             @foreach($lsthedieuhanh as $hedieuhanh)
                                             <option value="{{$hedieuhanh->id}}" @if($sanPham->id_hedieuhanh ==
                                                 $hedieuhanh->id) selected @endif >{{$hedieuhanh->tenhedieuhanh}}
@@ -109,7 +109,7 @@
                                             data-table="#_product_cat" data-child="id_cat"
                                             class="form-control select2 select-category select2-hidden-accessible"
                                             data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                          
+
                                             @foreach($lsttinhnangdb as $tinhnangdb)
                                             <option value="{{$tinhnangdb->id}}" @if($sanPham->id_tinhnangdb ==
                                                 $tinhnangdb->id) selected @endif >{{$tinhnangdb->tentinhnang}}</option>
@@ -124,7 +124,7 @@
                                             data-table="#_product_cat" data-child="id_cat"
                                             class="form-control select2 select-category select2-hidden-accessible"
                                             data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                          
+
                                             @foreach($lstthietke as $thietke)
                                             <option value="{{$thietke->id}}" @if($sanPham->id_thietke == $thietke->id)
                                                 selected @endif >{{$thietke->ten}}</option>
@@ -137,7 +137,7 @@
                                             data-table="#_product_cat" data-child="id_cat"
                                             class="form-control select2 select-category select2-hidden-accessible"
                                             data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                                         
+
                                             @foreach($lsthieunangpin as $hieunangpin)
                                             <option value="{{$hieunangpin->id}}" @if($sanPham->id_hieunangpin ==
                                                 $hieunangpin->id) selected @endif >{{$hieunangpin->tenhieunang}}
@@ -175,7 +175,7 @@
                                 data-table="#_product_cat" data-child="id_cat"
                                 class="form-control select2 select-category select2-hidden-accessible"
                                 data-select2-id="id_list" tabindex="-1" aria-hidden="true">
-                         
+
                                 @foreach($lstloai as $loai)
                                 <option value="{{$loai->id}}" @if($sanPham->id_loaisp == $loai->id) selected @endif
                                     >{{$loai->tenloaisp}}</option>
@@ -254,27 +254,29 @@
                 </div>
             </div>
             <div class="card-body">
-            <div  class="form-group-category row">
-                <div class="form-group col-md-6">
-                    <label class="d-block" for="regular_price">Giá min:</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control format-price regular_price text-sm" name="giamin" id="regular_price" placeholder="Giá min" value="{{$sanPham->giamin}}">
-                        <div class="input-group-append">
-                            <div class="input-group-text"><strong> VNĐ</strong></div>
+                <div class="form-group-category row">
+                    <div class="form-group col-md-6">
+                        <label class="d-block" for="regular_price">Giá min:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control format-price regular_price text-sm" name="giamin"
+                                id="regular_price" placeholder="Giá min" value="{{$sanPham->giamin}}">
+                            <div class="input-group-append">
+                                <div class="input-group-text"><strong> VNĐ</strong></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="form-group col-md-6">
-                    <label class="d-block" for="sale_price">Giá max:</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control format-price sale_price text-sm" name="giamax" id="sale_price" placeholder="Giá max" value="{{$sanPham->giamax}}">
-                        <div class="input-group-append">
-                            <div class="input-group-text"><strong> VNĐ</strong></div>
+                    <div class="form-group col-md-6">
+                        <label class="d-block" for="sale_price">Giá max:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control format-price sale_price text-sm" name="giamax"
+                                id="sale_price" placeholder="Giá max" value="{{$sanPham->giamax}}">
+                            <div class="input-group-append">
+                                <div class="input-group-text"><strong> VNĐ</strong></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </div>
 </form>
