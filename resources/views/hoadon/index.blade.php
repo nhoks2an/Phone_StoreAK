@@ -6,8 +6,8 @@
     <div class="btn-themmoi">
         <a class="btn btn-sm bg-gradient-primary text-white" href="index.php?com=product&amp;act=add&amp;type=san-pham"
             title="Thêm mới"><i class="fas fa-plus mr-2"></i>Thêm mới</a>
-        <a class="btn btn-sm bg-gradient-secondary" id="delete-all" href="{{route('hoadon.index')}}"
-        title=""><i class="fas fa-redo mr-2"></i>Quay lại</a>
+        <a class="btn btn-sm bg-gradient-secondary" id="delete-all" href="{{route('hoadon.index')}}" title=""><i
+                class="fas fa-redo mr-2"></i>Quay lại</a>
         <!-- Topbar Search -->
         <div class="form-inline form-search d-inline-block align-middle ml-3">
             <form action="">
@@ -41,7 +41,7 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                       
+
                         <th class="align-middle">Mã HĐ</th>
                         <th class="align-middle">Khách hàng</th>
                         <th class="align-middle">Địa chỉ</th>
@@ -70,13 +70,13 @@
                             {{$hd->sodienthoai}}
                         </td>
                         <td class="align-middle">
-                            {{$hd->thanhpho->tenthanhpho}}
+                            {{$hd->thanhpho->_name}}
                         </td>
                         <td class="align-middle">
-                            {{$hd->quan->tenquan}}
+                            {{$hd->quan->_name}}
                         </td>
                         <td class="align-middle">
-                            {{$hd->phuong->tenphuong}}
+                            {{$hd->phuong->_name}}
                         </td>
                         <td class="align-middle">
                             {{$hd->tongtien}} VNĐ
