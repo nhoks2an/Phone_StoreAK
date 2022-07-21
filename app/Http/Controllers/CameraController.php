@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Camera;
+use App\Models\SanPham;
 use Illuminate\Http\Request;
 use App\Http\Controllers\equest;
 use Illuminate\Support\Facades\Redirect;
@@ -103,6 +104,11 @@ class CameraController extends Controller
      */
     public function destroy(Request $request)
     {
+        $count=SanPham::where('id_camera',$id);
+        if($count!=null)
+        {
+            return Redirect::route('camera.index')->with('fail','Xóa Camera Thất Bại!');
+        }
         $camera_id = $request->input('xoacamera');
         $camera_id = Camera::find($camera_id);
         $camera_id->delete();

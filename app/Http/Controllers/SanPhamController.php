@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\SanPham;
 use App\Models\RAM;
 use App\Models\mapping;
+use App\Models\CTHoaDon;
 use App\Models\ROM;
 use App\Models\ThietKe;
 use App\Models\LoaiSanPham;
@@ -376,10 +377,15 @@ class SanPhamController extends Controller
      */
     public function destroy(Request $request)
     {
+        $count=CTHoaDon::where('id_sanpham',$id);
+        if($count!=null)
+        {
+            return Redirect::route('sanPham.index')->with('fail','Xóa Sản Phẩm Thất Bại!');
+        }
         $sanpham_id = $request->input('xoasanphamm');
         $sanpham_id = SanPham::find($sanpham_id);
         $sanpham_id->delete();
-        return Redirect::route('sanPham.index')->with('message','Xóa Sản Phẩm Thành Công');
+        return Redirect::route('sanPham.index')->with('message','Xóa Sản Phẩm Thành Công!');
     }
 
     public function destroymp(Request $request)
@@ -387,13 +393,13 @@ class SanPhamController extends Controller
         $stock_id = $request->input('xoasanpham');
         $stock = mapping::find($stock_id);
         $stock->delete();
-        return Redirect::route('sanPham.stock', $request->input('xoasanpham1'))->with('message','Xóa Mapping Thành Công');
+        return Redirect::route('sanPham.stock', $request->input('xoasanpham1'))->with('message','Xóa Mapping Thành Công!');
     }
     public function destroyab(Request $request)
     {
         $stock_id = $request->input('xoaabum');
         $stock = HinhAnh::find($stock_id);
         $stock->delete();
-        return Redirect::route('sanPham.abum', $request->input('xoaabum1'))->with('message','Xóa Hình Ảnh Thành Công');
+        return Redirect::route('sanPham.abum', $request->input('xoaabum1'))->with('message','Xóa Hình Ảnh Thành Công!');
     }
 }

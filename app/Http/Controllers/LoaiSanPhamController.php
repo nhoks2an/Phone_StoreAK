@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Models\Post;
 use App\Models\LoaiSanPham;
 use App\Models\Hang;
+use App\Models\SanPham;
 use Illuminate\Http\Request;
 use App\Http\Controllers\equest;
 use Illuminate\Support\Facades\DB;
@@ -125,7 +126,11 @@ class LoaiSanPhamController extends Controller
      */
     public function destroy(Request $request)
     {
-
+        $count=SanPham::where('id_loadsp',$id);
+        if($count!=null)
+        {
+            return Redirect::route('loaiSanPham.index')->with('fail','Xóa Loại Sản Phẩm Thất Bại!');
+        }
         $loai_id = $request->input('xoaloai');
         $loai_id = LoaiSanPham::find($loai_id);
         $loai_id->delete();

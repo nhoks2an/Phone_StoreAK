@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\MauSac;
 use App\Models\mapping;
 use App\Models\Post;
+use App\Models\SanPham;
 use Illuminate\Http\Request;
 use App\Http\Controllers\equest;
 use Illuminate\Support\Facades\Redirect;
