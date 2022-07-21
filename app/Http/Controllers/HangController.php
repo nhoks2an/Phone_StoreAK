@@ -150,13 +150,11 @@ class HangController extends Controller
      */
     public function destroy(Request $request)
     {
-        $count=LoaiSanPham::where('id_hang',$id);
-        if($count!=null)
+        $count=LoaiSanPham::where('id_hang',$request->xoahang)->count();
+        if($count>=1)
         {
             return Redirect::route('hang.index')->with('fail','Xóa Hãng Thất Bại!');
-        }
-        Hang::find($id)->delete();
-        return Redirect::route('hang.index')->with('message','Xóa Hãng Thành Công!');
+        };
         $hang_id = $request->input('xoahang');
         $hang_id = Hang::find($hang_id);
         $hang_id->delete();

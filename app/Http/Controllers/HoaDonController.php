@@ -17,22 +17,22 @@ class HoaDonController extends Controller
      */
     public function index()
     {
-        $hoaDon=HoaDon::orderBy('created_at','DESC')->where('trangthai',1)->search()->paginate(1);
+        $hoaDon=HoaDon::orderBy('created_at','DESC')->where('trangthai',1)->search()->paginate(5);
         return view('hoadon.index',['hoadon'=>$hoaDon]);
     }
     public function indexduyet()
     {
-        $hoaDon=HoaDon::orderBy('created_at','DESC')->where('trangthai',2)->search()->paginate(1);
+        $hoaDon=HoaDon::orderBy('created_at','DESC')->where('trangthai',2)->search()->paginate(5);
         return view('hoadon.index',['hoadon'=>$hoaDon]);
     }
     public function indexvanchuyen()
     {
-        $hoaDon=HoaDon::orderBy('created_at','DESC')->where('trangthai',3)->search()->paginate(1);
+        $hoaDon=HoaDon::orderBy('created_at','DESC')->where('trangthai',3)->search()->paginate(5);
         return view('hoadon.index',['hoadon'=>$hoaDon]);
     }
     public function indexgiao()
     {
-        $hoaDon=HoaDon::orderBy('created_at','DESC')->where('trangthai',4)->search()->paginate(1);
+        $hoaDon=HoaDon::orderBy('created_at','DESC')->where('trangthai',4)->search()->paginate(5);
         return view('hoadon.index',['hoadon'=>$hoaDon]);
     }
     /**

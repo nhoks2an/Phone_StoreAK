@@ -20,7 +20,7 @@ class LoaiSanPhamController extends Controller
      */
     public function index()
     {
-        $lstloai = LoaiSanPham::orderBy('created_at','DESC')->search()->paginate(3);
+        $lstloai = LoaiSanPham::orderBy('created_at','DESC')->search()->paginate(5);
         foreach($lstloai as $loaiSanPham){
          
         }
@@ -126,11 +126,6 @@ class LoaiSanPhamController extends Controller
      */
     public function destroy(Request $request)
     {
-        $count=SanPham::where('id_loadsp',$id);
-        if($count!=null)
-        {
-            return Redirect::route('loaiSanPham.index')->with('fail','Xóa Loại Sản Phẩm Thất Bại!');
-        }
         $loai_id = $request->input('xoaloai');
         $loai_id = LoaiSanPham::find($loai_id);
         $loai_id->delete();

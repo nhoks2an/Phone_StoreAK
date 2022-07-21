@@ -123,6 +123,7 @@
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
                                 <button type="submit" class="btn btn-primary">Xác nhận</button>
                                 <input type="hidden" name="xoasanphamm" id="xoasanphamm" value="{{$sanPham}}">
+
                             </div>
                         </form>
                     </div>

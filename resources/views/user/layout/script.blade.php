@@ -16,62 +16,61 @@
 <script src="path/to/jquery-ui.min.js"></script>
 <!-- danh gia -->
 <script type="text/javascript">
-        function remove_background(id_sanpham)
+function remove_background(id_sanpham) {
+    for (var count = 1; count <= 5; count++) {
+        $('#' + id_sanpham + '-' + count).css('color', '#ccc');
+    }
+}
+// hovor tang sao
+$(document).on('mouseenter', '.rating', function() {
+    var index = $(this).data("index");
+    var id_sanpham = $(this).data('id_sanpham');
+
+    remove_background(id_sanpham);
+    for (var count = 1; count <= index; count++) {
+        $('#' + id_sanpham + '-' + count).css('color', '#ffcc00');
+    }
+});
+
+// nha chuot
+$(document).on('mouseleave', '.rating', function() {
+    var index = $(this).data("index");
+    var id_sanpham = $(this).data('id_sanpham');
+    var rating = $(this).data("rating");
+    remove_background(id_sanpham);
+
+    for (var count = 1; count <= rating; count++) {
+        $('#' + id_sanpham + '-' + count).css('color', '#ffcc00');
+    }
+});
+
+// danh gia
+$(document).on('click', '.rating', function() {
+    var index = $(this).data("index");
+    var id_sanpham = $(this).data('id_sanpham');
+    var _token = $('input[name="_token"]').val();
+    var datauser = $('#datauser').val();
+    $.ajax({
+        url: "{{url('insert_rating')}}",
+        method: "POST",
+        data: {
+            index: index,
+            id_sanpham: id_sanpham,
+            _token: _token,
+            datauser: datauser
+        },
+        success: function(data)
+
         {
-            for(var count = 1; count <= 5 ; count++)    
-            {
-                $('#'+id_sanpham+'-'+count).css('color','#ccc');
+
+            if (data == 'done') {
+                alert("Bạn đã đánh giá " + index + " trên 5");
+            } else {
+                alert("Lỗi đánh giá");
             }
         }
-        // hovor tang sao
-        $(document).on('mouseenter','.rating',function(){
-            var index = $(this).data("index");
-            var id_sanpham = $(this).data('id_sanpham');
-            
-            remove_background(id_sanpham);
-            for(var count = 1; count <= index; count++)
-            {
-                $('#'+id_sanpham+'-'+count).css('color','#ffcc00');
-            }
-        });
-
-            // nha chuot
-        $(document).on('mouseleave','.rating',function(){
-            var index = $(this).data("index");
-            var id_sanpham = $(this).data('id_sanpham');
-            var rating = $(this).data("rating");
-            remove_background(id_sanpham);
-           
-            for(var count = 1; count<=rating; count++)
-            {
-                $('#'+id_sanpham+'-'+count).css('color','#ffcc00');
-            }
-        });
-
-        // danh gia
-        $(document).on('click','.rating',function(){
-            var index = $(this).data("index");
-            var id_sanpham = $(this).data('id_sanpham');
-            var _token = $('input[name="_token"]').val();
-            var datauser = $('#datauser').val();
-          
-            $.ajax({
-                url:"{{url('insert_rating')}}",
-                method :"POST",
-                data:{index:index, id_sanpham:id_sanpham, _token:_token, datauser:datauser},
-                success:function(data)
-                
-                {
-               
-                    if(data =='done')
-                    {
-                        alert("Bạn đã đánh giá "+index+" trên 5");
-                    }else{
-                        alert("Lỗi đánh giá");
-                    }
-                }
-            });
-        });
+    });
+});
 </script>
 <!-- sort -->
 <script type="text/javascript">
@@ -215,7 +214,7 @@ load_more_sanpham();
 
 function load_more_sanpham(id = '') {
     $.ajax({
-        url: '{{url('/load_more_sanpham')}}',
+        url: '{{url('/load_more_sanpham ')}}',
         method: "POST",
 
         headers: {

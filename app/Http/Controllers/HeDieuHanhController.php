@@ -104,11 +104,7 @@ class HeDieuHanhController extends Controller
      */
     public function destroy(Request $request)
     {
-        $count=SanPham::where('id_hedieuhanh',$id);
-        if($count!=null)
-        {
-            return Redirect::route('hedieuhanh.index')->with('fail','Xóa Hệ Điều Hành Thất Bại!');
-        }
+        
         $hedieuhanh_id = $request->input('xoahedieuhanh');
         $hedieuhanh_id = HeDieuHanh::find($hedieuhanh_id);
         $hedieuhanh_id->delete();

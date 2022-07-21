@@ -104,11 +104,6 @@ class ManHinhController extends Controller
      */
     public function destroy(Request $request)
     {
-        $count=SanPham::where('id_manhinh',$id);
-        if($count!=null)
-        {
-            return Redirect::route('manhinh.index')->with('fail','Xóa Màn Hình Thất Bại!');
-        }
         $manhinh_id = $request->input('xoamanhinh');
         $manhinh_id = ManHinh::find($manhinh_id);
         $manhinh_id->delete();

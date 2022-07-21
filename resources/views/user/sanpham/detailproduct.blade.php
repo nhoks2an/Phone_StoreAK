@@ -163,63 +163,7 @@
                             <input type="hidden" value="{{$datauser->id}}" name="datauser" id="datauser">
                             @endif
 
-                            <div class="thongkesao" style="margin-left: 30px;">
-                                <div class="side">
-                                    <div>5 star</div>
-                                </div>
-                                <div class="middle">
-                                    <div class="bar-container">
-                                        <div class="bar-5" style="width:{{$avg5star}}px"></div>
-                                    </div>
-                                </div>
-                                <div class="side right">
-                                    <div>{{$rating5star}}</div>
-                                </div>
-                                <div class="side">
-                                    <div>4 star</div>
-                                </div>
-                                <div class="middle">
-                                    <div class="bar-container">
-                                        <div class="bar-4" style="width:{{$avg4star}}px"></div>
-                                    </div>
-                                </div>
-                                <div class="side right">
-                                    <div>{{$rating4star}}</div>
-                                </div>
-                                <div class="side">
-                                    <div>3 star</div>
-                                </div>
-                                <div class="middle">
-                                    <div class="bar-container">
-                                        <div class="bar-3" style="width:{{$avg3star}}px"></div>
-                                    </div>
-                                </div>
-                                <div class="side right">
-                                    <div>{{$rating3star}}</div>
-                                </div>
-                                <div class="side">
-                                    <div>2 star</div>
-                                </div>
-                                <div class="middle">
-                                    <div class="bar-container">
-                                        <div class="bar-2" style="width:{{$avg2star}}px"></div>
-                                    </div>
-                                </div>
-                                <div class="side right">
-                                    <div>{{$rating3star}}</div>
-                                </div>
-                                <div class="side">
-                                    <div>1 star</div>
-                                </div>
-                                <div class="middle">
-                                    <div class="bar-container">
-                                        <div class="bar-1" style="width:{{$avg1star}}px"></div>
-                                    </div>
-                                </div>
-                                <div class="side right">
-                                    <div>{{$rating1star}}</div>
-                                </div>
-                            </div>
+                         
                     </ul>
 
                     @else
@@ -235,7 +179,7 @@
                             <input type="hidden" value="{{$datauser->id}}" name="datauser" id="datauser">
                             @endif
 
-                            <div class="thongkesao" style="margin-left: 30px;">
+                            <!-- <div class="thongkesao" style="margin-left: 30px;">
                                 <div class="side">
                                     <div>5 star</div>
                                 </div>
@@ -291,7 +235,7 @@
                                 <div class="side right">
                                     <div>{{$rating1star}}</div>
                                 </div>
-                            </div>
+                            </div> -->
                     </ul>
                     <div class="alert-warning" style="padding: 20px 0px;text-align: center;"> Vui lòng đăng nhập và mua
                         hàng để có thể đánh giá sản phẩm này!

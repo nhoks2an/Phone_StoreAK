@@ -145,9 +145,9 @@
                     </ul>
                 </li>
                 <li
-                    class="nav-item {{ (request()->is('hoadon')) || (request()->is('hoadon2')) || (request()->is('hoadon4')) || (request()->is('cthoadon')) ||(request()->is('duyethd'))  ? 'menu-open' : '' }}">
+                    class="nav-item {{ (request()->is('hoadon')) || (request()->is('hoadon3'))|| (request()->is('hoadon2')) || (request()->is('hoadon4')) || (request()->is('cthoadon')) ||(request()->is('duyethd'))  ? 'menu-open' : '' }}">
                     <a href="#"
-                        class="nav-link {{ (request()->is('hoadon')) || (request()->is('hoadon2')) || (request()->is('hoadon4')) || (request()->is('cthoadon')) ||(request()->is('duyethd')) ? 'active' : '' }}">
+                        class="nav-link {{ (request()->is('hoadon'))|| (request()->is('hoadon3')) || (request()->is('hoadon2')) || (request()->is('hoadon4')) || (request()->is('cthoadon')) ||(request()->is('duyethd')) ? 'active' : '' }}">
                         <i class="fas fa-file-invoice-dollar"></i>
                         <p>
                             Quản lý hóa đơn
@@ -168,6 +168,13 @@
                                 class="nav-link {{ (request()->is('hoadon2')) ? 'active' : ''}}">
                                 <i class="far fa-caret-square-right"></i>
                                 <p>Đã duyệt</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('hoadon.indexvanchuyen')}}"
+                                class="nav-link {{ (request()->is('hoadon3')) ? 'active' : ''}}">
+                                <i class="far fa-caret-square-right"></i>
+                                <p> Đang giao</p>
                             </a>
                         </li>
                         <li class="nav-item">

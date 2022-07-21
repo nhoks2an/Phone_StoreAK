@@ -104,12 +104,6 @@ class ROMController extends Controller
      */
     public function destroy(Request $request)
     {
-        $count=mapping::where('id_rom',$id);
-        if($count!=null)
-        {
-            return Redirect::route('ROM.index')->with('fail','Xóa ROM Thất Bại!');
-        }
-        ROM::find($id)->delete();
         $rom_id = $request->input('xoarom');
         $rom_id = ROM::find($rom_id);
         $rom_id->delete();

@@ -94,7 +94,7 @@ class SanPhamController extends Controller
     public function indexab($id)
     {
         $sanPham = $id;
-        $lsthinhanh = HinhAnh::orderBy('created_at','DESC')->where('id_sanpham','=',$id)->paginate(1);
+        $lsthinhanh = HinhAnh::orderBy('created_at','DESC')->where('id_sanpham','=',$id)->paginate(5);
       
         foreach($lsthinhanh as $hinhanh)
         {
@@ -377,11 +377,6 @@ class SanPhamController extends Controller
      */
     public function destroy(Request $request)
     {
-        $count=CTHoaDon::where('id_sanpham',$id);
-        if($count!=null)
-        {
-            return Redirect::route('sanPham.index')->with('fail','Xóa Sản Phẩm Thất Bại!');
-        }
         $sanpham_id = $request->input('xoasanphamm');
         $sanpham_id = SanPham::find($sanpham_id);
         $sanpham_id->delete();

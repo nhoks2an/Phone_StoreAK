@@ -17,7 +17,7 @@ class CTHoaDonController extends Controller
      */
     public function index()
     {
-        $cthoaDon=CTHoaDon::orderBy('created_at','DESC')->search()->paginate(1);
+        $cthoaDon=CTHoaDon::orderBy('created_at','DESC')->search()->paginate(10);
         return view('cthoadon.index',['cthoadon'=>$cthoaDon]);
     }
 

@@ -30,7 +30,7 @@ mysqli_close($conn);
             <div class="chinhsach">
                 <div class="title-tt">CHÍNH SÁCH</div>
                 @foreach($cs as $item)
-                <a ><?php echo $item['tieude'];?></a> <br>
+                <a href="#"><?php echo $item['tieude'];?></a> <br>
                 @endforeach
             </div>
         </div>

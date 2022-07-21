@@ -104,11 +104,11 @@ class CameraController extends Controller
      */
     public function destroy(Request $request)
     {
-        $count=SanPham::where('id_camera',$id);
-        if($count!=null)
+        $count=SanPham::where('id_camera',$request->xoacamera)->count();
+        if($count>=1)
         {
             return Redirect::route('camera.index')->with('fail','Xóa Camera Thất Bại!');
-        }
+        };
         $camera_id = $request->input('xoacamera');
         $camera_id = Camera::find($camera_id);
         $camera_id->delete();

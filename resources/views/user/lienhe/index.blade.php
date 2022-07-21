@@ -14,7 +14,7 @@
         <div class="center-layout">
             <div class="row">
                 <div class="contact-text col-lg-6">
-                    <div> <?php echo htmlspecialchars_decode($lh->noidung); ?></div>
+                    <div class="noidung-lienhee"> <p><?php echo htmlspecialchars_decode($lh->noidung); ?></p></div>
                 </div>
                 <form class="contact-form validation-contact col-lg-6" novalidate method="post"
                     action="{{route('lienhe.create')}}" enctype="multipart/form-data">
