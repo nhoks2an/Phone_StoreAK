@@ -254,40 +254,40 @@
                 </div>
             </div>
             <div class="card-body">
-            <div class="form-group-category row">
-                <div class="form-group col-md-6">
-                    <label class="d-block" for="regular_price">Giá max:</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control format-price regular_price text-sm" name="giamax"
-                            id="regular_price" placeholder="Giá max" value="{{$sanPham->gimax}}">
-                        <div class="input-group-append">
-                            <div class="input-group-text"><strong> VNĐ</strong></div>
+                <div class="form-group-category row">
+                    <div class="form-group col-md-6">
+                        <label class="d-block" for="regular_price">Giá max:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control format-price regular_price text-sm" name="giamax"
+                                id="regular_price" placeholder="Giá max" value="{{$sanPham->giamax}}">
+                            <div class="input-group-append">
+                                <div class="input-group-text"><strong> VNĐ</strong></div>
+                            </div>
                         </div>
+                        @if($errors->has('giamin'))
+                        <div class="alert alert-danger" style="margin-top:10px;">
+                            {{$errors->first('giamin')}}
+                        </div>
+                        @endif
                     </div>
-                    @if($errors->has('giamin'))
-                    <div class="alert alert-danger" style="margin-top:10px;">
-                        {{$errors->first('giamin')}}
-                    </div>
-                    @endif
-                </div>
 
-                <div class="form-group col-md-6">
-                    <label class="d-block" for="sale_price">Giá min:</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control format-price sale_price text-sm" name="giamin"
-                            id="sale_price" placeholder="Giá min" value="{{$sanPham->giamin}}">
-                        <div class="input-group-append">
-                            <div class="input-group-text"><strong> VNĐ</strong></div>
+                    <div class="form-group col-md-6">
+                        <label class="d-block" for="sale_price">Giá min:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control format-price sale_price text-sm" name="giamin"
+                                id="sale_price" placeholder="Giá min" value="{{$sanPham->giamin}}">
+                            <div class="input-group-append">
+                                <div class="input-group-text"><strong> VNĐ</strong></div>
+                            </div>
                         </div>
+                        @if($errors->has('giamax'))
+                        <div class="alert alert-danger" style="margin-top:10px;">
+                            {{$errors->first('giamax')}}
+                        </div>
+                        @endif
                     </div>
-                    @if($errors->has('giamax'))
-                    <div class="alert alert-danger" style="margin-top:10px;">
-                        {{$errors->first('giamax')}}
-                    </div>
-                    @endif
                 </div>
             </div>
-        </div>
         </div>
     </div>
 </form>

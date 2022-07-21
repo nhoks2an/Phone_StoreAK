@@ -21,6 +21,10 @@ class CartController extends Controller
     }
     public function cart(Request $request,SanPham $sanPham){
         $cart = Cart::where('id_map',$request->cart_idmap)->where('id_sp',$sanPham->id)->where('id_kh',$request->id_user)->first();
+        if($request->cart_idmap==null)
+        {
+            return back()->with('fail','Chưa chọn loại sản phẩm!');
+        }
         if($request->id_user!=null)
         {
             if(!$cart)
@@ -35,9 +39,9 @@ class CartController extends Controller
             $cart->soluong+=$request->soluong;
             $cart->save();
         }
-        return back();
+        return back()->with('success','Thêm vào giỏ hàng thành công!');
         }else{
-            return Redirect::route('user.login');
+            return Redirect::route('user.login')->with('fail','Chưa đăng nhập!');
         }
     }
     public function updateminus(Request $request){

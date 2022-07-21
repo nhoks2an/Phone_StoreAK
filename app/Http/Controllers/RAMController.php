@@ -98,6 +98,11 @@ class RAMController extends Controller
      */
     public function destroy($id)
     {   
+        $count=mapping::where('id_ram',$id);
+        if($count!=null)
+        {
+            return Redirect::route('RAM.index')->with('fail','Xóa RAM Thất Bại!');
+        }
         RAM::find($id)->delete();
         return Redirect::route('RAM.index')->with('message','Xóa RAM Thành Công');
     }

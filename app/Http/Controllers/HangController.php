@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hang;
+use App\Models\LoaiSanPham;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\equest;
@@ -149,7 +150,12 @@ class HangController extends Controller
      */
     public function destroy($id)
     {
+        $count=LoaiSanPham::where('id_hang',$id);
+        if($count!=null)
+        {
+            return Redirect::route('hang.index')->with('fail','Xóa Hãng Thất Bại!');
+        }
         Hang::find($id)->delete();
-        return Redirect::route('hang.index')->with('message','Xóa Hãng Thành Công');
+        return Redirect::route('hang.index')->with('message','Xóa Hãng Thành Công!');
     }
 }

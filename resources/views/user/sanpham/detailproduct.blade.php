@@ -39,13 +39,15 @@
                                 <strong class="label">Dung lượng và màu sắc</strong>
                                 <div class="options" id="colorOptions" style="margin-top: 10px;">
                                     @foreach($mapping as $mp)
-                                    <div class="item selected dungluong">
+                                    @if($mp->soluong>'0') <div class="item selected dungluong">
                                         <input type="radio" id="" name="cart_idmap" value="{{$mp->id}}" checked>
                                         <strong>{{$mp->mausac->tenmau}}</strong>/<strong>{{$mp->ram->soram}}G</strong>
                                         <div>
                                             <strong class="giaban">{{$mp->giamoi}}₫</strong>
                                         </div>
+
                                     </div>
+                                    @endif
                                     @endforeach
                                 </div>
                             </div>
@@ -61,10 +63,24 @@
                                 <input type="hidden" id="" class="id_user" name="id_user" value="{{$datauser->id}}">
                                 @endif
 
-                                <button class="btn-giohang add-to-cart" tyle="submit" name="" type="submit">
+                                <button class="btn-giohang" tyle="submit" name="" type="submit">
                                     <span>Thêm vào giỏ hàng</span>
                                 </button>
+                            </div>
 
+                            <div class="thong-bao-cart">
+                                @if(session('fail'))
+                                <span class="alert alert-danger">
+                                    <strong>{{session('fail')}}</strong>
+                                </span>
+                                @endif
+                            </div>
+                            <div class="thong-bao-cart">
+                                @if(session('success'))
+                                <span class="alert alert-success">
+                                    <strong>{{session('success')}}</strong>
+                                </span>
+                                @endif
                             </div>
                         </ul>
                     </div>
@@ -135,17 +151,12 @@
                 <div class="tab-pane fade" id="raiting" role="tabpanel" aria-labelledby="raiting-tab">
                     @if($checkrating === 1)
                     <ul class="" title="Average-Rating" style="display: flex;">
-                        @for($count = 1; $count <=5; $count ++) 
-                            @php 
-                                if($count <=$rating) { $color='color:#ffcc00;' ; }
-                                else{ $color='color:#ccc;' ; }
-                            @endphp 
-                            <li title=" Đánh giá sao"
-                                id="{{$sanPham->id}}-{{$count}}" 
-                                data-index="{{$count}}" 
-                                data-id_sanpham="{{$sanPham->id}}"
-                                data-rating="{{$rating}}" class="rating"
-                                style="cursor:pointer; {{$color}}; font-size:50px;">&#9733;
+                        @for($count = 1; $count <=5; $count ++) @php if($count <=$rating) { $color='color:#ffcc00;' ; }
+                            else{ $color='color:#ccc;' ; } @endphp <li title=" Đánh giá sao"
+                            id="{{$sanPham->id}}-{{$count}}" data-index="{{$count}}" data-id_sanpham="{{$sanPham->id}}"
+                            data-rating="{{$rating}}" class="rating"
+                            style="cursor:pointer; {{$color}}; font-size:50px;">
+                            &#9733;
                             </li>
                             @endfor
                             @if($datauser != null)

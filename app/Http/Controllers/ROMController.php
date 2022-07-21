@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ROM;
+use App\Models\mapping;
 use Illuminate\Http\Request;
 use App\Http\Controllers\equest;
 use Illuminate\Support\Facades\Redirect;
@@ -103,6 +104,11 @@ class ROMController extends Controller
      */
     public function destroy($id)
     {
+        $count=mapping::where('id_rom',$id);
+        if($count!=null)
+        {
+            return Redirect::route('ROM.index')->with('fail','Xóa ROM Thất Bại!');
+        }
         ROM::find($id)->delete();
         return Redirect::route('ROM.index')->with('message','Xóa ROM Thành Công');
     }
