@@ -4,9 +4,6 @@
 
 <div class="taikhoan">
     <div class="btn-themmoi">
-        <a class="btn btn-sm bg-gradient-primary text-white" href="index.php?com=product&amp;act=add&amp;type=san-pham"
-            title="Thêm mới"><i class="fas fa-plus mr-2"></i>Thêm mới</a>
-
        <!-- Topbar Search -->
        <div class="form-inline form-search d-inline-block align-middle ml-3">
             <form action="">
