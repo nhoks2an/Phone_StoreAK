@@ -247,30 +247,30 @@
                             <div class="form-group col-md-6">
                                 <label class="d-block" for="regular_price">Giá bán:</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control format-price regular_price text-sm" name="giacu" id="regular_price" placeholder="Giá bán" >
+                                    <input type="text" class="form-control format-price regular_price text-sm" name="giacu" id="regular_price" placeholder="Giá bán" value="{{old('giacu')}}">
                                     <div class="input-group-append">
                                         <div class="input-group-text"><strong> VNĐ</strong></div>
                                     </div>
                                 </div>
                                 @if($errors->has('giacu'))
-                                    <div class="alert alert-danger" style="margin-top:10px;">
-                                        {{$errors->first('giacu')}}
-                                    </div>
-                                    @endif
+                                <div class="alert alert-danger" style="margin-top:10px;">
+                                    {{$errors->first('giacu')}}
+                                </div>
+                                @endif
                             </div>
                             <div class="form-group col-md-6">
                                 <label class="d-block" for="sale_price">Giá mới:</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control format-price sale_price text-sm" name="giamoi" id="sale_price" placeholder="Giá mới" >
+                                    <input type="text" class="form-control format-price sale_price text-sm" name="giamoi" id="sale_price" placeholder="Giá mới" value="{{old('giamoi')}}">
                                     <div class="input-group-append">
                                         <div class="input-group-text"><strong> VNĐ</strong></div>
                                     </div>
                                 </div>
                                 @if($errors->has('giamoi'))
-                                    <div class="alert alert-danger" style="margin-top:10px;">
-                                        {{$errors->first('giamoi')}}
-                                    </div>
-                                    @endif
+                                <div class="alert alert-danger" style="margin-top:10px;">
+                                    {{$errors->first('giamoi')}}
+                                </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -278,7 +278,8 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
                         <button type="submit" name="registerbtn" class="btn btn-primary">Lưu</button>
                         <input type="hidden" name="tensanpham" id="tensanpham" value="{{$sanPham}}">
-                    
+                        <input type="hidden" name="tensanpham1" id="tensanpham1" value="{{$sanPham}}">
+                      
                     </div>
                 </form>
             </div>
@@ -304,6 +305,8 @@
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
                             <button type="submit" class="btn btn-primary">Xác nhận</button>
                             <input type="hidden"  name="xoasanpham" id="xoasanpham" value="{{$sanPham}}">
+                            <input type="hidden"  name="xoasanpham1" id="xoasanpham1" value="{{$sanPham}}">
+                          
                           
                         </div>
                     </form>

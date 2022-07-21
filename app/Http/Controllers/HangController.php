@@ -155,8 +155,6 @@ class HangController extends Controller
         {
             return Redirect::route('hang.index')->with('fail','Xóa Hãng Thất Bại!');
         }
-        Hang::find($id)->delete();
-        return Redirect::route('hang.index')->with('message','Xóa Hãng Thành Công!');
         $hang_id = $request->input('xoahang');
         $hang_id = Hang::find($hang_id);
         $hang_id->delete();
