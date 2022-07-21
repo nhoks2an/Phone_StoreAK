@@ -103,6 +103,11 @@ class HieuNangPinController extends Controller
      */
     public function destroy(Request $request)
     {
+        $count=SanPham::where('id_hieunangpin',$id);
+        if($count!=null)
+        {
+            return Redirect::route('hieunangpin.index')->with('fail','Xóa Hiệu Năng Pin Thất Bại!');
+        }
         $hieunangpin_id = $request->input('xoahieunangpin');
         $hieunangpin_id = HieuNangPin::find($hieunangpin_id);
         $hieunangpin_id->delete();

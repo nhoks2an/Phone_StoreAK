@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\RAM;
+use App\Models\mapping;
 use Illuminate\Http\Request;
 use App\Http\Controllers\StoreRAMRequest;
 use Illuminate\Support\Facades\Redirect;
