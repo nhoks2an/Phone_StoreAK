@@ -145,6 +145,13 @@
     </span>
     @endif
 </div>
+<div class="thong-bao">
+    @if(session('fail'))
+    <span class="alert alert-danger">
+        <strong>{{session('fail')}}</strong>
+    </span>
+    @endif
+</div>
 @section('scripts')
 <script>
     $(document).on('click', '.btnxoa', function() {

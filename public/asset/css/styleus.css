@@ -2335,7 +2335,7 @@ table.greyGridTable thead th {
 .bar-3 { height: 18px; background-color: #00bcd4;}
 .bar-2 { height: 18px; background-color: #ff9800;}
 .bar-1 {height: 18px; background-color: #f44336;}
-
+.diachi p{font-family: 'RobotoRegular';}
 /* Responsive layout - make the columns stack on top of each other instead of next to each other */
 @media (max-width: 400px) {
   .side, .middle {

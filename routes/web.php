@@ -129,6 +129,7 @@ Route::post('/stock/add', [SanPhamController::class, 'storemp'])->name('sanPham.
 Route::post('/abum/add', [SanPhamController::class, 'storeab'])->name('sanPham.storeab');
 Route::put('/stock/update', [SanPhamController::class, 'updatemp'])->name('sanPham.updatemp');
 Route::delete('/stock/delete', [SanPhamController::class, 'destroymp'])->name('sanPham.destroymp');
+Route::delete('/album/delete', [SanPhamController::class, 'destroyab'])->name('sanPham.destroyab');
 Route::delete('/hang/delete', [HangController::class, 'destroy'])->name('hang.destroy');
 Route::delete('/sanpham/delete', [SanPhamController::class, 'destroy'])->name('sanPham.destroy');
 Route::delete('/loai/delete', [LoaiSanPhamController::class, 'destroy'])->name('loaiSanPham.destroy');

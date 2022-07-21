@@ -4,8 +4,7 @@
 
 <div class="taikhoan">
     <div class="btn-themmoi">
-        <a class="btn btn-sm bg-gradient-primary text-white" href="index.php?com=product&amp;act=add&amp;type=san-pham"
-            title="Thêm mới"><i class="fas fa-plus mr-2"></i>Thêm mới</a>
+      
             <a class="btn btn-sm bg-gradient-secondary" id="delete-all" href="{{route('hoadon23.index')}}"
         title=""><i class="fas fa-redo mr-2"></i>Quay lại</a>
         <!-- Topbar Search -->
