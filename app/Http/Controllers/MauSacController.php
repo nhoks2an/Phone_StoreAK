@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\MauSac;
+use App\Models\mapping;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\equest;
@@ -103,10 +104,15 @@ class MauSacController extends Controller
      */
     public function destroy(Request $request)
     {
+        $count=mapping::where('id_mau',$id);
+        if($count!=null)
+        {
+            return Redirect::route('mausac.index')->with('fail','Xóa Màu Sắc Thất Bại!');
+        }
+        MauSac::find($id)->delete();
         $mau_id = $request->input('xoamau');
         $mau_id = MauSac::find($mau_id);
         $mau_id->delete();
-      
         return Redirect::route('mausac.index')->with('message','Xóa Màu Sắc Thành Công');
        
     }

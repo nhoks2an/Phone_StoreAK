@@ -5,7 +5,7 @@
     <div class="btn-themmoi">
         <a class="btn btn-sm bg-gradient-primary text-white" href="{{route('sanPham.create')}}"><i
                 class="fas fa-plus mr-2"></i>Thêm mới</a>
-       
+
         <a class="btn btn-sm bg-gradient-secondary" id="delete-all" href="{{route('sanPham.index')}}" title=""><i
                 class="fas fa-redo mr-2"></i>Quay lại</a>
         <!-- Topbar Search -->
@@ -24,7 +24,7 @@
         </div>
     </div>
     <div class="card-footer form-group-category text-sm bg-light row">
-     
+
     </div>
     <div class="card card-primary card-outline text-sm mb-0">
         <div class="card-header">
@@ -51,7 +51,6 @@
                 @foreach($lstsanpham as $sanPham)
                 <tbody>
                     <tr>
-                      
                         <td class="align-middle text-center">
                             <a><img class="rounded img-preview" src="{{$sanPham->hinhanh}}"> </a></a>
                         </td>
@@ -103,36 +102,36 @@
                 </tbody>
                 @endforeach
             </table>
-                <div class="modal fade" id="SanPhamModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <form method="post" action="{{route('sanPham.destroy')}}">
-                                @csrf
-                                @method('DELETE')
-                                <div class="modal-body">
-                                    Bạn có chắc chắn muốn xóa ?
-                                </div>
-                             
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
-                                    <button type="submit" class="btn btn-primary">Xác nhận</button>
-                                    <input type="hidden" name="xoasanphamm" id="xoasanphamm" value="{{$sanPham}}">
-                                </div>
-                            </form>
+            <div class="modal fade" id="SanPhamModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
+                        <form method="post" action="{{route('sanPham.destroy')}}">
+                            @csrf
+                            @method('DELETE')
+                            <div class="modal-body">
+                                Bạn có chắc chắn muốn xóa ?
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+                                <button type="submit" class="btn btn-primary">Xác nhận</button>
+                                <input type="hidden" name="xoasanphamm" id="xoasanphamm" value="{{$sanPham}}">
+                            </div>
+                        </form>
                     </div>
                 </div>
+            </div>
         </div>
         @endif
-        </div>
     </div>
+</div>
 <hr>
 <!-- phan trang -->
 <div class="search">
@@ -154,13 +153,13 @@
 </div>
 @section('scripts')
 <script>
-    $(document).on('click', '.btnxoa', function() {
-        $('#SanPhamModal').modal({
-            show: true
-        });
-        var sanpham_id = $(this).val();
-        $('#xoasanphamm').val(sanpham_id);
+$(document).on('click', '.btnxoa', function() {
+    $('#SanPhamModal').modal({
+        show: true
     });
+    var sanpham_id = $(this).val();
+    $('#xoasanphamm').val(sanpham_id);
+});
 </script>
 @endsection
 
