@@ -390,7 +390,7 @@
                 sale_price = parseInt(sale_price);
 
                 if (sale_price < regular_price) {
-                    discount = 100 - ((sale_price * 100) / regular_price);
+                    discount = 100 - ((sale_price * 100) / regulara_price);
                     discount = roundNumber(discount, 0);
                 } else {
                     $('.regular_price, .sale_price').val(0);
