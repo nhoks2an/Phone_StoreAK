@@ -101,9 +101,11 @@ class CameraController extends Controller
      * @param  \App\Models\Camera  $camera
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        Camera::find($id)->delete();
+        $camera_id = $request->input('xoacamera');
+        $camera_id = Camera::find($camera_id);
+        $camera_id->delete();
         return Redirect::route('camera.index');
     }
 }

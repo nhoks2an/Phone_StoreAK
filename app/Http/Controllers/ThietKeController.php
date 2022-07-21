@@ -101,9 +101,12 @@ class ThietKeController extends Controller
      * @param  \App\Models\ThietKe  $thietKe
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        ThietKe::find($id)->delete();
+        $thietke_id = $request->input('xoathietke');
+        $thietke_id = ThietKe::find($thietke_id);
+        $thietke_id->delete();
+    
         return Redirect::route('thietke.index')->with('message','Xóa Thiết Kế Thành Công');
     }
 }

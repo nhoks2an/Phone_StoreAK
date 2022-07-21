@@ -75,7 +75,7 @@
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>  
-                        <form method="post" action="{{route('hedieuhanh.destroy',$hedieuhanh->id)}}">
+                        <form method="post" action="{{route('hedieuhanh.destroy')}}">
                             @csrf
                             @method('DELETE')
                             <div class="modal-body">
@@ -85,6 +85,7 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
                                 <button type="submit" class="btn btn-primary">Xác nhận</button>
+                                <input type="hidden"  name="xoahedieuhanh" id="xoahedieuhanh" value="{{$hedieuhanh}}">
                             </div>
                         </form>
                     </div>
@@ -114,7 +115,7 @@
             show: true
         });
         var hedieuhanh_id = $(this).val();
-        $('#hedieuhanh').val(hedieuhanh_id);
+        $('#xoahedieuhanh').val(hedieuhanh_id);
         
 	});
 </script>

@@ -73,7 +73,6 @@
                     @endforeach
                 </table>
                 <!-- modal -->
-               
                 <div class="modal fade" id="HangModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -84,7 +83,7 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form method="post" action="{{route('hang.destroy',$hang->id)}}">
+                            <form method="post" action="{{route('hang.destroy')}}">
                                 @csrf
                                 @method('DELETE')
                                 <div class="modal-body">
@@ -94,6 +93,7 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
                                     <button type="submit" class="btn btn-primary">Xác nhận</button>
+                                    <input type="hidden"  name="xoahang" id="xoahang" value="{{$hang}}">
                                 </div>
                             </form>
                         </div>
@@ -125,7 +125,7 @@ $(document).on('click', '.btnxoa', function() {
         show: true
     });
     var hang_id = $(this).val();
-    $('#hang').val(hang_id);
+    $('#xoahang').val(hang_id);
 
 });
 </script>

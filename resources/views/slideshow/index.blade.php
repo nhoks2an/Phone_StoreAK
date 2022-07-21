@@ -68,16 +68,17 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form method="post" action="{{route('slideShow.destroy',$slide->id)}}">
+                        <form method="post" action="{{route('slideShow.destroy')}}">
                             @csrf
                             @method('DELETE')
                             <div class="modal-body">
                                 Bạn có chắc chắn muốn xóa ?
                             </div>
-                            <input type="hidden" name="slide" id="slide">
+                         
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
                                 <button type="submit" class="btn btn-primary">Xác nhận</button>
+                                <input type="hidden"  name="xoaslideshow" id="xoaslideshow" value="{{$slide}}">
                             </div>
                         </form>
                     </div>
@@ -106,7 +107,7 @@ $(document).on('click', '.btnxoa', function() {
         show: true
     });
     var slide_id = $(this).val();
-    $('#slide').val(slide_id);
+    $('#xoaslideshow').val(slide_id);
 
 });
 </script>

@@ -18,7 +18,7 @@ class RAMController extends Controller
      */
     public function index()
     {
-        $lstram = RAM::orderBy('created_at','DESC')->search()->paginate(10);
+        $lstram = RAM::orderBy('created_at','DESC')->search()->paginate(5);
         return view('ram.index',['lstram'=>$lstram]);
     }
     /**
@@ -96,9 +96,11 @@ class RAMController extends Controller
      * @param  \App\Models\RAM  $rAM
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {   
-        RAM::find($id)->delete();
+        $ram_id = $request->input('xoaram');
+        $ram_id = RAM::find($ram_id);
+        $ram_id->delete();
         return Redirect::route('RAM.index')->with('message','Xóa RAM Thành Công');
     }
 

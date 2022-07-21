@@ -101,9 +101,11 @@ class HieuNangPinController extends Controller
      * @param  \App\Models\HieuNangPin  $hieuNangPin
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        HieuNangPin::find($id)->delete();
+        $hieunangpin_id = $request->input('xoahieunangpin');
+        $hieunangpin_id = HieuNangPin::find($hieunangpin_id);
+        $hieunangpin_id->delete();
         return Redirect::route('hieunangpin.index')->with('message','Xóa Hiệu Năng & Pin Thành Công');
     }
 }

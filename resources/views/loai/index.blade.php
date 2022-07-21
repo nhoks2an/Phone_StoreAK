@@ -79,16 +79,17 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form method="post" action="{{route('loaiSanPham.destroy',$loaiSanPham->id)}}">
+                        <form method="post" action="{{route('loaiSanPham.destroy')}}">
                             @csrf
                             @method('DELETE')
                             <div class="modal-body">
                                 Bạn có chắc chắn muốn xóa ?
                             </div>
-                            <input type="hidden" name="tenloaisp" id="tenloaisp">
+                          
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
                                 <button type="submit" class="btn btn-primary">Xác nhận</button>
+                                <input type="hidden"  name="xoaloai" id="xoaloai" value="{{$loaiSanPham}}">
                             </div>
                         </form>
                     </div>
@@ -120,7 +121,7 @@ $(document).on('click', '.btnxoa', function() {
         show: true
     });
     var loai_id = $(this).val();
-    $('#tenloaisp').val(loai_id);
+    $('#xoaloai').val(loai_id);
 
 });
 </script>

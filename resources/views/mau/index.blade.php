@@ -79,10 +79,11 @@
                             <div class="modal-body">
                                 Bạn có chắc chắn muốn xóa ?
                             </div>
-                            <input type="hidden" name="mau" id="mau">
+                        
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
                                 <button type="submit" class="btn btn-primary">Xác nhận</button>
+                                <input type="hidden"  name="xoamau" id="xoamau" value="{{$mausac}}">
                             </div>
                         </form>
                     </div>
@@ -111,7 +112,7 @@ $(document).on('click', '.btnxoa', function() {
         show: true
     });
     var mau_id = $(this).val();
-    $('#mau').val(mau_id);
+    $('#xoamau').val(mau_id);
 
 });
 </script>

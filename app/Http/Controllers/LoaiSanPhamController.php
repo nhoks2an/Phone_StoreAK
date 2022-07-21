@@ -123,9 +123,12 @@ class LoaiSanPhamController extends Controller
      * @param  \App\Models\LoaiSanPham  $loaiSanPham
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        LoaiSanPham::find($id)->delete();
+
+        $loai_id = $request->input('xoaloai');
+        $loai_id = LoaiSanPham::find($loai_id);
+        $loai_id->delete();
         return Redirect::route('loaiSanPham.index')->with('message','Xóa Loại Sản Phẩm Thành Công');
     }
 }

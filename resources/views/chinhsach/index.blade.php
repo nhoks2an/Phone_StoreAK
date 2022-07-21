@@ -90,16 +90,17 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="post" action="{{route('chinhSach.destroy',$cs->id)}}">
+                <form method="post" action="{{route('chinhSach.destroy')}}">
                     @csrf
                     @method('DELETE')
                     <div class="modal-body">
                         Bạn có chắc chắn muốn xóa ?
                     </div>
-                    <input type="hidden" name="chinhsach" id="chinhsach">
+                 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
                         <button type="submit" class="btn btn-primary">Xác nhận</button>
+                        <input type="hidden"  name="xoachinhsach" id="xoachinhsach" value="{{$cs}}">
                     </div>
                 </form>
             </div>
@@ -126,7 +127,7 @@ $(document).on('click', '.btnxoa', function() {
         show: true
     });
     var chinhsach_id = $(this).val();
-    $('#chinhsach').val(chinhsach_id);
+    $('#xoachinhsach').val(chinhsach_id);
 
 });
 </script>

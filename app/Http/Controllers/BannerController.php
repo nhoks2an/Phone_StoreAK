@@ -119,9 +119,11 @@ class BannerController extends Controller
      * @param  \App\Models\Banner  $banner
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        Banner::find($id)->delete();
+        $banner_id = $request->input('xoabanner');
+        $banner_id = Banner::find($banner_id);
+        $banner_id->delete();
         return Redirect::route('banner.index')->with('message','Xóa Banner Thành Công');
     }
 }

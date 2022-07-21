@@ -27,7 +27,7 @@ class HangController extends Controller
      */
     public function index()
     {
-        $lsthang = hang::orderBy('created_at','DESC')->search()->paginate(3);
+        $lsthang = hang::orderBy('created_at','DESC')->search()->paginate(5);
         foreach($lsthang as $hang)
         {
             $this->fixImage($hang);
@@ -147,9 +147,11 @@ class HangController extends Controller
      * @param  \App\Models\Hang  $hang
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        Hang::find($id)->delete();
+        $hang_id = $request->input('xoahang');
+        $hang_id = Hang::find($hang_id);
+        $hang_id->delete();
         return Redirect::route('hang.index')->with('message','Xóa Hãng Thành Công');
     }
 }

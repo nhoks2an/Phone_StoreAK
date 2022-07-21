@@ -138,9 +138,12 @@ class SlideShowController extends Controller
      * @param  \App\Models\SlideShow  $slideShow
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        SlideShow::find($id)->delete();
+        $slideshow_id = $request->input('xoaslideshow');
+        $slideshow_id = SlideShow::find($slideshow_id);
+        $slideshow_id->delete();
+    
         return Redirect::route('slideShow.index')->with('message','Xóa Slideshow Thành Công');
     }
 }

@@ -151,9 +151,12 @@ class TinTucController extends Controller
      * @param  \App\Models\TinTuc  $tinTuc
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        TinTuc::find($id)->delete();
+        $tintuc_id = $request->input('xoatintuc');
+        $tintuc_id = TinTuc::find($tintuc_id);
+        $tintuc_id->delete();
+     
         return Redirect::route('tinTuc.index')->with('message','Xóa Tin Tức Thành Công');
     }
 }
