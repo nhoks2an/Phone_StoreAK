@@ -64,7 +64,7 @@
                 @endforeach
                 </tbody>
             </table>
-            @foreach($lstcamera as $camera)
+       
                <!-- modal -->
             <div class="modal fade" id="CameraModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -75,22 +75,23 @@
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form method="post" action="{{route('camera.destroy',$camera->id)}}">
+                    <form method="post" action="{{route('camera.destroy')}}">
                         @csrf
                         @method('DELETE')
                         <div class="modal-body">
                             Bạn có chắc chắn muốn xóa ?
                         </div>
-                        <input type="hidden"  name="camera" id="camera">
+                    
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
                             <button type="submit" class="btn btn-primary">Xác nhận</button>
+                            <input type="hidden"  name="xoacamera" id="xoacamera" value="{{$camera}}">
                         </div>
                     </form>
                     </div>
                 </div>
             </div>
-            @endforeach
+       
         </div>
         @endif
    </div>
@@ -114,7 +115,7 @@
             show: true
         });
         var camera_id = $(this).val();
-        $('#camera').val(camera_id);
+        $('#xoacamera').val(camera_id);
         
 	});
 </script>

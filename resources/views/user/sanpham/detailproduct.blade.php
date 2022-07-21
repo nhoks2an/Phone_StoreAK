@@ -150,13 +150,13 @@
                 </div>
                 <div class="tab-pane fade" id="raiting" role="tabpanel" aria-labelledby="raiting-tab">
                     @if($checkrating === 1)
+
                     <ul class="" title="Average-Rating" style="display: flex;">
                         @for($count = 1; $count <=5; $count ++) @php if($count <=$rating) { $color='color:#ffcc00;' ; }
                             else{ $color='color:#ccc;' ; } @endphp <li title=" Đánh giá sao"
                             id="{{$sanPham->id}}-{{$count}}" data-index="{{$count}}" data-id_sanpham="{{$sanPham->id}}"
                             data-rating="{{$rating}}" class="rating"
-                            style="cursor:pointer; {{$color}}; font-size:50px;">
-                            &#9733;
+                            style="cursor:pointer; {{$color}}; font-size:50px;">&#9733;
                             </li>
                             @endfor
                             @if($datauser != null)
@@ -234,6 +234,7 @@
                             @if($datauser != null)
                             <input type="hidden" value="{{$datauser->id}}" name="datauser" id="datauser">
                             @endif
+
                             <div class="thongkesao" style="margin-left: 30px;">
                                 <div class="side">
                                     <div>5 star</div>
@@ -291,10 +292,10 @@
                                     <div>{{$rating1star}}</div>
                                 </div>
                             </div>
-
                     </ul>
                     <div class="alert-warning" style="padding: 20px 0px;text-align: center;"> Vui lòng đăng nhập và mua
-                        hàng để có thể đánh giá sản phẩm này!</div>
+                        hàng để có thể đánh giá sản phẩm này!
+                    </div>
                     @endif
                 </div>
             </div>

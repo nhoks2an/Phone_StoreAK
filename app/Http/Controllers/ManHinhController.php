@@ -101,9 +101,11 @@ class ManHinhController extends Controller
      * @param  \App\Models\ManHinh  $manHinh
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        ManHinh::find($id)->delete();
+        $manhinh_id = $request->input('xoamanhinh');
+        $manhinh_id = ManHinh::find($manhinh_id);
+        $manhinh_id->delete();
         return Redirect::route('manhinh.index')->with('message','Xóa Màn Hình Thành Công');
     }
 }

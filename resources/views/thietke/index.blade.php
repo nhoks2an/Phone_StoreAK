@@ -61,7 +61,7 @@
                 </tbody>
                 @endforeach
             </table>
-            @foreach($lstthietke as $thietke)
+      
             <!-- modal -->
             <div class="modal fade" id="ThietKeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -72,22 +72,23 @@
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>  
-                        <form method="post" action="{{route('thietke.destroy',$thietke->id)}}">
+                        <form method="post" action="{{route('thietke.destroy')}}">
                             @csrf
                             @method('DELETE')
                             <div class="modal-body">
                                 Bạn có chắc chắn muốn xóa ?
                             </div>
-                            <input type="hidden"  name="thietke" id="thietke">
+                         
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
                                 <button type="submit" class="btn btn-primary">Xác nhận</button>
+                                <input type="hidden"  name="xoathietke" id="xoathietke" value="{{$thietke}}">
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            @endforeach
+         
         </div>
         @endif
    </div>
@@ -111,7 +112,7 @@
             show: true
         });
         var thietke_id = $(this).val();
-        $('#thietke').val(thietke_id);
+        $('#xoathietke').val(thietke_id);
         
 	});
 </script>

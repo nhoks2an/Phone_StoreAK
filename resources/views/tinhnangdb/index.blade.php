@@ -62,7 +62,7 @@
                 </tbody>
                 @endforeach
             </table>
-            @foreach($lsttinhnangdb as $tinhnangdb)
+        
             <!-- modal -->
             <div class="modal fade" id="TinhNangModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -73,7 +73,7 @@
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>  
-                        <form method="post" action="{{route('tinhnangdb.destroy',$tinhnangdb->id)}}">
+                        <form method="post" action="{{route('tinhnangdb.destroy')}}">
                             @csrf
                             @method('DELETE')
                             <div class="modal-body">
@@ -83,12 +83,13 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
                                 <button type="submit" class="btn btn-primary">Xác nhận</button>
+                                <input type="hidden"  name="xoatinhnang" id="xoatinhnang" value="{{$tinhnangdb}}">
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            @endforeach
+        
         </div>
         @endif
    </div>
@@ -112,7 +113,7 @@
             show: true
         });
         var tinhnang_id = $(this).val();
-        $('#tinhnang').val(tinhnang_id);
+        $('#xoatinhnang').val(tinhnang_id);
         
 	});
 </script>

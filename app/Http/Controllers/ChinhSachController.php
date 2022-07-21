@@ -122,9 +122,12 @@ class ChinhSachController extends Controller
      * @param  \App\Models\ChinhSach  $chinhSach
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        ChinhSach::find($id)->delete();
+        $chinhsach_id = $request->input('xoachinhsach');
+        $chinhsach_id = ChinhSach::find($chinhsach_id);
+        $chinhsach_id->delete();
+     
         return Redirect::route('chinhSach.index')->with('message','Xóa Chính Sách Thành Công');
     }
 }

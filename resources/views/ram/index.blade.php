@@ -62,7 +62,7 @@
                     @endforeach
                 </tbody>
             </table>
-            @foreach($lstram as $RAM)
+        
             <!-- modal -->
             <div class="modal fade" id="RamModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
@@ -74,7 +74,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form method="post" action="{{route('RAM.destroy',$RAM->id)}}">
+                        <form method="post" action="{{route('RAM.destroy')}}">
                             @csrf
                             @method('DELETE')
                             <div class="modal-body">
@@ -84,12 +84,13 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
                                 <button type="submit" class="btn btn-primary">Xác nhận</button>
+                                <input type="hidden"  name="xoaram" id="xoaram" value="{{$RAM}}">
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            @endforeach
+        
         </div>
         @endif
     </div>
@@ -113,7 +114,7 @@ $(document).on('click', '.btnxoa', function() {
         show: true
     });
     var ram_id = $(this).val();
-    $('#ram').val(ram_id);
+    $('#xoaram').val(ram_id);
 
 });
 </script>

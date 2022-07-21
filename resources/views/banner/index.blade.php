@@ -37,7 +37,7 @@
                     @endforeach
                 </tbody>
             </table>
-            @foreach($lstbanner as $babner)
+           
             <!-- modal -->
             <div class="modal fade" id="bannerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
@@ -49,22 +49,23 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form method="post" action="{{route('banner.destroy',$banner->id)}}">
+                        <form method="post" action="{{route('banner.destroy')}}">
                             @csrf
                             @method('DELETE')
                             <div class="modal-body">
                                 Bạn có chắc chắn muốn xóa ?
                             </div>
-                            <input type="hidden" name="bn" id="bn">
+                         
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
                                 <button type="submit" class="btn btn-primary">Xác nhận</button>
+                                <input type="hidden"  name="xoabanner" id="xoabanner" value="{{$banner}}">
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            @endforeach
+       
         </div>
     </div>
 </section>
@@ -87,7 +88,7 @@ $(document).on('click', '.btnxoa', function() {
         show: true
     });
     var bn_id = $(this).val();
-    $('#bn').val(bn_id);
+    $('#xoabanner').val(bn_id);
 
 });
 </script>

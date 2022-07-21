@@ -277,8 +277,8 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
                         <button type="submit" name="registerbtn" class="btn btn-primary">Lưu</button>
-                        <input type="hidden" name="tensanpham" id="tensanpham">
-                        <input type="hidden" name="tensanpham1" id="tensanpham1" value="{{$sanPham}}">
+                        <input type="hidden" name="tensanpham" id="tensanpham" value="{{$sanPham}}">
+                    
                     </div>
                 </form>
             </div>
@@ -300,12 +300,11 @@
                         <div class="modal-body">
                             Bạn có chắc chắn muốn xóa ?
                         </div>
-                        
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
                             <button type="submit" class="btn btn-primary">Xác nhận</button>
-                            <input type="hidden"  name="xoasanpham" id="xoasanpham">
-                            <input type="hidden"  name="xoasanpham1" id="xoasanpham1" value="{{$sanPham}}">
+                            <input type="hidden"  name="xoasanpham" id="xoasanpham" value="{{$sanPham}}">
+                          
                         </div>
                     </form>
                 </div>

@@ -62,7 +62,6 @@
                 </tbody>
                 @endforeach
             </table>
-            @foreach($lstmausac as $mausac)
             <!-- modal -->
             <div class="modal fade" id="MauModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
@@ -80,16 +79,16 @@
                             <div class="modal-body">
                                 Bạn có chắc chắn muốn xóa ?
                             </div>
-                            <input type="hidden" name="mau" id="mau">
+                        
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
                                 <button type="submit" class="btn btn-primary">Xác nhận</button>
+                                <input type="hidden"  name="xoamau" id="xoamau" value="{{$mausac}}">
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            @endforeach
         </div>
         @endif
     </div>
@@ -113,7 +112,7 @@ $(document).on('click', '.btnxoa', function() {
         show: true
     });
     var mau_id = $(this).val();
-    $('#mau').val(mau_id);
+    $('#xoamau').val(mau_id);
 
 });
 </script>

@@ -65,7 +65,7 @@
                 </tbody>
 
             </table>
-            @foreach($lstrom as $ROM)
+        
             <!-- modal -->
             <div class="modal fade" id="RomModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
@@ -77,7 +77,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form method="post" action="{{route('ROM.destroy',$ROM->id)}}">
+                        <form method="post" action="{{route('ROM.destroy')}}">
                             @csrf
                             @method('DELETE')
                             <div class="modal-body">
@@ -87,12 +87,13 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
                                 <button type="submit" class="btn btn-primary">Xác nhận</button>
+                                <input type="hidden"  name="xoarom" id="xoarom" value="{{$ROM}}">
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            @endforeach
+          
         </div>
         @endif
     </div>
@@ -116,7 +117,7 @@ $(document).on('click', '.btnxoa', function() {
         show: true
     });
     var rom_id = $(this).val();
-    $('#rom').val(rom_id);
+    $('#xoarom').val(rom_id);
 
 });
 </script>

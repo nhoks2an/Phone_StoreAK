@@ -19,7 +19,7 @@ class ROMController extends Controller
      */
     public function index()
     {
-        $lstrom =  ROM::orderBy('created_at','DESC')->search()->paginate(1);
+        $lstrom =  ROM::orderBy('created_at','DESC')->search()->paginate(3);
         foreach($lstrom as $rOM){
          
         }
@@ -102,7 +102,7 @@ class ROMController extends Controller
      * @param  \App\Models\ROM  $rOM
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         $count=mapping::where('id_rom',$id);
         if($count!=null)
@@ -110,6 +110,9 @@ class ROMController extends Controller
             return Redirect::route('ROM.index')->with('fail','Xóa ROM Thất Bại!');
         }
         ROM::find($id)->delete();
+        $rom_id = $request->input('xoarom');
+        $rom_id = ROM::find($rom_id);
+        $rom_id->delete();
         return Redirect::route('ROM.index')->with('message','Xóa ROM Thành Công');
     }
 }

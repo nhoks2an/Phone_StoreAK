@@ -101,9 +101,12 @@ class TinhNangDBController extends Controller
      * @param  \App\Models\TinhNangDB  $tinhNangDB
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        TinhNangDB::find($id)->delete();
+        $tinhnang_id = $request->input('xoatinhnang');
+        $tinhnang_id = TinhNangDB::find($tinhnang_id);
+        $tinhnang_id->delete();
+      
         return Redirect::route('tinhnangdb.index')->with('message','Xóa Tính Năng Thành Công');
     }
 }

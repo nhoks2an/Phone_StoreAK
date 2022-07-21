@@ -101,9 +101,12 @@ class HeDieuHanhController extends Controller
      * @param  \App\Models\HeDieuHanh  $heDieuHanh
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        HeDieuHanh::find($id)->delete();
+        $hedieuhanh_id = $request->input('xoahedieuhanh');
+        $hedieuhanh_id = HeDieuHanh::find($hedieuhanh_id);
+        $hedieuhanh_id->delete();
+      
         return Redirect::route('hedieuhanh.index')->with('message','Xóa Hệ Điều Hành Thành Công');
     }
 }

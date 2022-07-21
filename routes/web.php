@@ -129,7 +129,22 @@ Route::post('/stock/add', [SanPhamController::class, 'storemp'])->name('sanPham.
 Route::post('/abum/add', [SanPhamController::class, 'storeab'])->name('sanPham.storeab');
 Route::put('/stock/update', [SanPhamController::class, 'updatemp'])->name('sanPham.updatemp');
 Route::delete('/stock/delete', [SanPhamController::class, 'destroymp'])->name('sanPham.destroymp');
-Route::delete('/abum/delete', [SanPhamController::class, 'destroyab'])->name('sanPham.destroyab');
+Route::delete('/hang/delete', [HangController::class, 'destroy'])->name('hang.destroy');
+Route::delete('/sanpham/delete', [SanPhamController::class, 'destroy'])->name('sanPham.destroy');
+Route::delete('/loai/delete', [LoaiSanPhamController::class, 'destroy'])->name('loaiSanPham.destroy');
+Route::delete('/rom/delete', [ROMController::class, 'destroy'])->name('ROM.destroy');
+Route::delete('/camera/delete', [CameraController::class, 'destroy'])->name('camera.destroy');
+Route::delete('/ram/delete', [RAMController::class, 'destroy'])->name('RAM.destroy');
+Route::delete('/manhinh/delete', [ManHinhController::class, 'destroy'])->name('manhinh.destroy');
+Route::delete('/hieunangpin/delete', [HieuNangPinController::class, 'destroy'])->name('hieunangpin.destroy');
+Route::delete('/hedieuhanh/delete', [HeDieuHanhController::class, 'destroy'])->name('hedieuhanh.destroy');
+Route::delete('/tinhnang/delete', [TinhNangDBController::class, 'destroy'])->name('tinhnangdb.destroy');
+Route::delete('/thietke/delete', [ThietKeController::class, 'destroy'])->name('thietke.destroy');
+Route::delete('/mau/delete', [MauSacController::class, 'destroy'])->name('mausac.destroy');
+Route::delete('/slideshow/delete', [SlideShowController::class, 'destroy'])->name('slideShow.destroy');
+Route::delete('/banner/delete', [BannerController::class, 'destroy'])->name('banner.destroy');
+Route::delete('/tintuc/delete', [TinTucController::class, 'destroy'])->name('tinTuc.destroy');
+Route::delete('/chinhsach/delete', [ChinhSachController::class, 'destroy'])->name('chinhSach.destroy');
 Route::resource('/taikhoan',TaiKhoanController::class)->middleware('auth');
 Route::resource('/binhluan',BinhLuanController::class)->middleware('auth');
 Route::get('/admin', [DangnhapController::class,'showForm'])->name('loginadmin');
@@ -177,3 +192,6 @@ Route::get('/thongkethang', [ThongKeController::class, 'thongkethang'])->name('t
 Route::get('/thongkethangthucte', [ThongKeController::class, 'thongkethangthucte'])->name('thongkethangthucte');
 Route::get('/dashboard', [ThongKeController::class, 'dashboard'])->name('dashboard');
 Route::get('/thongkehoadon', [ThongKeController::class, 'thongkehoadon'])->name('thongkehoadon');
+
+
+

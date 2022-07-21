@@ -102,7 +102,7 @@ class MauSacController extends Controller
      * @param  \App\Models\MauSac  $mauSac
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         $count=mapping::where('id_mau',$id);
         if($count!=null)
@@ -110,6 +110,9 @@ class MauSacController extends Controller
             return Redirect::route('mausac.index')->with('fail','Xóa Màu Sắc Thất Bại!');
         }
         MauSac::find($id)->delete();
+        $mau_id = $request->input('xoamau');
+        $mau_id = MauSac::find($mau_id);
+        $mau_id->delete();
         return Redirect::route('mausac.index')->with('message','Xóa Màu Sắc Thành Công');
        
     }

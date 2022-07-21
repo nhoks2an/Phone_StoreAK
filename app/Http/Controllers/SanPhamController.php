@@ -109,7 +109,7 @@ class SanPhamController extends Controller
         $lstram = RAM::all();
         $lstrom = ROM::all();
         $lstmausac = MauSac::all();
-        $lstspmp = mapping::orderBy('created_at','DESC')->where('id_sanpham','=',$id)->paginate(1);
+        $lstspmp = mapping::orderBy('created_at','DESC')->where('id_sanpham','=',$id)->paginate(4);
         return view('sanpham.indexmp',['lstram'=>$lstram,'lstrom'=>$lstrom,'lstmausac'=>$lstmausac,'lstspmp'=>$lstspmp,'sanPham'=>$sanPham]);
     }
     /**
@@ -374,9 +374,11 @@ class SanPhamController extends Controller
      * @param  \App\Models\SanPham  $sanPham
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        SanPham::find($id)->delete();
+        $sanpham_id = $request->input('xoasanphamm');
+        $sanpham_id = SanPham::find($sanpham_id);
+        $sanpham_id->delete();
         return Redirect::route('sanPham.index')->with('message','Xóa Sản Phẩm Thành Công');
     }
 
